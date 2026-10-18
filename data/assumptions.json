@@ -1,0 +1,99 @@
+{
+  "version": "2026-10-16",
+  "notes": "Single source of truth for defaults. Every numeric field carries a `source` id defined in `sources`. Change a value only together with research/sources.md.",
+  "racks": {
+    "gb200": {
+      "label": "GB200 NVL72",
+      "gpus": 72,
+      "priceUsd": { "value": 3900000, "range": [3100000, 4500000], "unit": "USD per rack, all-in", "source": "semianalysis-gb200-capex", "note": "$3.1M bare rack, $3.9M incl. networking, storage, integration" },
+      "itKw": { "value": 120, "range": [110, 135], "unit": "kW per rack, IT load", "source": "inferencex-gb200-chip", "note": "nominal rack IT power; InferenceX all-in 1.87 kW/GPU incl. cooling share = 135 kW at PUE 1.2" },
+      "tdpW": { "value": 1200, "unit": "W per GPU", "source": "inferencex-gb200-chip" },
+      "tcoUsdPerGpuHr": { "value": 1.86, "unit": "USD per GPU-hour", "source": "inferencex-gb200-chip", "note": "SemiAnalysis owning TCO at hyperscaler volume, Jul 2026. Calibration only." }
+    },
+    "gb300": {
+      "label": "GB300 NVL72",
+      "gpus": 72,
+      "priceUsd": { "value": 5000000, "range": [4000000, 6000000], "unit": "USD per rack, all-in", "source": "datagravity-nvl72-cost", "note": "transacted small orders Aug 2026, without CDU; ~$5.7M deployed" },
+      "itKw": { "value": 132, "range": [120, 155], "unit": "kW per rack, IT load", "source": "hpe-gb300-spec", "note": "HPE: 132 kW nominal TDP, ~155 kW peak" },
+      "tdpW": { "value": 1400, "unit": "W per GPU", "source": "inferencex-gb300-chip" },
+      "tcoUsdPerGpuHr": { "value": 2.31, "unit": "USD per GPU-hour", "source": "inferencex-gb300-chip", "note": "Calibration only." }
+    }
+  },
+  "model": { "id": "glm-5.3", "label": "GLM-5.3", "paramsTotalB": 744, "paramsActiveB": 40, "license": "MIT", "released": "2026-08-28", "source": "hf-glm-5.3" },
+  "curves": {
+    "gb200": { "label": "GLM 744B, FP4, 8K in / 1K out", "unit": "[tok/s per user, output tok/s per GPU]", "date": "2026-07", "source": "inferencex-glm-b200-gb200",
+      "points": [[58, 9598], [67, 9135], [86, 6589], [104, 3619], [114, 1997], [141, 630]] },
+    "gb300": { "label": "GLM 744B, FP4, 8K in / 1K out", "unit": "[tok/s per user, output tok/s per GPU]", "date": "2026-07", "source": "inferencex-glm-gb200-gb300",
+      "points": [[67, 10192], [104, 4394], [141, 837]] }
+  },
+  "pricePresets": {
+    "floor":  { "label": "Market floor",  "inUsdPerM": 0.5625, "cacheUsdPerM": 0.125, "outUsdPerM": 2.5, "source": "openrouter-glm53-endpoints", "note": "DeepInfra, FP4, snapshot 2026-10-16" },
+    "median": { "label": "Market median", "inUsdPerM": 0.70,   "cacheUsdPerM": 0.13,  "outUsdPerM": 2.2, "source": "openrouter-glm53-endpoints", "note": "FP8 tier: Novita, SiliconFlow, Baidu" },
+    "list":   { "label": "List (Z.ai)",   "inUsdPerM": 1.40,   "cacheUsdPerM": 0.26,  "outUsdPerM": 4.4, "source": "zai-pricing" }
+  },
+  "electricityPresets": {
+    "commercial": { "value": 0.1453, "label": "US commercial, Jul 2026", "source": "eia-5-6-a" },
+    "industrial": { "value": 0.0977, "label": "US industrial, Jul 2026", "source": "eia-5-6-a" }
+  },
+  "defaults": {
+    "rack": "gb200", "racks": 1, "rackPriceMult": 1,
+    "interactivity": 100, "achieved": 0.5, "utilization": 0.6,
+    "pricePreset": "floor", "listShare": 0, "priceDeclinePerYear": 0.5,
+    "islOsl": 8, "cacheHit": 0.5,
+    "electricityUsdPerKwh": 0.1453, "pue": 1.2, "idleFraction": 0.35, "coloUsdPerKwMonth": 200, "otherOpexPctPerYear": 0.05,
+    "lifeYears": 4, "residualPct": 0.10, "costOfCapital": 0.07, "monthsToRevenue": 0
+  },
+  "ranges": {
+    "racks": [1, 100, 1], "rackPriceMult": [0.7, 1.3, 0.05],
+    "achieved": [0.1, 1, 0.05], "utilization": [0.1, 1, 0.05],
+    "priceDeclinePerYear": [0, 0.9, 0.05], "listShare": [0, 1, 0.05],
+    "islOsl": [1, 50, 1], "cacheHit": [0, 0.95, 0.05],
+    "electricityUsdPerKwh": [0.03, 0.30, 0.005], "pue": [1.05, 1.6, 0.05], "idleFraction": [0.2, 0.6, 0.05],
+    "coloUsdPerKwMonth": [100, 350, 10], "otherOpexPctPerYear": [0.02, 0.10, 0.01],
+    "lifeYears": [2, 6, 0.5], "residualPct": [0, 0.4, 0.05], "costOfCapital": [0, 0.15, 0.005], "monthsToRevenue": [0, 12, 1]
+  },
+  "sourceBasis": {
+    "interactivity": "artificial-analysis-glm53", "achieved": "assumption", "utilization": "assumption",
+    "priceDeclinePerYear": "du-2026-deflation", "pue": "uptime-pue", "coloUsdPerKwMonth": "cbre-colo",
+    "otherOpexPctPerYear": "assumption", "islOsl": "inferencex-method", "cacheHit": "openrouter-agent-traffic",
+    "lifeYears": "inferencex-method", "residualPct": "used-b200", "costOfCapital": "gpu-debt", "idleFraction": "assumption"
+  },
+  "presets": {
+    "pitch":     { "label": "Pitch",     "interactivity": "curveMin", "achieved": 1, "utilization": 1, "pricePreset": "list", "priceDeclinePerYear": 0 },
+    "realistic": { "label": "Realistic", "interactivity": 100, "achieved": 0.5, "utilization": 0.6, "pricePreset": "floor", "priceDeclinePerYear": 0.5 },
+    "bear":      { "label": "Bear",      "interactivity": 100, "achieved": 0.25, "utilization": 0.4, "pricePreset": "custom", "customPrice": { "inUsdPerM": 0.28125, "cacheUsdPerM": 0.0625, "outUsdPerM": 1.25 }, "priceDeclinePerYear": 0.7 }
+  },
+  "anchors": {
+    "openrouterTokensPerDay": { "value": 8.7e12, "source": "openrouter-agent-traffic", "note": "7.3T agentic + 1.4T human, 7-day moving average, 2026" },
+    "deepseekTokensPerDay": { "value": 7.76e11, "source": "deepseek-inference-overview", "note": "608B input + 168B output on 2025-02-27/28" },
+    "deepseekDay": { "gpus": 1814, "costUsdPerGpuHr": 2.0, "outputTokens": 1.68e11, "inputTokens": 6.08e11, "cacheHit": 0.5625, "priceInUsdPerM": 0.55, "priceCacheUsdPerM": 0.14, "priceOutUsdPerM": 2.19, "reportedRevenueUsd": 562027, "reportedCostUsd": 87072, "source": "deepseek-inference-overview" },
+    "nvidiaClaim": { "capexUsd": 5e6, "revenueUsd": 75e6, "years": 3, "priceOutUsdPerM": 2.0, "gpus": 72, "source": "nvidia-inferencemax-blog" },
+    "rentalUsdPerGpuHr": { "committed": 2.5, "onDemand": 10.5, "source": "rental-prices" }
+  },
+  "sources": {
+    "semianalysis-gb200-capex":    { "title": "SemiAnalysis, H100 vs GB200 NVL72 training benchmarks (capex section)", "url": "https://newsletter.semianalysis.com/p/h100-vs-gb200-nvl72-training-benchmarks", "date": "2024, re-cited 2026", "kind": "secondary" },
+    "datagravity-nvl72-cost":      { "title": "Data Gravity, How much does an NVIDIA NVL72 cost?", "url": "https://www.datagravity.dev/p/how-much-does-an-nvidia-nvl72-cost", "date": "2026-08-31", "kind": "secondary" },
+    "inferencex-gb200-chip":       { "title": "InferenceX, NVIDIA GB200 NVL72 chip page", "url": "https://inferencex.semianalysis.com/chips/gb200-nvl72", "date": "2026-07", "kind": "primary" },
+    "inferencex-gb300-chip":       { "title": "InferenceX, NVIDIA GB300 NVL72 chip page", "url": "https://inferencex.semianalysis.com/chips/gb300-nvl72", "date": "2026-07", "kind": "primary" },
+    "hpe-gb300-spec":              { "title": "HPE GB300 NVL72 collateral (rack power)", "url": "https://www.hpe.com/us/en/collaterals/collateral.a50009244enw.html", "date": "2026", "kind": "primary" },
+    "hf-glm-5.3":                  { "title": "zai-org/GLM-5.3 model card", "url": "https://huggingface.co/zai-org/GLM-5.3", "date": "2026-08-28", "kind": "primary" },
+    "inferencex-glm-b200-gb200":   { "title": "InferenceX, GLM 5/5.1 B200 vs GB200 NVL72, 8K/1K", "url": "https://inferencex.semianalysis.com/compare/glm-5-1-b200-vs-gb200/8k-1k", "date": "2026-07", "kind": "primary" },
+    "inferencex-glm-gb200-gb300":  { "title": "InferenceX, GLM 5/5.1 GB200 vs GB300 NVL72", "url": "https://inferencex.semianalysis.com/compare/glm-5-1-gb200-vs-gb300", "date": "2026-07", "kind": "primary" },
+    "inferencex-method":           { "title": "InferenceMAX methodology post (4-year useful life; ISL/OSL scenarios)", "url": "https://inferencex.semianalysis.com/blog/inferencemax-open-source-inference-benchmarking", "date": "2025-10", "kind": "primary" },
+    "openrouter-glm53-endpoints":  { "title": "OpenRouter endpoints API, z-ai/glm-5.3 (snapshot in data/raw/openrouter)", "url": "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints", "date": "2026-10-16", "kind": "primary" },
+    "zai-pricing":                 { "title": "Z.ai API pricing", "url": "https://docs.z.ai/guides/overview/pricing", "date": "2026-10-16", "kind": "primary" },
+    "artificial-analysis-glm53":   { "title": "Artificial Analysis, GLM-5.3 providers (speed, price)", "url": "https://artificialanalysis.ai/models/glm-5-3/providers", "date": "2026-10-16", "kind": "secondary" },
+    "eia-5-6-a":                   { "title": "EIA Electric Power Monthly, Table 5.6.A", "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a", "date": "2026-07 (preliminary)", "kind": "primary" },
+    "cbre-colo":                   { "title": "CBRE North America colocation pricing via Encor Advisors", "url": "https://encoradvisors.com/data-center-colocation-pricing/", "date": "2025-H2", "kind": "secondary" },
+    "uptime-pue":                  { "title": "Uptime Institute PUE survey summary", "url": "https://mgrid.org/2025/10/01/uptime-institute-data-center-pue-stagnation-2025-liquid-cooling/", "date": "2025", "kind": "secondary" },
+    "du-2026-deflation":           { "title": "Du, token price half-lives 2020-2026", "url": "https://arxiv.org/html/2603.28576v1", "date": "2026-03", "kind": "secondary" },
+    "epoch-deflation":             { "title": "Epoch AI, LLM inference price trends", "url": "https://epoch.ai/data-insights/llm-inference-price-trends", "date": "2025", "kind": "secondary" },
+    "used-b200":                   { "title": "American Compute, B200 appraisal (used price)", "url": "https://www.amcompute.com/appraisals/b200", "date": "2026-10", "kind": "secondary" },
+    "gpu-debt":                    { "title": "Wing VC, How the GPU became collateral", "url": "https://www.wing.vc/content/how-the-gpu-became-collateral", "date": "2026", "kind": "secondary" },
+    "openrouter-agent-traffic":    { "title": "OpenRouter agent vs human token volume (a16z chart coverage)", "url": "https://fourweekmba.com/ai-agents-burn-nearly-5x-the-tokens-people-do-on-openrouter/", "date": "2026", "kind": "secondary" },
+    "deepseek-inference-overview": { "title": "DeepSeek, Inference System Overview (Open Source Week day 6)", "url": "https://www.analyticsvidhya.com/blog/2025/03/deepseek-inference-system-overview/", "date": "2025-03-01", "kind": "secondary" },
+    "nvidia-inferencemax-blog":    { "title": "NVIDIA, Blackwell raises bar in InferenceMAX ($5M to $75M claim)", "url": "https://blogs.nvidia.com/blog/blackwell-inferencemax-benchmark-results", "date": "2025-10-09", "kind": "primary" },
+    "rental-prices":               { "title": "GB200/GB300 rental prices (CoreWeave on-demand; committed lease)", "url": "https://www.spheron.network/blog/nvidia-gb200-nvl72-guide/", "date": "2026", "kind": "secondary" },
+    "assumption":                  { "title": "Project assumption, no external source", "url": "", "date": "2026-10-16", "kind": "assumption" }
+  }
+}

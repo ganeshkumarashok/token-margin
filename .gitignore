@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env
+coverage/
+apps/web/e2e/screenshots/
+apps/web/test-results/
+apps/web/playwright-report/

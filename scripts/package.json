@@ -1,0 +1,11 @@
+{
+  "name": "@gpu-roi/scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scenario": "tsx scenario.ts",
+    "fetch:openrouter": "tsx fetch-openrouter.ts"
+  },
+  "dependencies": { "@gpu-roi/engine": "*" },
+  "devDependencies": { "tsx": "^4.19.2", "@types/node": "^22.10.0" }
+}
