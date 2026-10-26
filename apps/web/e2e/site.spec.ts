@@ -58,7 +58,8 @@ test('5. owning swaps rent for the cost of owning and a rack-price slider', asyn
   await page.goto('/');
   await page.getByRole('radio', { name: 'Own' }).click();
   await expect(page.getByTestId('cost')).toHaveText('$5,036');
-  await expect(page.getByTestId('s-capex')).toContainText('$3.90M');
+  await expect(page.getByTestId('s-capex')).toContainText('$3.90M · $2.91/GPU-hr all-in');
+  await expect(page.getByTestId('equation')).toContainText('$210/hr all-in, owned');
   await expect(page.getByTestId('s-rent')).toHaveCount(0);
   await expect(page.getByTestId('chart-readout')).toContainText('a day owning');
   await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $355/day');

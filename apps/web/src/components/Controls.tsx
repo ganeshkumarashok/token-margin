@@ -107,7 +107,7 @@ export function Controls({ m }: { m: Model }) {
             : (s.rack === 'gb200' ? 'list prices: CoreWeave $756/hr, AWS $762/hr, Oracle $1,152/hr' : 'list prices: Verda $894/hr, Oracle $1,296/hr')} />
       ) : (
         <Slider profitable={profitNow >= 0} testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
-          display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M`}
+          display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M · $${((m.result.daily.costUsd - m.result.daily.overheadUsd) / (rack.gpus * 24)).toFixed(2)}/GPU-hr all-in`}
           min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
           zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
           hint={`${s.rack === 'gb200' ? 'SemiAnalysis estimate including networking, storage and integration' : 'Data Gravity, from small orders transacted in Aug 2026'}. Depreciated over 4 years to 10% resale, financed at 9%`} />
@@ -166,7 +166,7 @@ export function Controls({ m }: { m: Model }) {
         hint="tokens/s each user sees on the slowest 10% of requests (p90). Faster output per user means fewer users share each GPU, so the rack makes fewer tokens. Price stays fixed here; fast tiers on OpenRouter charge about 1.5×." />
 
       {!m.isDefault && (
-        <button type="button" className="reset" onClick={m.reset}>Reset to the measured defaults</button>
+        <button type="button" className="reset" onClick={m.reset}>Reset to defaults</button>
       )}
     </section>
   );

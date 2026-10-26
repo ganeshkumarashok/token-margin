@@ -53,7 +53,7 @@ export function Details({ m }: { m: Model }) {
   const cost: Row[] = owning
     ? [
         { label: 'Depreciation', note: `$${(d.capexUsd / 1e6).toFixed(1)}M rack to ${fmtPct(i.residualPct)} resale over ${i.lifeYears} years`, value: fmtUsdInt(d.depreciationUsd), fn: rack.priceUsd.source },
-        { label: 'Financing', note: `${fmtPct(i.costOfCapital)} a year on the capital tied up`, value: fmtUsdInt(d.financingUsd) },
+        { label: 'Financing', note: `interest at ${fmtPct(i.costOfCapital)} a year, averaged over the ${i.lifeYears} years`, value: fmtUsdInt(d.financingUsd) },
         { label: 'Support and spares', note: `${fmtPct(i.otherOpexPctPerYear)} of the rack price a year`, value: fmtUsdInt(d.otherOpexUsd), fn: 'owning-opex-2026' },
         { label: 'Operations', note: 'on-call, remote hands, insurance', value: fmtUsdInt(d.opsUsd), fn: 'owning-opex-2026' },
         { label: 'Space', note: `${i.itKwPerRack} kW × $${i.coloUsdPerKwMonth}/kW-month`, value: fmtUsdInt(d.coloUsd), fn: 'cbre-colo' },
@@ -103,7 +103,7 @@ export function Details({ m }: { m: Model }) {
         <li>Traffic and prices come from GLM-5.3 on OpenRouter: the last 30 days of usage, and the median of its 16 FP4 endpoints (low is DeepInfra's FP4 price; high is the list price most large providers charge).</li>
         <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at.</li>
         <li>Hourly rentals can be handed back when demand falls, so they default to 70% utilization. Capacity fixed for years has to cover busy hours on busy days, so it defaults to 55%.</li>
-        <li>An owned rack is charged like a loan over its 4-year life, plus support, operations, space and power.</li>
+        <li>An owned rack's price, less its 10% resale value, is spread over 4 years as equal yearly payments that include 9% a year on the money tied up in it, the same as paying off a 9% loan. Support, operations, space and power come on top.</li>
       </ul>
 
       <h2>Sources</h2>
