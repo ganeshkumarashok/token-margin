@@ -146,7 +146,7 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
         zero={zero('utilization', [0, 1])} zeroLabel={fmtPct(zero('utilization', [0, 1]))}
-        hint={<>share of the rack's measured throughput you sell; <a href="#faq" onClick={openFaq}>why 45% by default</a></>} />
+        hint={<>share of the rack's measured throughput you sell; <a href="#faq" onClick={openFaq}>why 60% by default</a></>} />
 
       <div className="prices">
         <span className="plabel">Token price</span>
@@ -170,7 +170,7 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}
         zero={zero('overheadPct', range('overheadPct'))} zeroLabel={`${fmtPct(zero('overheadPct', range('overheadPct')))} of revenue`}
-        hint="staff, sales, support, payment fees and the API front end; the rack price already covers CPUs, networking and storage" />
+        hint="on-call engineering, customer support, billing and the API front end. 5% by default is an estimate for one rack; a provider running many racks spreads the same team over all of them, so the share falls with scale. The rack price already covers CPUs, networking and storage" />
 
       <Slider profitable={profitNow >= 0} testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
         min={iLo} max={iHi} step={0.5} onChange={(v) => update({ interactivity: v })}

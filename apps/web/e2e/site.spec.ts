@@ -12,19 +12,20 @@ async function nudge(page: Page, testId: string, key: 'ArrowRight' | 'ArrowLeft'
 
 test('1. defaults answer the four questions: rent, tokens, revenue, profit', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('revenue')).toHaveText('$14,684');
+  await expect(page.getByTestId('revenue')).toHaveText('$19,579');
   await expect(page.getByTestId('cost')).toHaveText('$18,144');
-  await expect(page.getByTestId('profit')).toHaveText('−$3,460');
-  await expect(page.getByTestId('margin')).toHaveText('−24% gross margin');
-  await expect(page.getByTestId('equation')).toContainText('757.2M out · 47.7B in');
-  await expect(page.getByTestId('unit-line')).toHaveText('Each GPU sells 122 output tokens/s at $19.39 per million, input included: $8.50 an hour against $10.50 rent. Each user sees 95 tok/s, what OpenRouter calls throughput.');
-  await expect(page.getByTestId('chart-readout')).toHaveText('At 45% utilization: −$3,460 a day renting on demand. Break-even at 56%.');
-  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /^Profit per day against GPU utilization\. renting on demand, the selected option, breaks even at 56% and makes −\$3,460 a day at 45% utilization\. For comparison, renting on a 3-yr contract breaks even at 31%; owning breaks even at 15%\.$/);
+  await expect(page.getByTestId('overhead')).toHaveText('$979');
+  await expect(page.getByTestId('profit')).toHaveText('$456');
+  await expect(page.getByTestId('margin')).toHaveText('2% margin');
+  await expect(page.getByTestId('equation')).toContainText('1.0B out · 63.6B in');
+  await expect(page.getByTestId('unit-line')).toHaveText('Each GPU sells 162 output tokens/s at $19.39 per million, input included: $11.33 an hour against $10.50 rent. Each user sees 95 tok/s, what OpenRouter calls throughput.');
+  await expect(page.getByTestId('chart-readout')).toHaveText('At 60% utilization: $456 a day renting on demand. Break-even at 59%.');
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /^Profit per day against GPU utilization\. renting on demand, the selected option, breaks even at 59% and makes \$456 a day at 60% utilization\. For comparison, renting on a 3-yr contract breaks even at 33%; owning breaks even at 16%\.$/);
   await expect(page.locator('.byline')).toContainText('Ganeshkumar Ashokavardhanan');
   await expect(page.locator('.byline a')).toHaveAttribute('href', 'https://ganeshkumarashok.com');
   // Each revenue line multiplies out from what it shows.
-  await expect(page.getByTestId('receipt')).toContainText('757.16M × $4.40/M');
-  await expect(page.getByTestId('receipt')).toContainText('$3,332');
+  await expect(page.getByTestId('receipt')).toContainText('1.0095B × $4.40/M');
+  await expect(page.getByTestId('receipt')).toContainText('$4,442');
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
   await expect(page.getByTestId('disclaimer').getByRole('link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
   await expect(page.getByTestId('repo-link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
@@ -34,22 +35,23 @@ test('2. the contract toggle cuts rent to $421/hr and lands in the URL', async (
   await page.goto('/');
   await page.getByRole('radio', { name: /Rent, 3-yr contract/ }).click();
   await expect(page.getByTestId('cost')).toHaveText('$10,109');
-  await expect(page.getByTestId('profit')).toHaveText('$4,576');
-  await expect(page.getByTestId('margin')).toHaveText('31% gross margin');
-  await expect(page.getByTestId('s-sold')).toContainText('45%');
+  await expect(page.getByTestId('profit')).toHaveText('$8,491');
+  await expect(page.getByTestId('margin')).toHaveText('43% margin');
+  await expect(page.getByTestId('s-sold')).toContainText('60%');
   await expect(page).toHaveURL(/rb=contract/);
 });
 
-test('3. lower utilization lowers profit; the break-even tick sits at 56%', async ({ page }) => {
+test('3. lower utilization lowers profit; the break-even tick sits at 59%', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('s-sold')).toContainText('break-even 56%');
+  await expect(page.getByTestId('s-sold')).toContainText('break-even 59%');
   const before = await money(page, 'profit');
   await nudge(page, 's-sold', 'ArrowLeft', 20);
-  await expect(page.getByTestId('s-sold')).toContainText('25%');
+  await expect(page.getByTestId('s-sold')).toContainText('40%');
   const after = await money(page, 'profit');
   expect(after).toBeLessThan(before);
-  await expect(page.getByTestId('chart-readout')).toContainText('At 25% utilization: −$9,986 a day');
-  await expect(page).toHaveURL(/u=0\.25/);
+  expect(after).toBeLessThan(0);
+  await expect(page.getByTestId('chart-readout')).toContainText('At 40% utilization: −$5,744 a day');
+  await expect(page).toHaveURL(/u=0\.4/);
 });
 
 test('4. more input per output raises revenue (agents resend context)', async ({ page }) => {
@@ -63,23 +65,23 @@ test('4. more input per output raises revenue (agents resend context)', async ({
 test('5. owning swaps rent for the cost of owning and a rack-price slider', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('radio', { name: /^Own, all-in/ }).click();
-  await expect(page.getByTestId('cost')).toHaveText('$5,004');
-  await expect(page.getByTestId('s-capex')).toContainText('$3.90M · $2.90/GPU-hr all-in');
-  await expect(page.getByTestId('equation')).toContainText('$208/hr all-in, owned');
+  await expect(page.getByTestId('cost')).toHaveText('$5,052');
+  await expect(page.getByTestId('s-capex')).toContainText('$3.90M · $2.92/GPU-hr all-in');
+  await expect(page.getByTestId('equation')).toContainText('$211/hr all-in, owned');
   await expect(page.getByTestId('s-rent')).toHaveCount(0);
   await expect(page.getByTestId('chart-readout')).toContainText('a day owning');
-  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /owning, the selected option, breaks even at 15%/);
-  await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $323/day');
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /owning, the selected option, breaks even at 16%/);
+  await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $372/day');
   await expect(page.getByTestId('s-ops')).toContainText('$400/day');
   await page.goto('/?t=own&e=0.25');
-  await expect(page.getByTestId('s-power')).toContainText('25.0¢/kWh · $555/day');
+  await expect(page.getByTestId('s-power')).toContainText('25.0¢/kWh · $639/day');
 });
 
 test('6. GB300 uses its own curve, rent and price list', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('radio', { name: 'GB300' }).click();
   await expect(page.getByTestId('cost')).toHaveText('$21,462');
-  await expect(page.getByTestId('revenue')).toHaveText('$17,977');
+  await expect(page.getByTestId('revenue')).toHaveText('$23,970');
   await expect(page.getByRole('radio', { name: /Rent on demand\s*\$894\/hr/ })).toBeVisible();
 });
 
@@ -89,7 +91,7 @@ test('7. a shared URL restores the scenario; reset returns to the defaults', asy
   await expect(page.getByRole('radio', { name: 'High' })).toHaveAttribute('aria-checked', 'true');
   await expect(page.getByTestId('cost')).toHaveText('$11,405');
   await page.getByRole('button', { name: /Reset/ }).click();
-  await expect(page.getByTestId('profit')).toHaveText('−$3,460');
+  await expect(page.getByTestId('profit')).toHaveText('$456');
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -99,7 +101,7 @@ test('8. phone: no sideways scroll, every control reachable', async ({ browser }
   await page.goto('/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
   await page.getByRole('radio', { name: /Rent, 3-yr contract/ }).tap();
-  await expect(page.getByTestId('profit')).toHaveText('$4,576');
+  await expect(page.getByTestId('profit')).toHaveText('$8,491');
   await page.screenshot({ path: 'e2e/screenshots/phone.png', fullPage: true });
   await ctx.close();
 });
@@ -111,7 +113,7 @@ test('9. dark mode renders with no console errors', async ({ browser }) => {
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
-  await expect(page.getByTestId('profit')).toHaveText('−$3,460');
+  await expect(page.getByTestId('profit')).toHaveText('$456');
   const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
   expect(bg).toBe('rgb(18, 18, 17)');
   expect(errors).toEqual([]);
@@ -120,9 +122,9 @@ test('9. dark mode renders with no console errors', async ({ browser }) => {
 
 test('10. overhead adds a cost term and turns gross profit into profit', async ({ page }) => {
   await page.goto('/?oh=0.1');
-  await expect(page.getByTestId('overhead')).toHaveText('$1,468');
-  await expect(page.getByTestId('profit')).toHaveText('−$4,928');
-  await expect(page.getByTestId('margin')).toHaveText('−34% margin');
+  await expect(page.getByTestId('overhead')).toHaveText('$1,958');
+  await expect(page.getByTestId('profit')).toHaveText('−$523');
+  await expect(page.getByTestId('margin')).toHaveText('−3% margin');
   await expect(page.getByTestId('s-overhead')).toContainText('10% of revenue');
 });
 
@@ -139,7 +141,7 @@ test('11. hovering the chart reads out all three ways of paying for the rack', a
 test('12. overhead and a typed rent stay with their own way of paying; a rack switch drops a typed rent', async ({ page }) => {
   await page.goto('/?oh=0.1');
   await page.getByRole('radio', { name: /^Own, all-in/ }).click();
-  await expect(page.getByTestId('s-overhead')).toContainText('0% of revenue');
+  await expect(page.getByTestId('s-overhead')).toContainText('5% of revenue');
   await page.getByRole('radio', { name: /Rent on demand/ }).click();
   await expect(page.getByTestId('s-overhead')).toContainText('10% of revenue');
   await page.goto('/?rent=8');
@@ -157,8 +159,8 @@ test('13. without JavaScript the page still shows the day, the receipt and the s
   const page = await ctx.newPage();
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('What are the margins on inference?');
-  await expect(page.getByTestId('profit')).toHaveText('−$3,460');
-  await expect(page.getByTestId('receipt')).toContainText('Gross profit');
+  await expect(page.getByTestId('profit')).toHaveText('$456');
+  await expect(page.getByTestId('receipt')).toContainText('Profit');
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
   await ctx.close();
 });
@@ -167,7 +169,7 @@ test('14. a shared link with settings renders its own numbers over the pre-rende
   const errors: string[] = [];
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
   await page.goto('/?rb=contract');
-  await expect(page.getByTestId('profit')).toHaveText('$4,576');
+  await expect(page.getByTestId('profit')).toHaveText('$8,491');
   await expect(page.locator('#root .answer')).toHaveCount(1);
   expect(errors).toEqual([]);
 });
