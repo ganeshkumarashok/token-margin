@@ -6,7 +6,7 @@ const rack = A.racks.gb200;
 
 /** Short answers to the questions readers ask first. Folded by default. */
 const ITEMS: Array<[string, React.ReactNode]> = [
-  ['Why one rack and one day?', <>An NVL72 rack is how these GPUs are built: 72 of them share one NVLink network, and large models are served across many of them at once. It is the unit InferenceX benchmarks and the unit CoreWeave rents. One day keeps every number small enough to check by hand.</>],
+  ['Why one rack and one day?', <>An NVL72 rack is how these GPUs are built: 72 of them share one NVLink network, and large models are served across many of them at once. One day keeps every number small enough to check by hand.</>],
   ['Why GLM-5.3?', <>It is an MIT-licensed open-weights model, among the most used on <a href={glm.mix.url}>OpenRouter</a>, mostly by coding agents, and InferenceX publishes agentic benchmarks for it on both GB200 and GB300. The repository also models DeepSeek V4 Pro.</>],
   ['How is "63 input tokens per output" worked out?', <>OpenRouter's <a href={glm.mix.url}>GLM-5.3 page</a> publishes daily totals of prompt, completion and cached tokens across all providers. From Sep 25 to Oct 24, 2026, prompts came to 16,992B tokens and completions to 271B (reasoning included): 62.7 to 1. 90.3% of prompt tokens were cache reads. The <a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a> and the raw data are in the repository.</>],
   ['What does GPU utilization mean here?', <>The share of the rack's measured capacity that is sold, averaged over the day. At 70%, the rack sells 70% of the tokens it could produce at the chosen output speed.</>],

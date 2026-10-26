@@ -88,7 +88,7 @@ export function Details({ m }: { m: Model }) {
       <table className="receipt" data-testid="receipt">
         <Block Fn={Fn} title="Throughput per GPU" unit="output tok/s" rows={[
           { label: 'Benchmark', note: `InferenceX, ${Math.round(i.interactivity)} tok/s per user`, value: fmtInt(d.benchPerGpu), fn: model.curves[s.rack].source },
-          { label: "Capacity on OpenRouter's mix", note: `${(i.islOsl * (1 - i.cacheHit)).toFixed(1)} fresh input tokens per output vs ${i.refUncachedPerOut} in the benchmark`, value: fmtInt(d.capacityPerGpu) },
+          { label: 'On real traffic', note: `OpenRouter: ${(i.islOsl * (1 - i.cacheHit)).toFixed(1)} fresh input tokens per output vs ${i.refUncachedPerOut} in the benchmark`, value: fmtInt(d.capacityPerGpu) },
           { label: 'Sold', note: `${fmtPct(i.availability)} uptime × ${fmtPct(i.utilization)} utilization`, value: fmtInt(d.tpsPerGpu * i.utilization), fn: ['inferencex-tco-availability', 'utilization-pattern-2026'] },
         ]} />
         <Block Fn={Fn} title="Tokens per day" rows={[
