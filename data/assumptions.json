@@ -133,7 +133,7 @@
     "rentUsdPerGpuHr": null,
     "interactivity": 95,
     "achieved": 1,
-    "utilization": 0.45,
+    "utilization": 0.6,
     "prefillRate": null,
     "pricePreset": "median",
     "listShare": 0,
@@ -150,13 +150,13 @@
     "costOfCapital": 0.09,
     "monthsToRevenue": 0,
     "rentBasis": "onDemand",
-    "overheadPct": 0,
+    "overheadPct": 0.05,
     "opsUsdPerRackDay": 400,
     "availability": 0.98,
     "utilizationByMode": {
-      "onDemand": 0.45,
-      "contract": 0.45,
-      "own": 0.45
+      "onDemand": 0.6,
+      "contract": 0.6,
+      "own": 0.6
     },
     "model": "glm53"
   },
@@ -308,7 +308,7 @@
       "label": "Realistic",
       "interactivity": 95,
       "achieved": 1,
-      "utilization": 0.45,
+      "utilization": 0.6,
       "pricePreset": "median",
       "priceDeclinePerYear": 0.5
     },
@@ -614,7 +614,7 @@
       "kind": "primary"
     },
     "utilization-pattern-2026": {
-      "title": "Load shape of production LLM serving: Azure LLM Inference Dataset 2024 (capacity sized for the busiest hour averages 62% for chat, 32% for coding; computed); OpenRouter open-model traffic, average day 68% of the busiest day",
+      "title": "Load shape of LLM serving: OpenRouter open-model traffic, average day 81-84% of the busiest day of its week, Sep 25 to Oct 24, 2026 (research/openrouter_load_shape.py); Azure LLM Inference Dataset 2024, chat averages 77% of its busiest hour (research/azure_trace_utilization.py)",
       "url": "https://github.com/Azure/AzurePublicDataset/blob/master/AzureLLMInferenceDataset2024.md",
       "date": "2026-10-26",
       "kind": "primary"
@@ -653,6 +653,12 @@
       "title": "OpenRouter, how traffic is routed between providers (price, speed, reliability, capacity)",
       "url": "https://openrouter.ai/docs/guides/providers/traffic-routing",
       "date": "2026-10-26",
+      "kind": "primary"
+    },
+    "fineserve": {
+      "title": "FineServe (2026): on a global multi-model inference marketplace (PPIO, 1.48B requests, 57 models), \"we do not observe pronounced diurnal or tidal patterns in request volume\"",
+      "url": "https://arxiv.org/abs/2607.19349",
+      "date": "2026",
       "kind": "primary"
     }
   },

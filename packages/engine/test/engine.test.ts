@@ -391,11 +391,11 @@ describe('T16 overhead as a share of revenue', () => {
     const z = daily({ ...i, priceInUsdPerM: i.priceInUsdPerM * lvl, priceCacheUsdPerM: i.priceCacheUsdPerM * lvl, priceOutUsdPerM: i.priceOutUsdPerM * lvl }, gb200);
     near(z.operatingProfitUsd, 0, 1e-6);
   });
-  it('every way of paying defaults to 45% utilization (one rack cannot hand back part of itself)', () => {
-    expect(defaultUtilization(A, 'onDemand')).toBe(0.45);
-    expect(defaultUtilization(A, 'contract')).toBe(0.45);
-    expect(defaultUtilization(A, 'own')).toBe(0.45);
-    expect(defaultSettings(A).utilization).toBe(0.45);
+  it('every way of paying defaults to 60% utilization (one rack cannot hand back part of itself)', () => {
+    expect(defaultUtilization(A, 'onDemand')).toBe(0.6);
+    expect(defaultUtilization(A, 'contract')).toBe(0.6);
+    expect(defaultUtilization(A, 'own')).toBe(0.6);
+    expect(defaultSettings(A).utilization).toBe(0.6);
     near(daily(own({ utilization: 0.55 }), gb200).operatingProfitUsd, 12_911.38, 0.01);
     near(daily(rent({ rentBasis: 'contract', utilization: 0.55 }), gb200).operatingProfitUsd, 7838.75, 0.01);
   });
@@ -410,8 +410,8 @@ describe('T16 overhead as a share of revenue', () => {
     const up = daily(rent({ availability: 1 }), gb200);
     near(daily(rent(), gb200).outputTokens / up.outputTokens, 0.98, 1e-12);
   });
-  it('defaults carry no overhead', () => {
-    expect(inputs().overheadPct).toBe(0);
+  it('defaults carry 5% overhead', () => {
+    expect(defaultSettings(A).overheadPct).toBe(0.05);
     expect(() => daily({ ...inputs(), overheadPct: 1 }, gb200)).toThrow();
   });
 });
