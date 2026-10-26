@@ -30,6 +30,10 @@ GB300 at Verda's on-demand $894/rack-hr serves 1.4B output tokens for $27,965 of
 6. The default day moves 75.4B tokens, 13% of all GLM-5.3 traffic on OpenRouter. A handful of racks would cover OpenRouter's entire demand for this model.
 7. For a renter, ranked by NPV swing, the inputs that matter most are price decline, token price level, rent, utilization and output speed. Electricity and useful life barely affect a renter and rank last for an owner.
 
+## DeepSeek V4 Pro on the same rack
+
+The page can switch to DeepSeek V4 Pro, with its own measured throughput (InferenceX agentic runs on Dynamo vLLM and SGLang, FP4), its own OpenRouter traffic (42 input tokens per output, 84% cached) and the median of its 5 FP4 endpoints ($0.45 in, $0.132 cached, $3.96 out per million). A GB200 serves 557 output tokens/s per GPU on that traffic, twice GLM-5.3's 276, so the on-demand day earns $9,529 (34%) and breaks even at 46% utilization; on GB300 it earns $14,671 (41%). Two things temper that: the default day is 43% of all DeepSeek V4 Pro traffic on OpenRouter, and DeepSeek's own API sells it for $0.66 in, $0.022 cached and $1.98 out, at which renting on demand loses $1,048 a day. Full comparison in `findings-tables.md`.
+
 ## What the model ignores
 
 Taxes; sales and customer support (the overhead input adds them); cost of capital in the daily figures; network egress; FP4 quality; SLAs; demand growth; contract exit costs. The agentic traces carry about twice OpenRouter's average context, so throughput leans conservative. Serving software is improving quickly: GLM on GB200 at 100 tok/s per user went from 69 to 287 output tokens/s per GPU between Aug 16 and Oct 23. The large-contract rent is an estimate from filed deals and reported increases, not a quote.

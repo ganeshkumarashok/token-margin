@@ -1,5 +1,5 @@
 import { curveBounds, toCurve } from './curve';
-import type { CurvePoint, Inputs, PricePresetId, RackId, RentBasis, ScenarioPresetId, Tenure } from './types';
+import type { CurvePoint, Inputs, ModelId, PricePresetId, RackId, RentBasis, ScenarioPresetId, Tenure } from './types';
 
 /** Shape of data/assumptions.json (only the parts the engine and UI read). */
 export interface Valued {
@@ -17,8 +17,6 @@ export interface RackSpec {
   rentUsdPerGpuHr: Valued;
   /** $/GPU-hr on a multi-year, multi-rack contract */
   contractUsdPerGpuHr: Valued;
-  /** uncached input tok/s per prefill GPU */
-  prefillRate: Valued;
   itKw: Valued;
   tdpW: Valued;
   tcoUsdPerGpuHr: Valued;
@@ -30,7 +28,23 @@ export interface CurveSpec {
   source: string;
   /** uncached input tokens per output token in the benchmark traffic */
   refUncachedPerOut: number;
+  /** uncached input tok/s per prefill GPU for this model on this rack */
+  prefillRate: Valued;
   points: Array<[number, number]>;
+}
+/** One open-weights model: measured throughput per rack, its real traffic mix, and its market prices. */
+export interface ModelSpec {
+  id: string;
+  label: string;
+  short: string;
+  license: string;
+  released: string;
+  source: string;
+  mix: { islOsl: number; cacheHit: number; source: string; note?: string };
+  openrouterTokensPerDay: { value: number; source: string; note?: string };
+  curves: Record<RackId, CurveSpec>;
+  pricePresets: Record<PricePresetId, PriceSpec>;
+  priceNotes: Record<PricePresetId, string>;
 }
 export interface PriceSpec {
   label: string;
@@ -48,6 +62,7 @@ export interface SourceSpec {
 }
 export interface Defaults {
   tenure: Tenure;
+  model: ModelId;
   rack: RackId;
   racks: number;
   rackPriceMult: number;
@@ -94,9 +109,7 @@ export interface AssumptionDefaults extends Defaults {
 export interface Assumptions {
   version: string;
   racks: Record<RackId, RackSpec>;
-  model: { id: string; label: string; paramsTotalB: number; paramsActiveB: number; license: string; released: string; source: string };
-  curves: Record<RackId, CurveSpec>;
-  pricePresets: Record<PricePresetId, PriceSpec>;
+  models: Record<ModelId, ModelSpec>;
   electricityPresets: Record<'commercial' | 'industrial', { value: number; label: string; source: string }>;
   defaults: AssumptionDefaults;
   ranges: Record<string, [number, number, number]>;
@@ -104,8 +117,6 @@ export interface Assumptions {
   presets: Record<ScenarioPresetId, ScenarioPreset>;
   anchors: {
     openrouterTokensPerDay: { value: number; source: string; note?: string };
-    /** GLM-5.3 tokens (prompt + completion) OpenRouter serves per day */
-    openrouterGlm53TokensPerDay: { value: number; source: string; note?: string };
     deepseekTokensPerDay: { value: number; source: string; note?: string };
     deepseekDay: {
       gpus: number; costUsdPerGpuHr: number; outputTokens: number; inputTokens: number; cacheHit: number;
@@ -128,8 +139,15 @@ export interface Settings extends Defaults {
   customPrice: { inUsdPerM: number; cacheUsdPerM: number; outUsdPerM: number } | null;
 }
 
-export function curveFor(a: Assumptions, rack: RackId): CurvePoint[] {
-  return toCurve(a.curves[rack].points);
+export function curveFor(a: Assumptions, rack: RackId, model: ModelId = a.defaults.model): CurvePoint[] {
+  return toCurve(a.models[model].curves[rack].points);
+}
+
+/** Settings for a model, with its own traffic mix (input per output, cache share) and speed kept inside its curve. */
+export function withModel(a: Assumptions, s: Settings, model: ModelId): Settings {
+  const mix = a.models[model].mix;
+  return { ...s, model, islOsl: mix.islOsl, cacheHit: mix.cacheHit, prefillRate: null, customPrice: null,
+    interactivity: clampInteractivity(a, s.rack, s.interactivity, model) };
 }
 
 export function defaultSettings(a: Assumptions): Settings {
@@ -142,14 +160,14 @@ export function defaultUtilization(a: Assumptions, mode: 'onDemand' | 'contract'
   return a.defaults.utilizationByMode[mode];
 }
 
-export function clampInteractivity(a: Assumptions, rack: RackId, v: number): number {
-  const [lo, hi] = curveBounds(curveFor(a, rack));
+export function clampInteractivity(a: Assumptions, rack: RackId, v: number, model: ModelId = a.defaults.model): number {
+  const [lo, hi] = curveBounds(curveFor(a, rack, model));
   return Math.min(Math.max(v, lo), hi);
 }
 
 export function sellPrices(a: Assumptions, s: Settings): { inUsdPerM: number; cacheUsdPerM: number; outUsdPerM: number } {
   if (s.customPrice) return s.customPrice;
-  const p = a.pricePresets[s.pricePreset];
+  const p = a.models[s.model].pricePresets[s.pricePreset];
   return { inUsdPerM: p.inUsdPerM, cacheUsdPerM: p.cacheUsdPerM, outUsdPerM: p.outUsdPerM };
 }
 
@@ -159,13 +177,13 @@ export function rentFor(a: Assumptions, s: Settings): number {
 }
 
 export function prefillFor(a: Assumptions, s: Settings): number {
-  return s.prefillRate ?? a.racks[s.rack].prefillRate.value;
+  return s.prefillRate ?? a.models[s.model].curves[s.rack].prefillRate.value;
 }
 
 export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
   const rack = a.racks[s.rack];
   const sell = sellPrices(a, s);
-  const list = a.pricePresets.list;
+  const list = a.models[s.model].pricePresets.list;
   return {
     tenure: s.tenure,
     rack: s.rack,
@@ -174,11 +192,11 @@ export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
     rentUsdPerGpuHr: rentFor(a, s),
     gpusPerRack: rack.gpus,
     itKwPerRack: rack.itKw.value,
-    interactivity: clampInteractivity(a, s.rack, s.interactivity),
+    interactivity: clampInteractivity(a, s.rack, s.interactivity, s.model),
     achieved: s.achieved,
     utilization: s.utilization,
     prefillRate: prefillFor(a, s),
-    refUncachedPerOut: a.curves[s.rack].refUncachedPerOut,
+    refUncachedPerOut: a.models[s.model].curves[s.rack].refUncachedPerOut,
     priceInUsdPerM: sell.inUsdPerM,
     priceCacheUsdPerM: sell.cacheUsdPerM,
     priceOutUsdPerM: sell.outUsdPerM,
@@ -207,11 +225,11 @@ export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
 /** Settings overrides for a scenario preset; only the preset's keys change. Tenure is untouched. */
 export function applyPreset(a: Assumptions, s: Settings, id: ScenarioPresetId): Settings {
   const p = a.presets[id];
-  const interactivity = p.interactivity === 'curveMin' ? curveBounds(curveFor(a, s.rack))[0] : p.interactivity;
+  const interactivity = p.interactivity === 'curveMin' ? curveBounds(curveFor(a, s.rack, s.model))[0] : p.interactivity;
   const custom = p.pricePreset === 'custom' ? (p.customPrice ?? null) : null;
   return {
     ...s,
-    interactivity: clampInteractivity(a, s.rack, interactivity),
+    interactivity: clampInteractivity(a, s.rack, interactivity, s.model),
     achieved: p.achieved,
     utilization: p.utilization,
     pricePreset: p.pricePreset === 'custom' ? s.pricePreset : p.pricePreset,

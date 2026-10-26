@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   applyPreset, breakevens, costPerMillion, daily, defaultUtilization, demandShare, evaluate, impliedTps, schedule, sensitivity, throughputAt,
 } from '../src';
-import { A, gb200, gb300, inputs, own, presetInputs, rent, settings } from './helpers';
+import { A, ds200, ds300, forModel, gb200, gb300, inputs, own, presetInputs, rent, settings } from './helpers';
 
 const anchors = { openrouterTokensPerDay: A.anchors.openrouterTokensPerDay.value, deepseekTokensPerDay: A.anchors.deepseekTokensPerDay.value };
 const near = (v: number | null, want: number, tol: number) => {
@@ -24,7 +24,7 @@ describe('T1 throughputAt (InferenceX AgentX, output tok/s per GPU incl. prefill
 describe('T2 validation against InferenceX', () => {
   it('benchmark-shaped traffic reproduces every published agentic point on both racks', () => {
     for (const [rack, curve] of [['gb200', gb200], ['gb300', gb300]] as const) {
-      const ref = A.curves[rack].refUncachedPerOut;
+      const ref = A.models.glm53.curves[rack].refUncachedPerOut;
       for (const p of curve) {
         const d = daily(rent({ rack, interactivity: p.interactivity, islOsl: ref, cacheHit: 0, utilization: 1 }), curve);
         near(d.capacityPerGpu, p.tps, 1e-9);
@@ -412,5 +412,39 @@ describe('T16 overhead as a share of revenue', () => {
   it('defaults carry no overhead', () => {
     expect(inputs().overheadPct).toBe(0);
     expect(() => daily({ ...inputs(), overheadPct: 1 }, gb200)).toThrow();
+  });
+});
+
+describe('T17 DeepSeek V4 Pro', () => {
+  it('reproduces every published agentic point on benchmark-shaped traffic', () => {
+    for (const [rack, curve] of [['gb200', ds200], ['gb300', ds300]] as const) {
+      for (const p of curve) {
+        const d = daily(forModel('dsv4pro', { rack, interactivity: p.interactivity, islOsl: 5, cacheHit: 0, utilization: 1 }), curve);
+        near(d.capacityPerGpu, p.tps, 1e-9);
+      }
+    }
+  });
+  it('switching model brings its own traffic mix and prices', () => {
+    const i = forModel('dsv4pro');
+    expect(i.islOsl).toBe(42);
+    expect(i.cacheHit).toBe(0.84);
+    expect(i.priceOutUsdPerM).toBe(3.96);
+    expect(i.prefillRate).toBe(7700);
+  });
+  it('GB200 on demand at the defaults', () => {
+    const { daily: d, schedule: s } = evaluate(forModel('dsv4pro'), ds200);
+    near(d.benchPerGpu, 636.2322, 1e-3);
+    near(d.capacityPerGpu, 557.0628, 1e-3);
+    near(d.outputTokens, 2.37724806e9, 1e3);
+    near(d.revenueUsd, 27_673.45, 0.01);
+    near(d.operatingProfitUsd, 9529.45, 0.01);
+    near(d.operatingMargin, 0.3444, 1e-4);
+    expect(s.underwaterMonth).toBe(9);
+    near(breakevens(forModel('dsv4pro'), ds200).soldShareToBreakEven, 0.459, 1e-3);
+  });
+  it('GB300 on demand, GB200 owned and on contract at 55%', () => {
+    near(daily(forModel('dsv4pro', { rack: 'gb300' }), ds300).operatingProfitUsd, 14_670.7, 0.01);
+    near(daily(forModel('dsv4pro', { tenure: 'own', utilization: 0.55 }), ds200).operatingProfitUsd, 16_707.25, 0.01);
+    near(daily(forModel('dsv4pro', { rentBasis: 'contract', utilization: 0.55 }), ds200).operatingProfitUsd, 11_634.62, 0.01);
   });
 });

@@ -9,11 +9,19 @@ Tenure: 'own' pays capex + power + colo + opex (+ depreciation); 'rent' pays $/G
 import math
 DAY=86400
 REF=5.0
-CURVES={"gb200":[(94.7,312.2),(106.2,264.4),(111.5,253.7),(128.7,175.8),(141.8,126.4),(195.3,91.7),(263.9,49.9)],
+CURVES_GLM={"gb200":[(94.7,312.2),(106.2,264.4),(111.5,253.7),(128.7,175.8),(141.8,126.4),(195.3,91.7),(263.9,49.9)],
         "gb300":[(89.4,458.2),(94.7,393.0),(114.3,313.8),(131.8,202.5),(184.8,109.1),(246.3,54.2)]}
-RACK={"gb200":dict(gpus=72,price=3.9e6,itKw=120.0,pf=3200.0,rent=10.50,contract=5.85),
-      "gb300":dict(gpus=72,price=5.0e6,itKw=132.0,pf=3200.0,rent=12.42,contract=6.60)}
-PRICES={"floor":(0.5625,0.125,2.50),"median":(1.12,0.14,4.40),"list":(1.40,0.26,4.40)}
+CURVES_DSV4={"gb200":[(80.5,798.6),(93.9,641.4),(95.8,632.5),(104.6,309.4),(137.6,213.6),(151.1,126.0)],
+        "gb300":[(56.2,1168.4),(71.2,1004.3),(79.7,952.9),(99.9,812.8),(100.1,715.5),(105.5,586.8),(136.1,496.2),(146.6,340.8),(153.4,281.8),(168.1,168.4)]}
+RACK={"gb200":dict(gpus=72,price=3.9e6,itKw=120.0,rent=10.50,contract=5.85),
+      "gb300":dict(gpus=72,price=5.0e6,itKw=132.0,rent=12.42,contract=6.60)}
+# per model: curves, prefill rate per rack, traffic mix, prices (floor, median, list)
+MODELS={"glm53":dict(curves=None,pf={"gb200":3200.0,"gb300":3200.0},io=63.0,c=0.9,
+           prices={"floor":(0.5625,0.125,2.50),"median":(1.12,0.14,4.40),"list":(1.40,0.26,4.40)}),
+        "dsv4pro":dict(curves=CURVES_DSV4,pf={"gb200":7700.0,"gb300":9000.0},io=42.0,c=0.84,
+           prices={"floor":(0.66,0.022,1.98),"median":(0.45,0.132,3.96),"list":(1.32,0.132,3.96)})}
+MODELS["glm53"]["curves"]=CURVES_GLM
+CURVES=CURVES_GLM
 
 def tput(curve,I):
     xs=[p[0] for p in curve]; I=min(max(I,xs[0]),xs[-1])
@@ -21,13 +29,15 @@ def tput(curve,I):
         if x0<=I<=x1:
             f=(I-x0)/(x1-x0); return math.exp(math.log(y0)+f*(math.log(y1)-math.log(y0)))
 
-def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,elec=0.1453,pue=1.2,idle=0.35,colo=200.0,
+def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=None,io=None,model="glm53",elec=0.1453,pue=1.2,idle=0.35,colo=200.0,
           ox=0.04,life=4.0,res=0.10,k=0.09,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None,oh=0.0,ops=400.0,av=0.98):
-    r=RACK[rack]; pin,pc,po=[x*priceMult for x in PRICES[price]]; lin,lc,lo=PRICES["list"]
-    renting=tenure=="rent"; pf=r["pf"] if pf is None else pf
+    r=RACK[rack]; md=MODELS[model]; PR=md["prices"]
+    c=md["c"] if c is None else c; io=md["io"] if io is None else io
+    pin,pc,po=[x*priceMult for x in PR[price]]; lin,lc,lo=PR["list"]
+    renting=tenure=="rent"; pf=md["pf"][rack] if pf is None else pf
     rent=(r["contract"] if basis=="contract" else r["rent"]) if rent is None else rent
     capex=0.0 if renting else racks*r["price"]; gpus=racks*r["gpus"]
-    bench=tput(CURVES[rack],I); cap=1.0/(1.0/bench+(io*(1-c)-REF)/pf); tps=cap*a*av
+    bench=tput(md["curves"][rack],I); cap=1.0/(1.0/bench+(io*(1-c)-REF)/pf); tps=cap*a*av
     out=tps*gpus*u*DAY; inp=out*io
     def rev(pin,pc,po): return (out*po+inp*(1-c)*pin+inp*c*pc)/1e6
     revenue=(1-listShare)*rev(pin,pc,po)+listShare*rev(lin,lc,lo)
@@ -127,6 +137,11 @@ if __name__=="__main__":
     d=daily(u=0.0,tenure="own"); print("T10 own u=0: revenue",d['revenue'],"elec/day",round(d['elec'],2))
     # T12 overhead: 10% of revenue
     d=daily(oh=0.10); show("T12 default gb200 RENT, 10% overhead", d, schedule(d)); print("  soldBE",sold_be(oh=0.10))
+    # T13 DeepSeek V4 Pro defaults
+    for rk in ("gb200","gb300"):
+        d=daily(rk,model="dsv4pro"); show(f"T13 dsv4pro {rk} RENT on-demand", d, schedule(d)); print("  soldBE",sold_be(rack=rk,model="dsv4pro"))
+    d=daily(model="dsv4pro",tenure="own",u=0.55); show("T13 dsv4pro gb200 OWN 55%", d, schedule(d))
+    d=daily(model="dsv4pro",basis="contract",u=0.55); show("T13 dsv4pro gb200 contract 55%", d, schedule(d))
     # T11 prefill properties at peak
     for kw in (dict(c=0.0),dict(c=0.95),dict(io=20.0),dict(pf=6400.0)):
         print("T11",kw,"cap",round(daily(u=1.0,**kw)["cap"],4))

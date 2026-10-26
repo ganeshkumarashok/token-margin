@@ -13,6 +13,23 @@ Capacity is InferenceX AgentX output per GPU, prefill GPUs included, adjusted to
 | Peak, rent | $18.1K (rent $10.5/GPU-hr) | 1.7B out + 106.0B in | $32.6K | $14.5K (44%) | stops covering rent in month 12 |
 | Peak, own | $5.2K (power $502, colo $789, support $427, ops $400, depreciation $2.4K, financing $660) | 1.7B out + 106.0B in | $32.6K | $27.4K (84%) | payback 5 mo, NPV $8.7M |
 
+## Model comparison: one rack, one day, each model with its own OpenRouter traffic mix and median FP4 price
+
+| Model | Rack | Pay | Utilization | Capacity tok/s/GPU | Revenue/day | Cost/day | Gross profit/day |
+|---|---|---|---|---|---|---|---|
+| GLM-5.3 | GB200 NVL72 | onDemand | 70% | 276 | $22.8K | $18.1K | $4.7K (21%) |
+| GLM-5.3 | GB200 NVL72 | contract | 55% | 276 | $17.9K | $10.1K | $7.8K (44%) |
+| GLM-5.3 | GB200 NVL72 | own | 55% | 276 | $17.9K | $5.0K | $12.9K (72%) |
+| GLM-5.3 | GB300 NVL72 | onDemand | 70% | 338 | $28.0K | $21.5K | $6.5K (23%) |
+| GLM-5.3 | GB300 NVL72 | contract | 55% | 338 | $22.0K | $11.4K | $10.6K (48%) |
+| GLM-5.3 | GB300 NVL72 | own | 55% | 338 | $22.0K | $6.1K | $15.8K (72%) |
+| DeepSeek V4 Pro | GB200 NVL72 | onDemand | 70% | 557 | $27.7K | $18.1K | $9.5K (34%) |
+| DeepSeek V4 Pro | GB200 NVL72 | contract | 55% | 557 | $21.7K | $10.1K | $11.6K (54%) |
+| DeepSeek V4 Pro | GB200 NVL72 | own | 55% | 557 | $21.7K | $5.0K | $16.7K (77%) |
+| DeepSeek V4 Pro | GB300 NVL72 | onDemand | 70% | 727 | $36.1K | $21.5K | $14.7K (41%) |
+| DeepSeek V4 Pro | GB300 NVL72 | contract | 55% | 727 | $28.4K | $11.4K | $17.0K (60%) |
+| DeepSeek V4 Pro | GB300 NVL72 | own | 55% | 727 | $28.4K | $6.1K | $22.3K (78%) |
+
 Break-even utilization: renting on demand 56%, owning 15%. Revenue per GPU-hour $13.22 against rent of $10.5 and an owning cost of $2.91.
 
 ## Presets

@@ -25,16 +25,6 @@
         "source": "coreweave-pricing",
         "note": "CoreWeave GB200 NVL72, $42.00/hr per 4-GPU instance, full racks of 18 only: $756/rack-hr. AWS u-p6e-gb200x72 Capacity Block $761.90/rack-hr. Oracle $16.00, Azure $27.04 per GPU-hr pay-as-you-go."
       },
-      "prefillRate": {
-        "value": 3200,
-        "range": [
-          2400,
-          8000
-        ],
-        "unit": "uncached input tok/s per prefill GPU, agentic traces",
-        "source": "inferencex-agentx",
-        "note": "InferenceX AgentX GLM runs: output per all GPUs x all GPUs x uncached input per output / prefill GPUs is ~3.2K on both racks across 8-24 prefill GPUs (prefill binds)."
-      },
       "itKw": {
         "value": 120,
         "range": [
@@ -90,16 +80,6 @@
         "source": "verda-pricing",
         "note": "Verda GB300 NVL72, pay-as-you-go, 1 to 72 GPUs: $894.20/rack-hr (2026-10-25). Oracle BM.GPU.GB300.4 $18.00; Fireworks managed $20.00."
       },
-      "prefillRate": {
-        "value": 3200,
-        "range": [
-          2400,
-          8000
-        ],
-        "unit": "uncached input tok/s per prefill GPU, agentic traces",
-        "source": "inferencex-agentx",
-        "note": "InferenceX AgentX GLM runs: output per all GPUs x all GPUs x uncached input per output / prefill GPUs is ~3.2K on both racks across 8-24 prefill GPUs (prefill binds)."
-      },
       "itKw": {
         "value": 132,
         "range": [
@@ -131,113 +111,6 @@
         "source": "contracts-2026",
         "note": "$475/rack-hr. 75th percentile of $4.19-7.41, the range implied by 2026 reports of new deals at $20-25M per MW of IT load (Nebius Q2 letter; IREN FY26 call), converted at 545 GPUs/MW (GB300 rack IT power) to 385 GPUs/MW (IREN's Microsoft deal). Low end: filed HIVE GB300 5-yr deal at $3.96 (Aug 2026). Estimate."
       }
-    }
-  },
-  "model": {
-    "id": "glm-5.3",
-    "label": "GLM-5.3",
-    "paramsTotalB": 744,
-    "paramsActiveB": 40,
-    "license": "MIT",
-    "released": "2026-08-28",
-    "source": "hf-glm-5.3"
-  },
-  "curves": {
-    "gb200": {
-      "label": "GLM-5.2/5.3, NVFP4, Dynamo SGLang, agentic traces",
-      "unit": "[p90 tok/s per user, output tok/s per GPU incl. prefill]",
-      "date": "2026-10-23",
-      "source": "inferencex-agentx",
-      "refUncachedPerOut": 5,
-      "points": [
-        [
-          94.7,
-          312.2
-        ],
-        [
-          106.2,
-          264.4
-        ],
-        [
-          111.5,
-          253.7
-        ],
-        [
-          128.7,
-          175.8
-        ],
-        [
-          141.8,
-          126.4
-        ],
-        [
-          195.3,
-          91.7
-        ],
-        [
-          263.9,
-          49.9
-        ]
-      ]
-    },
-    "gb300": {
-      "label": "GLM-5.2/5.3, NVFP4, Dynamo SGLang, agentic traces",
-      "unit": "[p90 tok/s per user, output tok/s per GPU incl. prefill]",
-      "date": "2026-10-20",
-      "source": "inferencex-agentx",
-      "refUncachedPerOut": 5,
-      "points": [
-        [
-          89.4,
-          458.2
-        ],
-        [
-          94.7,
-          393.0
-        ],
-        [
-          114.3,
-          313.8
-        ],
-        [
-          131.8,
-          202.5
-        ],
-        [
-          184.8,
-          109.1
-        ],
-        [
-          246.3,
-          54.2
-        ]
-      ]
-    }
-  },
-  "pricePresets": {
-    "floor": {
-      "label": "Low",
-      "inUsdPerM": 0.5625,
-      "cacheUsdPerM": 0.125,
-      "outUsdPerM": 2.5,
-      "source": "openrouter-glm53-endpoints",
-      "note": "37.5% off DeepInfra's own $0.90/$0.20/$4.00; 2026-10-25"
-    },
-    "median": {
-      "label": "Median",
-      "inUsdPerM": 1.12,
-      "cacheUsdPerM": 0.14,
-      "outUsdPerM": 4.4,
-      "source": "openrouter-glm53-endpoints",
-      "note": "median of each price over the 16 FP4/NVFP4 GLM-5.3 endpoints on OpenRouter, 2026-10-25"
-    },
-    "list": {
-      "label": "High (list)",
-      "inUsdPerM": 1.4,
-      "cacheUsdPerM": 0.26,
-      "outUsdPerM": 4.4,
-      "source": "zai-pricing",
-      "note": "Z.ai list price; also charged by Together, Fireworks, Baseten, Nebius, Crusoe, Parasail, Modal and others on OpenRouter"
     }
   },
   "electricityPresets": {
@@ -284,7 +157,8 @@
       "onDemand": 0.7,
       "contract": 0.55,
       "own": 0.55
-    }
+    },
+    "model": "glm53"
   },
   "ranges": {
     "racks": [
@@ -379,7 +253,7 @@
     ],
     "prefillRate": [
       2400,
-      10000,
+      12000,
       100
     ],
     "overheadPct": [
@@ -484,11 +358,6 @@
       "onDemand": 10.5,
       "source": "contracts-2026",
       "note": "No spot market for NVL72. Large 3-yr contracts: filed $3.63 (GB200, Jun 2026) to $3.96 (GB300, Aug 2026), rising since. Small-buyer reserved list: Verda GB300 24-month $9.32, Azure GB200 3-yr $11.90."
-    },
-    "openrouterGlm53TokensPerDay": {
-      "value": 575400000000.0,
-      "source": "openrouter-glm53-activity",
-      "note": "prompt + completion, mean of 30 days 2026-09-25 to 10-24"
     }
   },
   "sources": {
@@ -749,6 +618,324 @@
       "url": "https://openrouter.ai/z-ai/glm-5.3",
       "date": "2026-10-25",
       "kind": "primary"
+    },
+    "inferencex-agentx-dsv4pro": {
+      "title": "InferenceX AgentX: DeepSeek V4 Pro on GB200/GB300 (Dynamo vLLM and SGLang, FP4), 393 Claude Code traces, p90 interactivity",
+      "url": "https://inferencex.semianalysis.com/blog/agentx-inferencexv3-does-cuda-moat",
+      "date": "2026-10-23",
+      "kind": "primary"
+    },
+    "openrouter-dsv4pro-activity": {
+      "title": "OpenRouter DeepSeek V4 Pro (0813) daily activity: 42.1 input per output, 84.4% cached (2026-09-26 to 10-25)",
+      "url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
+      "date": "2026-10-25",
+      "kind": "primary"
+    },
+    "openrouter-dsv4pro-endpoints": {
+      "title": "OpenRouter DeepSeek V4 Pro (0813) endpoints and prices (24 endpoints, 5 FP4)",
+      "url": "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4-pro-0813/endpoints",
+      "date": "2026-10-25",
+      "kind": "primary"
+    }
+  },
+  "models": {
+    "glm53": {
+      "id": "glm-5.3",
+      "label": "GLM-5.3",
+      "paramsTotalB": 744,
+      "paramsActiveB": 40,
+      "license": "MIT",
+      "released": "2026-08-28",
+      "source": "hf-glm-5.3",
+      "short": "GLM-5.3",
+      "mix": {
+        "islOsl": 63,
+        "cacheHit": 0.9,
+        "source": "openrouter-glm53-activity",
+        "note": "OpenRouter GLM-5.3, 2026-09-25 to 10-24: 62.7 input per output, 90.3% cached"
+      },
+      "openrouterTokensPerDay": {
+        "value": 575400000000.0,
+        "source": "openrouter-glm53-activity",
+        "note": "prompt + completion, mean of 30 days 2026-09-25 to 10-24"
+      },
+      "curves": {
+        "gb200": {
+          "label": "GLM-5.2/5.3, NVFP4, Dynamo SGLang, agentic traces",
+          "unit": "[p90 tok/s per user, output tok/s per GPU incl. prefill]",
+          "date": "2026-10-23",
+          "source": "inferencex-agentx",
+          "refUncachedPerOut": 5,
+          "points": [
+            [
+              94.7,
+              312.2
+            ],
+            [
+              106.2,
+              264.4
+            ],
+            [
+              111.5,
+              253.7
+            ],
+            [
+              128.7,
+              175.8
+            ],
+            [
+              141.8,
+              126.4
+            ],
+            [
+              195.3,
+              91.7
+            ],
+            [
+              263.9,
+              49.9
+            ]
+          ],
+          "prefillRate": {
+            "value": 3200,
+            "range": [
+              2400,
+              8000
+            ],
+            "unit": "uncached input tok/s per prefill GPU, agentic traces",
+            "source": "inferencex-agentx",
+            "note": "InferenceX AgentX GLM runs: output per all GPUs x all GPUs x uncached input per output / prefill GPUs is ~3.2K on both racks across 8-24 prefill GPUs (prefill binds)."
+          }
+        },
+        "gb300": {
+          "label": "GLM-5.2/5.3, NVFP4, Dynamo SGLang, agentic traces",
+          "unit": "[p90 tok/s per user, output tok/s per GPU incl. prefill]",
+          "date": "2026-10-20",
+          "source": "inferencex-agentx",
+          "refUncachedPerOut": 5,
+          "points": [
+            [
+              89.4,
+              458.2
+            ],
+            [
+              94.7,
+              393.0
+            ],
+            [
+              114.3,
+              313.8
+            ],
+            [
+              131.8,
+              202.5
+            ],
+            [
+              184.8,
+              109.1
+            ],
+            [
+              246.3,
+              54.2
+            ]
+          ],
+          "prefillRate": {
+            "value": 3200,
+            "range": [
+              2400,
+              8000
+            ],
+            "unit": "uncached input tok/s per prefill GPU, agentic traces",
+            "source": "inferencex-agentx",
+            "note": "InferenceX AgentX GLM runs: output per all GPUs x all GPUs x uncached input per output / prefill GPUs is ~3.2K on both racks across 8-24 prefill GPUs (prefill binds)."
+          }
+        }
+      },
+      "pricePresets": {
+        "floor": {
+          "label": "Low",
+          "inUsdPerM": 0.5625,
+          "cacheUsdPerM": 0.125,
+          "outUsdPerM": 2.5,
+          "source": "openrouter-glm53-endpoints",
+          "note": "37.5% off DeepInfra's own $0.90/$0.20/$4.00; 2026-10-25"
+        },
+        "median": {
+          "label": "Median",
+          "inUsdPerM": 1.12,
+          "cacheUsdPerM": 0.14,
+          "outUsdPerM": 4.4,
+          "source": "openrouter-glm53-endpoints",
+          "note": "median of each price over the 16 FP4/NVFP4 GLM-5.3 endpoints on OpenRouter, 2026-10-25"
+        },
+        "list": {
+          "label": "High (list)",
+          "inUsdPerM": 1.4,
+          "cacheUsdPerM": 0.26,
+          "outUsdPerM": 4.4,
+          "source": "zai-pricing",
+          "note": "Z.ai list price; also charged by Together, Fireworks, Baseten, Nebius, Crusoe, Parasail, Modal and others on OpenRouter"
+        }
+      },
+      "priceNotes": {
+        "floor": "DeepInfra's discounted FP4 price",
+        "median": "median of its 16 FP4 endpoints",
+        "list": "the list price Z.ai and most large providers charge"
+      }
+    },
+    "dsv4pro": {
+      "id": "deepseek-v4-pro",
+      "label": "DeepSeek V4 Pro",
+      "short": "DeepSeek V4 Pro",
+      "license": "MIT",
+      "released": "2026-08-13",
+      "source": "openrouter-dsv4pro-activity",
+      "mix": {
+        "islOsl": 42,
+        "cacheHit": 0.84,
+        "source": "openrouter-dsv4pro-activity",
+        "note": "OpenRouter deepseek-v4-pro-0813, 2026-09-26 to 10-25: 42.1 input per output, 84.4% cached"
+      },
+      "openrouterTokensPerDay": {
+        "value": 238300000000.0,
+        "source": "openrouter-dsv4pro-activity",
+        "note": "prompt + completion, both V4 Pro versions, mean of 30 days"
+      },
+      "curves": {
+        "gb200": {
+          "label": "DeepSeek V4 Pro, FP4, Dynamo vLLM / SGLang, agentic traces",
+          "unit": "[p90 tok/s per user, output tok/s per GPU incl. prefill]",
+          "date": "2026-10-14",
+          "source": "inferencex-agentx-dsv4pro",
+          "refUncachedPerOut": 5,
+          "prefillRate": {
+            "value": 7700,
+            "range": [
+              2400,
+              12000
+            ],
+            "unit": "uncached input tok/s per prefill GPU, agentic traces",
+            "source": "inferencex-agentx-dsv4pro",
+            "note": "implied by the disaggregated runs near 95 tok/s per user: 7,483-7,986"
+          },
+          "points": [
+            [
+              80.5,
+              798.6
+            ],
+            [
+              93.9,
+              641.4
+            ],
+            [
+              95.8,
+              632.5
+            ],
+            [
+              104.6,
+              309.4
+            ],
+            [
+              137.6,
+              213.6
+            ],
+            [
+              151.1,
+              126.0
+            ]
+          ]
+        },
+        "gb300": {
+          "label": "DeepSeek V4 Pro, FP4, Dynamo vLLM / SGLang, agentic traces",
+          "unit": "[p90 tok/s per user, output tok/s per GPU incl. prefill]",
+          "date": "2026-10-23",
+          "source": "inferencex-agentx-dsv4pro",
+          "refUncachedPerOut": 5,
+          "prefillRate": {
+            "value": 9000,
+            "range": [
+              2400,
+              12000
+            ],
+            "unit": "uncached input tok/s per prefill GPU, agentic traces",
+            "source": "inferencex-agentx-dsv4pro",
+            "note": "implied by the disaggregated runs near 95 tok/s per user: 8,128-10,733"
+          },
+          "points": [
+            [
+              56.2,
+              1168.4
+            ],
+            [
+              71.2,
+              1004.3
+            ],
+            [
+              79.7,
+              952.9
+            ],
+            [
+              99.9,
+              812.8
+            ],
+            [
+              100.1,
+              715.5
+            ],
+            [
+              105.5,
+              586.8
+            ],
+            [
+              136.1,
+              496.2
+            ],
+            [
+              146.6,
+              340.8
+            ],
+            [
+              153.4,
+              281.8
+            ],
+            [
+              168.1,
+              168.4
+            ]
+          ]
+        }
+      },
+      "pricePresets": {
+        "floor": {
+          "label": "Low",
+          "inUsdPerM": 0.66,
+          "cacheUsdPerM": 0.022,
+          "outUsdPerM": 1.98,
+          "source": "openrouter-dsv4pro-endpoints",
+          "note": "DeepSeek's own API on OpenRouter, 2026-10-25"
+        },
+        "median": {
+          "label": "Median",
+          "inUsdPerM": 0.45,
+          "cacheUsdPerM": 0.132,
+          "outUsdPerM": 3.96,
+          "source": "openrouter-dsv4pro-endpoints",
+          "note": "median of each price over the 5 FP4/MXFP4 endpoints, 2026-10-25"
+        },
+        "list": {
+          "label": "High (list)",
+          "inUsdPerM": 1.32,
+          "cacheUsdPerM": 0.132,
+          "outUsdPerM": 3.96,
+          "source": "openrouter-dsv4pro-endpoints",
+          "note": "the price charged by Together, Baseten, Parasail, SiliconFlow and others on OpenRouter"
+        }
+      },
+      "priceNotes": {
+        "floor": "DeepSeek's own API price",
+        "median": "median of its 5 FP4 endpoints",
+        "list": "the price most large providers charge"
+      }
     }
   }
 }

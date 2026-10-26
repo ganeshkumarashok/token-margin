@@ -1,4 +1,5 @@
 export type RackId = 'gb200' | 'gb300';
+export type ModelId = 'glm53' | 'dsv4pro';
 export type PricePresetId = 'floor' | 'median' | 'list';
 export type ScenarioPresetId = 'pitch' | 'realistic' | 'bear';
 /** what a renter pays: the published on-demand list price, or a multi-year multi-rack contract */

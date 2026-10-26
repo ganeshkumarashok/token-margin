@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  applyPreset, breakevens, curveFor, defaultSettings, defaultUtilization, demandShare, evaluate, fmtIrr, fmtPayback, fmtPct, fmtTokens,
+  applyPreset, breakevens, curveFor, defaultSettings, defaultUtilization, withModel, type ModelId, demandShare, evaluate, fmtIrr, fmtPayback, fmtPct, fmtTokens,
   fmtUsd, fmtUsdPerM, impliedTps, inputsFromSettings, sensitivity, type Assumptions, type RackId, type ScenarioPresetId, type Tenure,
 } from '@token-margin/engine';
 
@@ -47,6 +47,21 @@ for (const [label, over] of [['Realistic', {}], ['Peak', { utilization: 1 }]] as
   }
 }
 out.push(md(['Case', 'Cost / day', 'Tokens / day', 'Revenue / day', 'Profit / day', 'Over time (prices −50%/yr)'], ledger));
+
+// The same day for each model and way of paying, at each mode's default utilization.
+out.push('\n## Model comparison: one rack, one day, each model with its own OpenRouter traffic mix and median FP4 price\n');
+const cmp: Row[] = [];
+for (const model of Object.keys(A.models) as ModelId[]) {
+  for (const rack of ['gb200', 'gb300'] as RackId[]) {
+    for (const mode of ['onDemand', 'contract', 'own'] as const) {
+      const s = { ...withModel(A, base, model), rack, tenure: (mode === 'own' ? 'own' : 'rent') as Tenure, rentBasis: mode === 'own' ? base.rentBasis : mode, utilization: defaultUtilization(A, mode) };
+      const i = inputsFromSettings(A, s);
+      const d = evaluate(i, curveFor(A, rack, model)).daily;
+      cmp.push([A.models[model].short, A.racks[rack].label, mode, fmtPct(i.utilization), `${Math.round(d.capacityPerGpu)}`, fmtUsd(d.revenueUsd), fmtUsd(d.costUsd), `${fmtUsd(d.operatingProfitUsd)} (${fmtPct(d.operatingMargin)})`]);
+    }
+  }
+}
+out.push(md(['Model', 'Rack', 'Pay', 'Utilization', 'Capacity tok/s/GPU', 'Revenue/day', 'Cost/day', 'Gross profit/day'], cmp));
 {
   const r = run('rent', 'gb200');
   const o = run('own', 'gb200');
