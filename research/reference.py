@@ -22,7 +22,7 @@ def tput(curve,I):
             f=(I-x0)/(x1-x0); return math.exp(math.log(y0)+f*(math.log(y1)-math.log(y0)))
 
 def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,elec=0.1453,pue=1.2,idle=0.35,colo=200.0,
-          ox=0.04,life=4.0,res=0.10,k=0.09,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None,oh=0.0,ops=220.0,av=0.98):
+          ox=0.04,life=4.0,res=0.10,k=0.09,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None,oh=0.0,ops=400.0,av=0.98):
     r=RACK[rack]; pin,pc,po=[x*priceMult for x in PRICES[price]]; lin,lc,lo=PRICES["list"]
     renting=tenure=="rent"; pf=r["pf"] if pf is None else pf
     rent=(r["contract"] if basis=="contract" else r["rent"]) if rent is None else rent

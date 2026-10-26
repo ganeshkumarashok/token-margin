@@ -18,7 +18,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('margin')).toHaveText('21% gross margin');
   await expect(page.getByTestId('equation')).toContainText('1.2B out · 74.2B in');
   await expect(page.getByTestId('chart-readout')).toHaveText('At 70% utilization: $4,698 a day renting on demand. Break-even at 56%.');
-  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 56%; renting on a 3-yr contract breaks even at 31%; owning breaks even at 14%/);
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 56%; renting on a 3-yr contract breaks even at 31%; owning breaks even at 15%/);
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
   await expect(page.getByTestId('disclaimer').getByRole('link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
 });
@@ -57,12 +57,12 @@ test('4. more input per output raises revenue (agents resend context)', async ({
 test('5. owning swaps rent for the cost of owning and a rack-price slider', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('radio', { name: 'Own' }).click();
-  await expect(page.getByTestId('cost')).toHaveText('$4,856');
+  await expect(page.getByTestId('cost')).toHaveText('$5,036');
   await expect(page.getByTestId('s-capex')).toContainText('$3.90M');
   await expect(page.getByTestId('s-rent')).toHaveCount(0);
   await expect(page.getByTestId('chart-readout')).toContainText('a day owning');
   await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $355/day');
-  await expect(page.getByTestId('s-ops')).toContainText('$220/day');
+  await expect(page.getByTestId('s-ops')).toContainText('$400/day');
   await page.goto('/?t=own&e=0.25');
   await expect(page.getByTestId('s-power')).toContainText('25.0¢/kWh · $611/day');
 });

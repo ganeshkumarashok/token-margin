@@ -9,12 +9,12 @@ The question: one NVIDIA GB200 NVL72 rack (72 GPUs) serves GLM-5.3 in FP4 for on
 | | Rent on demand | Rent on a 3-yr contract | Own |
 |---|---|---|---|
 | Default utilization | 70% | 55% | 55% |
-| Cost | $18,144 ($756/rack-hr) | $10,109 ($421/rack-hr) | $4,856 (depreciation $2,404, financing $660, space $789, support $427, power $355, operations $220) |
+| Cost | $18,144 ($756/rack-hr) | $10,109 ($421/rack-hr) | $5,036 (depreciation $2,404, financing $660, space $789, support $427, operations $400, power $355) |
 | Tokens, at 98% uptime | 1.2B output + 74.2B input | 0.93B output + 58.3B input | same as contract |
 | Revenue | $22,842, of which $17,660 is input | $17,947 | $17,947 |
-| Gross profit | $4,698, 21% | $7,839, 44% | $13,091, 73% |
-| Break-even utilization | 56% | 31% | 14% |
-| If prices fall 50%/yr | below rent in month 5, $346K banked | below rent in month 11 | paid back in month 11, NPV $2.4M at 9% |
+| Gross profit | $4,698, 21% | $7,839, 44% | $12,911, 72% |
+| Break-even utilization | 56% | 31% | 15% |
+| If prices fall 50%/yr | below rent in month 5, $346K banked | below rent in month 11 | paid back in month 11, NPV $2.2M at 9% |
 
 Capacity fixed for years sells a smaller share than capacity rented by the hour: across OpenRouter's open models the average day is 68% of the busiest day of the month, and DeepSeek's average serving fleet was 82% of its peak, so a rack sized for busy hours averages about 55%. An on-demand renter can hand racks back when demand falls.
 
@@ -26,7 +26,7 @@ GB300 at Verda's on-demand $894/rack-hr serves 1.4B output tokens for $27,965 of
 2. GLM-5.3 traffic on OpenRouter runs 63 input tokens per output token, with 90% of input served from cache, because coding agents resend their context every turn. Input brings in $17,660 of the day's $22,842. A model built on chat-shaped traffic (8 : 1, half cached) gets both revenue and capacity wrong.
 3. At the cheapest whole-rack list price ($10.50/GPU-hr from CoreWeave and AWS), a rack needs 56% utilization to cover rent, and at 70% the margin is 21%. At Oracle's $16 list price, or Azure's $27 list from April 2025, it loses money at any utilization.
 4. Filed multi-year contracts clear at $3.63 (GB200, HIVE/Cohere 8-K) and $3.96 (GB300), and new-contract prices rose through 2026: CoreWeave raised prices 25% in July, and Nebius reports $20-25M per MW. Converted to GPU-hours, those reports imply $4.19-7.41 for GB300; the page uses the 75th percentile because prices are still rising: $6.60 for GB300 and $5.85 for GB200 ($421/rack-hr), at which the GB200 day earns 44% at 55% utilization. Open-model API providers report gross margins of 40-50% after their other costs.
-5. Owning costs $4,856 a day against $18,144 to rent. That covers depreciation to 10% resale over 4 years, financing at 9% (the typical neocloud GPU-debt rate), 4% of the rack price a year for support and spares, and $220 a day for operations (on-call engineers, remote hands, insurance, monitoring; scaled from CoreWeave's 2025 infrastructure spend). An owned GPU costs about $2.90 an hour all-in, and a fully sold one earns about $18.90 at median prices, so owning breaks even at 14% utilization. At 55% utilization with prices falling 50% a year, the $3.9M rack pays back in month 11, and NPV stays positive unless prices fall more than 66% a year.
+5. Owning costs $5,036 a day against $18,144 to rent. That covers depreciation to 10% resale over 4 years, financing at 9% (the typical neocloud GPU-debt rate), 4% of the rack price a year for support and spares, and $400 a day for operations (on-call engineers, remote hands, insurance, monitoring) for a single rack; a fleet at CoreWeave's scale spends about $220 per rack-day. An owned GPU costs about $3.00 an hour all-in, and a fully sold one earns about $18.90 at median prices, so owning breaks even at 15% utilization. At 55% utilization with prices falling 50% a year, the $3.9M rack pays back in month 11, and NPV stays positive unless prices fall more than 64% a year.
 6. The default day moves 75.4B tokens, 13% of all GLM-5.3 traffic on OpenRouter. A handful of racks would cover OpenRouter's entire demand for this model.
 7. For a renter, ranked by NPV swing, the inputs that matter most are price decline, token price level, rent, utilization and output speed. Electricity and useful life barely affect a renter and rank last for an owner.
 

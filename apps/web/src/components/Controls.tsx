@@ -127,8 +127,8 @@ export function Controls({ m }: { m: Model }) {
           display={`$${Math.round(s.opsUsdPerRackDay)}/day`}
           min={range('opsUsdPerRackDay')[0]} max={range('opsUsdPerRackDay')[1]} step={10} onChange={(v) => update({ opsUsdPerRackDay: v })}
           zero={zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000])} zeroLabel={`$${fmtInt(zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000]) ?? 0)}/day`}
-          marks={[{ v: 220, label: 'CoreWeave scale: $220/day' }, { v: 400, label: 'one rack on its own: $400/day' }]}
-          hint={`on-call engineers, remote hands, insurance, monitoring; about $400/day for an owner with a single rack. Support contracts and spares add ${fmtUsdInt(m.result.daily.otherOpexUsd)}/day (4% of the rack price a year)`} />
+          marks={[{ v: 220, label: 'at CoreWeave scale: $220/day' }]}
+          hint={`on-call engineers, remote hands, insurance and monitoring for a single rack, an estimate; a fleet the size of CoreWeave's spends about $220 per rack-day. Support contracts and spares add ${fmtUsdInt(m.result.daily.otherOpexUsd)}/day`} />
       )}
 
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}

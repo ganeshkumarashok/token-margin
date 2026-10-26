@@ -1,4 +1,4 @@
-import { fmtInt, fmtPct, fmtTokens, fmtUsdInt } from '@token-margin/engine';
+import { fmtInt, fmtPct, fmtTokens, fmtUsdInt, fmtUsdPerM } from '@token-margin/engine';
 import { A } from '../data';
 import type { Model } from '../state/useModel';
 
@@ -21,63 +21,89 @@ const Fn = ({ id }: { id: string | string[] }) => {
   return <sup>{ns.map((n, k) => <span key={n}>{k > 0 ? ',' : ''}<a href={`#src-${n}`}>{n}</a></span>)}</sup>;
 };
 
+type Row = { label: string; note?: string; value: string; fn?: string | string[]; total?: boolean };
+
+function Block({ title, unit, rows, after }: { title: string; unit?: string; rows: Row[]; after?: React.ReactNode }) {
+  return (
+    <tbody>
+      <tr className="rh"><th colSpan={2}>{title}</th><th className="unit">{unit}</th></tr>
+      {rows.map((r) => (
+        <tr key={r.label} className={r.total ? 'total' : undefined}>
+          <td className="l">{r.label}{r.fn ? <Fn id={r.fn} /> : null}</td>
+          <td className="n">{r.note}</td>
+          <td className="v">{r.value}</td>
+        </tr>
+      ))}
+      {after ? <tr className="after"><td colSpan={3}>{after}</td></tr> : null}
+    </tbody>
+  );
+}
+
 export function Details({ m }: { m: Model }) {
   const { settings: s, result, inputs: i } = m;
   const d = result.daily;
+  const rack = A.racks[s.rack];
   const owning = s.tenure === 'own';
-  const uncachedPerOut = i.islOsl * (1 - i.cacheHit);
-  const outRev = d.outputRevenueUsd;
+  const price = (v: number) => `${fmtUsdPerM(v)}/M`;
   const uncachedRev = (d.uncachedInputTokens * i.priceInUsdPerM) / 1e6;
   const cachedRev = d.inputRevenueUsd - uncachedRev;
   const glmShare = (d.outputTokens + d.inputTokens) / A.anchors.openrouterGlm53TokensPerDay.value;
+  const loadPct = fmtPct(i.utilization + (1 - i.utilization) * i.idleFraction);
+
+  const cost: Row[] = owning
+    ? [
+        { label: 'Depreciation', note: `$${(d.capexUsd / 1e6).toFixed(1)}M rack to ${fmtPct(i.residualPct)} resale over ${i.lifeYears} years`, value: fmtUsdInt(d.depreciationUsd), fn: rack.priceUsd.source },
+        { label: 'Financing', note: `${fmtPct(i.costOfCapital)} a year on the capital tied up`, value: fmtUsdInt(d.financingUsd) },
+        { label: 'Support and spares', note: `${fmtPct(i.otherOpexPctPerYear)} of the rack price a year`, value: fmtUsdInt(d.otherOpexUsd), fn: 'owning-opex-2026' },
+        { label: 'Operations', note: 'on-call, remote hands, insurance', value: fmtUsdInt(d.opsUsd), fn: 'owning-opex-2026' },
+        { label: 'Space', note: `${i.itKwPerRack} kW × $${i.coloUsdPerKwMonth}/kW-month`, value: fmtUsdInt(d.coloUsd), fn: 'cbre-colo' },
+        { label: 'Power', note: `${loadPct} of ${i.itKwPerRack} kW × ${i.pue} cooling × ${(i.electricityUsdPerKwh * 100).toFixed(1)}¢/kWh`, value: fmtUsdInt(d.electricityUsd), fn: 'eia-5-6-a' },
+      ]
+    : [
+        { label: 'Rent', note: `${d.gpus} GPUs × $${m.rent.toFixed(2)} × 24 h`, value: fmtUsdInt(d.rentUsd),
+          fn: s.rentBasis === 'contract' ? 'contracts-2026' : s.rack === 'gb200' ? 'coreweave-pricing' : 'verda-pricing' },
+      ];
+  if (i.overheadPct > 0) cost.push({ label: 'Overhead', note: `${fmtPct(i.overheadPct)} of revenue`, value: fmtUsdInt(d.overheadUsd) });
+  cost.push({ label: 'Total', value: fmtUsdInt(d.costUsd), total: true });
 
   return (
     <section className="details" aria-label="Details">
-      <h2>The day, line by line</h2>
-      <dl>
-        <dt>Throughput</dt>
-        <dd>
-          {fmtInt(d.benchPerGpu)} output tokens/s per GPU at {Math.round(i.interactivity)} tok/s per user in InferenceX's measurements, prefill GPUs
-          included<Fn id="inferencex-agentx" />; {fmtInt(d.capacityPerGpu)} on this traffic, which prefills {uncachedPerOut.toFixed(1)} uncached
-          input tokens per output token against {i.refUncachedPerOut} in the benchmark. The rack is up {fmtPct(i.availability)} of the time (one failure every 24 days, 12 hours to recover)<Fn id="inferencex-tco-availability" />, and at {fmtPct(i.utilization)} utilization it sells {fmtInt(d.tpsPerGpu * i.utilization)} per GPU. Racks rented by the hour can be handed back when demand falls; a rack fixed for years must cover busy hours on busy days, so it sells less of its capacity (55% by default, from OpenRouter's day-to-day swings and DeepSeek's daily fleet range)<Fn id="utilization-pattern-2026" />.
-        </dd>
-        <dt>Tokens</dt>
-        <dd>
-          {fmtTokens(d.outputTokens)} output, {fmtTokens(d.uncachedInputTokens)} fresh input, {fmtTokens(d.cachedInputTokens)} cached input.
-          That is {fmtPct(glmShare)} of all GLM-5.3 traffic on OpenRouter<Fn id="openrouter-glm53-activity" />.
-        </dd>
-        <dt>Revenue</dt>
-        <dd>
-          {fmtUsdInt(outRev)} output + {fmtUsdInt(uncachedRev)} fresh input + {fmtUsdInt(cachedRev)} cached input
-          <Fn id={A.pricePresets[s.pricePreset].source} />. Input pays most of the bill because agents resend long contexts.
-        </dd>
-        <dt>Cost</dt>
-        <dd>
-          {owning ? (
-            <>
-              {fmtUsdInt(d.electricityUsd)} power + {fmtUsdInt(d.coloUsd)} space + {fmtUsdInt(d.otherOpexUsd)} support and spares + {fmtUsdInt(d.opsUsd)} operations + {fmtUsdInt(d.depreciationUsd)} depreciation + {fmtUsdInt(d.financingUsd)} financing at {fmtPct(i.costOfCapital)}
-              on a ${(d.capexUsd / 1e6).toFixed(1)}M rack<Fn id={[A.racks[s.rack].priceUsd.source, 'eia-5-6-a', 'cbre-colo', 'owning-opex-2026']} />.
-            </>
-          ) : (
-            <>
-              {d.gpus} GPUs × ${m.rent.toFixed(2)}/GPU-hr × 24 h, paid whether or not the tokens sell
-              <Fn id={s.rentBasis === 'contract' ? 'contracts-2026' : s.rack === 'gb200' ? 'coreweave-pricing' : 'verda-pricing'} />.
-            </>
-          )}
-          {i.overheadPct > 0
-            ? <> Overhead adds {fmtUsdInt(d.overheadUsd)} ({fmtPct(i.overheadPct)} of revenue).</>
-            : <> Staff, sales, support and payment fees are not included; the overhead slider adds them.</>}
-        </dd>
-      </dl>
+      <h2>The day, itemized</h2>
+      <table className="receipt" data-testid="receipt">
+        <Block title="Capacity" unit="tok/s per GPU" rows={[
+          { label: 'Measured', note: `InferenceX, ${Math.round(i.interactivity)} tok/s per user`, value: fmtInt(d.benchPerGpu), fn: 'inferencex-agentx' },
+          { label: 'On this traffic', note: `${(i.islOsl * (1 - i.cacheHit)).toFixed(1)} fresh input tokens per output, ${i.refUncachedPerOut} in the benchmark`, value: fmtInt(d.capacityPerGpu) },
+          { label: 'Sold', note: `${fmtPct(i.availability)} uptime × ${fmtPct(i.utilization)} utilization`, value: fmtInt(d.tpsPerGpu * i.utilization), fn: ['inferencex-tco-availability', 'utilization-pattern-2026'] },
+        ]} />
+        <Block title="Tokens per day" rows={[
+          { label: 'Output', value: fmtTokens(d.outputTokens) },
+          { label: 'Fresh input', note: `${fmtPct(1 - i.cacheHit)} of ${Math.round(i.islOsl)} per output`, value: fmtTokens(d.uncachedInputTokens) },
+          { label: 'Cached input', note: fmtPct(i.cacheHit), value: fmtTokens(d.cachedInputTokens), fn: 'openrouter-glm53-activity' },
+        ]} after={<>{fmtPct(glmShare)} of all GLM-5.3 traffic on OpenRouter</>} />
+        <Block title="Revenue" unit="per day" rows={[
+          { label: 'Output', note: `${fmtTokens(d.outputTokens)} × ${price(i.priceOutUsdPerM)}`, value: fmtUsdInt(d.outputRevenueUsd), fn: A.pricePresets[s.pricePreset].source },
+          { label: 'Fresh input', note: `${fmtTokens(d.uncachedInputTokens)} × ${price(i.priceInUsdPerM)}`, value: fmtUsdInt(uncachedRev) },
+          { label: 'Cached input', note: `${fmtTokens(d.cachedInputTokens)} × ${price(i.priceCacheUsdPerM)}`, value: fmtUsdInt(cachedRev) },
+          { label: 'Total', value: fmtUsdInt(d.revenueUsd), total: true },
+        ]} />
+        <Block title={owning ? 'Cost of owning' : 'Cost'} unit="per day" rows={cost} />
+        <tbody>
+          <tr className="profit-row">
+            <td className="l">{i.overheadPct > 0 ? 'Profit' : 'Gross profit'}</td>
+            <td className="n">{fmtPct(d.operatingMargin)} of revenue</td>
+            <td className="v">{fmtUsdInt(d.operatingProfitUsd)}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p className="excluded">Not included: sales, customer support, payment fees and taxes. The overhead slider adds the first three.</p>
 
       <h2>How it works</h2>
       <ul className="method">
-        <li>Throughput is InferenceX's measured agentic benchmark: GLM-5.2, which has the same architecture as GLM-5.3, in NVFP4 on Dynamo SGLang, replaying 393 Claude Code sessions,
-          because coding agents send most GLM-5.3 traffic on OpenRouter. Its traces carry about twice OpenRouter's average context,
-          so the figure leans conservative.</li>
-        <li>The token mix is GLM-5.3's last 30 days of traffic on OpenRouter. Prices are the median of its 16 FP4 endpoints, the cheapest mainstream FP4 price (low, DeepInfra), or the list price most large providers charge (high, the same as Z.ai's). Cached input is billed at the lower cache-read price.</li>
-        <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract estimated from filed deals and 2026 increases.</li>
-        <li>Everything on this page is one rack and one day. A renter pays for unused capacity, and an owner pays for the rack whether it sells or not.</li>
+        <li>Throughput is InferenceX's agentic benchmark, which replays 393 Claude Code sessions on GLM-5.2 (the same architecture as GLM-5.3) in NVFP4 on Dynamo SGLang. Its contexts run about twice OpenRouter's average, so it leans conservative.</li>
+        <li>Traffic and prices come from GLM-5.3 on OpenRouter: the last 30 days of usage, and the median of its 16 FP4 endpoints (low is DeepInfra's FP4 price; high is the list price most large providers charge).</li>
+        <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at.</li>
+        <li>Hourly rentals can be handed back when demand falls, so they default to 70% utilization. Capacity fixed for years has to cover busy hours on busy days, so it defaults to 55%.</li>
+        <li>An owned rack is charged like a loan over its 4-year life, plus support, operations, space and power.</li>
       </ul>
 
       <h2>Sources</h2>

@@ -278,7 +278,7 @@
     "monthsToRevenue": 0,
     "rentBasis": "onDemand",
     "overheadPct": 0,
-    "opsUsdPerRackDay": 220,
+    "opsUsdPerRackDay": 400,
     "availability": 0.98,
     "utilizationByMode": {
       "onDemand": 0.7,
