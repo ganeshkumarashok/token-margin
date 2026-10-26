@@ -274,12 +274,17 @@
     "otherOpexPctPerYear": 0.04,
     "lifeYears": 4,
     "residualPct": 0.1,
-    "costOfCapital": 0.07,
+    "costOfCapital": 0.09,
     "monthsToRevenue": 0,
     "rentBasis": "onDemand",
     "overheadPct": 0,
     "opsUsdPerRackDay": 220,
-    "availability": 0.98
+    "availability": 0.98,
+    "utilizationByMode": {
+      "onDemand": 0.7,
+      "contract": 0.55,
+      "own": 0.55
+    }
   },
   "ranges": {
     "racks": [
@@ -413,7 +418,8 @@
     "rentBasis": "assumption",
     "overheadPct": "assumption",
     "opsUsdPerRackDay": "owning-opex-2026",
-    "availability": "inferencex-tco-availability"
+    "availability": "inferencex-tco-availability",
+    "utilizationByMode": "utilization-pattern-2026"
   },
   "presets": {
     "pitch": {
@@ -735,6 +741,12 @@
     "inferencex-tco-availability": {
       "title": "InferenceX TCO calculator: mean time between interrupts 24 days, 12-hour recovery, availability 0.98; Meta Prometheus GB200/GB300 MTBI ~47-54K GPU-hours",
       "url": "https://inferencex.semianalysis.com/api",
+      "date": "2026-10-25",
+      "kind": "primary"
+    },
+    "utilization-pattern-2026": {
+      "title": "Demand shape: OpenRouter open-model traffic, average day 68% of the busiest day (Sep 25 to Oct 24, 2026); DeepSeek's average serving fleet 82% of peak (Feb 2025)",
+      "url": "https://openrouter.ai/z-ai/glm-5.3",
       "date": "2026-10-25",
       "kind": "primary"
     }

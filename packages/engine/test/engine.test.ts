@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  applyPreset, breakevens, costPerMillion, daily, demandShare, evaluate, impliedTps, schedule, sensitivity, throughputAt,
+  applyPreset, breakevens, costPerMillion, daily, defaultUtilization, demandShare, evaluate, impliedTps, schedule, sensitivity, throughputAt,
 } from '../src';
 import { A, gb200, gb300, inputs, own, presetInputs, rent, settings } from './helpers';
 
@@ -56,7 +56,8 @@ describe('T3 pitch: fastest measured point, everything sold, list price, owning'
     near(d.otherOpexUsd, 427.4, 0.01);
     near(d.opsUsd, 220, 1e-9);
     near(d.depreciationUsd, 2404.11, 0.01);
-    near(d.fullCostPerMOut, 2.5711, 0.001);
+    near(d.financingUsd, 660.35, 0.01);
+    near(d.fullCostPerMOut, 2.962, 0.001);
     near(d.revenuePerGpuHr, 27.33, 0.01);
   });
   it('pays back in month 3 with no price decline', () => {
@@ -89,7 +90,7 @@ describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRou
     near(d.revenuePerGpuHr, 13.2189, 1e-4);
     expect(s.paybackMonth).toBeNull();
     expect(s.underwaterMonth).toBe(5);
-    near(s.npvUsd, 342_474, 10);
+    near(s.npvUsd, 341_439, 10);
     expect(s.irr).toBeNull();
     expect(s.flows).toHaveLength(49);
     expect(s.flows[0]).toBe(0);
@@ -104,7 +105,7 @@ describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRou
     near(d.operatingProfitUsd, 12_733.54, 0.01);
     near(d.operatingMargin, 0.5575, 1e-4);
     expect(s.underwaterMonth).toBe(16);
-    near(s.npvUsd, 2_491_170, 10);
+    near(s.npvUsd, 2_472_220, 10);
   });
   it('an explicit rent overrides the basis', () => {
     expect(inputs({ rentBasis: 'contract', rentUsdPerGpuHr: 7 }).rentUsdPerGpuHr).toBe(7);
@@ -116,13 +117,14 @@ describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRou
     near(d.electricityUsd, 404.24, 0.01);
     near(d.otherOpexUsd, 427.4, 0.01);
     near(d.opsUsd, 220, 1e-9);
-    near(d.costUsd, 4244.78, 0.01);
-    near(d.operatingProfitUsd, 18_597.55, 0.01);
-    near(d.operatingMargin, 0.8142, 1e-4);
-    near(d.fullCostPerMOut, 3.604, 1e-4);
+    near(d.financingUsd, 660.35, 0.01);
+    near(d.costUsd, 4905.13, 0.01);
+    near(d.operatingProfitUsd, 17_937.2, 0.01);
+    near(d.operatingMargin, 0.7853, 1e-4);
+    near(d.fullCostPerMOut, 4.1646, 1e-4);
     expect(s.paybackMonth).toBe(8);
     expect(s.underwaterMonth).toBe(45);
-    near(s.npvUsd, 4_759_685, 100);
+    near(s.npvUsd, 4_595_962, 100);
     near(s.irr, 2.1344, 0.01);
   });
   it('T4b GB300: on demand, contract, own', () => {
@@ -137,7 +139,7 @@ describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRou
     near(c.daily.operatingProfitUsd, 16_559.93, 0.01);
     const o = evaluate(own({ rack: 'gb300' }), gb300);
     expect(o.schedule.paybackMonth).toBe(8);
-    near(o.schedule.npvUsd, 5_839_349, 100);
+    near(o.schedule.npvUsd, 5_629_903, 100);
   });
   it('T4c rent on demand with everything sold', () => {
     const d = daily(rent({ utilization: 1 }), gb200);
@@ -152,10 +154,10 @@ describe('T5 bear preset: 80% achieved, 50% sold, low price', () => {
     const { daily: d, schedule: s } = evaluate(presetInputs('bear', { tenure: 'own' }), gb200);
     near(d.revenueUsd, 8837.74, 0.01);
     near(d.cashMargin, 0.7991, 1e-4);
-    near(d.operatingMargin, 0.5271, 1e-4);
+    near(d.operatingMargin, 0.4524, 1e-4);
     expect(s.paybackMonth).toBeNull();
     expect(s.underwaterMonth).toBe(17);
-    near(s.npvUsd, -3_224_967, 100);
+    near(s.npvUsd, -3_205_137, 100);
     near(s.irr, -0.7869, 0.005);
   });
   it('renting: loses money from day one, so the renter never starts', () => {
@@ -171,15 +173,15 @@ describe('T5 bear preset: 80% achieved, 50% sold, low price', () => {
 describe('T6 break-evens', () => {
   it('price level × output price equals full cost per M output when there is no input revenue', () => {
     const i = own({ interactivity: 94.7, achieved: 1, utilization: 1, pricePreset: 'list', islOsl: 0 });
-    near(breakevens(i, gb200).outPriceUsdPerM, 1.16865, 1e-4);
-    near(daily(i, gb200).fullCostPerMOut, 1.16865, 1e-4);
+    near(breakevens(i, gb200).outPriceUsdPerM, 1.34635, 1e-4);
+    near(daily(i, gb200).fullCostPerMOut, 1.34635, 1e-4);
   });
-  it('share sold to break even: 56% on demand, 31% on contract, 12% owning, and profit is ~0 there', () => {
+  it('share sold to break even: 56% on demand, 31% on contract, 14% owning, and profit is ~0 there', () => {
     const br = breakevens(rent(), gb200);
     near(br.soldShareToBreakEven, 0.556, 1e-3);
     near(daily({ ...rent(), utilization: br.soldShareToBreakEven! }, gb200).operatingProfitUsd, 0, 1);
     const bo = breakevens(own(), gb200);
-    near(bo.soldShareToBreakEven, 0.1243, 1e-3);
+    near(bo.soldShareToBreakEven, 0.1448, 1e-3);
     near(breakevens(rent({ rentBasis: 'contract' }), gb200).soldShareToBreakEven, 0.3098, 1e-3);
     near(daily({ ...own(), utilization: bo.soldShareToBreakEven! }, gb200).operatingProfitUsd, 0, 1);
   });
@@ -203,7 +205,7 @@ describe('T6 break-evens', () => {
       const z = daily({ ...i, priceInUsdPerM: i.priceInUsdPerM * lvl, priceCacheUsdPerM: i.priceCacheUsdPerM * lvl, priceOutUsdPerM: i.priceOutUsdPerM * lvl }, gb200);
       near(z.operatingProfitUsd, 0, 1e-6);
     }
-    near(breakevens(own(), gb200).priceLevel, 0.1858, 0.001);
+    near(breakevens(own(), gb200).priceLevel, 0.2147, 0.001);
     near(breakevens(rent(), gb200).priceLevel, 0.7943, 0.001);
   });
   it('NPV break-even decline: NPV ~0 there; the bear owner breaks even only if prices fall < ~33%/yr', () => {
@@ -214,7 +216,7 @@ describe('T6 break-evens', () => {
     expect(Math.abs(s.npvUsd)).toBeLessThan(5000);
     const bear = presetInputs('bear', { tenure: 'own' });
     const bb = breakevens(bear, gb200).priceDeclineForZeroNpv;
-    near(bb, 0.3338, 0.002);
+    near(bb, 0.3256, 0.002);
     expect(Math.abs(evaluate({ ...bear, priceDeclinePerYear: bb! }, gb200).schedule.npvUsd)).toBeLessThan(5000);
   });
   it('bear case has no utilization that pays back', () => {
@@ -252,14 +254,14 @@ describe('T10 lead time', () => {
   it('owning: six months to first revenue', () => {
     const s = evaluate(own({ monthsToRevenue: 6 }), gb200).schedule;
     expect(s.paybackMonth).toBe(21);
-    near(s.npvUsd, 1_273_568, 100);
+    near(s.npvUsd, 1_127_606, 100);
   });
   it('renting: rent accrues for two idle months, underwater in month 5', () => {
     const s = evaluate(rent({ monthsToRevenue: 2 }), gb200).schedule;
     expect(s.paybackMonth).toBeNull();
     expect(s.underwaterMonth).toBe(5);
     expect(s.flows[1]).toBeLessThan(0);
-    near(s.npvUsd, -996_846, 100);
+    near(s.npvUsd, -994_818, 100);
   });
 });
 
@@ -380,7 +382,7 @@ describe('T16 overhead as a share of revenue', () => {
     near(d.operatingProfitUsd, 2414.1, 0.01);
     near(d.operatingMargin, 0.1057, 1e-4);
     expect(s.underwaterMonth).toBe(4);
-    near(s.npvUsd, 116_039, 10);
+    near(s.npvUsd, 115_786, 10);
     near(breakevens(rent({ overheadPct: 0.1 }), gb200).soldShareToBreakEven, 0.6178, 1e-3);
   });
   it('price level still zeroes profit when overhead scales with revenue', () => {
@@ -388,6 +390,18 @@ describe('T16 overhead as a share of revenue', () => {
     const lvl = breakevens(i, gb200).priceLevel!;
     const z = daily({ ...i, priceInUsdPerM: i.priceInUsdPerM * lvl, priceCacheUsdPerM: i.priceCacheUsdPerM * lvl, priceOutUsdPerM: i.priceOutUsdPerM * lvl }, gb200);
     near(z.operatingProfitUsd, 0, 1e-6);
+  });
+  it('default utilization is lower when capacity is fixed for years', () => {
+    expect(defaultUtilization(A, 'onDemand')).toBe(0.7);
+    expect(defaultUtilization(A, 'contract')).toBe(0.55);
+    expect(defaultUtilization(A, 'own')).toBe(0.55);
+    near(daily(own({ utilization: 0.55 }), gb200).operatingProfitUsd, 13_091.38, 0.01);
+    near(daily(rent({ rentBasis: 'contract', utilization: 0.55 }), gb200).operatingProfitUsd, 7838.75, 0.01);
+  });
+  it('the capital charge is straight-line wear plus interest, and wear alone at a 0% cost of capital', () => {
+    near(daily(own({ costOfCapital: 0 }), gb200).financingUsd, 0, 1e-9);
+    const d = daily(own(), gb200);
+    near(d.depreciationUsd + d.financingUsd, 3064.46, 0.01);
   });
   it('owning carries fixed ops; renting does not; downtime removes 2% of sales', () => {
     expect(daily(rent(), gb200).opsUsd).toBe(0);

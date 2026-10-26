@@ -90,8 +90,17 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
   const overheadUsd = revenueUsd * i.overheadPct;
   const cashCostUsd = rentUsd + electricityUsd + coloUsd + otherOpexUsd + opsUsd + overheadUsd;
   const cashProfitUsd = revenueUsd - cashCostUsd;
-  const depreciationUsd = renting ? 0 : (capexUsd * (1 - i.residualPct)) / (i.lifeYears * 365);
-  const costUsd = cashCostUsd + depreciationUsd;
+  // Owning is charged like a loan repaid over the rack's life at the cost of capital, net of resale:
+  // straight-line wear plus the financing on top of it. The monthly schedule discounts the upfront
+  // purchase instead, so NPV does not count financing twice.
+  const residualUsd = capexUsd * i.residualPct;
+  const depreciationUsd = renting ? 0 : (capexUsd - residualUsd) / (i.lifeYears * 365);
+  const r = i.costOfCapital;
+  const capitalPerYear = r === 0
+    ? (capexUsd - residualUsd) / i.lifeYears
+    : (capexUsd * r) / (1 - Math.pow(1 + r, -i.lifeYears)) - (residualUsd * r) / (Math.pow(1 + r, i.lifeYears) - 1);
+  const financingUsd = renting ? 0 : capitalPerYear / 365 - depreciationUsd;
+  const costUsd = cashCostUsd + depreciationUsd + financingUsd;
   const operatingProfitUsd = revenueUsd - costUsd;
 
   const mOut = outputTokens / 1e6;
@@ -117,6 +126,7 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
     cashCostUsd,
     cashProfitUsd,
     depreciationUsd,
+    financingUsd,
     costUsd,
     operatingProfitUsd,
     cashMargin: revenueUsd > 0 ? cashProfitUsd / revenueUsd : null,

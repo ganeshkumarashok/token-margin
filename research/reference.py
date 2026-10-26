@@ -22,7 +22,7 @@ def tput(curve,I):
             f=(I-x0)/(x1-x0); return math.exp(math.log(y0)+f*(math.log(y1)-math.log(y0)))
 
 def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,elec=0.1453,pue=1.2,idle=0.35,colo=200.0,
-          ox=0.04,life=4.0,res=0.10,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None,oh=0.0,ops=220.0,av=0.98):
+          ox=0.04,life=4.0,res=0.10,k=0.09,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None,oh=0.0,ops=220.0,av=0.98):
     r=RACK[rack]; pin,pc,po=[x*priceMult for x in PRICES[price]]; lin,lc,lo=PRICES["list"]
     renting=tenure=="rent"; pf=r["pf"] if pf is None else pf
     rent=(r["contract"] if basis=="contract" else r["rent"]) if rent is None else rent
@@ -37,14 +37,17 @@ def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,ele
     opsUsd=0.0 if renting else ops*racks
     ohUsd=revenue*oh
     cashCost=rentUsd+e+cl+other+opsUsd+ohUsd; cash=revenue-cashCost
-    dep=0.0 if renting else capex*(1-res)/(life*365); cost=cashCost+dep; profit=revenue-cost
-    return dict(oh=oh,ohUsd=ohUsd,opsUsd=opsUsd,capex=capex,bench=bench,cap=cap,tps=tps,out=out,inp=inp,revenue=revenue,rent=rentUsd,elec=e,colo=cl,other=other,
+    dep=0.0 if renting else capex*(1-res)/(life*365)
+    capYr=(capex*k/(1-(1+k)**-life)-capex*res*k/((1+k)**life-1)) if k else capex*(1-res)/life
+    fin=0.0 if renting else capYr/365-dep
+    cost=cashCost+dep+fin; profit=revenue-cost
+    return dict(oh=oh,ohUsd=ohUsd,opsUsd=opsUsd,fin=fin,capex=capex,bench=bench,cap=cap,tps=tps,out=out,inp=inp,revenue=revenue,rent=rentUsd,elec=e,colo=cl,other=other,
                 dep=dep,cashCost=cashCost,cost=cost,cash=cash,profit=profit,
                 cashM=cash/revenue if revenue else None, opM=profit/revenue if revenue else None,
                 cashCostM=cashCost/(out/1e6) if out else None, fullCostM=cost/(out/1e6) if out else None,
                 gpuHr=revenue/(gpus*24), inputRev=revenue-(out*po/1e6)*(1-listShare)-(out*lo/1e6)*listShare)
 
-def schedule(d,life=4.0,decline=0.5,k=0.07,res=0.10,m0=0):
+def schedule(d,life=4.0,decline=0.5,k=0.09,res=0.10,m0=0):
     months=int(round(life*12)); flows=[-d["capex"]]; fixed=d["rent"]+d["colo"]+d["other"]+d["opsUsd"]; renting=d["rent"]>0; under=None
     for m in range(1,months+1):
         if m<=m0: flows.append(-fixed*365/12)  # lead time: no revenue, fixed costs accrue
@@ -102,6 +105,8 @@ if __name__=="__main__":
     d=daily(); show("T4 default gb200 RENT on-demand", d, schedule(d)); print("  soldBE",sold_be())
     d=daily(basis="contract"); show("T4 default gb200 RENT contract", d, schedule(d)); print("  soldBE",sold_be(basis="contract"))
     d=daily(tenure="own"); show("T4 default gb200 OWN", d, schedule(d)); print("  soldBE",sold_be(tenure="own"))
+    d=daily(tenure="own",u=0.55); show("T4d own at its default 55%", d, schedule(d))
+    d=daily(basis="contract",u=0.55); show("T4e contract at its default 55%", d, schedule(d))
     d=daily("gb300"); show("T4b default gb300 RENT on-demand", d, schedule(d))
     d=daily("gb300",basis="contract"); show("T4b default gb300 RENT contract", d, schedule(d))
     d=daily("gb300",tenure="own"); show("T4b default gb300 OWN", d, schedule(d))

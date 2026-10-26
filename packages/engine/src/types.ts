@@ -94,6 +94,8 @@ export interface Daily {
   cashProfitUsd: number;
   /** 0 when renting */
   depreciationUsd: number;
+  /** owning: interest on the capital tied up in the rack, on top of depreciation (annuity minus straight line) */
+  financingUsd: number;
   /** cash cost + depreciation: the whole day's cost under either tenure */
   costUsd: number;
   /** revenue - costUsd: the day's profit under either tenure */

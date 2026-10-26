@@ -9,11 +9,11 @@ Capacity is InferenceX AgentX output per GPU, prefill GPUs included, adjusted to
 | Case | Cost / day | Tokens / day | Revenue / day | Profit / day | Over time (prices −50%/yr) |
 |---|---|---|---|---|---|
 | Realistic, rent | $18.1K (rent $10.5/GPU-hr) | 1.2B out + 74.2B in | $22.8K | $4.7K (21%) | stops covering rent in month 5 |
-| Realistic, own | $4.2K (power $404, colo $789, support $427, ops $220, depreciation $2.4K) | 1.2B out + 74.2B in | $22.8K | $18.6K (81%) | payback 8 mo, NPV $4.8M |
+| Realistic, own | $4.9K (power $355, colo $789, support $427, ops $220, depreciation $2.4K, financing $660) | 925.4M out + 58.3B in | $17.9K | $13.1K (73%) | payback 11 mo, NPV $2.4M |
 | Peak, rent | $18.1K (rent $10.5/GPU-hr) | 1.7B out + 106.0B in | $32.6K | $14.5K (44%) | stops covering rent in month 12 |
-| Peak, own | $4.3K (power $502, colo $789, support $427, ops $220, depreciation $2.4K) | 1.7B out + 106.0B in | $32.6K | $28.3K (87%) | payback 5 mo, NPV $9.2M |
+| Peak, own | $5.0K (power $502, colo $789, support $427, ops $220, depreciation $2.4K, financing $660) | 1.7B out + 106.0B in | $32.6K | $27.6K (85%) | payback 5 mo, NPV $9.0M |
 
-Break-even utilization: renting on demand 56%, owning 12%. Revenue per GPU-hour $13.22 against rent of $10.5 and an owning cost of $2.46.
+Break-even utilization: renting on demand 56%, owning 14%. Revenue per GPU-hour $13.22 against rent of $10.5 and an owning cost of $2.81.
 
 ## Presets
 
@@ -21,61 +21,61 @@ Pitch: fastest measured throughput, 100% utilization, Z.ai list price, no price 
 
 | Scenario | Rack | Tenure | Speed tok/s/user | Capacity tok/s/GPU | Sold tok/s/GPU at this utilization | Output/day | Revenue/day | Cost/day | Profit/day | Margin | Payback | Underwater | NPV | $/GPU-hr |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Pitch | GB200 NVL72 | rent | 94.7 | 277 | 272 | 1.7B | $47.2K | $18.1K | $29.1K | 62% | n/a | — | $37.1M | $27.33 |
-| Pitch | GB200 NVL72 | own | 94.7 | 277 | 272 | 1.7B | $47.2K | $4.3K | $42.9K | 91% | 3 mo | — | $54.2M | $27.33 |
-| Pitch | GB300 NVL72 | rent | 89.4 | 386 | 379 | 2.4B | $65.9K | $21.5K | $44.4K | 67% | n/a | — | $56.6M | $38.11 |
-| Pitch | GB300 NVL72 | own | 89.4 | 386 | 379 | 2.4B | $65.9K | $5.3K | $60.6K | 92% | 3 mo | — | $76.6M | $38.11 |
-| Realistic | GB200 NVL72 | rent | 95 | 276 | 189 | 1.2B | $22.8K | $18.1K | $4.7K | 21% | n/a | month 5 | $342.5K | $13.22 |
-| Realistic | GB200 NVL72 | own | 95 | 276 | 189 | 1.2B | $22.8K | $4.2K | $18.6K | 81% | 8 mo | month 45 | $4.8M | $13.22 |
-| Realistic | GB300 NVL72 | rent | 95 | 338 | 232 | 1.4B | $28.0K | $21.5K | $6.5K | 23% | n/a | month 6 | $531.1K | $16.18 |
-| Realistic | GB300 NVL72 | own | 95 | 338 | 232 | 1.4B | $28.0K | $5.2K | $22.8K | 82% | 8 mo | month 46 | $5.8M | $16.18 |
+| Pitch | GB200 NVL72 | rent | 94.7 | 277 | 272 | 1.7B | $47.2K | $18.1K | $29.1K | 62% | n/a | — | $35.8M | $27.33 |
+| Pitch | GB200 NVL72 | own | 94.7 | 277 | 272 | 1.7B | $47.2K | $5.0K | $42.2K | 89% | 3 mo | — | $52.1M | $27.33 |
+| Pitch | GB300 NVL72 | rent | 89.4 | 386 | 379 | 2.4B | $65.9K | $21.5K | $44.4K | 67% | n/a | — | $54.6M | $38.11 |
+| Pitch | GB300 NVL72 | own | 89.4 | 386 | 379 | 2.4B | $65.9K | $6.1K | $59.7K | 91% | 3 mo | — | $73.7M | $38.11 |
+| Realistic | GB200 NVL72 | rent | 95 | 276 | 189 | 1.2B | $22.8K | $18.1K | $4.7K | 21% | n/a | month 5 | $341.4K | $13.22 |
+| Realistic | GB200 NVL72 | own | 95 | 276 | 189 | 1.2B | $22.8K | $4.9K | $17.9K | 79% | 8 mo | month 45 | $4.6M | $13.22 |
+| Realistic | GB300 NVL72 | rent | 95 | 338 | 232 | 1.4B | $28.0K | $21.5K | $6.5K | 23% | n/a | month 6 | $529.3K | $16.18 |
+| Realistic | GB300 NVL72 | own | 95 | 338 | 232 | 1.4B | $28.0K | $6.0K | $22.0K | 79% | 8 mo | month 46 | $5.6M | $16.18 |
 | Bear | GB200 NVL72 | rent | 95 | 276 | 108 | 673.0M | $8.8K | $18.1K | −$9.3K | −105% | n/a | month 1 | $0.00 | $5.11 |
-| Bear | GB200 NVL72 | own | 95 | 276 | 108 | 673.0M | $8.8K | $4.2K | $4.7K | 53% | never (>4 yr) | month 17 | −$3.2M | $5.11 |
+| Bear | GB200 NVL72 | own | 95 | 276 | 108 | 673.0M | $8.8K | $4.8K | $4.0K | 45% | never (>4 yr) | month 17 | −$3.2M | $5.11 |
 | Bear | GB300 NVL72 | rent | 95 | 338 | 132 | 824.0M | $10.8K | $21.5K | −$10.6K | −98% | n/a | month 1 | $0.00 | $6.26 |
-| Bear | GB300 NVL72 | own | 95 | 338 | 132 | 824.0M | $10.8K | $5.1K | $5.7K | 53% | never (>4 yr) | month 18 | −$3.9M | $6.26 |
+| Bear | GB300 NVL72 | own | 95 | 338 | 132 | 824.0M | $10.8K | $5.9K | $4.9K | 45% | never (>4 yr) | month 18 | −$3.9M | $6.26 |
 
 ## Realistic case, GB200, owning: cost stack per day
 
 | Item | Per day | Per M output tokens |
 |---|---|---|
-| Electricity | $404 | $0.343 |
-| Colocation | $789 | $0.67 |
-| Support and spares | $427 | $0.363 |
-| Operations | $220 | $0.187 |
-| Depreciation | $2.4K | $2.04 |
-| Total | $4.2K | $3.60 |
-| Revenue (output / input) | $5.2K / $17.7K |  |
+| Electricity | $355 | $0.384 |
+| Colocation | $789 | $0.853 |
+| Support and spares | $427 | $0.462 |
+| Operations | $220 | $0.238 |
+| Depreciation | $2.4K | $2.60 |
+| Total | $4.9K | $5.25 |
+| Revenue (output / input) | $4.1K / $13.9K |  |
 
-Demand: 75.4B tokens/day (output + input) = 0.9% of OpenRouter's daily volume, 10% of DeepSeek's Feb-2025 daily volume.
+Demand: 59.2B tokens/day (output + input) = 0.7% of OpenRouter's daily volume, 8% of DeepSeek's Feb-2025 daily volume.
 
-Break-evens (owning): all token prices can fall to 19% of today's (output $0.818/M) before operating profit is zero; utilization for payback within life 37%; price decline at which NPV = 0: 76%/yr.
+Break-evens (owning): all token prices can fall to 27% of today's (output $1.19/M) before operating profit is zero; utilization for payback within life 37%; price decline at which NPV = 0: 66%/yr.
 
 ## Sensitivity at realistic defaults, GB200, rent (ranked by NPV swing)
 
 | Input | Low | Profit/day low | NPV low | High | Profit/day high | NPV high |
 |---|---|---|---|---|---|---|
-| Price decline | 0%/yr | $4.7K | $6.0M | 90%/yr | $4.7K | $163.5K |
+| Price decline | 0%/yr | $4.7K | $5.8M | 90%/yr | $4.7K | $163.2K |
 | Token prices | ×0.5 | −$6.7K | $0.00 | ×1.5 | $16.1K | $2.6M |
 | Rent | $5.85 | $12.7K | $2.5M | $16 | −$4.8K | $0.00 |
 | Utilization | 30% | −$8.4K | $0.00 | 100% | $14.5K | $2.2M |
-| Output speed | 94.7 tok/s | $4.8K | $353.8K | 263.9 tok/s | −$14.1K | $0.00 |
-| Achieved throughput | 25% | −$12.4K | $0.00 | 100% | $4.7K | $342.5K |
-| Prefill rate | ×0.75 | $3.9K | $251.7K | ×2 | $6.1K | $523.5K |
-| Useful life | 2 yr | $4.7K | $342.5K | 6 yr | $4.7K | $342.5K |
+| Output speed | 94.7 tok/s | $4.8K | $352.8K | 263.9 tok/s | −$14.1K | $0.00 |
+| Achieved throughput | 25% | −$12.4K | $0.00 | 100% | $4.7K | $341.4K |
+| Prefill rate | ×0.75 | $3.9K | $251.0K | ×2 | $6.1K | $521.7K |
+| Useful life | 2 yr | $4.7K | $341.4K | 6 yr | $4.7K | $341.4K |
 
 ## Sensitivity at realistic defaults, GB200, own (ranked by NPV swing)
 
 | Input | Low | Profit/day low | NPV low | High | Profit/day high | NPV high |
 |---|---|---|---|---|---|---|
-| Price decline | 0%/yr | $18.6K | $23.2M | 90%/yr | $18.6K | −$2.1M |
-| Token prices | ×0.5 | $7.2K | −$595.3K | ×1.5 | $30.0K | $10.1M |
-| Utilization | 30% | $5.7K | −$1.2M | 100% | $28.3K | $9.2M |
-| Output speed | 94.7 tok/s | $18.7K | $4.8M | 263.9 tok/s | −$197 | −$4.1M |
-| Achieved throughput | 25% | $1.5K | −$3.3M | 100% | $18.6K | $4.8M |
-| Rack price | −30% | $19.4K | $6.0M | +30% | $17.7K | $3.5M |
-| Prefill rate | ×0.75 | $17.8K | $4.4M | ×2 | $20.0K | $5.4M |
-| Electricity | 5¢ | $18.9K | $5.1M | 25¢ | $18.3K | $4.4M |
-| Useful life | 2 yr | $16.2K | $4.0M | 6 yr | $19.4K | $4.2M |
+| Price decline | 0%/yr | $13.1K | $16.3M | 90%/yr | $13.1K | −$2.8M |
+| Utilization | 30% | $5.0K | −$1.2M | 100% | $27.6K | $9.0M |
+| Token prices | ×0.5 | $4.1K | −$1.7M | ×1.5 | $22.1K | $6.5M |
+| Output speed | 94.7 tok/s | $13.2K | $2.4M | 263.9 tok/s | −$1.7K | −$4.4M |
+| Achieved throughput | 25% | −$369 | −$3.8M | 100% | $13.1K | $2.4M |
+| Rack price | −30% | $14.1K | $3.7M | +30% | $12.0K | $1.2M |
+| Prefill rate | ×0.75 | $12.4K | $2.1M | ×2 | $14.2K | $2.9M |
+| Electricity | 5¢ | $13.3K | $2.7M | 25¢ | $12.8K | $2.1M |
+| Useful life | 2 yr | $10.6K | $2.0M | 6 yr | $13.9K | $1.8M |
 
 ## Payback frontier, GB200, owning, realistic otherwise (rows utilization, columns price decline per year)
 
@@ -91,4 +91,4 @@ Break-evens (owning): all token prices can fall to 19% of today's (output $0.818
 
 ## NVIDIA claim check
 
-$5M → $75M over 3 years at $2/M output tokens needs 5505 output tok/s per GPU sustained 24×7, output revenue only. At the default speed the rack's capacity with prefill counted is 276 tok/s per GPU; the realistic case sells 189.
+$5M → $75M over 3 years at $2/M output tokens needs 5505 output tok/s per GPU sustained 24×7, output revenue only. At the default speed the rack's capacity with prefill counted is 276 tok/s per GPU; the realistic case sells 149.

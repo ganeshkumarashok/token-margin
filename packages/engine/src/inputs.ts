@@ -87,6 +87,10 @@ export interface ScenarioPreset {
   customPrice?: { inUsdPerM: number; cacheUsdPerM: number; outUsdPerM: number };
   priceDeclinePerYear: number;
 }
+export interface AssumptionDefaults extends Defaults {
+  utilizationByMode: Record<'onDemand' | 'contract' | 'own', number>;
+}
+
 export interface Assumptions {
   version: string;
   racks: Record<RackId, RackSpec>;
@@ -94,7 +98,7 @@ export interface Assumptions {
   curves: Record<RackId, CurveSpec>;
   pricePresets: Record<PricePresetId, PriceSpec>;
   electricityPresets: Record<'commercial' | 'industrial', { value: number; label: string; source: string }>;
-  defaults: Defaults;
+  defaults: AssumptionDefaults;
   ranges: Record<string, [number, number, number]>;
   sourceBasis: Record<string, string>;
   presets: Record<ScenarioPresetId, ScenarioPreset>;
@@ -129,7 +133,13 @@ export function curveFor(a: Assumptions, rack: RackId): CurvePoint[] {
 }
 
 export function defaultSettings(a: Assumptions): Settings {
-  return { ...a.defaults, customPrice: null };
+  const { utilizationByMode: _byMode, ...d } = a.defaults;
+  return { ...d, customPrice: null };
+}
+
+/** Default utilization for a way of paying for the rack: capacity fixed for years sells a smaller share. */
+export function defaultUtilization(a: Assumptions, mode: 'onDemand' | 'contract' | 'own'): number {
+  return a.defaults.utilizationByMode[mode];
 }
 
 export function clampInteractivity(a: Assumptions, rack: RackId, v: number): number {

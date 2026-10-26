@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  applyPreset, breakevens, curveFor, defaultSettings, demandShare, evaluate, fmtIrr, fmtPayback, fmtPct, fmtTokens,
+  applyPreset, breakevens, curveFor, defaultSettings, defaultUtilization, demandShare, evaluate, fmtIrr, fmtPayback, fmtPct, fmtTokens,
   fmtUsd, fmtUsdPerM, impliedTps, inputsFromSettings, sensitivity, type Assumptions, type RackId, type ScenarioPresetId, type Tenure,
 } from '@token-margin/engine';
 
@@ -18,8 +18,10 @@ type Row = string[];
 const md = (head: Row, rows: Row[]) =>
   [`| ${head.join(' | ')} |`, `|${head.map(() => '---').join('|')}|`, ...rows.map((r) => `| ${r.join(' | ')} |`)].join('\n');
 const base = defaultSettings(A);
+// Each way of paying starts at its own default utilization unless a case overrides it.
 const run = (tenure: Tenure, rack: RackId, over: Partial<typeof base> = {}) => {
-  const s = { ...base, ...over, tenure, rack };
+  const mode = tenure === 'own' ? 'own' : (over.rentBasis ?? base.rentBasis);
+  const s = { ...base, utilization: defaultUtilization(A, mode), ...over, tenure, rack };
   const i = inputsFromSettings(A, s);
   return { s, i, ...evaluate(i, curveFor(A, rack)) };
 };
@@ -36,7 +38,7 @@ for (const [label, over] of [['Realistic', {}], ['Peak', { utilization: 1 }]] as
     const { i, daily: d, schedule: sc } = run(t, 'gb200', over);
     ledger.push([
       `${label}, ${t}`,
-      t === 'rent' ? `${fmtUsd(d.rentUsd)} (rent $${i.rentUsdPerGpuHr}/GPU-hr)` : `${fmtUsd(d.costUsd)} (power ${fmtUsd(d.electricityUsd)}, colo ${fmtUsd(d.coloUsd)}, support ${fmtUsd(d.otherOpexUsd)}, ops ${fmtUsd(d.opsUsd)}, depreciation ${fmtUsd(d.depreciationUsd)})`,
+      t === 'rent' ? `${fmtUsd(d.rentUsd)} (rent $${i.rentUsdPerGpuHr}/GPU-hr)` : `${fmtUsd(d.costUsd)} (power ${fmtUsd(d.electricityUsd)}, colo ${fmtUsd(d.coloUsd)}, support ${fmtUsd(d.otherOpexUsd)}, ops ${fmtUsd(d.opsUsd)}, depreciation ${fmtUsd(d.depreciationUsd)}, financing ${fmtUsd(d.financingUsd)})`,
       `${fmtTokens(d.outputTokens)} out + ${fmtTokens(d.inputTokens)} in`,
       fmtUsd(d.revenueUsd),
       `${fmtUsd(d.operatingProfitUsd)} (${fmtPct(d.operatingMargin)})`,
