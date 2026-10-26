@@ -1,0 +1,69 @@
+ 
+ 6-K
+ 1
+ tm2525580d1_6k.htm
+ FORM 6-K
+ UNITED STATES 
+ SECURITIES AND EXCHANGE COMMISSION 
+ Washington, D.C. 20549 
+ FORM 6-K 
+ Report of Foreign Private Issuer 
+ Pursuant to Rule 13a-16 or 15d-16 of 
+ the Securities Exchange Act of 1934 
+ September 8, 2025 
+ NEBIUS GROUP N.V. 
+ Schiphol Boulevard 165 
+ 1118 BG, Schiphol, the Netherlands. 
+ Tel: +31 202 066 970 
+ (Address, Including ZIP Code, and Telephone
+Number,
+ Including Area Code, of Registrant’s Principal
+Executive Offices)
+ Indicate by check mark whether the registrant files or will file annual
+reports under cover of Form 20-F or Form 40-F.
+ Form 20-F
+ x Form 40-F
+ o 
+ COMMERCIAL AGREEMENT WITH MICROSOFT 
+ On September 8, 2025, Nebius, Inc. (the “Company”),
+a wholly owned subsidiary of Nebius Group N.V. (“Nebius Group”), entered into a commercial agreement (the "Agreement")
+with Microsoft, pursuant to which the Company will provide Microsoft access to dedicated GPU infrastructure capacity in tranches (each,
+a “GPU Service”) at its new data center in Vineland, New Jersey (the “Data Center”) over a five-year term.
+ The
+GPU Services will be deployed in several tranches during 2025 and 2026. Subject to the satisfaction of the deployment and availability
+of the GPU Services, the total contract value is about $17.4 billion through 2031. Microsoft may also acquire additional services and/or
+capacity under the Agreement, which would increase the total contract value to about $19.4 billion. Cash flow coming from the Agreement
+will be utilized to finance part of the capital expenditure associated with the Agreement.
+ In
+the event that, following a grace period, Company fails to meet agreed delivery dates for a GPU Service and the Company cannot provide
+alternative capacity, Microsoft has the right to terminate that GPU Service. Either party may terminate the Agreement for cause due to
+the other party’s material breach (if not remedied within 60 days); or (ii) if the other party ceases doing business, terminates
+its existence, dissolves or liquidates, or proceedings are instituted by or against it under any bankruptcy or insolvency law (which proceedings
+are not dismissed within 30 days), provided that such right of termination shall not arise where a party has entered into Chapter 11 Bankruptcy
+and is undertaking reorganization or transfer activities in connection with such Chapter 11 Bankruptcy, including the transfer of the
+Agreement to a solvent entity.
+ The Agreement contains customary provisions for
+an agreement of this nature, including service level commitments, liquidated damages for late delivery, representations and warranties,
+indemnities, and limitations of liability. The obligations of the parties under the Agreement will commence upon the confirmation by Nebius
+to Microsoft that it has secured any additional financing required in respect of the capital expenditures under the Agreement.
+ Filed as Exhibit 99.1 to this Report on Form 6-K
+is a press release of the Company dated September 8, 2025, announcing the Agreement.
+ INCORPORATION BY REFERENCE 
+ This Report on Form 6-K (excluding Exhibit 99.1) is hereby incorporated
+by reference into the Company’s Registration Statements on Form F-3ASR (File No. 333-286932) and Form S-8 (File No. 333-286934),
+including any prospectuses forming a part of such Registration Statements, to the extent not superseded by documents or reports subsequently
+filed or furnished.
+ INDEX TO EXHIBITS 
+ Exhibit No. 
+ Description 
+ 99.1 
+ Press release dated September 8, 2025, announcing the Agreement. 
+ SIGNATURES 
+ Pursuant to the requirements of the Securities
+Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.
+ NEBIUS GROUP N.V. 
+ Date: September 8, 2025 
+ By: 
+ /s/ Boaz Tal 
+ Boaz Tal 
+ General Counsel 

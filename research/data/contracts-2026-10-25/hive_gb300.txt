@@ -1,0 +1,76 @@
+ 
+ HIVE Digital Technologies Ltd.: Form 8-K - Filed by newsfilecorp.com 
+ false 
+ 2026-08-17 
+ 0001720424 
+ HIVE Digital Technologies Ltd. 
+ 0001720424 
+ 2026-08-17 
+ 2026-08-17 
+ UNITED STATES 
+ SECURITIES AND EXCHANGE COMMISSION 
+Washington, D.C. 20549
+ ___________________________ 
+ FORM 8-K 
+ CURRENT REPORT 
+ Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934 
+ Date of Report (Date of earliest event reported): 
+ August 17, 2026 
+ HIVE DIGITAL TECHNOLOGIES LTD. 
+(Exact name of registrant as specified in its charter)
+ British Columbia 
+ 001-40398 
+ 98-1831411 
+ (State or other jurisdiction 
+ (Commission 
+ (IRS Employer 
+ of incorporation) 
+ File Number) 
+ Identification No.) 
+ 7900 Callaghan Road, Suite 128 
+ San Antonio , Texas , United States 
+ 78229 
+ (Address of principal executive offices) (ZIP Code)
+ Registrant’s telephone number, including area code: ( 604 ) 664-1078 
+ Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the registrant under any of the following provisions:
+ ☐ Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425)
+ ☐ Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12)
+ ☐ Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b))
+ ☐ Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c))
+ Securities registered pursuant to Section 12(b) of the Act:
+ Title of each class 
+ Trading Symbols 
+ Name of each exchange on which registered 
+ Common shares, without par value 
+ HIVE 
+ The Nasdaq Stock Market LLC 
+ Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§ 230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§ 240.12b -2 of this chapter).
+ Emerging growth company ☐ 
+ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+ Item 7.01 Regulation FD Disclosure. 
+ On August 17, 2026, HIVE Digital Technologies Ltd. (the "Company") issued a press release announcing that its wholly-owned subsidiary BUZZ High Performance Computing Inc. ("BUZZ") has entered into a five-year GPU cloud services agreement with an enterprise customer having a high investment grade credit profile (the "Customer"). A copy of the press release is furnished as Exhibit 99.1 to this Current Report on Form 8-K and is incorporated into this Item 7.01 by reference.
+ The information in this Item 7.01, including Exhibit 99.1, is being furnished and shall not be deemed "filed" for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the "Exchange Act"), or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as expressly set forth by specific reference in such filing.
+ Item 8.01 Other Events. 
+ On August 17, 2026, the Company announced that BUZZ entered into a GPU cloud services agreement (the “Agreement’) with the Customer pursuant to which it will provide the Customer with access to a dedicated GPU cluster. The cluster will consist of 2,016 NVIDIA Blackwell Ultra GPUs in NVIDIA GB300 NVL72 rack-scale systems and will be deployed at a facility in Merritt, British Columbia. The cluster will be designed to support large-scale AI training, AI inference and advanced enterprise workloads. Deployment is expected to occur during the fourth quarter of the 2026 calendar year. The estimated total contract value is approximately $350 million over the five-year term. The Company expects capital expenditures associated with the deployment (including the accelerated computing cluster and all associated hardware and service warranties) to total approximately $185 million. The Customer has agreed to furnish a deposit of approximately 10% of the total contract value.
+ Cautionary Note Regarding Forward-Looking Statements 
+ Statements in this Current Report on Form 8-K about future expectations, plans, and prospects, as well as any other statements regarding matters that are not historical facts, may constitute "forward-looking statements" within the meaning of The Private Securities Litigation Reform Act of 1995. These statements include, but are not limited to, statements relating to the Agreement, deployment timelines, total contract value, anticipated expenditures, future GPU capacity and design of the cluster, and the receipt of the deposit. The words "anticipate," "believe," "continue," "could," "estimate," "expect," "intend," "may," "plan," "potential," "predict," "project," "should," "target," "will," "would," and similar expressions are intended to identify forward-looking statements, although not all forward-looking statements contain these identifying words. Actual results may differ materially from those indicated by such forward-looking statements as a result of various important factors, including delays in equipment delivery or commissioning, changes in customer demand, counterparty credit risk, fluctuations in power and operating costs, competitive pricing pressures, regulatory developments, capital availability and the other factors described from time to time in the Company's filings with the U.S. Securities and Exchange Commission (the "SEC"). In particular, see the Company's recent and upcoming annual and quarterly reports and other continuous disclosure documents, which are available under the Company's EDGAR profile at www.sec.gov and SEDAR+ profile at www.sedarplus.ca. Any forward-looking statements contained in this Current Report on Form 8-K speak only as of the date hereof, and the Company specifically disclaims any obligation to update any forward-looking statement, whether as a result of new information, future events, or otherwise, except to the extent required by applicable law.
+ Item 9.01 F inancial Statements and Exhibits. 
+ (d) Exhibits
+ Exhibit 
+ Number 
+ Description 
+ 99.1 
+ Press Release dated August 17, 2026 
+ 104 
+ Cover Page Interactive Data File (embedded within the Inline XBRL document) 
+ Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
+ 2
+ HIVE DIGITAL TECHNOLOGIES LTD. 
+ By: 
+ /s/ Darcy Daubaras 
+ Name: 
+ Darcy Daubaras 
+ Title: 
+ Chief Financial Officer 
+ Date: August 19, 2026
+ 3

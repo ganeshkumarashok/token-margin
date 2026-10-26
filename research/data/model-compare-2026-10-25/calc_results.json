@@ -1,0 +1,5262 @@
+{
+ "models": {
+  "GLM-5.2": {
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "page": "z-ai_glm-5.3",
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "n_endpoints": 48,
+   "cheapest": {
+    "prov": "Wafer",
+    "tag": "wafer/us",
+    "q": "fp4",
+    "i": 0.079,
+    "o": 1.4,
+    "cr": 0.078,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 127,
+    "tp90": 83,
+    "lat50": 371,
+    "n": 33147,
+    "blend": 6.310867559959956
+   },
+   "cheapest_any": {
+    "prov": "Wafer",
+    "tag": "wafer/us",
+    "q": "fp4",
+    "i": 0.079,
+    "o": 1.4,
+    "cr": 0.078,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 127,
+    "tp90": 83,
+    "lat50": 371,
+    "n": 33147,
+    "blend": 6.310867559959956
+   },
+   "median_blend": 20.73698559163808,
+   "reqw_blend": 18.019710825479287,
+   "first_party": {
+    "prov": "Z.ai",
+    "tag": "z-ai/fp8",
+    "q": "fp8",
+    "i": 1.4,
+    "o": 4.4,
+    "cr": 0.26,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 40,
+    "tp90": 26,
+    "lat50": 2237,
+    "n": 40555,
+    "blend": 27.565507363235227
+   },
+   "mkt_p90_reqw": 58.597465929063304,
+   "mkt_p50_reqw": 92.98834769162801,
+   "mkt_p50_med": 98,
+   "mkt_p90_med": 66,
+   "fp_tp50": 40,
+   "fp_tp90": 26,
+   "quant_req_share": {
+    "fp4": 0.35842913533292997,
+    "unknown": 0.3921351120331153,
+    "fp8": 0.24714514843307306,
+    "nvfp4": 0.0022906042008816667
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "req_total": 208242
+  },
+  "DeepSeek-V4-Pro": {
+   "label": "DeepSeek-V4-Pro (0813)",
+   "page": "deepseek_deepseek-v4-pro-0813",
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "n_endpoints": 24,
+   "cheapest": {
+    "prov": "Sail Research",
+    "tag": "sail-research/fp4",
+    "q": "fp4",
+    "i": 0.44999999999999996,
+    "o": 0.7999999999999999,
+    "cr": 0.065,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 108,
+    "tp90": 55,
+    "lat50": 842,
+    "n": 5295,
+    "blend": 6.061952766732733
+   },
+   "cheapest_any": {
+    "prov": "Sail Research",
+    "tag": "sail-research/fp4",
+    "q": "fp4",
+    "i": 0.44999999999999996,
+    "o": 0.7999999999999999,
+    "cr": 0.065,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 108,
+    "tp90": 55,
+    "lat50": 842,
+    "n": 5295,
+    "blend": 6.061952766732733
+   },
+   "median_blend": 14.186314813719607,
+   "reqw_blend": 7.899457659016067,
+   "first_party": {
+    "prov": "DeepSeek",
+    "tag": "deepseek",
+    "q": "unknown",
+    "i": 0.66,
+    "o": 1.9800000000000002,
+    "cr": 0.022,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 40,
+    "tp90": 31,
+    "lat50": 934,
+    "n": 95080,
+    "blend": 7.093157406859803
+   },
+   "mkt_p90_reqw": 34.787942676706336,
+   "mkt_p50_reqw": 51.06518095700753,
+   "mkt_p50_med": 40,
+   "mkt_p90_med": 31,
+   "fp_tp50": 40,
+   "fp_tp90": 31,
+   "quant_req_share": {
+    "fp4": 0.0902032224111408,
+    "mxfp4": 0.028054408549914988,
+    "fp8": 0.022905027932960894,
+    "unknown": 0.8588373411059833
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "req_total": 123510
+  },
+  "DeepSeek-V4.1-Flash": {
+   "label": "DeepSeek-V4.1-Flash",
+   "page": "deepseek_deepseek-v4.1-flash",
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "n_endpoints": 41,
+   "cheapest": {
+    "prov": "Sail Research",
+    "tag": "sail-research/fp4/us",
+    "q": "fp4",
+    "i": 0.09,
+    "o": 0.25,
+    "cr": 0.006,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 110,
+    "tp90": 56.5,
+    "lat50": 314,
+    "n": 2908,
+    "blend": 0.9334805572986573
+   },
+   "cheapest_any": {
+    "prov": "Sail Research",
+    "tag": "sail-research/fp4/us",
+    "q": "fp4",
+    "i": 0.09,
+    "o": 0.25,
+    "cr": 0.006,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 110,
+    "tp90": 56.5,
+    "lat50": 314,
+    "n": 2908,
+    "blend": 0.9334805572986573
+   },
+   "median_blend": 1.9771185389158146,
+   "reqw_blend": 1.9753167912034688,
+   "first_party": {
+    "prov": "DeepSeek",
+    "tag": "deepseek",
+    "q": "unknown",
+    "i": 0.15,
+    "o": 0.6,
+    "cr": 0.003,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 53,
+    "tp90": 41,
+    "lat50": 794,
+    "n": 738287,
+    "blend": 1.4122275277970102
+   },
+   "mkt_p90_reqw": 76.73947610406593,
+   "mkt_p50_reqw": 144.5075906171441,
+   "mkt_p50_med": 150,
+   "mkt_p90_med": 68,
+   "fp_tp50": 53,
+   "fp_tp90": 41,
+   "quant_req_share": {
+    "unknown": 0.4443500424808836,
+    "fp8": 0.4515377030953355,
+    "fp4": 0.08292775452692379,
+    "mxfp4": 0.021184499896857115
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "req_total": 1144044
+  },
+  "Kimi-K3": {
+   "label": "Kimi-K3",
+   "page": "moonshotai_kimi-k3",
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "n_endpoints": 29,
+   "cheapest": {
+    "prov": "Relace",
+    "tag": "relace/fp4",
+    "q": "fp4",
+    "i": 0.1529,
+    "o": 10.5572,
+    "cr": 0.15,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 55,
+    "tp90": 29,
+    "lat50": 1500,
+    "n": 6631,
+    "blend": 19.295867271957974
+   },
+   "cheapest_any": {
+    "prov": "Relace",
+    "tag": "relace/fp4",
+    "q": "fp4",
+    "i": 0.1529,
+    "o": 10.5572,
+    "cr": 0.15,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 55,
+    "tp90": 29,
+    "lat50": 1500,
+    "n": 6631,
+    "blend": 19.295867271957974
+   },
+   "median_blend": 39.80581825509144,
+   "reqw_blend": 32.169394498798006,
+   "first_party": {
+    "prov": "Moonshot AI",
+    "tag": "moonshotai/mxfp4",
+    "q": "mxfp4",
+    "i": 3.0,
+    "o": 15.0,
+    "cr": 0.3,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 24,
+    "tp90": 9,
+    "lat50": 3060,
+    "n": 6365,
+    "blend": 46.59508030010757
+   },
+   "mkt_p90_reqw": 42.6946711074105,
+   "mkt_p50_reqw": 75.46852260797162,
+   "mkt_p50_med": 88,
+   "mkt_p90_med": 43,
+   "fp_tp50": 24,
+   "fp_tp90": 9,
+   "quant_req_share": {
+    "mxfp4": 0.41514317778662707,
+    "fp4": 0.42299895015023714,
+    "fp8": 0.04231980595880245,
+    "unknown": 0.11953806610433335
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "req_total": 55246
+  },
+  "MiniMax-M3": {
+   "label": "MiniMax-M3",
+   "page": "minimax_minimax-m3",
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "n_endpoints": 13,
+   "cheapest": {
+    "prov": "DeepInfra",
+    "tag": "deepinfra/fp8/flex",
+    "q": "fp8",
+    "i": 0.224,
+    "o": 0.88,
+    "cr": 0.0448,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 29,
+    "tp90": 17,
+    "lat50": 2252,
+    "n": 28,
+    "blend": 4.32206828344381
+   },
+   "cheapest_any": {
+    "prov": "DeepInfra",
+    "tag": "deepinfra/fp8/flex",
+    "q": "fp8",
+    "i": 0.224,
+    "o": 0.88,
+    "cr": 0.0448,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 29,
+    "tp90": 17,
+    "lat50": 2252,
+    "n": 28,
+    "blend": 4.32206828344381
+   },
+   "median_blend": 5.809912879612247,
+   "reqw_blend": 5.701544964409084,
+   "first_party": {
+    "prov": "MiniMax",
+    "tag": "minimax/fp8",
+    "q": "fp8",
+    "i": 0.3,
+    "o": 1.2,
+    "cr": 0.06,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 106,
+    "tp90": 51,
+    "lat50": 957,
+    "n": 45699,
+    "blend": 5.809912879612247
+   },
+   "mkt_p90_reqw": 52.062132057743234,
+   "mkt_p50_reqw": 109.30401469206457,
+   "mkt_p50_med": 106,
+   "mkt_p90_med": 51,
+   "fp_tp50": 106,
+   "fp_tp90": 51,
+   "quant_req_share": {
+    "fp4": 0.09537883317673188,
+    "fp8": 0.8786537968736653,
+    "unknown": 0.025967369949602803
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "req_total": 58535
+  },
+  "MiniMax-M3.1-Flash": {
+   "label": "MiniMax-M3.1-Flash",
+   "page": "minimax_minimax-m3.1-flash",
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "n_endpoints": 13,
+   "cheapest": {
+    "prov": "Relace",
+    "tag": "relace/fp4",
+    "q": "fp4",
+    "i": 0.09,
+    "o": 0.5,
+    "cr": 0.01,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 136,
+    "tp90": 39,
+    "lat50": 1420.5,
+    "n": 3492,
+    "blend": 1.8590742449063464
+   },
+   "cheapest_any": {
+    "prov": "Relace",
+    "tag": "relace/fp4",
+    "q": "fp4",
+    "i": 0.09,
+    "o": 0.5,
+    "cr": 0.01,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 136,
+    "tp90": 39,
+    "lat50": 1420.5,
+    "n": 3492,
+    "blend": 1.8590742449063464
+   },
+   "median_blend": 2.7179461441614583,
+   "reqw_blend": 2.650979110475767,
+   "first_party": {
+    "prov": "MiniMax",
+    "tag": "minimax",
+    "q": "unknown",
+    "i": 0.15,
+    "o": 0.6,
+    "cr": 0.015,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 109,
+    "tp90": 42,
+    "lat50": 1161,
+    "n": 73176,
+    "blend": 2.7179461441614583
+   },
+   "mkt_p90_reqw": 43.67297272306981,
+   "mkt_p50_reqw": 111.13784096162738,
+   "mkt_p50_med": 109,
+   "mkt_p90_med": 42,
+   "fp_tp50": 109,
+   "fp_tp90": 42,
+   "quant_req_share": {
+    "fp4": 0.08992140545538604,
+    "fp8": 0.012332408691631993,
+    "unknown": 0.8858414239482201,
+    "fp16": 0.005351363846509478,
+    "nvfp4": 0.006553398058252427
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "req_total": 86520
+  },
+  "Muse-Spark-Open": {
+   "label": "Muse-Spark-Open",
+   "page": "meta_muse-spark-open",
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "n_endpoints": 6,
+   "cheapest": {
+    "prov": "Makora",
+    "tag": "makora/fp4",
+    "q": "fp4",
+    "i": 1.25,
+    "o": 4.25,
+    "cr": 0.15,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 185,
+    "tp90": 71,
+    "lat50": 908,
+    "n": 379,
+    "blend": 27.389524629366644
+   },
+   "cheapest_any": {
+    "prov": "Makora",
+    "tag": "makora/fp4",
+    "q": "fp4",
+    "i": 1.25,
+    "o": 4.25,
+    "cr": 0.15,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": false,
+    "tp50": 185,
+    "tp90": 71,
+    "lat50": 908,
+    "n": 379,
+    "blend": 27.389524629366644
+   },
+   "median_blend": 27.389524629366644,
+   "reqw_blend": 27.38952462936664,
+   "first_party": null,
+   "mkt_p90_reqw": 72.73188110749187,
+   "mkt_p50_reqw": 130.62805374592833,
+   "mkt_p50_med": 113,
+   "mkt_p90_med": 67.30000000000001,
+   "fp_tp50": null,
+   "fp_tp90": null,
+   "quant_req_share": {
+    "fp4": 0.23412052117263843,
+    "unknown": 0.7658794788273615
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "req_total": 2456
+  },
+  "Qwen-3.5-397B-A17B": {
+   "label": "Qwen3.5-397B-A17B",
+   "page": "qwen_qwen3.5-397b-a17b",
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "n_endpoints": 10,
+   "cheapest": {
+    "prov": "Alibaba Cloud Int.",
+    "tag": "alibaba",
+    "q": "unknown",
+    "i": 0.39,
+    "o": 2.34,
+    "cr": 0.39,
+    "cr_listed": false,
+    "disc": 0,
+    "cw": false,
+    "tp50": 55,
+    "tp90": 38.4,
+    "lat50": 1209,
+    "n": 57,
+    "blend": 4.805832334995433
+   },
+   "cheapest_any": {
+    "prov": "Alibaba Cloud Int.",
+    "tag": "alibaba",
+    "q": "unknown",
+    "i": 0.39,
+    "o": 2.34,
+    "cr": 0.39,
+    "cr_listed": false,
+    "disc": 0,
+    "cw": false,
+    "tp50": 55,
+    "tp90": 38.4,
+    "lat50": 1209,
+    "n": 57,
+    "blend": 4.805832334995433
+   },
+   "median_blend": 6.319795462256461,
+   "reqw_blend": 6.664181538246446,
+   "first_party": {
+    "prov": "Alibaba Cloud Int.",
+    "tag": "alibaba",
+    "q": "unknown",
+    "i": 0.39,
+    "o": 2.34,
+    "cr": 0.39,
+    "cr_listed": false,
+    "disc": 0,
+    "cw": false,
+    "tp50": 55,
+    "tp90": 38.4,
+    "lat50": 1209,
+    "n": 57,
+    "blend": 4.805832334995433
+   },
+   "mkt_p90_reqw": 37.54964200477327,
+   "mkt_p50_reqw": 66.45286396181385,
+   "mkt_p50_med": 61,
+   "mkt_p90_med": 38,
+   "fp_tp50": 55,
+   "fp_tp90": 38.4,
+   "quant_req_share": {
+    "fp8": 0.5781622911694511,
+    "unknown": 0.42183770883054894
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "req_total": 1676
+  },
+  "Qwen3.8-Flash-Next": {
+   "label": "Qwen3.8-Flash(-Next)",
+   "page": "qwen_qwen3.8-flash",
+   "mix": {
+    "ratio": 17.88133121831041,
+    "cache": 0.862952148777257,
+    "reason": 0.8175465173608389,
+    "days": 30,
+    "outB_day": 4.3332904665
+   },
+   "n_endpoints": 2,
+   "cheapest": {
+    "prov": "Alibaba Cloud Int.",
+    "tag": "alibaba",
+    "q": "unknown",
+    "i": 0.15,
+    "o": 0.47,
+    "cr": 0.016,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": true,
+    "tp50": 57,
+    "tp90": 34,
+    "lat50": 1144,
+    "n": 56600,
+    "blend": 1.0844814342361602
+   },
+   "cheapest_any": {
+    "prov": "Alibaba Cloud Int.",
+    "tag": "alibaba",
+    "q": "unknown",
+    "i": 0.15,
+    "o": 0.47,
+    "cr": 0.016,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": true,
+    "tp50": 57,
+    "tp90": 34,
+    "lat50": 1144,
+    "n": 56600,
+    "blend": 1.0844814342361602
+   },
+   "median_blend": 1.0844814342361602,
+   "reqw_blend": 1.0844814342361602,
+   "first_party": {
+    "prov": "Alibaba Cloud Int.",
+    "tag": "alibaba",
+    "q": "unknown",
+    "i": 0.15,
+    "o": 0.47,
+    "cr": 0.016,
+    "cr_listed": true,
+    "disc": 0,
+    "cw": true,
+    "tp50": 57,
+    "tp90": 34,
+    "lat50": 1144,
+    "n": 56600,
+    "blend": 1.0844814342361602
+   },
+   "mkt_p90_reqw": 32.39040509117611,
+   "mkt_p50_reqw": 56.46346836372537,
+   "mkt_p50_med": 57,
+   "mkt_p90_med": 34,
+   "fp_tp50": 57,
+   "fp_tp90": 34,
+   "quant_req_share": {
+    "unknown": 1.0
+   },
+   "tiers": {
+    "cheapest": 1.0844814342361602,
+    "median": 1.0844814342361602,
+    "req-weighted": 1.0844814342361602,
+    "first-party": 1.0844814342361602
+   },
+   "req_total": 65368
+  }
+ },
+ "rows": [
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "p90=100",
+   "x": 100,
+   "y": 290.1704347826087,
+   "yadj": 531.2610678775686,
+   "bench_ratio": 137.62608695652173,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c336 x95 y312 hit0.76",
+    "PD 16P+16D c224 x106 y264 hit0.79"
+   ],
+   "rev": {
+    "cheapest": 6.592417861424549,
+    "median": 21.662136450742732,
+    "req-weighted": 18.823634369590337,
+    "first-party": 28.795302923735402
+   },
+   "revB": {
+    "cheapest": 12.689882091669732,
+    "median": 41.94657378463336,
+    "req-weighted": 37.18372162433685,
+    "first-party": 57.55821513795931
+   },
+   "revC": {
+    "cheapest": 12.069785660897635,
+    "median": 39.66031119591145,
+    "req-weighted": 34.4634149375608,
+    "first-party": 52.72013116216558
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "mkt p90",
+   "x": 58.597465929063304,
+   "y": 312.2,
+   "yadj": 610.5003894921529,
+   "bench_ratio": 134.4,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c336 x95 y312 hit0.76"
+   ],
+   "rev": {
+    "cheapest": 7.092910267990193,
+    "median": 23.306712846153875,
+    "req-weighted": 20.25271339097268,
+    "first-party": 30.981425035687334
+   },
+   "revB": {
+    "cheapest": 13.370128215620987,
+    "median": 44.18913696244433,
+    "req-weighted": 39.15405743886189,
+    "first-party": 60.59227012792582
+   },
+   "revC": {
+    "cheapest": 13.870033572200201,
+    "median": 45.57577601011755,
+    "req-weighted": 39.60374571896784,
+    "first-party": 60.583510734494084
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "1P p90",
+   "x": 26,
+   "y": 312.2,
+   "yadj": 610.5003894921529,
+   "bench_ratio": 134.4,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c336 x95 y312 hit0.76"
+   ],
+   "rev": {
+    "cheapest": 7.092910267990193,
+    "median": 23.306712846153875,
+    "req-weighted": 20.25271339097268,
+    "first-party": 30.981425035687334
+   },
+   "revB": {
+    "cheapest": 13.370128215620987,
+    "median": 44.18913696244433,
+    "req-weighted": 39.15405743886189,
+    "first-party": 60.59227012792582
+   },
+   "revC": {
+    "cheapest": 13.870033572200201,
+    "median": 45.57577601011755,
+    "req-weighted": 39.60374571896784,
+    "first-party": 60.583510734494084
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "max tput",
+   "x": 94.7,
+   "y": 312.2,
+   "yadj": 610.5003894921529,
+   "bench_ratio": 134.4,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c336"
+   ],
+   "rev": {
+    "cheapest": 7.092910267990193,
+    "median": 23.306712846153875,
+    "req-weighted": 20.25271339097268,
+    "first-party": 30.981425035687334
+   },
+   "revB": {
+    "cheapest": 13.370128215620987,
+    "median": 44.18913696244433,
+    "req-weighted": 39.15405743886189,
+    "first-party": 60.59227012792582
+   },
+   "revC": {
+    "cheapest": 13.870033572200201,
+    "median": 45.57577601011755,
+    "req-weighted": 39.60374571896784,
+    "first-party": 60.583510734494084
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb300",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "p90=100",
+   "x": 100,
+   "y": 371.58367346938775,
+   "yadj": 740.4284222747938,
+   "bench_ratio": 140.30816326530612,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c216 x95 y393 hit0.69",
+    "PD 16P+16D c256 x114 y314 hit0.72"
+   ],
+   "rev": {
+    "cheapest": 8.442055262551364,
+    "median": 27.739891018161515,
+    "req-weighted": 24.10498923619567,
+    "first-party": 36.87441295348225
+   },
+   "revB": {
+    "cheapest": 16.53047838106009,
+    "median": 54.6476522910448,
+    "req-weighted": 48.46005694983727,
+    "first-party": 75.02906139818674
+   },
+   "revC": {
+    "cheapest": 16.82188455818278,
+    "median": 55.27531268766618,
+    "req-weighted": 48.03230180288754,
+    "first-party": 73.47702645419209
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb300",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "mkt p90",
+   "x": 58.597465929063304,
+   "y": 458.2,
+   "yadj": 968.6778498810428,
+   "bench_ratio": 137.9,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c264 x89 y458 hit0.64"
+   ],
+   "rev": {
+    "cheapest": 10.409902257505147,
+    "median": 34.20607247311885,
+    "req-weighted": 29.723873400844592,
+    "first-party": 45.469855705803774
+   },
+   "revB": {
+    "cheapest": 20.073522421963666,
+    "median": 66.35404255421574,
+    "req-weighted": 58.82202022327405,
+    "first-party": 91.05501175857617
+   },
+   "revC": {
+    "cheapest": 22.00751142791772,
+    "median": 72.31485101731971,
+    "req-weighted": 62.83906105645234,
+    "first-party": 96.12754705259552
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb300",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "1P p90",
+   "x": 26,
+   "y": 458.2,
+   "yadj": 968.6778498810428,
+   "bench_ratio": 137.9,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c264 x89 y458 hit0.64"
+   ],
+   "rev": {
+    "cheapest": 10.409902257505147,
+    "median": 34.20607247311885,
+    "req-weighted": 29.723873400844592,
+    "first-party": 45.469855705803774
+   },
+   "revB": {
+    "cheapest": 20.073522421963666,
+    "median": 66.35404255421574,
+    "req-weighted": 58.82202022327405,
+    "first-party": 91.05501175857617
+   },
+   "revC": {
+    "cheapest": 22.00751142791772,
+    "median": 72.31485101731971,
+    "req-weighted": 62.83906105645234,
+    "first-party": 96.12754705259552
+   }
+  },
+  {
+   "model": "GLM-5.2",
+   "label": "GLM-5.3 (IX: GLM-5.2 runs)",
+   "hw": "gb300",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "max tput",
+   "x": 89.4,
+   "y": 458.2,
+   "yadj": 968.6778498810428,
+   "bench_ratio": 137.9,
+   "mix": {
+    "ratio": 62.883188709577205,
+    "cache": 0.9049214784487581,
+    "reason": 0.7129944460129999,
+    "days": 30,
+    "outB_day": 9.082832440766666
+   },
+   "tiers": {
+    "cheapest": 6.310867559959956,
+    "median": 20.73698559163808,
+    "req-weighted": 18.019710825479287,
+    "first-party": 27.565507363235227
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.079,
+     0.078,
+     1.4
+    ],
+    "median": [
+     1.4,
+     0.14,
+     4.4
+    ],
+    "req-weighted": [
+     0.8038403059901461,
+     0.17540119188252132,
+     3.2325872782627907
+    ],
+    "first-party": [
+     1.4,
+     0.26,
+     4.4
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c264"
+   ],
+   "rev": {
+    "cheapest": 10.409902257505147,
+    "median": 34.20607247311885,
+    "req-weighted": 29.723873400844592,
+    "first-party": 45.469855705803774
+   },
+   "revB": {
+    "cheapest": 20.073522421963666,
+    "median": 66.35404255421574,
+    "req-weighted": 58.82202022327405,
+    "first-party": 91.05501175857617
+   },
+   "revC": {
+    "cheapest": 22.00751142791772,
+    "median": 72.31485101731971,
+    "req-weighted": 62.83906105645234,
+    "first-party": 96.12754705259552
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "p90=100",
+   "x": 100,
+   "y": 478.29318181818167,
+   "yadj": 807.1590163633572,
+   "bench_ratio": 128.9181818181818,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 8P+12D c360 x96 y632 hit0.1",
+    "PD 8P+8D c128 x105 y309 hit0.26"
+   ],
+   "rev": {
+    "cheapest": 10.437806436595661,
+    "median": 24.42678354190208,
+    "req-weighted": 13.601724258127676,
+    "first-party": 12.21339177095104
+   },
+   "revB": {
+    "cheapest": 29.13668877646966,
+    "median": 60.76702944475282,
+    "req-weighted": 33.959738514923764,
+    "first-party": 30.38351472237641
+   },
+   "revC": {
+    "cheapest": 17.614655396773646,
+    "median": 41.22220287910622,
+    "req-weighted": 22.954026505879426,
+    "first-party": 20.61110143955311
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "mkt p90",
+   "x": 34.787942676706336,
+   "y": 798.6,
+   "yadj": 1516.1511019158104,
+   "bench_ratio": 131.1,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 8P+8D c384 x80 y799 hit0.06"
+   ],
+   "rev": {
+    "cheapest": 17.42787172624594,
+    "median": 40.785087636851316,
+    "req-weighted": 22.71062479136483,
+    "first-party": 20.392543818425658
+   },
+   "revB": {
+    "cheapest": 49.43357221553902,
+    "median": 102.98640025721507,
+    "req-weighted": 57.55615700108111,
+    "first-party": 51.49320012860753
+   },
+   "revC": {
+    "cheapest": 33.087010921356345,
+    "median": 77.43094861300405,
+    "req-weighted": 43.11637716331619,
+    "first-party": 38.715474306502024
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "1P p90",
+   "x": 31,
+   "y": 798.6,
+   "yadj": 1516.1511019158104,
+   "bench_ratio": 131.1,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 8P+8D c384 x80 y799 hit0.06"
+   ],
+   "rev": {
+    "cheapest": 17.42787172624594,
+    "median": 40.785087636851316,
+    "req-weighted": 22.71062479136483,
+    "first-party": 20.392543818425658
+   },
+   "revB": {
+    "cheapest": 49.43357221553902,
+    "median": 102.98640025721507,
+    "req-weighted": 57.55615700108111,
+    "first-party": 51.49320012860753
+   },
+   "revC": {
+    "cheapest": 33.087010921356345,
+    "median": 77.43094861300405,
+    "req-weighted": 43.11637716331619,
+    "first-party": 38.715474306502024
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "max tput",
+   "x": 80.5,
+   "y": 798.6,
+   "yadj": 1516.1511019158104,
+   "bench_ratio": 131.1,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 8P+8D c384"
+   ],
+   "rev": {
+    "cheapest": 17.42787172624594,
+    "median": 40.785087636851316,
+    "req-weighted": 22.71062479136483,
+    "first-party": 20.392543818425658
+   },
+   "revB": {
+    "cheapest": 49.43357221553902,
+    "median": 102.98640025721507,
+    "req-weighted": 57.55615700108111,
+    "first-party": 51.49320012860753
+   },
+   "revC": {
+    "cheapest": 33.087010921356345,
+    "median": 77.43094861300405,
+    "req-weighted": 43.11637716331619,
+    "first-party": 38.715474306502024
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb300",
+   "stack": "dynamo-sglang",
+   "spec": "draft_model",
+   "date": "2026-10-23",
+   "target": "p90=100",
+   "x": 100,
+   "y": 811.9254143646409,
+   "yadj": 833.4404840685246,
+   "bench_ratio": 136.29834254143648,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 16P+16D c720 x100 y813 hit0.95",
+    "PD 8P+16D c300 x136 y496 hit0.95"
+   ],
+   "rev": {
+    "cheapest": 17.71867264315808,
+    "median": 41.46562632037153,
+    "req-weighted": 23.0895735589892,
+    "first-party": 20.732813160185763
+   },
+   "revB": {
+    "cheapest": 52.158533347022235,
+    "median": 108.39759498512453,
+    "req-weighted": 60.585246426892944,
+    "first-party": 54.198797492562264
+   },
+   "revC": {
+    "cheapest": 18.18819665390254,
+    "median": 42.564416707781824,
+    "req-weighted": 23.701420134752993,
+    "first-party": 21.282208353890912
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "mkt p90",
+   "x": 34.787942676706336,
+   "y": 1168.4,
+   "yadj": 2544.198253983332,
+   "bench_ratio": 133.1,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 16P+12D c1152 x56 y1168 hit0.08"
+   ],
+   "rev": {
+    "cheapest": 25.49802820554189,
+    "median": 59.67104482205996,
+    "req-weighted": 33.22701478365974,
+    "first-party": 29.83552241102998
+   },
+   "revB": {
+    "cheapest": 73.3763105423796,
+    "median": 152.71984431188673,
+    "req-weighted": 85.35348612498474,
+    "first-party": 76.35992215594337
+   },
+   "revC": {
+    "cheapest": 55.522114721463055,
+    "median": 129.9340705662839,
+    "req-weighted": 72.35203098054217,
+    "first-party": 64.96703528314195
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "1P p90",
+   "x": 31,
+   "y": 1168.4,
+   "yadj": 2544.198253983332,
+   "bench_ratio": 133.1,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 16P+12D c1152 x56 y1168 hit0.08"
+   ],
+   "rev": {
+    "cheapest": 25.49802820554189,
+    "median": 59.67104482205996,
+    "req-weighted": 33.22701478365974,
+    "first-party": 29.83552241102998
+   },
+   "revB": {
+    "cheapest": 73.3763105423796,
+    "median": 152.71984431188673,
+    "req-weighted": 85.35348612498474,
+    "first-party": 76.35992215594337
+   },
+   "revC": {
+    "cheapest": 55.522114721463055,
+    "median": 129.9340705662839,
+    "req-weighted": 72.35203098054217,
+    "first-party": 64.96703528314195
+   }
+  },
+  {
+   "model": "DeepSeek-V4-Pro",
+   "label": "DeepSeek-V4-Pro (0813)",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "draft_model",
+   "date": "2026-10-14",
+   "target": "max tput",
+   "x": 56.2,
+   "y": 1168.4,
+   "yadj": 2544.198253983332,
+   "bench_ratio": 133.1,
+   "mix": {
+    "ratio": 42.07758374346848,
+    "cache": 0.8440166579256343,
+    "reason": 0.6146032862242357,
+    "days": 30,
+    "outB_day": 3.259241927866667
+   },
+   "tiers": {
+    "cheapest": 6.061952766732733,
+    "median": 14.186314813719607,
+    "req-weighted": 7.899457659016067,
+    "first-party": 7.093157406859803
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.44999999999999996,
+     0.065,
+     0.7999999999999999
+    ],
+    "median": [
+     1.32,
+     0.044,
+     3.9600000000000004
+    ],
+    "req-weighted": [
+     0.6461201441178852,
+     0.04190139907699781,
+     2.1706174269289935
+    ],
+    "first-party": [
+     0.66,
+     0.022,
+     1.9800000000000002
+    ]
+   },
+   "topo": [
+    "PD 16P+12D c1152"
+   ],
+   "rev": {
+    "cheapest": 25.49802820554189,
+    "median": 59.67104482205996,
+    "req-weighted": 33.22701478365974,
+    "first-party": 29.83552241102998
+   },
+   "revB": {
+    "cheapest": 73.3763105423796,
+    "median": 152.71984431188673,
+    "req-weighted": 85.35348612498474,
+    "first-party": 76.35992215594337
+   },
+   "revC": {
+    "cheapest": 55.522114721463055,
+    "median": 129.9340705662839,
+    "req-weighted": 72.35203098054217,
+    "first-party": 64.96703528314195
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-16",
+   "target": "p90=100",
+   "x": 100,
+   "y": 1937.2492537313433,
+   "yadj": 1937.2492537313433,
+   "bench_ratio": 137.5620895522388,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c256 x83 y2254 hit0.93",
+    "agg 4P+4D c160 x117 y1618 hit0.96"
+   ],
+   "rev": {
+    "cheapest": 6.510184246798352,
+    "median": 13.788617090591035,
+    "req-weighted": 13.776051526710884,
+    "first-party": 9.849012207565025
+   },
+   "revB": {
+    "cheapest": 14.554949254545178,
+    "median": 27.17283312108866,
+    "req-weighted": 27.662175337100404,
+    "first-party": 19.409166515063333
+   },
+   "revC": {
+    "cheapest": 6.510184246798352,
+    "median": 13.788617090591035,
+    "req-weighted": 13.776051526710884,
+    "first-party": 9.849012207565025
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-16",
+   "target": "mkt p90",
+   "x": 76.73947610406593,
+   "y": 2254.3,
+   "yadj": 2254.3,
+   "bench_ratio": 141.6,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c256 x83 y2254 hit0.93"
+   ],
+   "rev": {
+    "cheapest": 7.575642793146108,
+    "median": 16.045265960200517,
+    "req-weighted": 16.030643912675927,
+    "first-party": 11.460904257286082
+   },
+   "revB": {
+    "cheapest": 17.374620539832236,
+    "median": 32.34799635858898,
+    "req-weighted": 32.944726309701174,
+    "first-party": 23.105711684706417
+   },
+   "revC": {
+    "cheapest": 7.575642793146108,
+    "median": 16.045265960200517,
+    "req-weighted": 16.030643912675927,
+    "first-party": 11.460904257286082
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-16",
+   "target": "1P p90",
+   "x": 41,
+   "y": 2254.3,
+   "yadj": 2254.3,
+   "bench_ratio": 141.6,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c256 x83 y2254 hit0.93"
+   ],
+   "rev": {
+    "cheapest": 7.575642793146108,
+    "median": 16.045265960200517,
+    "req-weighted": 16.030643912675927,
+    "first-party": 11.460904257286082
+   },
+   "revB": {
+    "cheapest": 17.374620539832236,
+    "median": 32.34799635858898,
+    "req-weighted": 32.944726309701174,
+    "first-party": 23.105711684706417
+   },
+   "revC": {
+    "cheapest": 7.575642793146108,
+    "median": 16.045265960200517,
+    "req-weighted": 16.030643912675927,
+    "first-party": 11.460904257286082
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-16",
+   "target": "max tput",
+   "x": 83.3,
+   "y": 2254.3,
+   "yadj": 2254.3,
+   "bench_ratio": 141.6,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c256"
+   ],
+   "rev": {
+    "cheapest": 7.575642793146108,
+    "median": 16.045265960200517,
+    "req-weighted": 16.030643912675927,
+    "first-party": 11.460904257286082
+   },
+   "revB": {
+    "cheapest": 17.374620539832236,
+    "median": 32.34799635858898,
+    "req-weighted": 32.944726309701174,
+    "first-party": 23.105711684706417
+   },
+   "revC": {
+    "cheapest": 7.575642793146108,
+    "median": 16.045265960200517,
+    "req-weighted": 16.030643912675927,
+    "first-party": 11.460904257286082
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "p90=100",
+   "x": 100,
+   "y": 7471.380884450785,
+   "yadj": 7471.380884450785,
+   "bench_ratio": 133.5747503566334,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c9888 x76 y7528 hitNone",
+    "PD 18P+16D c7480 x146 y7366 hitNone"
+   ],
+   "rev": {
+    "cheapest": 25.107799650507555,
+    "median": 53.17850036861598,
+    "req-weighted": 53.13003881231614,
+    "first-party": 37.984643120439976
+   },
+   "revB": {
+    "cheapest": 54.70183157768226,
+    "median": 102.41460809150492,
+    "req-weighted": 104.21249939303432,
+    "first-party": 73.15329149393209
+   },
+   "revC": {
+    "cheapest": 25.107799650507555,
+    "median": 53.17850036861598,
+    "req-weighted": 53.13003881231614,
+    "first-party": 37.984643120439976
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "mkt p90",
+   "x": 76.73947610406593,
+   "y": 7525.1355901732,
+   "yadj": 7525.1355901732,
+   "bench_ratio": 133.40884077107037,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c9888 x76 y7528 hitNone",
+    "PD 18P+16D c7480 x146 y7366 hitNone"
+   ],
+   "rev": {
+    "cheapest": 25.288443952066224,
+    "median": 53.56110629947189,
+    "req-weighted": 53.51229607446701,
+    "first-party": 38.25793307105134
+   },
+   "revB": {
+    "cheapest": 55.035377080573156,
+    "median": 103.05159842115711,
+    "req-weighted": 104.85868046283056,
+    "first-party": 73.6082845865408
+   },
+   "revC": {
+    "cheapest": 25.288443952066224,
+    "median": 53.56110629947189,
+    "req-weighted": 53.51229607446701,
+    "first-party": 38.25793307105134
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "1P p90",
+   "x": 41,
+   "y": 7528.0,
+   "yadj": 7528.0,
+   "bench_ratio": 133.4,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c9888 x76 y7528 hitNone"
+   ],
+   "rev": {
+    "cheapest": 25.298069887239453,
+    "median": 53.581494099449706,
+    "req-weighted": 53.53266529504697,
+    "first-party": 38.27249578532121
+   },
+   "revB": {
+    "cheapest": 55.05312654928187,
+    "median": 103.08550148574061,
+    "req-weighted": 104.89307177011447,
+    "first-party": 73.63250106124329
+   },
+   "revC": {
+    "cheapest": 25.298069887239453,
+    "median": 53.581494099449706,
+    "req-weighted": 53.53266529504697,
+    "first-party": 38.27249578532121
+   }
+  },
+  {
+   "model": "DeepSeek-V4.1-Flash",
+   "label": "DeepSeek-V4.1-Flash",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "max tput",
+   "x": 75.5,
+   "y": 7528.0,
+   "yadj": 7528.0,
+   "bench_ratio": 133.4,
+   "mix": {
+    "ratio": 51.18179299675201,
+    "cache": 0.9124526382936997,
+    "reason": 0.6722395792303777,
+    "days": 30,
+    "outB_day": 78.76411054436667
+   },
+   "tiers": {
+    "cheapest": 0.9334805572986573,
+    "median": 1.9771185389158146,
+    "req-weighted": 1.9753167912034688,
+    "first-party": 1.4122275277970102
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.006,
+     0.25
+    ],
+    "median": [
+     0.21,
+     0.004200000000000001,
+     0.84
+    ],
+    "req-weighted": [
+     0.18265345039176814,
+     0.0077369117970987125,
+     0.7955563343717549
+    ],
+    "first-party": [
+     0.15,
+     0.003,
+     0.6
+    ]
+   },
+   "topo": [
+    "PD 24P+16D c9888"
+   ],
+   "rev": {
+    "cheapest": 25.298069887239453,
+    "median": 53.581494099449706,
+    "req-weighted": 53.53266529504697,
+    "first-party": 38.27249578532121
+   },
+   "revB": {
+    "cheapest": 55.05312654928187,
+    "median": 103.08550148574061,
+    "req-weighted": 104.89307177011447,
+    "first-party": 73.63250106124329
+   },
+   "revC": {
+    "cheapest": 25.298069887239453,
+    "median": 53.581494099449706,
+    "req-weighted": 53.53266529504697,
+    "first-party": 38.27249578532121
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-21",
+   "target": "p90=100",
+   "x": 100,
+   "y": 34.62054054054054,
+   "yadj": 65.34800649344815,
+   "bench_ratio": 164.28648648648647,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "PD 16P+16D c48 x83 y47 hit0.44",
+    "PD 16P+16D c32 x101 y34 hit0.47"
+   ],
+   "rev": {
+    "cheapest": 2.4049200785533573,
+    "median": 4.9611562007392145,
+    "req-weighted": 4.009398575077001,
+    "first-party": 5.8073287194706165
+   },
+   "revB": {
+    "cheapest": 4.392486700242053,
+    "median": 11.069379148332683,
+    "req-weighted": 8.40672705453256,
+    "first-party": 12.993473363698227
+   },
+   "revC": {
+    "cheapest": 4.539407255224644,
+    "median": 9.364431131318636,
+    "req-weighted": 7.56794088215189,
+    "first-party": 10.961624196051003
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-21",
+   "target": "mkt p90",
+   "x": 42.6946711074105,
+   "y": 56.86524309212521,
+   "yadj": 56.86524309212521,
+   "bench_ratio": 158.2065872258769,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "agg 16P+16D c32 x42 y57 hit0.95",
+    "agg 16P+16D c24 x57 y51 hit0.96"
+   ],
+   "rev": {
+    "cheapest": 3.9501510591357833,
+    "median": 8.148843113604228,
+    "req-weighted": 6.585553577882247,
+    "first-party": 9.53870604538576
+   },
+   "revB": {
+    "cheapest": 7.027764851266298,
+    "median": 17.607017236567604,
+    "req-weighted": 13.39452220777524,
+    "first-party": 20.66596971946032
+   },
+   "revC": {
+    "cheapest": 3.9501510591357833,
+    "median": 8.148843113604228,
+    "req-weighted": 6.585553577882247,
+    "first-party": 9.53870604538576
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-21",
+   "target": "1P p90",
+   "x": 9,
+   "y": 75.9,
+   "yadj": 75.9,
+   "bench_ratio": 143.2,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "agg 16P+16D c56 x25 y76 hit0.94"
+   ],
+   "rev": {
+    "cheapest": 5.272402773389797,
+    "median": 10.876541780021185,
+    "req-weighted": 8.789965352851567,
+    "first-party": 12.731639741201391
+   },
+   "revB": {
+    "cheapest": 8.76406857290969,
+    "median": 21.60718744956554,
+    "req-weighted": 16.51499016129022,
+    "first-party": 25.35592876419475
+   },
+   "revC": {
+    "cheapest": 5.272402773389797,
+    "median": 10.876541780021185,
+    "req-weighted": 8.789965352851567,
+    "first-party": 12.731639741201391
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-21",
+   "target": "max tput",
+   "x": 24.6,
+   "y": 75.9,
+   "yadj": 75.9,
+   "bench_ratio": 143.2,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "agg 16P+16D c56"
+   ],
+   "rev": {
+    "cheapest": 5.272402773389797,
+    "median": 10.876541780021185,
+    "req-weighted": 8.789965352851567,
+    "first-party": 12.731639741201391
+   },
+   "revB": {
+    "cheapest": 8.76406857290969,
+    "median": 21.60718744956554,
+    "req-weighted": 16.51499016129022,
+    "first-party": 25.35592876419475
+   },
+   "revC": {
+    "cheapest": 5.272402773389797,
+    "median": 10.876541780021185,
+    "req-weighted": 8.789965352851567,
+    "first-party": 12.731639741201391
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "p90=100",
+   "x": 100,
+   "y": 107.70518731988473,
+   "yadj": 148.72520271695126,
+   "bench_ratio": 138.5706051873199,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "PD 16P+40D c176 x95 y113 hit0.24",
+    "PD 8P+16D c48 x130 y74 hit0.35"
+   ],
+   "rev": {
+    "cheapest": 7.48175399649312,
+    "median": 15.434255201709277,
+    "req-weighted": 12.473318377657112,
+    "first-party": 18.066714666869366
+   },
+   "revB": {
+    "cheapest": 12.166851454352686,
+    "median": 29.83257498205216,
+    "req-weighted": 22.838713054574512,
+    "first-party": 35.005914408449236
+   },
+   "revC": {
+    "cheapest": 10.331214377836805,
+    "median": 21.312462201489332,
+    "req-weighted": 17.223838985215117,
+    "first-party": 24.947505947686032
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "mkt p90",
+   "x": 42.6946711074105,
+   "y": 174.1,
+   "yadj": 281.73638614389233,
+   "bench_ratio": 135.4,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "PD 16P+24D c240 x55 y174 hit0.14"
+   ],
+   "rev": {
+    "cheapest": 12.09387777137238,
+    "median": 24.948694649561112,
+    "req-weighted": 20.162489696066636,
+    "first-party": 29.203932528895418
+   },
+   "revB": {
+    "cheapest": 19.36850085135155,
+    "median": 47.30518783441269,
+    "req-weighted": 36.256997873970306,
+    "first-party": 55.50568921695611
+   },
+   "revC": {
+    "cheapest": 19.570852485769127,
+    "median": 40.37309057768414,
+    "req-weighted": 32.62784022190282,
+    "first-party": 47.2591063290124
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "1P p90",
+   "x": 9,
+   "y": 174.1,
+   "yadj": 281.73638614389233,
+   "bench_ratio": 135.4,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "PD 16P+24D c240 x55 y174 hit0.14"
+   ],
+   "rev": {
+    "cheapest": 12.09387777137238,
+    "median": 24.948694649561112,
+    "req-weighted": 20.162489696066636,
+    "first-party": 29.203932528895418
+   },
+   "revB": {
+    "cheapest": 19.36850085135155,
+    "median": 47.30518783441269,
+    "req-weighted": 36.256997873970306,
+    "first-party": 55.50568921695611
+   },
+   "revC": {
+    "cheapest": 19.570852485769127,
+    "median": 40.37309057768414,
+    "req-weighted": 32.62784022190282,
+    "first-party": 47.2591063290124
+   }
+  },
+  {
+   "model": "Kimi-K3",
+   "label": "Kimi-K3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-10-20",
+   "target": "max tput",
+   "x": 55.4,
+   "y": 174.1,
+   "yadj": 281.73638614389233,
+   "bench_ratio": 135.4,
+   "mix": {
+    "ratio": 58.15647415786063,
+    "cache": 0.9098973724503266,
+    "reason": 0.6466586697429119,
+    "days": 30,
+    "outB_day": 4.7109053208
+   },
+   "tiers": {
+    "cheapest": 19.295867271957974,
+    "median": 39.80581825509144,
+    "req-weighted": 32.169394498798006,
+    "first-party": 46.59508030010757
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.1529,
+     0.15,
+     10.5572
+    ],
+    "median": [
+     2.5500000000000003,
+     0.255,
+     12.95
+    ],
+    "req-weighted": [
+     1.2334702765811099,
+     0.24321634145458493,
+     12.83580836983673
+    ],
+    "first-party": [
+     3.0,
+     0.3,
+     15.0
+    ]
+   },
+   "topo": [
+    "PD 16P+24D c240"
+   ],
+   "rev": {
+    "cheapest": 12.09387777137238,
+    "median": 24.948694649561112,
+    "req-weighted": 20.162489696066636,
+    "first-party": 29.203932528895418
+   },
+   "revB": {
+    "cheapest": 19.36850085135155,
+    "median": 47.30518783441269,
+    "req-weighted": 36.256997873970306,
+    "first-party": 55.50568921695611
+   },
+   "revC": {
+    "cheapest": 19.570852485769127,
+    "median": 40.37309057768414,
+    "req-weighted": 32.62784022190282,
+    "first-party": 47.2591063290124
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-09-10",
+   "target": "p90=100",
+   "x": 100,
+   "y": 234.78009049773758,
+   "yadj": 234.78009049773758,
+   "bench_ratio": 150.25837104072397,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c25 x83 y257 hit0.86",
+    "agg 4P+4D c15 x150 y170 hit0.95"
+   ],
+   "rev": {
+    "cheapest": 3.6530480978076207,
+    "median": 4.9105867379736035,
+    "req-weighted": 4.818993273795185,
+    "first-party": 4.9105867379736035
+   },
+   "revB": {
+    "cheapest": 8.604978960065795,
+    "median": 11.542636999926515,
+    "req-weighted": 11.327747157406112,
+    "first-party": 11.542636999926515
+   },
+   "revC": {
+    "cheapest": 3.6530480978076207,
+    "median": 4.9105867379736035,
+    "req-weighted": 4.818993273795185,
+    "first-party": 4.9105867379736035
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-09-10",
+   "target": "mkt p90",
+   "x": 52.062132057743234,
+   "y": 275.9,
+   "yadj": 275.9,
+   "bench_ratio": 154.8,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c30 x65 y276 hit0.81"
+   ],
+   "rev": {
+    "cheapest": 4.29285110184773,
+    "median": 5.770637868546068,
+    "req-weighted": 5.663002520449679,
+    "first-party": 5.770637868546068
+   },
+   "revB": {
+    "cheapest": 10.391297726929665,
+    "median": 13.938200312852226,
+    "req-weighted": 13.678721895193755,
+    "first-party": 13.938200312852226
+   },
+   "revC": {
+    "cheapest": 4.29285110184773,
+    "median": 5.770637868546068,
+    "req-weighted": 5.663002520449679,
+    "first-party": 5.770637868546068
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-09-10",
+   "target": "1P p90",
+   "x": 51,
+   "y": 275.9,
+   "yadj": 275.9,
+   "bench_ratio": 154.8,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c30 x65 y276 hit0.81"
+   ],
+   "rev": {
+    "cheapest": 4.29285110184773,
+    "median": 5.770637868546068,
+    "req-weighted": 5.663002520449679,
+    "first-party": 5.770637868546068
+   },
+   "revB": {
+    "cheapest": 10.391297726929665,
+    "median": 13.938200312852226,
+    "req-weighted": 13.678721895193755,
+    "first-party": 13.938200312852226
+   },
+   "revC": {
+    "cheapest": 4.29285110184773,
+    "median": 5.770637868546068,
+    "req-weighted": 5.663002520449679,
+    "first-party": 5.770637868546068
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb200",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-09-10",
+   "target": "max tput",
+   "x": 65.2,
+   "y": 275.9,
+   "yadj": 275.9,
+   "bench_ratio": 154.8,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c30"
+   ],
+   "rev": {
+    "cheapest": 4.29285110184773,
+    "median": 5.770637868546068,
+    "req-weighted": 5.663002520449679,
+    "first-party": 5.770637868546068
+   },
+   "revB": {
+    "cheapest": 10.391297726929665,
+    "median": 13.938200312852226,
+    "req-weighted": 13.678721895193755,
+    "first-party": 13.938200312852226
+   },
+   "revC": {
+    "cheapest": 4.29285110184773,
+    "median": 5.770637868546068,
+    "req-weighted": 5.663002520449679,
+    "first-party": 5.770637868546068
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-08-21",
+   "target": "p90=100",
+   "x": 100,
+   "y": 344.57075208913653,
+   "yadj": 344.57075208913653,
+   "bench_ratio": 126.50278551532033,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "PD 4P+10D c120 x99 y346 hitNone",
+    "PD 2P+6D c48 x135 y255 hitNone"
+   ],
+   "rev": {
+    "cheapest": 5.361329948424613,
+    "median": 7.206933781801269,
+    "req-weighted": 7.072508291243282,
+    "first-party": 7.206933781801269
+   },
+   "revB": {
+    "cheapest": 10.804908177293507,
+    "median": 14.497440338322109,
+    "req-weighted": 14.22747711520888,
+    "first-party": 14.497440338322109
+   },
+   "revC": {
+    "cheapest": 5.361329948424613,
+    "median": 7.206933781801269,
+    "req-weighted": 7.072508291243282,
+    "first-party": 7.206933781801269
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-08-21",
+   "target": "mkt p90",
+   "x": 52.062132057743234,
+   "y": 346.1,
+   "yadj": 346.1,
+   "bench_ratio": 126.1,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "PD 4P+10D c120 x99 y346 hitNone"
+   ],
+   "rev": {
+    "cheapest": 5.38512419843965,
+    "median": 7.238919051481675,
+    "req-weighted": 7.103896963855143,
+    "first-party": 7.238919051481675
+   },
+   "revB": {
+    "cheapest": 10.821797224167886,
+    "median": 14.520177568081989,
+    "req-weighted": 14.249789678115446,
+    "first-party": 14.520177568081989
+   },
+   "revC": {
+    "cheapest": 5.38512419843965,
+    "median": 7.238919051481675,
+    "req-weighted": 7.103896963855143,
+    "first-party": 7.238919051481675
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-08-21",
+   "target": "1P p90",
+   "x": 51,
+   "y": 346.1,
+   "yadj": 346.1,
+   "bench_ratio": 126.1,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "PD 4P+10D c120 x99 y346 hitNone"
+   ],
+   "rev": {
+    "cheapest": 5.38512419843965,
+    "median": 7.238919051481675,
+    "req-weighted": 7.103896963855143,
+    "first-party": 7.238919051481675
+   },
+   "revB": {
+    "cheapest": 10.821797224167886,
+    "median": 14.520177568081989,
+    "req-weighted": 14.249789678115446,
+    "first-party": 14.520177568081989
+   },
+   "revC": {
+    "cheapest": 5.38512419843965,
+    "median": 7.238919051481675,
+    "req-weighted": 7.103896963855143,
+    "first-party": 7.238919051481675
+   }
+  },
+  {
+   "model": "MiniMax-M3",
+   "label": "MiniMax-M3",
+   "hw": "gb300",
+   "stack": "dynamo-vllm",
+   "spec": "mtp",
+   "date": "2026-08-21",
+   "target": "max tput",
+   "x": 99.4,
+   "y": 346.1,
+   "yadj": 346.1,
+   "bench_ratio": 126.1,
+   "mix": {
+    "ratio": 55.60749354432898,
+    "cache": 0.9045794620934398,
+    "reason": 0.6417279946258316,
+    "days": 30,
+    "outB_day": 3.3023259471
+   },
+   "tiers": {
+    "cheapest": 4.32206828344381,
+    "median": 5.809912879612247,
+    "req-weighted": 5.701544964409084,
+    "first-party": 5.809912879612247
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.224,
+     0.0448,
+     0.88
+    ],
+    "median": [
+     0.3,
+     0.06,
+     1.2
+    ],
+    "req-weighted": [
+     0.2931374733065687,
+     0.059020114461433335,
+     1.1773349278209617
+    ],
+    "first-party": [
+     0.3,
+     0.06,
+     1.2
+    ]
+   },
+   "topo": [
+    "PD 4P+10D c120"
+   ],
+   "rev": {
+    "cheapest": 5.38512419843965,
+    "median": 7.238919051481675,
+    "req-weighted": 7.103896963855143,
+    "first-party": 7.238919051481675
+   },
+   "revB": {
+    "cheapest": 10.821797224167886,
+    "median": 14.520177568081989,
+    "req-weighted": 14.249789678115446,
+    "first-party": 14.520177568081989
+   },
+   "revC": {
+    "cheapest": 5.38512419843965,
+    "median": 7.238919051481675,
+    "req-weighted": 7.103896963855143,
+    "first-party": 7.238919051481675
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb200",
+   "stack": "vllm",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "p90=100",
+   "x": 100,
+   "y": 316.9,
+   "yadj": 316.9,
+   "bench_ratio": 165.3,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c32 x116 y317 hit0.92"
+   ],
+   "rev": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   },
+   "revB": {
+    "cheapest": 3.3087488709108186,
+    "median": 4.951844872162006,
+    "req-weighted": 4.822291104698265,
+    "first-party": 4.951844872162006
+   },
+   "revC": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb200",
+   "stack": "vllm",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "mkt p90",
+   "x": 43.67297272306981,
+   "y": 316.9,
+   "yadj": 316.9,
+   "bench_ratio": 165.3,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c32 x116 y317 hit0.92"
+   ],
+   "rev": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   },
+   "revB": {
+    "cheapest": 3.3087488709108186,
+    "median": 4.951844872162006,
+    "req-weighted": 4.822291104698265,
+    "first-party": 4.951844872162006
+   },
+   "revC": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb200",
+   "stack": "vllm",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "1P p90",
+   "x": 42,
+   "y": 316.9,
+   "yadj": 316.9,
+   "bench_ratio": 165.3,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c32 x116 y317 hit0.92"
+   ],
+   "rev": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   },
+   "revB": {
+    "cheapest": 3.3087488709108186,
+    "median": 4.951844872162006,
+    "req-weighted": 4.822291104698265,
+    "first-party": 4.951844872162006
+   },
+   "revC": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb200",
+   "stack": "vllm",
+   "spec": "mtp",
+   "date": "2026-10-23",
+   "target": "max tput",
+   "x": 115.7,
+   "y": 316.9,
+   "yadj": 316.9,
+   "bench_ratio": 165.3,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c32"
+   ],
+   "rev": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   },
+   "revB": {
+    "cheapest": 3.3087488709108186,
+    "median": 4.951844872162006,
+    "req-weighted": 4.822291104698265,
+    "first-party": 4.951844872162006
+   },
+   "revC": {
+    "cheapest": 2.1209062615589565,
+    "median": 3.100741679105158,
+    "req-weighted": 3.024343008395174,
+    "first-party": 3.100741679105158
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-25",
+   "target": "p90=100",
+   "x": 100,
+   "y": 704.5667984189723,
+   "yadj": 704.5667984189723,
+   "bench_ratio": 140.3898023715415,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c64 x86 y746 hit0.82",
+    "agg 4P+4D c32 x213 y363 hit0.96"
+   ],
+   "rev": {
+    "cheapest": 4.715431159524599,
+    "median": 6.893908607041305,
+    "req-weighted": 6.724050712356551,
+    "first-party": 6.893908607041305
+   },
+   "revB": {
+    "cheapest": 6.438907236493508,
+    "median": 9.579729139253917,
+    "req-weighted": 9.3327469379457,
+    "first-party": 9.579729139253917
+   },
+   "revC": {
+    "cheapest": 4.715431159524599,
+    "median": 6.893908607041305,
+    "req-weighted": 6.724050712356551,
+    "first-party": 6.893908607041305
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-25",
+   "target": "mkt p90",
+   "x": 43.67297272306981,
+   "y": 746.1,
+   "yadj": 746.1,
+   "bench_ratio": 137.0,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c64 x86 y746 hit0.82"
+   ],
+   "rev": {
+    "cheapest": 4.9933990588486505,
+    "median": 7.300294625371911,
+    "req-weighted": 7.1204238515734914,
+    "first-party": 7.300294625371911
+   },
+   "revB": {
+    "cheapest": 6.6862622995904815,
+    "median": 9.938408905558939,
+    "req-weighted": 9.68278372739409,
+    "first-party": 9.938408905558939
+   },
+   "revC": {
+    "cheapest": 4.9933990588486505,
+    "median": 7.300294625371911,
+    "req-weighted": 7.1204238515734914,
+    "first-party": 7.300294625371911
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-25",
+   "target": "1P p90",
+   "x": 42,
+   "y": 746.1,
+   "yadj": 746.1,
+   "bench_ratio": 137.0,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c64 x86 y746 hit0.82"
+   ],
+   "rev": {
+    "cheapest": 4.9933990588486505,
+    "median": 7.300294625371911,
+    "req-weighted": 7.1204238515734914,
+    "first-party": 7.300294625371911
+   },
+   "revB": {
+    "cheapest": 6.6862622995904815,
+    "median": 9.938408905558939,
+    "req-weighted": 9.68278372739409,
+    "first-party": 9.938408905558939
+   },
+   "revC": {
+    "cheapest": 4.9933990588486505,
+    "median": 7.300294625371911,
+    "req-weighted": 7.1204238515734914,
+    "first-party": 7.300294625371911
+   }
+  },
+  {
+   "model": "MiniMax-M3.1-Flash",
+   "label": "MiniMax-M3.1-Flash",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-25",
+   "target": "max tput",
+   "x": 86.3,
+   "y": 746.1,
+   "yadj": 746.1,
+   "bench_ratio": 137.0,
+   "mix": {
+    "ratio": 93.59554352960056,
+    "cache": 0.9434910582205598,
+    "reason": 0.596484595903451,
+    "days": 7,
+    "outB_day": 1.1917458458571428
+   },
+   "tiers": {
+    "cheapest": 1.8590742449063464,
+    "median": 2.7179461441614583,
+    "req-weighted": 2.650979110475767,
+    "first-party": 2.7179461441614583
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.09,
+     0.01,
+     0.5
+    ],
+    "median": [
+     0.15,
+     0.015,
+     0.6
+    ],
+    "req-weighted": [
+     0.14544027392510403,
+     0.014584388002773924,
+     0.5938505547850208
+    ],
+    "first-party": [
+     0.15,
+     0.015,
+     0.6
+    ]
+   },
+   "topo": [
+    "agg 4P+4D c64"
+   ],
+   "rev": {
+    "cheapest": 4.9933990588486505,
+    "median": 7.300294625371911,
+    "req-weighted": 7.1204238515734914,
+    "first-party": 7.300294625371911
+   },
+   "revB": {
+    "cheapest": 6.6862622995904815,
+    "median": 9.938408905558939,
+    "req-weighted": 9.68278372739409,
+    "first-party": 9.938408905558939
+   },
+   "revC": {
+    "cheapest": 4.9933990588486505,
+    "median": 7.300294625371911,
+    "req-weighted": 7.1204238515734914,
+    "first-party": 7.300294625371911
+   }
+  },
+  {
+   "model": "Muse-Spark-Open",
+   "label": "Muse-Spark-Open",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "draft_model",
+   "date": "2026-10-24",
+   "target": "p90=100",
+   "x": 100,
+   "y": 241.12380952380954,
+   "yadj": 241.12380952380954,
+   "bench_ratio": 149.27142857142857,
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "eps_tiers": {
+    "cheapest": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "median": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "req-weighted": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "first-party": null
+   },
+   "topo": [
+    "agg 4P+4D c28 x96 y246 hit0.19",
+    "agg 4P+4D c24 x117 y219 hit0.58"
+   ],
+   "rev": {
+    "cheapest": 23.775359470844734,
+    "median": 23.775359470844734,
+    "req-weighted": 23.77535947084473,
+    "first-party": null
+   },
+   "revB": {
+    "cheapest": 75.16305409467472,
+    "median": 75.16305409467472,
+    "req-weighted": 75.16305409467472,
+    "first-party": null
+   },
+   "revC": {
+    "cheapest": 23.775359470844734,
+    "median": 23.775359470844734,
+    "req-weighted": 23.77535947084473,
+    "first-party": null
+   }
+  },
+  {
+   "model": "Muse-Spark-Open",
+   "label": "Muse-Spark-Open",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "draft_model",
+   "date": "2026-10-24",
+   "target": "mkt p90",
+   "x": 72.73188110749187,
+   "y": 246.6,
+   "yadj": 246.6,
+   "bench_ratio": 156.9,
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "eps_tiers": {
+    "cheapest": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "median": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "req-weighted": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "first-party": null
+   },
+   "topo": [
+    "agg 4P+4D c32 x90 y247 hit0.14"
+   ],
+   "rev": {
+    "cheapest": 24.315324384966534,
+    "median": 24.315324384966534,
+    "req-weighted": 24.31532438496653,
+    "first-party": null
+   },
+   "revB": {
+    "cheapest": 80.60574564867578,
+    "median": 80.60574564867578,
+    "req-weighted": 80.60574564867578,
+    "first-party": null
+   },
+   "revC": {
+    "cheapest": 24.315324384966534,
+    "median": 24.315324384966534,
+    "req-weighted": 24.31532438496653,
+    "first-party": null
+   }
+  },
+  {
+   "model": "Muse-Spark-Open",
+   "label": "Muse-Spark-Open",
+   "hw": "gb200",
+   "stack": "sglang",
+   "spec": "draft_model",
+   "date": "2026-10-24",
+   "target": "max tput",
+   "x": 90.3,
+   "y": 246.6,
+   "yadj": 246.6,
+   "bench_ratio": 156.9,
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "eps_tiers": {
+    "cheapest": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "median": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "req-weighted": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "first-party": null
+   },
+   "topo": [
+    "agg 4P+4D c32"
+   ],
+   "rev": {
+    "cheapest": 24.315324384966534,
+    "median": 24.315324384966534,
+    "req-weighted": 24.31532438496653,
+    "first-party": null
+   },
+   "revB": {
+    "cheapest": 80.60574564867578,
+    "median": 80.60574564867578,
+    "req-weighted": 80.60574564867578,
+    "first-party": null
+   },
+   "revC": {
+    "cheapest": 24.315324384966534,
+    "median": 24.315324384966534,
+    "req-weighted": 24.31532438496653,
+    "first-party": null
+   }
+  },
+  {
+   "model": "Muse-Spark-Open",
+   "label": "Muse-Spark-Open",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "draft_model",
+   "date": "2026-10-23",
+   "target": "p90=100",
+   "x": 100,
+   "y": 308.54671532846714,
+   "yadj": 308.54671532846714,
+   "bench_ratio": 152.81386861313868,
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "eps_tiers": {
+    "cheapest": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "median": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "req-weighted": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "first-party": null
+   },
+   "topo": [
+    "agg 4P+4D c44 x78 y364 hit0.83",
+    "agg 4P+4D c34 x105 y295 hit0.94"
+   ],
+   "rev": {
+    "cheapest": 30.423412291677224,
+    "median": 30.423412291677224,
+    "req-weighted": 30.42341229167722,
+    "first-party": null
+   },
+   "revB": {
+    "cheapest": 98.35057606076711,
+    "median": 98.35057606076711,
+    "req-weighted": 98.35057606076711,
+    "first-party": null
+   },
+   "revC": {
+    "cheapest": 30.423412291677224,
+    "median": 30.423412291677224,
+    "req-weighted": 30.42341229167722,
+    "first-party": null
+   }
+  },
+  {
+   "model": "Muse-Spark-Open",
+   "label": "Muse-Spark-Open",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "draft_model",
+   "date": "2026-10-23",
+   "target": "mkt p90",
+   "x": 72.73188110749187,
+   "y": 383.6,
+   "yadj": 383.6,
+   "bench_ratio": 144.3,
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "eps_tiers": {
+    "cheapest": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "median": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "req-weighted": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "first-party": null
+   },
+   "topo": [
+    "agg 4P+4D c48 x73 y384 hit0.78"
+   ],
+   "rev": {
+    "cheapest": 37.82383793217016,
+    "median": 37.82383793217016,
+    "req-weighted": 37.82383793217015,
+    "first-party": null
+   },
+   "revB": {
+    "cheapest": 115.78874090464899,
+    "median": 115.78874090464899,
+    "req-weighted": 115.78874090464899,
+    "first-party": null
+   },
+   "revC": {
+    "cheapest": 37.82383793217016,
+    "median": 37.82383793217016,
+    "req-weighted": 37.82383793217015,
+    "first-party": null
+   }
+  },
+  {
+   "model": "Muse-Spark-Open",
+   "label": "Muse-Spark-Open",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "draft_model",
+   "date": "2026-10-23",
+   "target": "max tput",
+   "x": 72.9,
+   "y": 383.6,
+   "yadj": 383.6,
+   "bench_ratio": 144.3,
+   "mix": {
+    "ratio": 41.9494704738225,
+    "cache": 0.6349048278580716,
+    "reason": 0.7095556348950374,
+    "days": 11,
+    "outB_day": 0.33468911072727275
+   },
+   "tiers": {
+    "cheapest": 27.389524629366644,
+    "median": 27.389524629366644,
+    "req-weighted": 27.38952462936664,
+    "first-party": null
+   },
+   "eps_tiers": {
+    "cheapest": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "median": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "req-weighted": [
+     1.25,
+     0.15,
+     4.25
+    ],
+    "first-party": null
+   },
+   "topo": [
+    "agg 4P+4D c48"
+   ],
+   "rev": {
+    "cheapest": 37.82383793217016,
+    "median": 37.82383793217016,
+    "req-weighted": 37.82383793217015,
+    "first-party": null
+   },
+   "revB": {
+    "cheapest": 115.78874090464899,
+    "median": 115.78874090464899,
+    "req-weighted": 115.78874090464899,
+    "first-party": null
+   },
+   "revC": {
+    "cheapest": 37.82383793217016,
+    "median": 37.82383793217016,
+    "req-weighted": 37.82383793217015,
+    "first-party": null
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-09-11",
+   "target": "p90=100",
+   "x": 100,
+   "y": 634.2888717156105,
+   "yadj": 634.2888717156105,
+   "bench_ratio": 114.47789799072642,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "agg 2P+2D c32 x82 y676 hitNone",
+    "agg 2P+2D c22 x147 y527 hitNone"
+   ],
+   "rev": {
+    "cheapest": 10.973829489907144,
+    "median": 14.43087335962111,
+    "req-weighted": 15.217258279688423,
+    "first-party": 10.973829489907144
+   },
+   "revB": {
+    "cheapest": 107.29057713642163,
+    "median": 120.83932369072608,
+    "req-weighted": 137.0924014957815,
+    "first-party": 107.29057713642163
+   },
+   "revC": {
+    "cheapest": 10.973829489907144,
+    "median": 14.43087335962111,
+    "req-weighted": 15.217258279688423,
+    "first-party": 10.973829489907144
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-22",
+   "target": "mkt p90",
+   "x": 37.54964200477327,
+   "y": 910.4,
+   "yadj": 910.4,
+   "bench_ratio": 99.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "agg 2P+2D c48 x50 y910 hit0.8"
+   ],
+   "rev": {
+    "cheapest": 15.750827128007431,
+    "median": 20.712750439817817,
+    "req-weighted": 21.841455140710433,
+    "first-party": 15.750827128007431
+   },
+   "revB": {
+    "cheapest": 134.85026879999998,
+    "median": 152.29286452125373,
+    "req-weighted": 172.54485683780976,
+    "first-party": 134.85026879999998
+   },
+   "revC": {
+    "cheapest": 15.750827128007431,
+    "median": 20.712750439817817,
+    "req-weighted": 21.841455140710433,
+    "first-party": 15.750827128007431
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-22",
+   "target": "1P p90",
+   "x": 38.4,
+   "y": 910.4,
+   "yadj": 910.4,
+   "bench_ratio": 99.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "agg 2P+2D c48 x50 y910 hit0.8"
+   ],
+   "rev": {
+    "cheapest": 15.750827128007431,
+    "median": 20.712750439817817,
+    "req-weighted": 21.841455140710433,
+    "first-party": 15.750827128007431
+   },
+   "revB": {
+    "cheapest": 134.85026879999998,
+    "median": 152.29286452125373,
+    "req-weighted": 172.54485683780976,
+    "first-party": 134.85026879999998
+   },
+   "revC": {
+    "cheapest": 15.750827128007431,
+    "median": 20.712750439817817,
+    "req-weighted": 21.841455140710433,
+    "first-party": 15.750827128007431
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb200",
+   "stack": "dynamo-sglang",
+   "spec": "mtp",
+   "date": "2026-10-22",
+   "target": "max tput",
+   "x": 50,
+   "y": 910.4,
+   "yadj": 910.4,
+   "bench_ratio": 99.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "agg 2P+2D c48"
+   ],
+   "rev": {
+    "cheapest": 15.750827128007431,
+    "median": 20.712750439817817,
+    "req-weighted": 21.841455140710433,
+    "first-party": 15.750827128007431
+   },
+   "revB": {
+    "cheapest": 134.85026879999998,
+    "median": 152.29286452125373,
+    "req-weighted": 172.54485683780976,
+    "first-party": 134.85026879999998
+   },
+   "revC": {
+    "cheapest": 15.750827128007431,
+    "median": 20.712750439817817,
+    "req-weighted": 21.841455140710433,
+    "first-party": 15.750827128007431
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb300",
+   "stack": "dynamo-trt",
+   "spec": "mtp",
+   "date": "2026-10-17",
+   "target": "p90=100",
+   "x": 100,
+   "y": 1430.0,
+   "yadj": 1464.5017123775162,
+   "bench_ratio": 104.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c704 x119 y1430 hit0.96"
+   ],
+   "rev": {
+    "cheapest": 24.740424860556487,
+    "median": 32.53430703969626,
+    "req-weighted": 34.3072065588927,
+    "first-party": 24.740424860556487
+   },
+   "revB": {
+    "cheapest": 221.85306,
+    "median": 250.30162791255876,
+    "req-weighted": 283.7252073149692,
+    "first-party": 221.85306
+   },
+   "revC": {
+    "cheapest": 25.337338862400177,
+    "median": 33.319264594860876,
+    "req-weighted": 35.134938987683576,
+    "first-party": 25.337338862400177
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb300",
+   "stack": "dynamo-trt",
+   "spec": "mtp",
+   "date": "2026-10-17",
+   "target": "mkt p90",
+   "x": 37.54964200477327,
+   "y": 1430.0,
+   "yadj": 1464.5017123775162,
+   "bench_ratio": 104.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c704 x119 y1430 hit0.96"
+   ],
+   "rev": {
+    "cheapest": 24.740424860556487,
+    "median": 32.53430703969626,
+    "req-weighted": 34.3072065588927,
+    "first-party": 24.740424860556487
+   },
+   "revB": {
+    "cheapest": 221.85306,
+    "median": 250.30162791255876,
+    "req-weighted": 283.7252073149692,
+    "first-party": 221.85306
+   },
+   "revC": {
+    "cheapest": 25.337338862400177,
+    "median": 33.319264594860876,
+    "req-weighted": 35.134938987683576,
+    "first-party": 25.337338862400177
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb300",
+   "stack": "dynamo-trt",
+   "spec": "mtp",
+   "date": "2026-10-17",
+   "target": "1P p90",
+   "x": 38.4,
+   "y": 1430.0,
+   "yadj": 1464.5017123775162,
+   "bench_ratio": 104.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c704 x119 y1430 hit0.96"
+   ],
+   "rev": {
+    "cheapest": 24.740424860556487,
+    "median": 32.53430703969626,
+    "req-weighted": 34.3072065588927,
+    "first-party": 24.740424860556487
+   },
+   "revB": {
+    "cheapest": 221.85306,
+    "median": 250.30162791255876,
+    "req-weighted": 283.7252073149692,
+    "first-party": 221.85306
+   },
+   "revC": {
+    "cheapest": 25.337338862400177,
+    "median": 33.319264594860876,
+    "req-weighted": 35.134938987683576,
+    "first-party": 25.337338862400177
+   }
+  },
+  {
+   "model": "Qwen-3.5-397B-A17B",
+   "label": "Qwen3.5-397B-A17B",
+   "hw": "gb300",
+   "stack": "dynamo-trt",
+   "spec": "mtp",
+   "date": "2026-10-17",
+   "target": "max tput",
+   "x": 119.3,
+   "y": 1430.0,
+   "yadj": 1464.5017123775162,
+   "bench_ratio": 104.5,
+   "mix": {
+    "ratio": 6.322647012808802,
+    "cache": 0.35244936516837366,
+    "reason": 0.7089548468934634,
+    "days": 30,
+    "outB_day": 0.6714891929333333
+   },
+   "tiers": {
+    "cheapest": 4.805832334995433,
+    "median": 6.319795462256461,
+    "req-weighted": 6.664181538246446,
+    "first-party": 4.805832334995433
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.39,
+     0.39,
+     2.34
+    ],
+    "median": [
+     0.6,
+     0.12,
+     3.5999999999999996
+    ],
+    "req-weighted": [
+     0.5559546539379475,
+     0.37872315035799525,
+     3.544021479713604
+    ],
+    "first-party": [
+     0.39,
+     0.39,
+     2.34
+    ]
+   },
+   "topo": [
+    "PD 12P+8D c704"
+   ],
+   "rev": {
+    "cheapest": 24.740424860556487,
+    "median": 32.53430703969626,
+    "req-weighted": 34.3072065588927,
+    "first-party": 24.740424860556487
+   },
+   "revB": {
+    "cheapest": 221.85306,
+    "median": 250.30162791255876,
+    "req-weighted": 283.7252073149692,
+    "first-party": 221.85306
+   },
+   "revC": {
+    "cheapest": 25.337338862400177,
+    "median": 33.319264594860876,
+    "req-weighted": 35.134938987683576,
+    "first-party": 25.337338862400177
+   }
+  },
+  {
+   "model": "Qwen3.8-Flash-Next",
+   "label": "Qwen3.8-Flash(-Next)",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-09",
+   "target": "p90=100",
+   "x": 100,
+   "y": 606.5455138662317,
+   "yadj": 606.5455138662317,
+   "bench_ratio": 110.23344208809135,
+   "mix": {
+    "ratio": 17.88133121831041,
+    "cache": 0.862952148777257,
+    "reason": 0.8175465173608389,
+    "days": 30,
+    "outB_day": 4.3332904665
+   },
+   "tiers": {
+    "cheapest": 1.0844814342361602,
+    "median": 1.0844814342361602,
+    "req-weighted": 1.0844814342361602,
+    "first-party": 1.0844814342361602
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "median": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "req-weighted": [
+     0.15000000000000002,
+     0.016,
+     0.47
+    ],
+    "first-party": [
+     0.15,
+     0.016,
+     0.47
+    ]
+   },
+   "topo": [
+    "agg 1P+1D c16 x82 y703 hit0.94",
+    "agg 1P+1D c8 x143 y375 hit0.94"
+   ],
+   "rev": {
+    "cheapest": 2.368034455705775,
+    "median": 2.368034455705775,
+    "req-weighted": 2.368034455705775,
+    "first-party": 2.368034455705775
+   },
+   "revB": {
+    "cheapest": 9.297849446953423,
+    "median": 9.297849446953423,
+    "req-weighted": 9.297849446953423,
+    "first-party": 9.297849446953423
+   },
+   "revC": {
+    "cheapest": 2.368034455705775,
+    "median": 2.368034455705775,
+    "req-weighted": 2.368034455705775,
+    "first-party": 2.368034455705775
+   }
+  },
+  {
+   "model": "Qwen3.8-Flash-Next",
+   "label": "Qwen3.8-Flash(-Next)",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-09",
+   "target": "mkt p90",
+   "x": 32.39040509117611,
+   "y": 1221.718816368954,
+   "yadj": 1221.718816368954,
+   "bench_ratio": 110.90976172359298,
+   "mix": {
+    "ratio": 17.88133121831041,
+    "cache": 0.862952148777257,
+    "reason": 0.8175465173608389,
+    "days": 30,
+    "outB_day": 4.3332904665
+   },
+   "tiers": {
+    "cheapest": 1.0844814342361602,
+    "median": 1.0844814342361602,
+    "req-weighted": 1.0844814342361602,
+    "first-party": 1.0844814342361602
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "median": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "req-weighted": [
+     0.15000000000000002,
+     0.016,
+     0.47
+    ],
+    "first-party": [
+     0.15,
+     0.016,
+     0.47
+    ]
+   },
+   "topo": [
+    "agg 1P+1D c48 x27 y1329 hit0.75",
+    "agg 1P+1D c32 x41 y1059 hit0.91"
+   ],
+   "rev": {
+    "cheapest": 4.769752947152787,
+    "median": 4.769752947152787,
+    "req-weighted": 4.769752947152787,
+    "first-party": 4.769752947152787
+   },
+   "revB": {
+    "cheapest": 18.830175594918757,
+    "median": 18.830175594918757,
+    "req-weighted": 18.830175594918757,
+    "first-party": 18.830175594918757
+   },
+   "revC": {
+    "cheapest": 4.769752947152787,
+    "median": 4.769752947152787,
+    "req-weighted": 4.769752947152787,
+    "first-party": 4.769752947152787
+   }
+  },
+  {
+   "model": "Qwen3.8-Flash-Next",
+   "label": "Qwen3.8-Flash(-Next)",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-09",
+   "target": "1P p90",
+   "x": 34,
+   "y": 1190.2384057971014,
+   "yadj": 1190.2384057971014,
+   "bench_ratio": 112.55434782608695,
+   "mix": {
+    "ratio": 17.88133121831041,
+    "cache": 0.862952148777257,
+    "reason": 0.8175465173608389,
+    "days": 30,
+    "outB_day": 4.3332904665
+   },
+   "tiers": {
+    "cheapest": 1.0844814342361602,
+    "median": 1.0844814342361602,
+    "req-weighted": 1.0844814342361602,
+    "first-party": 1.0844814342361602
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "median": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "req-weighted": [
+     0.15000000000000002,
+     0.016,
+     0.47
+    ],
+    "first-party": [
+     0.15,
+     0.016,
+     0.47
+    ]
+   },
+   "topo": [
+    "agg 1P+1D c48 x27 y1329 hit0.75",
+    "agg 1P+1D c32 x41 y1059 hit0.91"
+   ],
+   "rev": {
+    "cheapest": 4.646849232246486,
+    "median": 4.646849232246486,
+    "req-weighted": 4.646849232246486,
+    "first-party": 4.646849232246486
+   },
+   "revB": {
+    "cheapest": 18.587132344681354,
+    "median": 18.587132344681354,
+    "req-weighted": 18.587132344681354,
+    "first-party": 18.587132344681354
+   },
+   "revC": {
+    "cheapest": 4.646849232246486,
+    "median": 4.646849232246486,
+    "req-weighted": 4.646849232246486,
+    "first-party": 4.646849232246486
+   }
+  },
+  {
+   "model": "Qwen3.8-Flash-Next",
+   "label": "Qwen3.8-Flash(-Next)",
+   "hw": "gb300",
+   "stack": "sglang",
+   "spec": "mtp",
+   "date": "2026-10-09",
+   "target": "max tput",
+   "x": 21.9,
+   "y": 1394.1,
+   "yadj": 1394.1,
+   "bench_ratio": 95.3,
+   "mix": {
+    "ratio": 17.88133121831041,
+    "cache": 0.862952148777257,
+    "reason": 0.8175465173608389,
+    "days": 30,
+    "outB_day": 4.3332904665
+   },
+   "tiers": {
+    "cheapest": 1.0844814342361602,
+    "median": 1.0844814342361602,
+    "req-weighted": 1.0844814342361602,
+    "first-party": 1.0844814342361602
+   },
+   "eps_tiers": {
+    "cheapest": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "median": [
+     0.15,
+     0.016,
+     0.47
+    ],
+    "req-weighted": [
+     0.15000000000000002,
+     0.016,
+     0.47
+    ],
+    "first-party": [
+     0.15,
+     0.016,
+     0.47
+    ]
+   },
+   "topo": [
+    "agg 1P+1D c64"
+   ],
+   "rev": {
+    "cheapest": 5.442752042887071,
+    "median": 5.442752042887071,
+    "req-weighted": 5.442752042887071,
+    "first-party": 5.442752042887071
+   },
+   "revB": {
+    "cheapest": 18.794897206514644,
+    "median": 18.794897206514644,
+    "req-weighted": 18.794897206514644,
+    "first-party": 18.794897206514644
+   },
+   "revC": {
+    "cheapest": 5.442752042887071,
+    "median": 5.442752042887071,
+    "req-weighted": 5.442752042887071,
+    "first-party": 5.442752042887071
+   }
+  }
+ ]
+}

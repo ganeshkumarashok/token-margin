@@ -1,0 +1,247 @@
+===== deepseek_deepseek-v4-pro-0813.html 24
+   Sail Research    None                     q=fp4    v=standard tp50=108 tp90=55 lat50=842 n=5295 price={'prompt_tokens': 0.45, 'completion_tokens': 0.8, 'cached_prompt_tokens': 0.065}
+   Sail Research    None                     q=fp4    v=standard tp50=92 tp90=50 lat50=1113 n=2643 price={'prompt_tokens': 0.45, 'completion_tokens': 0.8, 'cached_prompt_tokens': 0.065}
+   Wafer            None                     q=mxfp4  v=standard tp50=163 tp90=82 lat50=433 n=3465 price={'prompt_tokens': 0.285, 'completion_tokens': 4.3, 'cached_prompt_tokens': 0.284}
+   CoreWeave        None                     q=fp8    v=standard tp50=142 tp90=97 lat50=639.5 n=1198 price={'prompt_tokens': 1.31, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   Together         None                     q=unknow v=standard tp50=131.5 tp90=68 lat50=742 n=775 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.13}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=69 tp90=48.8 lat50=1344 n=325 price={'prompt_tokens': 0.581, 'completion_tokens': 1.742, 'cached_prompt_tokens': 0.058, 'peak_prompt_tokens': 1.122, 'peak_completion_tokens': 3.366, 'peak_cached_prompt_tokens': 0.112}
+   StreamLake       None                     q=unknow v=standard tp50=49 tp90=31 lat50=2307 n=2591 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   Ionstream        None                     q=unknow v=standard tp50=54 tp90=27 lat50=726 n=6984 price={'prompt_tokens': 0.37, 'completion_tokens': 2.93, 'cached_prompt_tokens': 0.088}
+   GMICloud         None                     q=fp8    v=standard tp50=57.5 tp90=33 lat50=2230.5 n=124 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   Relace           None                     q=fp4    v=standard tp50=127 tp90=60.80000000000001 lat50=1056.5 n=1238 price={'prompt_tokens': 0.257, 'completion_tokens': 8.0, 'cached_prompt_tokens': 0.26}
+   DekaLLM          None                     q=unknow v=standard tp50=95 tp90=52.800000000000004 lat50=993 n=105 price={'prompt_tokens': 1.08, 'completion_tokens': 3.8, 'cached_prompt_tokens': 0.18}
+   NovitaAI         None                     q=fp8    v=standard tp50=45 tp90=25 lat50=2721.5 n=510 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   DigitalOcean     None                     q=unknow v=standard tp50=43 tp90=33 lat50=1068 n=45 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=53 tp90=37 lat50=1264.5 n=68 price={'prompt_tokens': 0.66, 'completion_tokens': 1.98, 'cached_prompt_tokens': 0.066, 'peak_prompt_tokens': 1.32, 'peak_completion_tokens': 3.96, 'peak_cached_prompt_tokens': 0.132}
+   SiliconFlow      None                     q=fp8    v=standard tp50=59 tp90=40 lat50=1509 n=29 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   AtlasCloud       None                     q=fp8    v=standard tp50=44 tp90=34 lat50=1099 n=127 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.132}
+   Phala            None                     q=unknow v=standard tp50=63 tp90=36 lat50=2991 n=39 price={'prompt_tokens': 1.45, 'completion_tokens': 4.36, 'cached_prompt_tokens': 0.15}
+   Baidu Qianfan    None                     q=fp8    v=standard tp50=39 tp90=28 lat50=1149 n=284 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.042}
+   Parasail         None                     q=fp8    v=standard tp50=45 tp90=21.8 lat50=1100 n=63 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   Venice           None                     q=unknow v=standard tp50=62 tp90=34 lat50=1221 n=7 price={'prompt_tokens': 1.65, 'completion_tokens': 4.95, 'cached_prompt_tokens': 0.165}
+   Cloudflare       None                     q=unknow v=standard tp50=30 tp90=19 lat50=1863 n=56 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.044}
+   DeepSeek         None                     q=unknow v=standard tp50=40 tp90=31 lat50=934 n=95080 price={'cache_hit_tokens': 0.022, 'cache_miss_tokens': 0.66, 'completion_tokens': 1.98, 'peak_window_0_end': 400000000.0, 'peak_window_1_end': 1000000000.0, 'peak_window_0_start': 100000000.0, 'peak_window_1_start': 600000000.0, 'peak_cache_hit_tokens': 0.044, 'peak_cache_miss_tokens': 1.32, 'peak_completion_tokens': 3.96, 'off_peak_all_day_sunday': 1000000.0, 'off_peak_all_day_saturday': 1000000.0}
+   DeepInfra        None                     q=fp8    v=standard tp50=45 tp90=28 lat50=1161.5 n=494 price={'prompt_tokens': 1.3, 'completion_tokens': 2.6, 'cached_prompt_tokens': 0.1}
+   Baseten          None                     q=fp4    v=standard tp50=38 tp90=28 lat50=931 n=1965 price={'prompt_tokens': 1.32, 'completion_tokens': 3.96, 'cached_prompt_tokens': 0.132}
+===== deepseek_deepseek-v4-pro.html 16
+   Relace           None                     q=fp4    v=standard tp50=69 tp90=52 lat50=847.5 n=10852 price={'prompt_tokens': 0.9, 'completion_tokens': 1.5, 'cached_prompt_tokens': 0.25}
+   NovitaAI         None                     q=fp8    v=standard tp50=73 tp90=33 lat50=1629 n=7848 price={'prompt_tokens': 1.6, 'completion_tokens': 3.2, 'cached_prompt_tokens': 0.135}
+   StreamLake       None                     q=fp8    v=standard tp50=43 tp90=29 lat50=1288.5 n=18178 price={'prompt_tokens': 1.74, 'completion_tokens': 3.48, 'cached_prompt_tokens': 0.145}
+   Cloudflare       None                     q=unknow v=standard tp50=40 tp90=27 lat50=1441 n=1585 price={'prompt_tokens': 1.15, 'completion_tokens': 2.55, 'cached_prompt_tokens': 0.2}
+   Reka AI          None                     q=unknow v=standard tp50=41 tp90=28 lat50=966 n=995 price={'prompt_tokens': 1.5, 'completion_tokens': 3.0, 'cached_prompt_tokens': 0.3}
+   DigitalOcean     None                     q=unknow v=standard tp50=50 tp90=23 lat50=812 n=1543 price={'prompt_tokens': 1.044, 'completion_tokens': 2.088, 'cached_prompt_tokens': 0.209}
+   GMICloud         None                     q=fp8    v=standard tp50=27 tp90=17 lat50=2147 n=1245 price={'prompt_tokens': 1.74, 'completion_tokens': 3.48, 'cached_prompt_tokens': 0.145}
+   Alibaba Cloud In None                     q=fp8    v=standard tp50=42 tp90=29.5 lat50=1801 n=411 price={'prompt_tokens': 1.56, 'completion_tokens': 3.12, 'cached_prompt_tokens': 0.13}
+   DeepInfra        None                     q=fp8    v=standard tp50=65 tp90=35 lat50=1075.5 n=3000 price={'prompt_tokens': 1.3, 'completion_tokens': 2.6, 'cached_prompt_tokens': 0.1}
+   Azure            None                     q=unknow v=standard tp50=81 tp90=38 lat50=1787 n=1227 price={'prompt_tokens': 1.91, 'completion_tokens': 3.83, 'cached_prompt_tokens': 0.16}
+   SiliconFlow      None                     q=fp8    v=standard tp50=39 tp90=26 lat50=1563 n=1043 price={'prompt_tokens': 1.502, 'completion_tokens': 3.135, 'cached_prompt_tokens': 0.135}
+   Crusoe           None                     q=fp8    v=standard tp50=109 tp90=64.6 lat50=994 n=94 price={'prompt_tokens': 1.74, 'completion_tokens': 3.48, 'cached_prompt_tokens': 0.15}
+   Baidu Qianfan    None                     q=fp8    v=standard tp50=44 tp90=32 lat50=1185 n=833 price={'prompt_tokens': 1.69, 'completion_tokens': 3.38, 'cached_prompt_tokens': 0.14}
+   Venice           None                     q=unknow v=standard tp50=48.5 tp90=31 lat50=1302.5 n=154 price={'prompt_tokens': 1.65, 'completion_tokens': 3.301, 'cached_prompt_tokens': 0.33}
+   AtlasCloud       None                     q=fp4    v=standard tp50=40 tp90=25 lat50=1570 n=85 price={'prompt_tokens': 1.68, 'completion_tokens': 3.38, 'cached_prompt_tokens': 0.13}
+   Alibaba Cloud In None                     q=fp8    v=standard tp50=43.5 tp90=26 lat50=1850 n=559 price={'prompt_tokens': 1.416, 'completion_tokens': 2.832, 'cached_prompt_tokens': 0.118}
+===== deepseek_deepseek-v4.1-flash-1017.html 34
+   Wafer            None                     q=mxfp4  v=standard tp50=162 tp90=70 lat50=442.5 n=70135 price={'prompt_tokens': 0.13, 'completion_tokens': 0.5, 'cached_prompt_tokens': 0.008}
+   inference.net    None                     q=fp8    v=standard tp50=126 tp90=73 lat50=426 n=136092 price={'prompt_tokens': 0.08, 'completion_tokens': 0.5, 'cached_prompt_tokens': 0.008}
+   Relace           None                     q=unknow v=standard tp50=120 tp90=64 lat50=881 n=93873 price={'prompt_tokens': 0.07, 'completion_tokens': 0.5, 'cached_prompt_tokens': 0.008}
+   inference.net    None                     q=fp8    v=standard tp50=113 tp90=66 lat50=491 n=170347 price={'prompt_tokens': 0.08, 'completion_tokens': 0.5, 'cached_prompt_tokens': 0.008}
+   DigitalOcean     None                     q=unknow v=standard tp50=192 tp90=92 lat50=804 n=53779 price={'prompt_tokens': 0.225, 'completion_tokens': 0.9, 'cached_prompt_tokens': 0.006}
+   Together         None                     q=unknow v=standard tp50=238 tp90=141 lat50=231 n=424248 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Baseten          None                     q=unknow v=standard tp50=206 tp90=85 lat50=339 n=25803 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.007}
+   Cloudflare       None                     q=unknow v=standard tp50=96 tp90=28 lat50=1819 n=13581 price={'prompt_tokens': 0.1, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.003}
+   Ionstream        None                     q=unknow v=standard tp50=136 tp90=91 lat50=324 n=32806 price={'prompt_tokens': 0.22, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.019}
+   Crusoe           None                     q=fp8    v=standard tp50=125 tp90=61 lat50=814 n=13801 price={'prompt_tokens': 0.29, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.007}
+   Parasail         None                     q=fp8    v=standard tp50=147 tp90=62 lat50=760 n=4777 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Morph            None                     q=fp8    v=standard tp50=114 tp90=42 lat50=1077 n=105676 price={'prompt_tokens': 0.073, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.01}
+   Modal            None                     q=unknow v=standard tp50=108 tp90=62 lat50=612 n=12294 price={'prompt_tokens': 0.25, 'completion_tokens': 1.0, 'cached_prompt_tokens': 0.005}
+   AtlasCloud       None                     q=fp8    v=standard tp50=100 tp90=47 lat50=1313.5 n=10385 price={'prompt_tokens': 0.195, 'completion_tokens': 0.78, 'cached_prompt_tokens': 0.004}
+   Makora           None                     q=fp8    v=standard tp50=199 tp90=45 lat50=599.5 n=8064 price={'prompt_tokens': 0.15, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Nebius Token Fac None                     q=fp8    v=standard tp50=203 tp90=86 lat50=770 n=7418 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Fireworks        None                     q=unknow v=standard tp50=151 tp90=68 lat50=1054 n=16569 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Prime Intellect  None                     q=unknow v=standard tp50=208.5 tp90=124 lat50=736 n=14111 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Open Inference   None                     q=fp4    v=standard tp50=90 tp90=27 lat50=1140.5 n=29917 price={'prompt_tokens': 0.02, 'completion_tokens': 1.0, 'cached_prompt_tokens': 0.015}
+   Fireworks Spot   None                     q=unknow v=standard tp50=145 tp90=27 lat50=1685.5 n=16134 price={'prompt_tokens': 0.21, 'completion_tokens': 0.84, 'cached_prompt_tokens': 0.004}
+   GMICloud         None                     q=fp8    v=standard tp50=76 tp90=33.80000000000001 lat50=1805 n=2335 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Phala            None                     q=unknow v=standard tp50=97 tp90=23 lat50=1567.5 n=2470 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   DeepInfra        None                     q=fp8    v=standard tp50=61 tp90=31 lat50=992 n=51464 price={'prompt_tokens': 0.2, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.006}
+   Reka AI          None                     q=unknow v=standard tp50=159 tp90=89 lat50=402 n=1508 price={'prompt_tokens': 0.08, 'completion_tokens': 0.8, 'cached_prompt_tokens': 0.08}
+   NovitaAI         None                     q=fp8    v=standard tp50=67 tp90=27 lat50=2064 n=5392 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=87 tp90=57 lat50=726 n=2172 price={'prompt_tokens': 0.33, 'completion_tokens': 1.32, 'peak_window_0_end': 0.0, 'peak_prompt_tokens': 0.165, 'peak_window_0_start': 1400000000.0, 'cached_prompt_tokens': 0.033, 'peak_completion_tokens': 0.66, 'peak_cached_prompt_tokens': 0.016}
+   Baidu Qianfan    None                     q=fp8    v=standard tp50=90 tp90=44.6 lat50=1728 n=498 price={'prompt_tokens': 0.28, 'completion_tokens': 1.13, 'cached_prompt_tokens': 0.006}
+   SiliconFlow      None                     q=fp8    v=standard tp50=79 tp90=31 lat50=1639 n=343 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Sail Research    None                     q=fp4    v=standard tp50=18 tp90=3 lat50=11555.5 n=10309 price={'prompt_tokens': 0.101, 'completion_tokens': 0.15, 'cached_prompt_tokens': 0.007}
+   DeepInfra        None                     q=fp8    v=standard tp50=55 tp90=19 lat50=1372 n=23799 price={'prompt_tokens': 0.3, 'completion_tokens': 0.9, 'cached_prompt_tokens': 0.009}
+   DeepSeek         None                     q=unknow v=standard tp50=53 tp90=41 lat50=794 n=738287 price={'cache_hit_tokens': 0.003, 'cache_miss_tokens': 0.15, 'completion_tokens': 0.6, 'peak_window_0_end': 400000000.0, 'peak_window_1_end': 1000000000.0, 'peak_window_0_start': 100000000.0, 'peak_window_1_start': 600000000.0, 'peak_cache_hit_tokens': 0.006, 'peak_cache_miss_tokens': 0.3, 'peak_completion_tokens': 1.2, 'off_peak_all_day_sunday': 1000000.0, 'off_peak_all_day_saturday': 1000000.0}
+   DeepInfra        None                     q=fp8    v=standard tp50=59 tp90=31 lat50=3768 n=2827 price={'prompt_tokens': 0.16, 'completion_tokens': 0.48, 'cached_prompt_tokens': 0.005}
+   Sail Research    None                     q=fp4    v=standard tp50=22 tp90=4 lat50=7411 n=1958 price={'prompt_tokens': 0.101, 'completion_tokens': 0.15, 'cached_prompt_tokens': 0.007}
+   Decart           None                     q=fp4    v=standard tp50=4 tp90=1 lat50=103952 n=1709 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.003}
+===== deepseek_deepseek-v4.1-flash.html 41
+   Relace           None                     q=unknow v=standard tp50=150 tp90=79 lat50=537 n=113748 price={'prompt_tokens': 0.07, 'completion_tokens': 0.5, 'cached_prompt_tokens': 0.008}
+   DigitalOcean     None                     q=unknow v=standard tp50=197 tp90=94 lat50=636 n=73070 price={'prompt_tokens': 0.165, 'completion_tokens': 0.66, 'cached_prompt_tokens': 0.006}
+   CoreWeave        None                     q=fp8    v=standard tp50=160 tp90=74 lat50=576 n=49096 price={'prompt_tokens': 0.15, 'completion_tokens': 0.65, 'cached_prompt_tokens': 0.002}
+   Fireworks Spot   None                     q=unknow v=standard tp50=237 tp90=116 lat50=389 n=40188 price={'prompt_tokens': 0.21, 'completion_tokens': 0.84, 'cached_prompt_tokens': 0.004}
+   ModelRun [by Mod None                     q=fp4    v=standard tp50=142 tp90=62 lat50=307 n=15202 price={'prompt_tokens': 0.17, 'completion_tokens': 0.67, 'cached_prompt_tokens': 0.006}
+   Wafer            None                     q=mxfp4  v=standard tp50=192 tp90=66 lat50=325 n=24236 price={'prompt_tokens': 0.19, 'completion_tokens': 0.65, 'cached_prompt_tokens': 0.012}
+   Baseten          None                     q=unknow v=standard tp50=283 tp90=141 lat50=303 n=36474 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.007}
+   inference.net    None                     q=fp8    v=standard tp50=117 tp90=66 lat50=338 n=31839 price={'prompt_tokens': 0.103, 'completion_tokens': 0.715, 'cached_prompt_tokens': 0.008}
+   inference.net    None                     q=fp8    v=standard tp50=102 tp90=68 lat50=308 n=89344 price={'prompt_tokens': 0.103, 'completion_tokens': 0.645, 'cached_prompt_tokens': 0.008}
+   Together         None                     q=unknow v=standard tp50=236 tp90=151 lat50=149 n=146943 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Morph            None                     q=fp8    v=standard tp50=142 tp90=61 lat50=768 n=20199 price={'prompt_tokens': 0.073, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.01}
+   Cohere           None                     q=unknow v=standard tp50=246 tp90=122 lat50=323 n=8502 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.003}
+   Venice           None                     q=fp8    v=standard tp50=257 tp90=136 lat50=299 n=13196 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.007}
+   Parasail         None                     q=fp8    v=standard tp50=168 tp90=83.30000000000007 lat50=324.5 n=10104 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Prime Intellect  None                     q=unknow v=standard tp50=157 tp90=68 lat50=635 n=10958 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Reka AI          None                     q=unknow v=standard tp50=92 tp90=52 lat50=325 n=16096 price={'prompt_tokens': 0.15, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.01}
+   NovitaAI         None                     q=fp8    v=standard tp50=104 tp90=58 lat50=997 n=10454 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Open Inference   None                     q=fp4    v=standard tp50=95 tp90=25 lat50=959 n=50010 price={'prompt_tokens': 0.02, 'completion_tokens': 1.0, 'cached_prompt_tokens': 0.015}
+   DeepInfra        None                     q=fp8    v=standard tp50=64 tp90=35 lat50=712 n=221321 price={'prompt_tokens': 0.2, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.006}
+   Phala            None                     q=unknow v=standard tp50=81 tp90=38.1 lat50=1348 n=440 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Makora           None                     q=fp8    v=standard tp50=135 tp90=76 lat50=269 n=5449 price={'prompt_tokens': 0.26, 'completion_tokens': 1.17, 'cached_prompt_tokens': 0.006}
+   GMICloud         None                     q=fp8    v=standard tp50=68 tp90=27 lat50=1847 n=1001 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   AtlasCloud       None                     q=fp8    v=standard tp50=58 tp90=35 lat50=891 n=17981 price={'prompt_tokens': 0.135, 'completion_tokens': 0.54, 'cached_prompt_tokens': 0.013}
+   Fireworks        None                     q=unknow v=standard tp50=99 tp90=48 lat50=651 n=2062 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Crusoe           None                     q=fp8    v=standard tp50=90 tp90=44 lat50=391 n=2116 price={'prompt_tokens': 0.29, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.007}
+   StreamLake       None                     q=fp8    v=standard tp50=51 tp90=23 lat50=1543 n=6351 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   SiliconFlow      None                     q=fp8    v=standard tp50=69 tp90=25 lat50=1945 n=2976 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=56 tp90=27 lat50=1147 n=3352 price={'prompt_tokens': 0.33, 'completion_tokens': 1.32, 'peak_window_0_end': 0.0, 'peak_prompt_tokens': 0.165, 'peak_window_0_start': 1400000000.0, 'cached_prompt_tokens': 0.033, 'peak_completion_tokens': 0.66, 'peak_cached_prompt_tokens': 0.016}
+   Nebius Token Fac None                     q=fp8    v=standard tp50=75 tp90=27 lat50=726 n=2003 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.01}
+   Mancer           None                     q=fp8    v=standard tp50=37 tp90=20 lat50=762 n=2674 price={'prompt_tokens': 0.2, 'completion_tokens': 1.0, 'upstream_cost_credits': 1000000.0}
+   DeepInfra        None                     q=fp8    v=standard tp50=75 tp90=42 lat50=814 n=20650 price={'prompt_tokens': 0.3, 'completion_tokens': 0.9, 'cached_prompt_tokens': 0.009}
+   Modal            None                     q=unknow v=standard tp50=76 tp90=39 lat50=306 n=1713 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.03}
+   Google Vertex    None                     q=unknow v=standard tp50=48 tp90=16 lat50=485 n=3378 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.03}
+   Sail Research    None                     q=fp4    v=standard tp50=110 tp90=56.5 lat50=314 n=2908 price={'prompt_tokens': 0.09, 'completion_tokens': 0.25, 'cached_prompt_tokens': 0.006}
+   Sail Research    None                     q=fp4    v=standard tp50=65 tp90=42.199999999999996 lat50=336 n=3630 price={'prompt_tokens': 0.09, 'completion_tokens': 0.25, 'cached_prompt_tokens': 0.006}
+   DeepInfra        None                     q=fp8    v=standard tp50=21 tp90=12 lat50=7436.5 n=8433 price={'prompt_tokens': 0.16, 'completion_tokens': 0.48, 'cached_prompt_tokens': 0.005}
+   Baidu Qianfan    None                     q=fp8    v=standard tp50=96 tp90=50 lat50=699 n=1392 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.006}
+   Baseten          None                     q=unknow v=standard tp50=266 tp90=132 lat50=149 n=5225 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.007}
+   Fireworks        None                     q=unknow v=standard tp50=282 tp90=137 lat50=298 n=1173 price={'prompt_tokens': 0.45, 'completion_tokens': 1.8, 'cached_prompt_tokens': 0.009}
+   Baseten          None                     q=unknow v=standard tp50=212 tp90=116 lat50=284 n=45034 price={'prompt_tokens': 0.6, 'completion_tokens': 2.4, 'cached_prompt_tokens': 0.014}
+   Decart           None                     q=fp4    v=standard tp50=59 tp90=11 lat50=5387.5 n=23123 price={'prompt_tokens': 0.09, 'completion_tokens': 0.18, 'cached_prompt_tokens': 0.018}
+===== meta_muse-spark-open.html 6
+   Makora           None                     q=fp4    v=standard tp50=185 tp90=71 lat50=908 n=379 price={'prompt_tokens': 1.25, 'completion_tokens': 4.25, 'cached_prompt_tokens': 0.15}
+   Modal            None                     q=unknow v=standard tp50=184.5 tp90=131.5 lat50=368 n=119 price={'prompt_tokens': 1.25, 'completion_tokens': 4.25, 'cached_prompt_tokens': 0.15}
+   Together         None                     q=unknow v=standard tp50=113 tp90=67.30000000000001 lat50=368 n=1723 price={'prompt_tokens': 1.25, 'completion_tokens': 4.25, 'cached_prompt_tokens': 0.15}
+   Nebius Token Fac None                     q=fp4    v=standard tp50=90 tp90=32 lat50=701 n=9 price={'prompt_tokens': 1.25, 'completion_tokens': 4.25, 'cached_prompt_tokens': 0.15}
+   Fireworks        None                     q=unknow v=standard tp50=90 tp90=61 lat50=1216 n=39 price={'prompt_tokens': 1.25, 'completion_tokens': 4.25, 'cached_prompt_tokens': 0.15}
+   Baseten          None                     q=fp4    v=standard tp50=159 tp90=93.30000000000001 lat50=278 n=187 price={'prompt_tokens': 1.25, 'completion_tokens': 4.25, 'cached_prompt_tokens': 0.15}
+===== minimax_minimax-m3.1-flash.html 13
+   Relace           None                     q=fp4    v=standard tp50=136 tp90=39 lat50=1420.5 n=3492 price={'prompt_tokens': 0.09, 'completion_tokens': 0.5, 'cached_prompt_tokens': 0.01}
+   inference.net    None                     q=fp4    v=standard tp50=59 tp90=22 lat50=1607 n=3458 price={'prompt_tokens': 0.1, 'completion_tokens': 0.55, 'cached_prompt_tokens': 0.01}
+   inference.net    None                     q=fp4    v=standard tp50=64 tp90=31 lat50=661 n=256 price={'prompt_tokens': 0.1, 'completion_tokens': 0.55, 'cached_prompt_tokens': 0.01}
+   GMICloud         None                     q=fp8    v=standard tp50=93 tp90=26 lat50=1869 n=505 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   DigitalOcean     None                     q=unknow v=standard tp50=251 tp90=84 lat50=903.5 n=286 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   NovitaAI         None                     q=fp16   v=standard tp50=87 tp90=29 lat50=1728 n=463 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   Nebius Token Fac None                     q=fp4    v=standard tp50=75 tp90=40.400000000000006 lat50=1368.5 n=308 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   Wafer            None                     q=nvfp4  v=standard tp50=161 tp90=77 lat50=781 n=567 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   ModelRun [by Mod None                     q=fp4    v=standard tp50=210 tp90=147.4 lat50=406 n=266 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   Parasail         None                     q=fp8    v=standard tp50=159.5 tp90=41 lat50=1106.5 n=562 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   Together         None                     q=unknow v=standard tp50=166 tp90=100 lat50=434 n=3151 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   MiniMax          None                     q=unknow v=standard tp50=109 tp90=42 lat50=1161 n=73176 price={'prompt_tokens': 0.15, 'completion_tokens': 0.6, 'cached_prompt_tokens': 0.015}
+   SambaNova        None                     q=unknow v=standard tp50=72 tp90=32 lat50=1352.5 n=30 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.03}
+===== minimax_minimax-m3.html 13
+   CoreWeave        None                     q=fp4    v=standard tp50=142 tp90=64 lat50=461 n=5583 price={'prompt_tokens': 0.23, 'completion_tokens': 0.96, 'cached_prompt_tokens': 0.05}
+   MiniMax          None                     q=fp8    v=standard tp50=106 tp90=51 lat50=957 n=45699 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06}
+   Venice           None                     q=fp8    v=standard tp50=123 tp90=52 lat50=1016 n=2716 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06}
+   NovitaAI         None                     q=fp8    v=standard tp50=106 tp90=40 lat50=1684 n=1102 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06}
+   ModelRun [by Mod None                     q=fp8    v=standard tp50=124 tp90=74 lat50=541 n=655 price={'prompt_tokens': 0.3, 'completion_tokens': 1.3, 'cached_prompt_tokens': 0.05}
+   Parasail         None                     q=fp8    v=standard tp50=124 tp90=48 lat50=918 n=390 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06}
+   Together         None                     q=unknow v=standard tp50=85 tp90=53 lat50=481 n=1505 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06}
+   StreamLake       None                     q=fp8    v=standard tp50=74.5 tp90=32.3 lat50=2775 n=209 price={'prompt_tokens': 0.6, 'completion_tokens': 2.4, 'cached_prompt_tokens': 0.12}
+   DeepInfra        None                     q=fp8    v=standard tp50=49 tp90=30.1 lat50=1046 n=414 price={'prompt_tokens': 0.28, 'completion_tokens': 1.1, 'cached_prompt_tokens': 0.056}
+   MARA             None                     q=unknow v=standard tp50=62 tp90=5 lat50=2615 n=15 price={'prompt_tokens': 0.6, 'completion_tokens': 2.4}
+   AtlasCloud       None                     q=fp8    v=standard tp50=70 tp90=35 lat50=1159 n=136 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06}
+   DeepInfra        None                     q=fp8    v=standard tp50=29 tp90=17 lat50=2252 n=28 price={'prompt_tokens': 0.224, 'completion_tokens': 0.88, 'cached_prompt_tokens': 0.045}
+   GMICloud         None                     q=fp8    v=standard tp50=69 tp90=32.6 lat50=2351 n=83 price={'prompt_tokens': 0.3, 'completion_tokens': 1.2, 'cached_prompt_tokens': 0.06, 'long_context_threshold': 512000000000.0, 'long_context_prompt_tokens': 0.6, 'long_context_completion_tokens': 2.4, 'long_context_cached_prompt_tokens': 0.12}
+===== moonshotai_kimi-k3.html 29
+   Wafer            None                     q=mxfp4  v=standard tp50=96 tp90=58 lat50=522 n=9000 price={'prompt_tokens': 0.152, 'completion_tokens': 16.0, 'cached_prompt_tokens': 0.142}
+   Relace           None                     q=fp4    v=standard tp50=55 tp90=29 lat50=1500 n=6631 price={'prompt_tokens': 0.153, 'completion_tokens': 10.557, 'cached_prompt_tokens': 0.15}
+   inference.net    None                     q=fp4    v=standard tp50=77 tp90=43 lat50=627 n=2630 price={'prompt_tokens': 0.239, 'completion_tokens': 10.8, 'cached_prompt_tokens': 0.21}
+   inference.net    None                     q=fp4    v=standard tp50=75 tp90=38.80000000000001 lat50=663 n=2706 price={'prompt_tokens': 0.239, 'completion_tokens': 11.936, 'cached_prompt_tokens': 0.21}
+   Wafer            None                     q=mxfp4  v=standard tp50=103 tp90=61 lat50=560 n=4722 price={'prompt_tokens': 0.36, 'completion_tokens': 11.9, 'cached_prompt_tokens': 0.359}
+   inference.net    None                     q=fp4    v=standard tp50=99 tp90=62 lat50=616 n=3333 price={'prompt_tokens': 0.5, 'completion_tokens': 11.88, 'cached_prompt_tokens': 0.35}
+   Makora           None                     q=fp4    v=standard tp50=21 tp90=13 lat50=3452 n=772 price={'prompt_tokens': 0.65, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.23}
+   Morph            None                     q=fp8    v=standard tp50=75 tp90=42 lat50=1153 n=2051 price={'prompt_tokens': 0.945, 'completion_tokens': 14.9, 'cached_prompt_tokens': 0.262}
+   Sail Research    None                     q=fp4    v=standard tp50=96 tp90=65 lat50=430 n=1372 price={'prompt_tokens': 1.2, 'completion_tokens': 5.5, 'cached_prompt_tokens': 0.2}
+   Sail Research    None                     q=fp4    v=standard tp50=88 tp90=54 lat50=949 n=3451 price={'prompt_tokens': 1.2, 'completion_tokens': 5.5, 'cached_prompt_tokens': 0.2}
+   AkashML          None                     q=fp4    v=standard tp50=62 tp90=38 lat50=968 n=7 price={'prompt_tokens': 1.2, 'completion_tokens': 14.0, 'cached_prompt_tokens': 1.2}
+   Decart           None                     q=mxfp4  v=standard tp50=87 tp90=41 lat50=1111.5 n=1374 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Chutes           None                     q=mxfp4  v=standard tp50=11 tp90=6 lat50=7293 n=7 price={'prompt_tokens': 1.85, 'completion_tokens': 9.5, 'cached_prompt_tokens': 0.185}
+   inference.net    None                     q=fp4    v=standard tp50=91 tp90=57.10000000000002 lat50=667 n=1630 price={'prompt_tokens': 2.24, 'completion_tokens': 14.519, 'cached_prompt_tokens': 0.35}
+   Phala            None                     q=unknow v=standard tp50=96 tp90=47 lat50=949 n=1815 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   DigitalOcean     None                     q=unknow v=standard tp50=50 tp90=41 lat50=1181.5 n=160 price={'prompt_tokens': 2.55, 'completion_tokens': 12.95, 'cached_prompt_tokens': 0.255}
+   DeepInfra        None                     q=mxfp4  v=standard tp50=52 tp90=29 lat50=848 n=347 price={'prompt_tokens': 2.85, 'completion_tokens': 14.25, 'cached_prompt_tokens': 0.285}
+   Pareto Alpha     None                     q=unknow v=standard tp50=22 tp90=6 lat50=11615 n=19 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Amazon Bedrock   None                     q=unknow v=standard tp50=107 tp90=37 lat50=1987 n=1573 price={'prompt_tokens': 3.0, 'cache_read_tokens': 0.3, 'completion_tokens': 15.0, 'cache_write_tokens': 3.75}
+   Modal            None                     q=mxfp4  v=standard tp50=96 tp90=54 lat50=830.5 n=1120 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Together         None                     q=unknow v=standard tp50=42 tp90=36 lat50=758.5 n=1190 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Fireworks        None                     q=unknow v=standard tp50=38 tp90=22 lat50=1751 n=307 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Baseten          None                     q=fp8    v=standard tp50=50 tp90=15 lat50=2883 n=287 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Moonshot AI      None                     q=mxfp4  v=standard tp50=24 tp90=9 lat50=3060 n=6365 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=28 tp90=17 lat50=7274 n=47 price={'prompt_tokens': 3.45, 'completion_tokens': 17.25, 'cached_prompt_tokens': 0.345}
+   Fireworks        None                     q=unknow v=standard tp50=51 tp90=33 lat50=493.5 n=4 price={'prompt_tokens': 4.5, 'completion_tokens': 22.5, 'cached_prompt_tokens': 0.45}
+   Parasail         None                     q=fp4    v=standard tp50=52 tp90=29 lat50=955 n=837 price={'prompt_tokens': 3.0, 'completion_tokens': 15.0, 'cached_prompt_tokens': 0.3}
+   Fireworks        None                     q=unknow v=standard tp50=51 tp90=26 lat50=1455 n=1053 price={'prompt_tokens': 4.5, 'completion_tokens': 22.5, 'cached_prompt_tokens': 0.45}
+   Fireworks Spot   None                     q=unknow v=standard tp50=94 tp90=59 lat50=811 n=436 price={'prompt_tokens': 2.1, 'completion_tokens': 10.5, 'cached_prompt_tokens': 0.21}
+===== qwen_qwen3.5-397b-a17b.html 10
+   Parasail         None                     q=fp8    v=standard tp50=80 tp90=21.400000000000002 lat50=1163 n=237 price={'prompt_tokens': 0.5, 'completion_tokens': 3.6, 'cached_prompt_tokens': 0.3}
+   DeepInfra        None                     q=fp8    v=standard tp50=61 tp90=38 lat50=875 n=563 price={'prompt_tokens': 0.45, 'completion_tokens': 3.0, 'cached_prompt_tokens': 0.22}
+   StreamLake       None                     q=unknow v=standard tp50=101 tp90=68.4 lat50=803 n=219 price={'prompt_tokens': 0.6, 'completion_tokens': 3.6, 'cached_prompt_tokens': 0.12}
+   Phala            None                     q=unknow v=standard tp50=41 tp90=24 lat50=2334.5 n=30 price={'prompt_tokens': 0.55, 'completion_tokens': 3.5, 'cached_prompt_tokens': 0.225}
+   Venice           None                     q=unknow v=standard tp50=58 tp90=35 lat50=732.5 n=372 price={'prompt_tokens': 0.75, 'completion_tokens': 4.5}
+   NovitaAI         None                     q=unknow v=standard tp50=48 tp90=26 lat50=1426 n=17 price={'prompt_tokens': 0.6, 'completion_tokens': 3.6}
+   DigitalOcean     None                     q=unknow v=standard tp50=27 tp90=4 lat50=724.5 n=12 price={'prompt_tokens': 0.55, 'completion_tokens': 3.5, 'cached_prompt_tokens': 0.11}
+   AtlasCloud       None                     q=fp8    v=standard tp50=52 tp90=29 lat50=1080.5 n=148 price={'prompt_tokens': 0.55, 'completion_tokens': 3.5, 'cached_prompt_tokens': 0.55}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=55 tp90=38.4 lat50=1209 n=57 price={'prompt_tokens': 0.39, 'completion_tokens': 2.34}
+   GMICloud         None                     q=fp8    v=standard tp50=56 tp90=37 lat50=1602 n=21 price={'prompt_tokens': 0.6, 'completion_tokens': 3.6}
+===== qwen_qwen3.8-flash.html 2
+   Alibaba Cloud In None                     q=unknow v=standard tp50=57 tp90=34 lat50=1144 n=56600 price={'prompt_tokens': 0.15, 'completion_tokens': 0.47, 'cached_prompt_tokens': 0.016, 'cache_creation_tokens': 0.2, 'explicit_cached_prompt_tokens': 0.016}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=53 tp90=22 lat50=2018 n=8768 price={'prompt_tokens': 0.15, 'completion_tokens': 0.47, 'cached_prompt_tokens': 0.016}
+===== z-ai_glm-5.3.html 48
+   Wafer            None                     q=fp4    v=standard tp50=127 tp90=83 lat50=371 n=33147 price={'prompt_tokens': 0.079, 'completion_tokens': 1.4, 'cached_prompt_tokens': 0.078}
+   Wafer            None                     q=fp4    v=standard tp50=119 tp90=88 lat50=298 n=16166 price={'prompt_tokens': 0.179, 'completion_tokens': 1.4, 'cached_prompt_tokens': 0.178}
+   inference.net    None                     q=fp4    v=standard tp50=113 tp90=52 lat50=575 n=9797 price={'prompt_tokens': 0.08, 'completion_tokens': 3.6, 'cached_prompt_tokens': 0.076}
+   Decart           None                     q=fp4    v=standard tp50=144 tp90=81.10000000000002 lat50=799 n=2939 price={'prompt_tokens': 0.84, 'completion_tokens': 2.71, 'cached_prompt_tokens': 0.19}
+   inference.net    None                     q=fp4    v=standard tp50=116 tp90=47 lat50=729 n=6279 price={'prompt_tokens': 0.08, 'completion_tokens': 4.381, 'cached_prompt_tokens': 0.076}
+   Relace           None                     q=unknow v=standard tp50=92 tp90=47 lat50=1107 n=5170 price={'prompt_tokens': 0.07, 'completion_tokens': 4.384, 'cached_prompt_tokens': 0.07}
+   Tenstorrent      None                     q=fp8    v=standard tp50=81 tp90=50 lat50=923.5 n=1382 price={'prompt_tokens': 0.6, 'completion_tokens': 2.5, 'cached_prompt_tokens': 0.1}
+   Inceptron        None                     q=fp4    v=standard tp50=85 tp90=35 lat50=1273 n=1457 price={'prompt_tokens': 0.6, 'completion_tokens': 2.8, 'cached_prompt_tokens': 0.12}
+   Baseten (fp4)    None                     q=fp4    v=standard tp50=102 tp90=60.599999999999994 lat50=661.5 n=270 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.14}
+   Prime Intellect  None                     q=unknow v=standard tp50=102 tp90=68 lat50=569.5 n=958 price={'prompt_tokens': 0.98, 'completion_tokens': 3.08, 'cached_prompt_tokens': 0.182}
+   Baseten (fp4)    None                     q=fp4    v=standard tp50=120 tp90=61 lat50=829.5 n=3188 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.14}
+   Fireworks Spot   None                     q=unknow v=standard tp50=98 tp90=72 lat50=706 n=49452 price={'prompt_tokens': 0.98, 'completion_tokens': 3.08, 'cached_prompt_tokens': 0.182}
+   Together         None                     q=unknow v=standard tp50=134 tp90=66 lat50=431 n=2466 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   DigitalOcean     None                     q=unknow v=standard tp50=84 tp90=59 lat50=501 n=726 price={'prompt_tokens': 0.91, 'completion_tokens': 2.86, 'cached_prompt_tokens': 0.169}
+   DekaLLM          None                     q=unknow v=standard tp50=79 tp90=28 lat50=1467 n=392 price={'prompt_tokens': 0.25, 'completion_tokens': 2.95, 'cached_prompt_tokens': 0.18}
+   Parasail         None                     q=fp8    v=standard tp50=110 tp90=49 lat50=1046 n=515 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   NovitaAI         None                     q=fp8    v=standard tp50=67.5 tp90=31 lat50=1583 n=1545 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Crusoe           None                     q=fp4    v=standard tp50=117 tp90=76 lat50=409 n=227 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Makora           None                     q=fp4    v=standard tp50=102 tp90=11 lat50=1370 n=727 price={'prompt_tokens': 0.14, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.1}
+   Reka AI          None                     q=unknow v=standard tp50=60 tp90=19 lat50=1078 n=832 price={'prompt_tokens': 0.2, 'completion_tokens': 6.0, 'cached_prompt_tokens': 0.15}
+   SiliconFlow      None                     q=fp8    v=standard tp50=55 tp90=22 lat50=2336.5 n=2278 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   DeepInfra        None                     q=fp4    v=standard tp50=68 tp90=18.5 lat50=1730 n=428 price={'prompt_tokens': 0.9, 'completion_tokens': 4.0, 'cached_prompt_tokens': 0.2}
+   AkashML          None                     q=fp8    v=standard tp50=60 tp90=28 lat50=1681 n=577 price={'prompt_tokens': 0.19, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.19}
+   GMICloud         None                     q=fp8    v=standard tp50=41 tp90=20 lat50=2103 n=3 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   CoreWeave        None                     q=fp8    v=standard tp50=87 tp90=53.300000000000004 lat50=948 n=298 price={'prompt_tokens': 1.2, 'completion_tokens': 4.0, 'cached_prompt_tokens': 0.19}
+   Fireworks        None                     q=unknow v=standard tp50=133 tp90=40 lat50=1030 n=1739 price={'prompt_tokens': 2.1, 'completion_tokens': 6.6, 'cached_prompt_tokens': 0.39}
+   Morph            None                     q=fp8    v=standard tp50=42 tp90=25 lat50=894 n=909 price={'prompt_tokens': 0.565, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.141}
+   Mistral          None                     q=nvfp4  v=standard tp50=85 tp90=42 lat50=504 n=43 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.14}
+   Mistral          None                     q=nvfp4  v=standard tp50=56 tp90=23 lat50=2237 n=395 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.14}
+   Friendli         None                     q=unknow v=standard tp50=88 tp90=23 lat50=909 n=1273 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Baidu Qianfan    None                     q=fp8    v=standard tp50=48 tp90=28.8 lat50=1146 n=155 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Z.ai             None                     q=fp8    v=standard tp50=40 tp90=26 lat50=2237 n=40555 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=36 tp90=19 lat50=1408 n=20 price={'prompt_tokens': 1.19, 'completion_tokens': 3.74, 'cached_prompt_tokens': 0.238}
+   Nebius Token Fac None                     q=fp4    v=standard tp50=87 tp90=38 lat50=545 n=13 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Venice           None                     q=unknow v=standard tp50=63 tp90=38 lat50=1431 n=51 price={'prompt_tokens': 1.75, 'completion_tokens': 5.5, 'cached_prompt_tokens': 0.325}
+   Cloudflare       None                     q=unknow v=standard tp50=47 tp90=15 lat50=2991 n=71 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Amazon Bedrock   None                     q=unknow v=standard tp50=88 tp90=33 lat50=651 n=5 price={'prompt_tokens': 1.68, 'cache_read_tokens': 0.312, 'completion_tokens': 5.28, 'cache_write_tokens': 2.1}
+   AtlasCloud       None                     q=fp8    v=standard tp50=27 tp90=21 lat50=1259.5 n=188 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   ModelRun [by Mod None                     q=fp4    v=standard tp50=86 tp90=12 lat50=231 n=2 price={'prompt_tokens': 2.1, 'completion_tokens': 6.6, 'cached_prompt_tokens': 0.4}
+   Phala            None                     q=unknow v=standard tp50=61.5 tp90=33.5 lat50=2436.5 n=208 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Alibaba Cloud In None                     q=unknow v=standard tp50=83 tp90=42 lat50=1074.5 n=178 price={'prompt_tokens': 2.8, 'completion_tokens': 8.8, 'cached_prompt_tokens': 0.56}
+   Sail Research    None                     q=fp8    v=standard tp50=65 tp90=43 lat50=688 n=1427 price={'prompt_tokens': 0.5, 'completion_tokens': 2.0, 'cached_prompt_tokens': 0.08}
+   Sail Research    None                     q=fp8    v=standard tp50=69 tp90=50 lat50=706 n=649 price={'prompt_tokens': 0.5, 'completion_tokens': 2.0, 'cached_prompt_tokens': 0.08}
+   Modal            None                     q=unknow v=standard tp50=89 tp90=57 lat50=408 n=17652 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Fireworks        None                     q=unknow v=standard tp50=57 tp90=35.300000000000004 lat50=1154 n=466 price={'prompt_tokens': 1.4, 'completion_tokens': 4.4, 'cached_prompt_tokens': 0.26}
+   Mistral          None                     q=nvfp4  v=standard tp50=132 tp90=56 lat50=1094 n=39 price={'prompt_tokens': 1.54, 'completion_tokens': 4.84, 'cached_prompt_tokens': 0.154}
+   Baseten (fp8)    None                     q=fp8    v=standard tp50=150.5 tp90=37 lat50=759.5 n=592 price={'prompt_tokens': 2.1, 'completion_tokens': 6.6, 'cached_prompt_tokens': 0.21}
+   Baseten (fp8)    None                     q=fp8    v=standard tp50=126 tp90=27.799999999999997 lat50=1565 n=393 price={'prompt_tokens': 2.1, 'completion_tokens': 6.6, 'cached_prompt_tokens': 0.21}

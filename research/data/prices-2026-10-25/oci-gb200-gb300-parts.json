@@ -1,0 +1,53 @@
+[
+ {
+  "partNumber": "B110979",
+  "displayName": "OCI - Compute - GPU - GB200",
+  "metricName": "GPU Per Hour",
+  "serviceCategory": "Compute - GPU",
+  "currencyCodeLocalizations": [
+   {
+    "currencyCode": "USD",
+    "prices": [
+     {
+      "model": "PAY_AS_YOU_GO",
+      "value": 16
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "partNumber": "B111828",
+  "displayName": "OCI - NVIDIA AI Enterprise - GB200",
+  "metricName": "GPU Per Hour",
+  "serviceCategory": "Compute - GPU",
+  "currencyCodeLocalizations": [
+   {
+    "currencyCode": "USD",
+    "prices": [
+     {
+      "model": "PAY_AS_YOU_GO",
+      "value": 4
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "partNumber": "B112140",
+  "displayName": "OCI - Compute - GPU - GB300",
+  "metricName": "GPU Per Hour",
+  "serviceCategory": "Compute - GPU",
+  "currencyCodeLocalizations": [
+   {
+    "currencyCode": "USD",
+    "prices": [
+     {
+      "model": "PAY_AS_YOU_GO",
+      "value": 18
+     }
+    ]
+   }
+  ]
+ }
+]
