@@ -27,6 +27,7 @@ export function validateInputs(i: Inputs): void {
   check(unit(i.utilization), 'utilization must be in [0, 1]');
   check(unit(i.cacheHit), 'cacheHit must be in [0, 1]');
   check(unit(i.listShare), 'listShare must be in [0, 1]');
+  check(i.overheadPct >= 0 && i.overheadPct < 1, 'overheadPct must be in [0, 1)');
   check(unit(i.idleFraction), 'idleFraction must be in [0, 1]');
   check(unit(i.residualPct), 'residualPct must be in [0, 1]');
   check(i.priceDeclinePerYear >= 0 && i.priceDeclinePerYear < 0.99, 'priceDeclinePerYear must be in [0, 0.99)');
@@ -82,7 +83,8 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
   // Colocation is billed on provisioned IT kW regardless of load.
   const coloUsd = renting ? 0 : (i.coloUsdPerKwMonth * i.itKwPerRack * i.racks * 12) / 365;
   const otherOpexUsd = renting ? 0 : (capexUsd * i.otherOpexPctPerYear) / 365;
-  const cashCostUsd = rentUsd + electricityUsd + coloUsd + otherOpexUsd;
+  const overheadUsd = revenueUsd * i.overheadPct;
+  const cashCostUsd = rentUsd + electricityUsd + coloUsd + otherOpexUsd + overheadUsd;
   const cashProfitUsd = revenueUsd - cashCostUsd;
   const depreciationUsd = renting ? 0 : (capexUsd * (1 - i.residualPct)) / (i.lifeYears * 365);
   const costUsd = cashCostUsd + depreciationUsd;
@@ -103,6 +105,7 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
     outputRevenueUsd,
     inputRevenueUsd,
     rentUsd,
+    overheadUsd,
     electricityUsd,
     coloUsd,
     otherOpexUsd,

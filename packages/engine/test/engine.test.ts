@@ -369,3 +369,25 @@ describe('T15 prefill accounting', () => {
     expect(() => peak({ islOsl: 0, prefillRate: 2400 })).not.toThrow();
   });
 });
+
+describe('T16 overhead as a share of revenue', () => {
+  it('10% overhead on the default day', () => {
+    const { daily: d, schedule: s } = evaluate(rent({ overheadPct: 0.1 }), gb200);
+    near(d.overheadUsd, 2330.85, 0.01);
+    near(d.operatingProfitUsd, 2833.66, 0.01);
+    near(d.operatingMargin, 0.1216, 1e-4);
+    expect(s.underwaterMonth).toBe(4);
+    near(s.npvUsd, 151_817, 10);
+    near(breakevens(rent({ overheadPct: 0.1 }), gb200).soldShareToBreakEven, 0.6054, 1e-3);
+  });
+  it('price level still zeroes profit when overhead scales with revenue', () => {
+    const i = rent({ overheadPct: 0.25, rentBasis: 'contract' });
+    const lvl = breakevens(i, gb200).priceLevel!;
+    const z = daily({ ...i, priceInUsdPerM: i.priceInUsdPerM * lvl, priceCacheUsdPerM: i.priceCacheUsdPerM * lvl, priceOutUsdPerM: i.priceOutUsdPerM * lvl }, gb200);
+    near(z.operatingProfitUsd, 0, 1e-6);
+  });
+  it('defaults carry no overhead', () => {
+    expect(inputs().overheadPct).toBe(0);
+    expect(() => daily({ ...inputs(), overheadPct: 1 }, gb200)).toThrow();
+  });
+});

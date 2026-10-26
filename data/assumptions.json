@@ -275,7 +275,8 @@
     "residualPct": 0.1,
     "costOfCapital": 0.07,
     "monthsToRevenue": 0,
-    "rentBasis": "onDemand"
+    "rentBasis": "onDemand",
+    "overheadPct": 0
   },
   "ranges": {
     "racks": [
@@ -372,6 +373,11 @@
       2400,
       10000,
       100
+    ],
+    "overheadPct": [
+      0,
+      0.6,
+      0.01
     ]
   },
   "sourceBasis": {
@@ -391,7 +397,8 @@
     "prefillRate": "inferencex-agentx",
     "rentUsdPerGpuHr": "coreweave-pricing",
     "tenure": "assumption",
-    "rentBasis": "assumption"
+    "rentBasis": "assumption",
+    "overheadPct": "assumption"
   },
   "presets": {
     "pitch": {

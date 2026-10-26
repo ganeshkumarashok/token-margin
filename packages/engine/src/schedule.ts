@@ -49,7 +49,8 @@ export function schedule(i: Inputs, d: Daily): Schedule {
     } else {
       // Market prices fall on calendar time from month 1, whether or not the rack is serving yet.
       const pf = priceFactor(i, m);
-      const flow = (d.revenueUsd * pf - d.electricityUsd - fixedUsd) * MONTH_DAYS;
+      // Overhead scales with revenue, so it falls with prices too.
+      const flow = (d.revenueUsd * pf * (1 - i.overheadPct) - d.electricityUsd - fixedUsd) * MONTH_DAYS;
       if (flow < 0 && underwaterMonth === null) underwaterMonth = m;
       // On-demand rent carries no commitment: a renter hands the rack back the month it stops paying.
       // An owner is stuck with it, so owned flows keep running negative.

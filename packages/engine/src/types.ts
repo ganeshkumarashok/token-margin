@@ -37,6 +37,8 @@ export interface Inputs {
   listInUsdPerM: number;
   listCacheUsdPerM: number;
   listOutUsdPerM: number;
+  /** 0..1 share of revenue spent on overhead beyond the rack: staff, sales, support, payment fees, API front end */
+  overheadPct: number;
   /** 0..1 share of tokens sold at list */
   listShare: number;
   /** input tokens processed per output token */
@@ -75,6 +77,8 @@ export interface Daily {
   inputRevenueUsd: number;
   /** 0 when owning */
   rentUsd: number;
+  /** overheadPct x revenue */
+  overheadUsd: number;
   /** 0 when renting (the landlord pays) */
   electricityUsd: number;
   coloUsd: number;

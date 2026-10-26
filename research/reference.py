@@ -22,7 +22,7 @@ def tput(curve,I):
             f=(I-x0)/(x1-x0); return math.exp(math.log(y0)+f*(math.log(y1)-math.log(y0)))
 
 def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,elec=0.1453,pue=1.2,idle=0.35,colo=200.0,
-          ox=0.05,life=4.0,res=0.10,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None):
+          ox=0.05,life=4.0,res=0.10,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None,oh=0.0):
     r=RACK[rack]; pin,pc,po=[x*priceMult for x in PRICES[price]]; lin,lc,lo=PRICES["list"]
     renting=tenure=="rent"; pf=r["pf"] if pf is None else pf
     rent=(r["contract"] if basis=="contract" else r["rent"]) if rent is None else rent
@@ -34,9 +34,10 @@ def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,ele
     kw=r["itKw"]*racks*(u+(1-u)*idle)*pue
     rentUsd=rent*gpus*24 if renting else 0.0
     e=0.0 if renting else kw*24*elec; cl=0.0 if renting else colo*r["itKw"]*racks*12/365; other=0.0 if renting else capex*ox/365
-    cashCost=rentUsd+e+cl+other; cash=revenue-cashCost
+    ohUsd=revenue*oh
+    cashCost=rentUsd+e+cl+other+ohUsd; cash=revenue-cashCost
     dep=0.0 if renting else capex*(1-res)/(life*365); cost=cashCost+dep; profit=revenue-cost
-    return dict(capex=capex,bench=bench,cap=cap,tps=tps,out=out,inp=inp,revenue=revenue,rent=rentUsd,elec=e,colo=cl,other=other,
+    return dict(oh=oh,ohUsd=ohUsd,capex=capex,bench=bench,cap=cap,tps=tps,out=out,inp=inp,revenue=revenue,rent=rentUsd,elec=e,colo=cl,other=other,
                 dep=dep,cashCost=cashCost,cost=cost,cash=cash,profit=profit,
                 cashM=cash/revenue if revenue else None, opM=profit/revenue if revenue else None,
                 cashCostM=cashCost/(out/1e6) if out else None, fullCostM=cost/(out/1e6) if out else None,
@@ -48,7 +49,7 @@ def schedule(d,life=4.0,decline=0.5,k=0.07,res=0.10,m0=0):
         if m<=m0: flows.append(-fixed*365/12)  # lead time: no revenue, fixed costs accrue
         else:
             pf=(1-decline)**((m-1)/12)
-            f=(d["revenue"]*pf-d["elec"]-fixed)*365/12
+            f=(d["revenue"]*pf*(1-d["oh"])-d["elec"]-fixed)*365/12
             if f<0 and under is None: under=m
             flows.append(0.0 if (renting and under is not None) else f)  # renter walks away; owner is stuck
     cum=0; payback=None
@@ -118,6 +119,8 @@ if __name__=="__main__":
     d=daily(); print("T9b rent with m0=2:",schedule(d,m0=2))
     # T10 zero utilization, owning
     d=daily(u=0.0,tenure="own"); print("T10 own u=0: revenue",d['revenue'],"elec/day",round(d['elec'],2))
+    # T12 overhead: 10% of revenue
+    d=daily(oh=0.10); show("T12 default gb200 RENT, 10% overhead", d, schedule(d)); print("  soldBE",sold_be(oh=0.10))
     # T11 prefill properties at peak
     for kw in (dict(c=0.0),dict(c=0.95),dict(io=20.0),dict(pf=6400.0)):
         print("T11",kw,"cap",round(daily(u=1.0,**kw)["cap"],4))

@@ -61,6 +61,8 @@ export interface Defaults {
   prefillRate: number | null;
   pricePreset: PricePresetId;
   listShare: number;
+  /** share of revenue spent on overhead beyond the rack */
+  overheadPct: number;
   priceDeclinePerYear: number;
   islOsl: number;
   cacheHit: number;
@@ -172,6 +174,7 @@ export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
     listCacheUsdPerM: list.cacheUsdPerM,
     listOutUsdPerM: list.outUsdPerM,
     listShare: s.listShare,
+    overheadPct: s.overheadPct,
     islOsl: s.islOsl,
     cacheHit: s.cacheHit,
     priceDeclinePerYear: s.priceDeclinePerYear,

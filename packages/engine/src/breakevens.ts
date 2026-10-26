@@ -9,7 +9,8 @@ function paysBackWithinLife(i: Inputs, points: readonly CurvePoint[]): boolean {
 
 export function breakevens(i: Inputs, points: readonly CurvePoint[]): Breakevens {
   const d = daily(i, points);
-  const priceLevel = d.revenueUsd > 0 ? d.costUsd / d.revenueUsd : null;
+  // Overhead scales with revenue; every other cost holds when prices move.
+  const priceLevel = d.revenueUsd > 0 ? (d.costUsd - d.overheadUsd) / (d.revenueUsd * (1 - i.overheadPct)) : null;
   // Blended output price at that level (list share included).
   const blendedOut = (1 - i.listShare) * i.priceOutUsdPerM + i.listShare * i.listOutUsdPerM;
   const outPriceUsdPerM = priceLevel === null ? null : priceLevel * blendedOut;
