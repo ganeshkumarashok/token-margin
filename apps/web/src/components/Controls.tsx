@@ -2,6 +2,7 @@ import { useId, type ReactNode } from 'react';
 import { curveBounds, curveFor, evaluate, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM, inputsFromSettings, type PricePresetId, type Settings } from '@token-margin/engine';
 import { A } from '../data';
 import { breakEven, settingsForMode, type Model } from '../state/useModel';
+import { REPO } from './Details';
 
 interface Mark { v: number; label: string }
 
@@ -153,12 +154,12 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
         min={range('islOsl')[0]} max={range('islOsl')[1]} step={1} onChange={(v) => update({ islOsl: v })}
         zero={zero('islOsl', range('islOsl'))} zeroLabel={`${Math.round(zero('islOsl', range('islOsl')) ?? 0)} : 1`}
-        marks={[{ v: mix.islOsl, label: `OpenRouter ${model.short}, 30 days: ${mix.islOsl} : 1` }]} hint={`OpenRouter ${model.short} traffic: ${mix.islOsl} : 1`} />
+        marks={[{ v: mix.islOsl, label: `OpenRouter ${model.short}, 30 days: ${mix.islOsl} : 1` }]} hint={<>computed from the daily prompt and completion token counts on <a href={mix.url}>OpenRouter's {model.short} page</a>: {mix.islOsl} : 1 over 30 days{mix.range ? `, ${mix.range.islOsl[0]} to ${mix.range.islOsl[1]} day to day` : ''} (<a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a>)</>} />
 
       <Slider profitable={profitNow >= 0} testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
         min={range('cacheHit')[0]} max={range('cacheHit')[1]} step={0.01} onChange={(v) => update({ cacheHit: v })}
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
-        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, { v: mix.cacheHit - 0.1, label: `a newer single provider: ${fmtPct(mix.cacheHit - 0.1)}` }]} hint={<>{fmtPct(mix.cacheHit)} across all {model.short} providers on OpenRouter, from agents resending their context each turn. One rack gets that only if a conversation's later turns keep returning to it; {fmtPct(mix.cacheHit - 0.1)} is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
+        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, { v: mix.cacheHit - 0.1, label: `a newer single provider: ${fmtPct(mix.cacheHit - 0.1)}` }]} hint={<>{fmtPct(mix.cacheHit)} of prompt tokens were served from cache across all {model.short} providers, from the daily cached-token counts on <a href={mix.url}>OpenRouter's page</a>{mix.range ? ` (${fmtPct(mix.range.cacheHit[0])} to ${fmtPct(mix.range.cacheHit[1])} day to day)` : ''}; agents resend their context each turn. One rack gets that only if a conversation's later turns keep returning to it; {fmtPct(mix.cacheHit - 0.1)} is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
 
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}

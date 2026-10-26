@@ -179,3 +179,25 @@ test('15. robots.txt and the sitemap point at the canonical address', async ({ p
   await page.goto('/');
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', 'https://tokens.ganeshkumarashok.com/');
 });
+
+test('16. the page can be cited, and the citation follows the reader\'s settings', async ({ page }) => {
+  await page.goto('/');
+  const cite = page.getByTestId('cite');
+  await expect(cite).toContainText('Ashokavardhanan, G. (2026). What are the margins on inference? Token margin, data as of Oct 25, 2026. https://tokens.ganeshkumarashok.com/');
+  await cite.getByText('BibTeX').click();
+  await expect(cite.locator('pre')).toContainText('@misc{ashokavardhanan2026margins,');
+  await page.goto('/?rb=contract');
+  await expect(cite).toContainText('https://tokens.ganeshkumarashok.com/?rb=contract');
+  const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
+  expect(ld.author.name).toBe('Ganeshkumar Ashokavardhanan');
+  expect(ld.version).toBe('data-2026-10-25');
+});
+
+test('17. the traffic mix says it is computed from OpenRouter counts and links the source', async ({ page }) => {
+  await page.goto('/');
+  const ratio = page.getByTestId('s-ratio');
+  await expect(ratio).toContainText('computed from the daily prompt and completion token counts');
+  await expect(ratio.getByRole('link', { name: "OpenRouter's GLM-5.3 page" })).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
+  await expect(ratio.getByRole('link', { name: 'calculation' })).toHaveAttribute('href', /research\/openrouter_ratios\.py$/);
+  await expect(page.getByTestId('s-cache').getByRole('link')).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
+});

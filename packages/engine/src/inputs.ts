@@ -40,7 +40,7 @@ export interface ModelSpec {
   license: string;
   released: string;
   source: string;
-  mix: { islOsl: number; cacheHit: number; source: string; note?: string };
+  mix: { islOsl: number; cacheHit: number; source: string; note?: string; url?: string; range?: { islOsl: [number, number]; cacheHit: [number, number] } };
   openrouterTokensPerDay: { value: number; source: string; note?: string };
   curves: Record<RackId, CurveSpec>;
   pricePresets: Record<PricePresetId, PriceSpec>;

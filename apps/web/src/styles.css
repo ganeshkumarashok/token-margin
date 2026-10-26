@@ -125,6 +125,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .track .mark { top: 18px; width: 1px; height: 8px; background: var(--mark); }
 .hint { margin: 0; font-size: 13px; color: var(--muted); }
 .hint .zl { color: var(--zero); font-weight: 500; }
+.hint a { color: var(--muted); }
 .hint .zl.none { color: var(--muted); font-weight: 400; }
 
 .prices { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
@@ -155,6 +156,11 @@ a { color: inherit; text-underline-offset: 2px; }
 .sources .muted, .footer a { white-space: nowrap; }
 .footer { margin-top: 16px; font-size: 13px; color: var(--muted); }
 .footer p { margin: 0 0 6px; }
+.cite { margin-top: 10px; color: var(--ink); }
+.cite-label { font: 600 12px var(--cond); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 4px; }
+.cite-copy { font: 500 12px var(--sans); color: var(--ink); background: none; border: 1px solid var(--rule); padding: 1px 8px; cursor: pointer; }
+.cite details summary { cursor: pointer; color: var(--muted); font-size: 12px; }
+.cite pre { font: 400 12px/1.5 var(--mono); background: transparent; border: 1px solid var(--rule); padding: 8px 10px; overflow-x: auto; margin: 6px 0 0; }
 
 @media (max-width: 640px) {
   .page { padding-block: 24px 48px; gap: 28px; }
