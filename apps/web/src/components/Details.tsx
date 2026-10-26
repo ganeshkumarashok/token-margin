@@ -45,6 +45,8 @@ export function Details({ m }: { m: Model }) {
   const rack = A.racks[s.rack];
   const owning = s.tenure === 'own';
   const price = (v: number) => `${fmtUsdPerM(v)}/M`;
+  // Enough digits that each line multiplies out to the dollar figure shown.
+  const exact = (v: number) => (v >= 1e9 ? `${(v / 1e9).toPrecision(5)}B` : `${(v / 1e6).toPrecision(5)}M`);
   const uncachedRev = (d.uncachedInputTokens * i.priceInUsdPerM) / 1e6;
   const cachedRev = d.inputRevenueUsd - uncachedRev;
   const glmShare = (d.outputTokens + d.inputTokens) / A.anchors.openrouterGlm53TokensPerDay.value;
@@ -81,9 +83,9 @@ export function Details({ m }: { m: Model }) {
           { label: 'Cached input', note: fmtPct(i.cacheHit), value: fmtTokens(d.cachedInputTokens), fn: 'openrouter-glm53-activity' },
         ]} after={<>{fmtPct(glmShare)} of all GLM-5.3 traffic on OpenRouter</>} />
         <Block title="Revenue" unit="per day" rows={[
-          { label: 'Output', note: `${fmtTokens(d.outputTokens)} × ${price(i.priceOutUsdPerM)}`, value: fmtUsdInt(d.outputRevenueUsd), fn: A.pricePresets[s.pricePreset].source },
-          { label: 'Fresh input', note: `${fmtTokens(d.uncachedInputTokens)} × ${price(i.priceInUsdPerM)}`, value: fmtUsdInt(uncachedRev) },
-          { label: 'Cached input', note: `${fmtTokens(d.cachedInputTokens)} × ${price(i.priceCacheUsdPerM)}`, value: fmtUsdInt(cachedRev) },
+          { label: 'Output', note: `${exact(d.outputTokens)} × ${price(i.priceOutUsdPerM)}`, value: fmtUsdInt(d.outputRevenueUsd), fn: A.pricePresets[s.pricePreset].source },
+          { label: 'Fresh input', note: `${exact(d.uncachedInputTokens)} × ${price(i.priceInUsdPerM)}`, value: fmtUsdInt(uncachedRev) },
+          { label: 'Cached input', note: `${exact(d.cachedInputTokens)} × ${price(i.priceCacheUsdPerM)}`, value: fmtUsdInt(cachedRev) },
           { label: 'Total', value: fmtUsdInt(d.revenueUsd), total: true },
         ]} />
         <Block title={owning ? 'Cost of owning' : 'Cost'} unit="per day" rows={cost} />
@@ -95,7 +97,7 @@ export function Details({ m }: { m: Model }) {
           </tr>
         </tbody>
       </table>
-      <p className="excluded">Not included: sales, customer support, payment fees and taxes. The overhead slider adds the first three.</p>
+      <p className="excluded">Not included: sales, customer support, payment fees and taxes. The overhead slider adds the first three. Figures are rounded for display; totals are computed from unrounded values.</p>
 
       <h2>How it works</h2>
       <ul className="method">

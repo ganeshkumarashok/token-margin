@@ -48,6 +48,8 @@ a { color: inherit; text-underline-offset: 2px; }
 .repo { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; font: 500 14px var(--sans); color: var(--muted); text-decoration: none; }
 .repo:hover, .repo:focus-visible { color: var(--ink); text-decoration: underline; }
 .repo svg { position: relative; top: 2px; }
+.byline { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+.byline a { color: var(--ink); }
 .masthead h1 { margin: 0; font: 600 30px/1.15 var(--cond); letter-spacing: -0.01em; text-wrap: balance; }
 
 /* The answer */
@@ -109,7 +111,9 @@ a { color: inherit; text-underline-offset: 2px; }
   background: var(--hl); border: 2px solid var(--ink);
 }
 .track input::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--hl); border: 2px solid var(--ink); }
+.track input:focus { outline: none; }
 .track input:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--zero); outline-offset: 2px; }
+.track input:focus-visible::-moz-range-thumb { outline: 2px solid var(--zero); outline-offset: 2px; }
 .track .zero, .track .mark {
   position: absolute; pointer-events: none;
   left: calc(var(--thumb) / 2 + (100% - var(--thumb)) * var(--f));
@@ -131,7 +135,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .receipt { width: 100%; border-collapse: collapse; font-size: 15px; }
 .receipt th { text-align: left; font: 600 12px/1.3 var(--cond); text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 6px; border-bottom: 1px solid var(--rule); }
 .receipt tbody:first-child th { padding-top: 4px; }
-.receipt th.unit { text-align: right; font: 400 11px var(--mono); text-transform: none; letter-spacing: 0; color: var(--muted); }
+.receipt th.unit { white-space: nowrap; text-align: right; font: 400 11px var(--mono); text-transform: none; letter-spacing: 0; color: var(--muted); }
 .receipt td { padding: 5px 0; vertical-align: baseline; }
 .receipt td.l { white-space: nowrap; padding-right: 14px; }
 .receipt td.n { color: var(--muted); font-size: 13px; width: 100%; }
@@ -145,6 +149,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .method { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-size: 14px; }
 .sources li { overflow-wrap: anywhere; }
+.sources .muted, .footer a { white-space: nowrap; }
 .footer { margin-top: 16px; font-size: 13px; color: var(--muted); }
 .footer p { margin: 0 0 6px; }
 

@@ -1,14 +1,20 @@
 import { Answer } from './components/Answer';
 import { Controls } from './components/Controls';
 import { Details, REPO } from './components/Details';
+import { A } from './data';
 import { useModel } from './state/useModel';
+
+const asOf = new Date(`${A.version}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
 export function App() {
   const m = useModel();
   return (
     <main className="page">
       <header className="masthead">
-        <h1>What are the margins on inference?</h1>
+        <div>
+          <h1>What are the margins on inference?</h1>
+          <p className="byline">By <a href="https://ganeshkumarashok.com">Ganeshkumar Ashokavardhanan</a> · data as of {asOf}</p>
+        </div>
         <a className="repo" href={REPO} data-testid="repo-link" aria-label="Source code on GitHub">
           {/* GitHub mark (Octicons, MIT) */}
           <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">

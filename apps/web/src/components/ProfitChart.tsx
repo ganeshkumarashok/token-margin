@@ -64,6 +64,10 @@ export function ProfitChart({ m }: { m: Model }) {
   const uNow = s.utilization;
   const pNow = m.result.daily.operatingProfitUsd;
 
+  const be = (l: (typeof lines)[number]) => (l.zero === null ? 'never breaks even' : `breaks even at ${fmtPct(l.zero)}`);
+  const others = lines.filter((l) => l.b !== active).map((l) => `${DOING[l.b]} ${be(l)}`).join('; ');
+  const summary = `${DOING[active]}, the selected option, ${be(cur)} and makes ${fmtUsdInt(pNow)} a day at ${fmtPct(uNow)} utilization. For comparison, ${others}`;
+
   // End labels on the right, nudged apart so they never overlap.
   const ends = lines.map((l) => ({ b: l.b, y: y(l.pts[STEPS]) })).sort((a, c) => a.y - c.y);
   for (let k = 1; k < ends.length; k++) ends[k].y = Math.max(ends[k].y, ends[k - 1].y + 15);
@@ -74,7 +78,6 @@ export function ProfitChart({ m }: { m: Model }) {
     setHover(Math.min(1, Math.max(0, Math.round(u * STEPS) / STEPS)));
   };
 
-  const summary = lines.map((l) => `${DOING[l.b]} breaks even at ${l.zero === null ? 'no utilization' : fmtPct(l.zero)}`).join('; ');
 
   return (
     <figure className="pchart" data-testid="profit-chart">

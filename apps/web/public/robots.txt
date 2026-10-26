@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tokens.ganeshkumarashok.com/sitemap.xml

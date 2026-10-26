@@ -18,7 +18,12 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('margin')).toHaveText('21% gross margin');
   await expect(page.getByTestId('equation')).toContainText('1.2B out · 74.2B in');
   await expect(page.getByTestId('chart-readout')).toHaveText('At 70% utilization: $4,698 a day renting on demand. Break-even at 56%.');
-  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 56%; renting on a 3-yr contract breaks even at 31%; owning breaks even at 15%/);
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /^Profit per day against GPU utilization\. renting on demand, the selected option, breaks even at 56% and makes \$4,698 a day at 70% utilization\. For comparison, renting on a 3-yr contract breaks even at 31%; owning breaks even at 15%\.$/);
+  await expect(page.locator('.byline')).toContainText('Ganeshkumar Ashokavardhanan');
+  await expect(page.locator('.byline a')).toHaveAttribute('href', 'https://ganeshkumarashok.com');
+  // Each revenue line multiplies out from what it shows.
+  await expect(page.getByTestId('receipt')).toContainText('1.1778B × $4.40/M');
+  await expect(page.getByTestId('receipt')).toContainText('$5,182');
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
   await expect(page.getByTestId('disclaimer').getByRole('link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
   await expect(page.getByTestId('repo-link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
@@ -63,6 +68,7 @@ test('5. owning swaps rent for the cost of owning and a rack-price slider', asyn
   await expect(page.getByTestId('equation')).toContainText('$210/hr all-in, owned');
   await expect(page.getByTestId('s-rent')).toHaveCount(0);
   await expect(page.getByTestId('chart-readout')).toContainText('a day owning');
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /owning, the selected option, breaks even at 15%/);
   await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $355/day');
   await expect(page.getByTestId('s-ops')).toContainText('$400/day');
   await page.goto('/?t=own&e=0.25');
@@ -164,4 +170,11 @@ test('14. a shared link with settings renders its own numbers over the pre-rende
   await expect(page.getByTestId('profit')).toHaveText('$7,839');
   await expect(page.locator('#root .answer')).toHaveCount(1);
   expect(errors).toEqual([]);
+});
+
+test('15. robots.txt and the sitemap point at the canonical address', async ({ page, request }) => {
+  expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap: https://tokens.ganeshkumarashok.com/sitemap.xml');
+  expect(await (await request.get('/sitemap.xml')).text()).toContain('<loc>https://tokens.ganeshkumarashok.com/</loc>');
+  await page.goto('/');
+  await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', 'https://tokens.ganeshkumarashok.com/');
 });
