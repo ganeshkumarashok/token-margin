@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Served from https://<user>.github.io/token-margin/ once Pages is enabled; override with BASE=/ for local previews.
+// Served from the root of its own (sub)domain; set BASE to serve it under a path.
 export default defineConfig({
-  base: process.env.BASE ?? '/token-margin/',
+  base: process.env.BASE ?? '/',
   plugins: [react()],
   server: { fs: { allow: ['../..'] } },
   build: { chunkSizeWarningLimit: 900 },

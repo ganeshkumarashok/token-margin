@@ -1,6 +1,6 @@
 # Token margin
 
-What are the margins on inference? This models one NVIDIA NVL72 rack (GB200 or
+Live at https://tokens.ganeshkumarashok.com. What are the margins on inference? This models one NVIDIA NVL72 rack (GB200 or
 GB300) serving an open-weights model (GLM-5.3, FP4) for a day: what it costs to
 rent or own, how many tokens it serves, what they sell for, and what is left.
 Moving a slider recomputes the day, and the URL records every change, so each
@@ -15,7 +15,7 @@ and traces to `research/sources.md`; the raw data behind them is in `research/da
 
 ```
 npm install
-npm run dev          # site at http://localhost:5173/token-margin/
+npm run dev          # site at http://localhost:5173/
 npm test             # engine tests, including checks against InferenceX's published points
 npm run scenario     # scenario tables -> docs/findings-tables.md
 npm run e2e          # browser checks, screenshots and public/og.png (first run: npx playwright install chromium)
