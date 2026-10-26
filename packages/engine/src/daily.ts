@@ -14,11 +14,15 @@ export function validateInputs(i: Inputs): void {
   for (const [k, v] of Object.entries(i)) {
     if (typeof v === 'number') check(Number.isFinite(v), `${k} is not a finite number`);
   }
+  check(i.tenure === 'rent' || i.tenure === 'own', 'tenure must be rent or own');
   check(i.racks > 0 && Number.isInteger(i.racks), 'racks must be a positive integer');
   check(i.gpusPerRack > 0, 'gpusPerRack must be positive');
   check(nonneg(i.rackPriceUsd), 'rackPriceUsd must be >= 0');
+  check(nonneg(i.rentUsdPerGpuHr), 'rentUsdPerGpuHr must be >= 0');
   check(nonneg(i.itKwPerRack), 'itKwPerRack must be >= 0');
   check(i.interactivity > 0, 'interactivity must be positive');
+  check(i.prefillRate > 0, 'prefillRate must be positive');
+  check(nonneg(i.refUncachedPerOut), 'refUncachedPerOut must be >= 0');
   check(unit(i.achieved), 'achieved must be in [0, 1]');
   check(unit(i.utilization), 'utilization must be in [0, 1]');
   check(unit(i.cacheHit), 'cacheHit must be in [0, 1]');
@@ -42,9 +46,19 @@ export function validateInputs(i: Inputs): void {
 
 export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
   validateInputs(i);
+  const renting = i.tenure === 'rent';
   const gpus = i.racks * i.gpusPerRack;
-  const capexUsd = i.racks * i.rackPriceUsd;
-  const tpsPerGpu = throughputAt(points, i.interactivity) * i.achieved;
+  const capexUsd = renting ? 0 : i.racks * i.rackPriceUsd;
+
+  // InferenceX AgentX publishes output tok/s over all GPUs, prefill included, on traffic that prefills
+  // `refUncachedPerOut` uncached input tokens per output token. Traffic that prefills more or fewer
+  // moves the GPU-seconds per output token by the difference at the prefill rate.
+  const benchPerGpu = throughputAt(points, i.interactivity);
+  const extraPrefillSec = (i.islOsl * (1 - i.cacheHit) - i.refUncachedPerOut) / i.prefillRate;
+  const secPerOut = 1 / benchPerGpu + extraPrefillSec;
+  check(secPerOut > 0, 'refUncachedPerOut / prefillRate exceeds the benchmark time per output token');
+  const capacityPerGpu = 1 / secPerOut;
+  const tpsPerGpu = capacityPerGpu * i.achieved;
 
   const outputTokens = tpsPerGpu * gpus * i.utilization * DAY_S;
   const inputTokens = outputTokens * i.islOsl;
@@ -62,19 +76,24 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
 
   // Power: sold capacity runs at full IT load, unsold capacity idles. `achieved` changes tokens, not power.
   const facilityKw = i.itKwPerRack * i.racks * (i.utilization + (1 - i.utilization) * i.idleFraction) * i.pue;
-  const electricityUsd = facilityKw * 24 * i.electricityUsdPerKwh;
+  // A renter pays $/GPU-hr for every GPU, used or not; power, colo and depreciation are the landlord's.
+  const rentUsd = renting ? i.rentUsdPerGpuHr * gpus * 24 : 0;
+  const electricityUsd = renting ? 0 : facilityKw * 24 * i.electricityUsdPerKwh;
   // Colocation is billed on provisioned IT kW regardless of load.
-  const coloUsd = (i.coloUsdPerKwMonth * i.itKwPerRack * i.racks * 12) / 365;
-  const otherOpexUsd = (capexUsd * i.otherOpexPctPerYear) / 365;
-  const cashCostUsd = electricityUsd + coloUsd + otherOpexUsd;
+  const coloUsd = renting ? 0 : (i.coloUsdPerKwMonth * i.itKwPerRack * i.racks * 12) / 365;
+  const otherOpexUsd = renting ? 0 : (capexUsd * i.otherOpexPctPerYear) / 365;
+  const cashCostUsd = rentUsd + electricityUsd + coloUsd + otherOpexUsd;
   const cashProfitUsd = revenueUsd - cashCostUsd;
-  const depreciationUsd = (capexUsd * (1 - i.residualPct)) / (i.lifeYears * 365);
-  const operatingProfitUsd = cashProfitUsd - depreciationUsd;
+  const depreciationUsd = renting ? 0 : (capexUsd * (1 - i.residualPct)) / (i.lifeYears * 365);
+  const costUsd = cashCostUsd + depreciationUsd;
+  const operatingProfitUsd = revenueUsd - costUsd;
 
   const mOut = outputTokens / 1e6;
   return {
     capexUsd,
     gpus,
+    benchPerGpu,
+    capacityPerGpu,
     tpsPerGpu,
     outputTokens,
     inputTokens,
@@ -83,17 +102,19 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
     revenueUsd,
     outputRevenueUsd,
     inputRevenueUsd,
+    rentUsd,
     electricityUsd,
     coloUsd,
     otherOpexUsd,
     cashCostUsd,
     cashProfitUsd,
     depreciationUsd,
+    costUsd,
     operatingProfitUsd,
     cashMargin: revenueUsd > 0 ? cashProfitUsd / revenueUsd : null,
     operatingMargin: revenueUsd > 0 ? operatingProfitUsd / revenueUsd : null,
     cashCostPerMOut: mOut > 0 ? cashCostUsd / mOut : null,
-    fullCostPerMOut: mOut > 0 ? (cashCostUsd + depreciationUsd) / mOut : null,
+    fullCostPerMOut: mOut > 0 ? costUsd / mOut : null,
     revenuePerGpuHr: revenueUsd / (gpus * 24),
     facilityKw,
   };

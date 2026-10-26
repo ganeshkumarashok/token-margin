@@ -11,8 +11,7 @@
   "dependencies": {
     "@gpu-roi/engine": "*",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "recharts": "^2.13.3"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",

@@ -1,17 +1,24 @@
 export type RackId = 'gb200' | 'gb300';
 export type PricePresetId = 'floor' | 'median' | 'list';
 export type ScenarioPresetId = 'pitch' | 'realistic' | 'bear';
+/** what a renter pays: the published on-demand list price, or a multi-year multi-rack contract */
+export type RentBasis = 'onDemand' | 'contract';
+/** Who pays for the rack. A renter pays $/GPU-hr and nothing else; an owner pays capex, power, colo and opex. */
+export type Tenure = 'rent' | 'own';
 
-/** One published benchmark point: serving speed (tok/s per user) -> output tok/s per GPU. */
+/** One published benchmark point: serving speed (tok/s per user) -> output tok/s per *decode* GPU. */
 export interface CurvePoint {
   interactivity: number;
   tps: number;
 }
 
 export interface Inputs {
+  tenure: Tenure;
   rack: RackId;
   racks: number;
   rackPriceUsd: number;
+  /** $/GPU-hr paid by a renter; ignored when owning */
+  rentUsdPerGpuHr: number;
   gpusPerRack: number;
   itKwPerRack: number;
   /** tok/s per user; clamped to curve bounds */
@@ -20,6 +27,10 @@ export interface Inputs {
   achieved: number;
   /** 0..1 share of capacity sold */
   utilization: number;
+  /** uncached input tokens prefilled per second per prefill GPU */
+  prefillRate: number;
+  /** uncached input tokens per output token in the benchmark the curve was measured on */
+  refUncachedPerOut: number;
   priceInUsdPerM: number;
   priceCacheUsdPerM: number;
   priceOutUsdPerM: number;
@@ -46,8 +57,14 @@ export interface Inputs {
 }
 
 export interface Daily {
+  /** 0 when renting */
   capexUsd: number;
   gpus: number;
+  /** benchmark output tok/s per GPU, prefill GPUs included, at this serving speed (InferenceX) */
+  benchPerGpu: number;
+  /** output tok/s per GPU on this traffic's prefill load, before the achieved haircut */
+  capacityPerGpu: number;
+  /** output tok/s per GPU actually produced: capacity x achieved */
   tpsPerGpu: number;
   outputTokens: number;
   inputTokens: number;
@@ -56,12 +73,20 @@ export interface Daily {
   revenueUsd: number;
   outputRevenueUsd: number;
   inputRevenueUsd: number;
+  /** 0 when owning */
+  rentUsd: number;
+  /** 0 when renting (the landlord pays) */
   electricityUsd: number;
   coloUsd: number;
   otherOpexUsd: number;
+  /** rent when renting; electricity + colo + other opex when owning */
   cashCostUsd: number;
   cashProfitUsd: number;
+  /** 0 when renting */
   depreciationUsd: number;
+  /** cash cost + depreciation: the whole day's cost under either tenure */
+  costUsd: number;
+  /** revenue - costUsd: the day's profit under either tenure */
   operatingProfitUsd: number;
   cashMargin: number | null;
   operatingMargin: number | null;
@@ -73,10 +98,13 @@ export interface Daily {
 
 export interface Schedule {
   months: number;
-  /** index 0 = month 0 (capex); length months + 1; residual not included */
+  /** index 0 = month 0 (capex; 0 when renting); length months + 1; residual not included */
   flows: number[];
   cumulative: number[];
+  /** first month cumulative cash >= 0; null when it never happens or when there is no capex to pay back */
   paybackMonth: number | null;
+  /** first serving month whose cash flow is negative (prices have fallen below cost); null if none */
+  underwaterMonth: number | null;
   npvUsd: number;
   irr: number | null;
   residualUsd: number;
@@ -90,6 +118,8 @@ export interface Breakevens {
   priceLevel: number | null;
   /** Output price at that level (input prices scaled the same way); null when no revenue. */
   outPriceUsdPerM: number | null;
+  /** Share of capacity that must be sold for the day to break even, everything else as set; null if even 100% loses money. */
+  soldShareToBreakEven: number | null;
   /** Largest yearly price decline with NPV >= 0 at the cost of capital; null if NPV < 0 even with no decline. */
   priceDeclineForZeroNpv: number | null;
   utilizationForPaybackAtLife: number | null;

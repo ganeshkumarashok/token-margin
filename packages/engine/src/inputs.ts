@@ -1,5 +1,5 @@
 import { curveBounds, toCurve } from './curve';
-import type { CurvePoint, Inputs, PricePresetId, RackId, ScenarioPresetId } from './types';
+import type { CurvePoint, Inputs, PricePresetId, RackId, RentBasis, ScenarioPresetId, Tenure } from './types';
 
 /** Shape of data/assumptions.json (only the parts the engine and UI read). */
 export interface Valued {
@@ -13,6 +13,12 @@ export interface RackSpec {
   label: string;
   gpus: number;
   priceUsd: Valued;
+  /** on-demand list $/GPU-hr for a whole rack */
+  rentUsdPerGpuHr: Valued;
+  /** $/GPU-hr on a multi-year, multi-rack contract */
+  contractUsdPerGpuHr: Valued;
+  /** uncached input tok/s per prefill GPU */
+  prefillRate: Valued;
   itKw: Valued;
   tdpW: Valued;
   tcoUsdPerGpuHr: Valued;
@@ -22,6 +28,8 @@ export interface CurveSpec {
   unit: string;
   date: string;
   source: string;
+  /** uncached input tokens per output token in the benchmark traffic */
+  refUncachedPerOut: number;
   points: Array<[number, number]>;
 }
 export interface PriceSpec {
@@ -39,12 +47,18 @@ export interface SourceSpec {
   kind: 'primary' | 'secondary' | 'assumption';
 }
 export interface Defaults {
+  tenure: Tenure;
   rack: RackId;
   racks: number;
   rackPriceMult: number;
+  rentBasis: RentBasis;
+  /** null = the selected rack's rate for `rentBasis` */
+  rentUsdPerGpuHr: number | null;
   interactivity: number;
   achieved: number;
   utilization: number;
+  /** null = the selected rack's derived rate */
+  prefillRate: number | null;
   pricePreset: PricePresetId;
   listShare: number;
   priceDeclinePerYear: number;
@@ -82,6 +96,8 @@ export interface Assumptions {
   presets: Record<ScenarioPresetId, ScenarioPreset>;
   anchors: {
     openrouterTokensPerDay: { value: number; source: string; note?: string };
+    /** GLM-5.3 tokens (prompt + completion) OpenRouter serves per day */
+    openrouterGlm53TokensPerDay: { value: number; source: string; note?: string };
     deepseekTokensPerDay: { value: number; source: string; note?: string };
     deepseekDay: {
       gpus: number; costUsdPerGpuHr: number; outputTokens: number; inputTokens: number; cacheHit: number;
@@ -89,7 +105,8 @@ export interface Assumptions {
       reportedRevenueUsd: number; reportedCostUsd: number; source: string;
     };
     nvidiaClaim: { capexUsd: number; revenueUsd: number; years: number; priceOutUsdPerM: number; gpus: number; source: string };
-    rentalUsdPerGpuHr: { committed: number; onDemand: number; source: string };
+    /** committed = the lowest figure with a source (quoted, not published); onDemand = GB200 whole-rack rate */
+    rentalUsdPerGpuHr: { committed: number; onDemand: number; source: string; note?: string };
   };
   sources: Record<string, SourceSpec>;
 }
@@ -97,6 +114,7 @@ export interface Assumptions {
 /**
  * User-facing settings: what the knobs and URL hold. Prices are either a preset or custom.
  * `rackPriceMult` scales the selected rack's base price, so switching racks keeps the relative setting.
+ * `rentUsdPerGpuHr` and `prefillRate` are null until touched, so they follow the selected rack.
  */
 export interface Settings extends Defaults {
   customPrice: { inUsdPerM: number; cacheUsdPerM: number; outUsdPerM: number } | null;
@@ -121,19 +139,32 @@ export function sellPrices(a: Assumptions, s: Settings): { inUsdPerM: number; ca
   return { inUsdPerM: p.inUsdPerM, cacheUsdPerM: p.cacheUsdPerM, outUsdPerM: p.outUsdPerM };
 }
 
+export function rentFor(a: Assumptions, s: Settings): number {
+  const rack = a.racks[s.rack];
+  return s.rentUsdPerGpuHr ?? (s.rentBasis === 'contract' ? rack.contractUsdPerGpuHr : rack.rentUsdPerGpuHr).value;
+}
+
+export function prefillFor(a: Assumptions, s: Settings): number {
+  return s.prefillRate ?? a.racks[s.rack].prefillRate.value;
+}
+
 export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
   const rack = a.racks[s.rack];
   const sell = sellPrices(a, s);
   const list = a.pricePresets.list;
   return {
+    tenure: s.tenure,
     rack: s.rack,
     racks: s.racks,
     rackPriceUsd: rack.priceUsd.value * s.rackPriceMult,
+    rentUsdPerGpuHr: rentFor(a, s),
     gpusPerRack: rack.gpus,
     itKwPerRack: rack.itKw.value,
     interactivity: clampInteractivity(a, s.rack, s.interactivity),
     achieved: s.achieved,
     utilization: s.utilization,
+    prefillRate: prefillFor(a, s),
+    refUncachedPerOut: a.curves[s.rack].refUncachedPerOut,
     priceInUsdPerM: sell.inUsdPerM,
     priceCacheUsdPerM: sell.cacheUsdPerM,
     priceOutUsdPerM: sell.outUsdPerM,
@@ -156,7 +187,7 @@ export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
   };
 }
 
-/** Settings overrides for a scenario preset; only the preset's keys change. */
+/** Settings overrides for a scenario preset; only the preset's keys change. Tenure is untouched. */
 export function applyPreset(a: Assumptions, s: Settings, id: ScenarioPresetId): Settings {
   const p = a.presets[id];
   const interactivity = p.interactivity === 'curveMin' ? curveBounds(curveFor(a, s.rack))[0] : p.interactivity;

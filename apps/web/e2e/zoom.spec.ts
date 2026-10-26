@@ -1,19 +1,21 @@
 import { test } from '@playwright/test';
-// Close-up shots for visual review (not assertions).
-test('zoom shots', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 900 });
+
+// The social card image (public/og.png) is rendered from the page itself, plus close-ups for visual review.
+test('social card', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
+  const page = await ctx.newPage();
   await page.goto('/');
-  const cards = page.locator('figure.card');
-  for (let k = 0; k < 4; k++) await cards.nth(k).screenshot({ path: `e2e/screenshots/card-${k}.png` });
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/?preset=bear');
-  await page.locator('figure.card').nth(1).screenshot({ path: 'e2e/screenshots/phone-heatmap-bear.png' });
+  await page.evaluate(() => document.fonts.ready);
+  await page.screenshot({ path: 'public/og.png' });
+  await ctx.close();
 });
-test('dark close-ups', async ({ page }) => {
-  await page.emulateMedia({ colorScheme: 'dark' });
+
+test('close-ups', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/');
-  const cards = page.locator('figure.card');
-  await cards.nth(0).screenshot({ path: 'e2e/screenshots/dark-card-0.png' });
-  await cards.nth(1).screenshot({ path: 'e2e/screenshots/dark-card-1.png' });
+  for (const [name, q] of [['rent', ''], ['contract', '?rb=contract'], ['own', '?t=own'], ['loss', '?u=0.4']]) {
+    await page.goto(`/${q}`);
+    await page.evaluate(() => document.fonts.ready);
+    await page.locator('.answer').screenshot({ path: `e2e/screenshots/answer-${name}.png` });
+  }
+  await page.locator('.controls').screenshot({ path: 'e2e/screenshots/controls.png' });
 });

@@ -37,15 +37,23 @@ function irrOf(flows: readonly number[]): number | null {
 
 export function schedule(i: Inputs, d: Daily): Schedule {
   const months = lifeMonths(i);
-  const flows: number[] = [-d.capexUsd];
+  // Costs that accrue whether or not the rack is serving: rent (renting) or colo + other opex (owning).
+  const fixedUsd = d.rentUsd + d.coloUsd + d.otherOpexUsd;
+  const renting = i.tenure === 'rent';
+  const flows: number[] = [d.capexUsd > 0 ? -d.capexUsd : 0];
+  let underwaterMonth: number | null = null;
   for (let m = 1; m <= months; m++) {
     if (m <= i.monthsToRevenue) {
-      // Not yet serving: rack unpowered, fixed facility costs accrue.
-      flows.push(-(d.coloUsd + d.otherOpexUsd) * MONTH_DAYS);
+      // Not yet serving: rack unpowered, fixed costs accrue.
+      flows.push(-fixedUsd * MONTH_DAYS);
     } else {
       // Market prices fall on calendar time from month 1, whether or not the rack is serving yet.
       const pf = priceFactor(i, m);
-      flows.push((d.revenueUsd * pf - d.electricityUsd - d.coloUsd - d.otherOpexUsd) * MONTH_DAYS);
+      const flow = (d.revenueUsd * pf - d.electricityUsd - fixedUsd) * MONTH_DAYS;
+      if (flow < 0 && underwaterMonth === null) underwaterMonth = m;
+      // On-demand rent carries no commitment: a renter hands the rack back the month it stops paying.
+      // An owner is stuck with it, so owned flows keep running negative.
+      flows.push(renting && underwaterMonth !== null ? 0 : flow);
     }
   }
   const cumulative: number[] = [];
@@ -54,7 +62,7 @@ export function schedule(i: Inputs, d: Daily): Schedule {
   for (let m = 0; m < flows.length; m++) {
     run += flows[m];
     cumulative.push(run);
-    if (m > 0 && paybackMonth === null && run >= 0) paybackMonth = m;
+    if (m > 0 && d.capexUsd > 0 && paybackMonth === null && run >= 0) paybackMonth = m;
   }
   const residualUsd = d.capexUsd * i.residualPct;
   const terminal = flows.slice();
@@ -65,6 +73,7 @@ export function schedule(i: Inputs, d: Daily): Schedule {
     flows,
     cumulative,
     paybackMonth,
+    underwaterMonth,
     npvUsd: npvAt(terminal, rMonthly),
     irr: irrOf(terminal),
     residualUsd,

@@ -1,12 +1,19 @@
-"""Reference implementation used to derive the expected values in IMPLEMENTATION.md tests.
-Mirrors the engine spec exactly (discrete monthly schedule). Run: python3 research/reference.py
+"""Reference implementation used to derive the expected values in the engine tests.
+Mirrors the engine exactly (discrete monthly schedule). Run: python3 research/reference.py
+
+Capacity: InferenceX AgentX curves are output tok/s per GPU with prefill GPUs included, measured on
+traffic that prefills REF uncached input tokens per output token. Other traffic shifts prefill time:
+    cap = 1 / (1 / bench + (io * (1 - c) - REF) / pf)      # output tok/s per GPU
+Tenure: 'own' pays capex + power + colo + opex (+ depreciation); 'rent' pays $/GPU-hr and nothing else.
 """
 import math
 DAY=86400
-CURVES={"gb200":[(58,9598),(67,9135),(86,6589),(104,3619),(114,1997),(141,630)],
-        "gb300":[(67,10192),(104,4394),(141,837)]}
-RACK={"gb200":dict(gpus=72,price=3.9e6,itKw=120.0),"gb300":dict(gpus=72,price=5.0e6,itKw=132.0)}
-PRICES={"floor":(0.5625,0.125,2.50),"median":(0.70,0.13,2.20),"list":(1.40,0.26,4.40)}
+REF=5.0
+CURVES={"gb200":[(94.7,312.2),(106.2,264.4),(111.5,253.7),(128.7,175.8),(141.8,126.4),(195.3,91.7),(263.9,49.9)],
+        "gb300":[(89.4,458.2),(94.7,393.0),(114.3,313.8),(131.8,202.5),(184.8,109.1),(246.3,54.2)]}
+RACK={"gb200":dict(gpus=72,price=3.9e6,itKw=120.0,pf=3200.0,rent=10.50,contract=4.40),
+      "gb300":dict(gpus=72,price=5.0e6,itKw=132.0,pf=3200.0,rent=12.42,contract=5.00)}
+PRICES={"floor":(0.5625,0.125,2.50),"median":(1.12,0.14,4.40),"list":(1.40,0.26,4.40)}
 
 def tput(curve,I):
     xs=[p[0] for p in curve]; I=min(max(I,xs[0]),xs[-1])
@@ -14,32 +21,40 @@ def tput(curve,I):
         if x0<=I<=x1:
             f=(I-x0)/(x1-x0); return math.exp(math.log(y0)+f*(math.log(y1)-math.log(y0)))
 
-def daily(rack,racks,I,a,u,price,c=0.5,io=8.0,elec=0.1453,pue=1.2,idle=0.35,colo=200.0,ox=0.05,life=4.0,res=0.10,listShare=0.0,priceMult=1.0):
+def daily(rack="gb200",racks=1,I=95,a=1.0,u=0.7,price="median",c=0.9,io=63.0,elec=0.1453,pue=1.2,idle=0.35,colo=200.0,
+          ox=0.05,life=4.0,res=0.10,listShare=0.0,priceMult=1.0,tenure="rent",basis="onDemand",rent=None,pf=None):
     r=RACK[rack]; pin,pc,po=[x*priceMult for x in PRICES[price]]; lin,lc,lo=PRICES["list"]
-    capex=racks*r["price"]; gpus=racks*r["gpus"]
-    tps=tput(CURVES[rack],I)*a
+    renting=tenure=="rent"; pf=r["pf"] if pf is None else pf
+    rent=(r["contract"] if basis=="contract" else r["rent"]) if rent is None else rent
+    capex=0.0 if renting else racks*r["price"]; gpus=racks*r["gpus"]
+    bench=tput(CURVES[rack],I); cap=1.0/(1.0/bench+(io*(1-c)-REF)/pf); tps=cap*a
     out=tps*gpus*u*DAY; inp=out*io
     def rev(pin,pc,po): return (out*po+inp*(1-c)*pin+inp*c*pc)/1e6
     revenue=(1-listShare)*rev(pin,pc,po)+listShare*rev(lin,lc,lo)
     kw=r["itKw"]*racks*(u+(1-u)*idle)*pue
-    e=kw*24*elec; cl=colo*r["itKw"]*racks*12/365; other=capex*ox/365
-    cash=revenue-e-cl-other; dep=capex*(1-res)/(life*365)
-    return dict(capex=capex,out=out,inp=inp,revenue=revenue,elec=e,colo=cl,other=other,cash=cash,dep=dep,
-                cashM=cash/revenue if revenue else None, opM=(cash-dep)/revenue if revenue else None,
-                cashCostM=(e+cl+other)/(out/1e6) if out else None, fullCostM=(e+cl+other+dep)/(out/1e6) if out else None,
-                gpuHr=revenue/(gpus*24), tps=tps, inputRev=revenue-(out*po/1e6)*(1-listShare)-(out*lo/1e6)*listShare)
+    rentUsd=rent*gpus*24 if renting else 0.0
+    e=0.0 if renting else kw*24*elec; cl=0.0 if renting else colo*r["itKw"]*racks*12/365; other=0.0 if renting else capex*ox/365
+    cashCost=rentUsd+e+cl+other; cash=revenue-cashCost
+    dep=0.0 if renting else capex*(1-res)/(life*365); cost=cashCost+dep; profit=revenue-cost
+    return dict(capex=capex,bench=bench,cap=cap,tps=tps,out=out,inp=inp,revenue=revenue,rent=rentUsd,elec=e,colo=cl,other=other,
+                dep=dep,cashCost=cashCost,cost=cost,cash=cash,profit=profit,
+                cashM=cash/revenue if revenue else None, opM=profit/revenue if revenue else None,
+                cashCostM=cashCost/(out/1e6) if out else None, fullCostM=cost/(out/1e6) if out else None,
+                gpuHr=revenue/(gpus*24), inputRev=revenue-(out*po/1e6)*(1-listShare)-(out*lo/1e6)*listShare)
 
-def schedule(d,life=4.0,decline=0.5,k=0.07,res=0.10,m0=0,idleElec=None):
-    months=int(round(life*12)); flows=[-d["capex"]]
+def schedule(d,life=4.0,decline=0.5,k=0.07,res=0.10,m0=0):
+    months=int(round(life*12)); flows=[-d["capex"]]; fixed=d["rent"]+d["colo"]+d["other"]; renting=d["rent"]>0; under=None
     for m in range(1,months+1):
-        if m<=m0: flows.append(-(d["colo"]+d["other"])*365/12)  # lead time: no revenue, facility fixed costs accrue
+        if m<=m0: flows.append(-fixed*365/12)  # lead time: no revenue, fixed costs accrue
         else:
             pf=(1-decline)**((m-1)/12)
-            flows.append((d["revenue"]*pf-d["elec"]-d["colo"]-d["other"])*365/12)
+            f=(d["revenue"]*pf-d["elec"]-fixed)*365/12
+            if f<0 and under is None: under=m
+            flows.append(0.0 if (renting and under is not None) else f)  # renter walks away; owner is stuck
     cum=0; payback=None
     for m,f in enumerate(flows):
         cum+=f
-        if m>0 and payback is None and cum>=0: payback=m
+        if m>0 and d["capex"]>0 and payback is None and cum>=0: payback=m
     rm=(1+k)**(1/12)-1
     term=flows[:]; term[-1]+=d["capex"]*res
     npv=sum(f/(1+rm)**m for m,f in enumerate(term))
@@ -51,7 +66,19 @@ def schedule(d,life=4.0,decline=0.5,k=0.07,res=0.10,m0=0,idleElec=None):
             if npv_at(lo)*npv_at(mid)<=0: hi=mid
             else: lo=mid
         irr=(1+(lo+hi)/2)**12-1
-    return dict(paybackMonth=payback,npv=npv,irr=irr,cum=cum)
+    return dict(paybackMonth=payback,underwaterMonth=under,npv=npv,irr=irr,cum=cum)
+
+def sold_be(**kw):
+    """utilization at which profit = 0 (bisection, mirrors engine)."""
+    f=lambda u: daily(**{**kw,"u":u})["profit"]
+    if f(1.0)<0: return None
+    if f(0.0)>=0: return 0.0
+    lo,hi=0.0,1.0
+    for _ in range(50):
+        mid=(lo+hi)/2
+        if f(mid)>=0: hi=mid
+        else: lo=mid
+    return hi
 
 def show(name,d,s=None):
     print(f"\n== {name}")
@@ -60,28 +87,37 @@ def show(name,d,s=None):
         else: print(f"  {k_:10} {v}")
     if s: print("  schedule", {k_:(round(v,4) if isinstance(v,float) else v) for k_,v in s.items()})
 
-# T1 interpolation
-print("T1 throughputAt gb200: 58->",tput(CURVES['gb200'],58)," 104->",tput(CURVES['gb200'],104)," 100->",round(tput(CURVES['gb200'],100),2)," 30(clamp)->",tput(CURVES['gb200'],30)," 200(clamp)->",tput(CURVES['gb200'],200))
-print("   gb300: 100->",round(tput(CURVES['gb300'],100),2))
-# T2 InferenceX cost per M
-print("T2 costPerMillion(1.86, 9598) =",round(1.86e6/(3600*9598),5)," (2.31,10192)=",round(2.31e6/(3600*10192),5))
-# T3 pitch (I=58 exact point)
-d=daily("gb200",1,58,1.0,1.0,"list"); show("T3 pitch gb200 I=58 a=1 u=1 list c=0.5 io=8", d, schedule(d,decline=0.0))
-# T4 realistic default
-d=daily("gb200",1,100,0.5,0.6,"floor"); show("T4 realistic gb200 I=100 a=0.5 u=0.6 floor", d, schedule(d,decline=0.5))
-d3=daily("gb300",1,100,0.5,0.6,"floor"); show("T4b realistic gb300", d3, schedule(d3,decline=0.5))
-# T5 bear
-d=daily("gb200",1,100,0.25,0.4,"floor",priceMult=0.5); show("T5 bear gb200 half floor", d, schedule(d,decline=0.7))
-# T6 break-even output price with io=0 (no input revenue), pitch otherwise
-d=daily("gb200",1,58,1.0,1.0,"list",io=0.0); print("\nT6 breakeven P_out (io=0, pitch): full cost/day",round(d['elec']+d['colo']+d['other']+d['dep'],2),"-> $/M",round((d['elec']+d['colo']+d['other']+d['dep'])/(d['out']/1e6),5))
-# T7 DeepSeek revenue formula check
-out=168e9; inp=608e9; c=342/608
-rev=(out*2.19+inp*(1-c)*0.55+inp*c*0.14)/1e6; print("T7 DeepSeek theoretical revenue/day:",round(rev,0),"cost/day",1814*24*2)
-# T8 NVIDIA implied tps
-print("T8 NVIDIA implied tok/s/GPU:",round(75e6/3/2.0*1e6/72/(365*DAY),1))
-# T9 demand share for realistic
-d=daily("gb200",1,100,0.5,0.6,"floor"); print("T9 demand share realistic: tokens/day",round((d['out']+d['inp'])/1e9,2),"B; of OpenRouter 8.7T:",round((d['out']+d['inp'])/8.7e12*100,3),"% ; of DeepSeek 776B:",round((d['out']+d['inp'])/7.76e11*100,2),"%")
-# T10 lead time 6 months realistic
-d=daily("gb200",1,100,0.5,0.6,"floor"); print("T10 realistic with m0=6:",schedule(d,decline=0.5,m0=6))
-# T11 zero utilization
-d=daily("gb200",1,100,0.5,0.0,"floor"); print("T11 u=0: revenue",d['revenue'],"elec/day",round(d['elec'],2),"cashCostM",d['cashCostM'])
+if __name__=="__main__":
+    c2,c3=CURVES["gb200"],CURVES["gb300"]
+    print("T1 throughputAt gb200: 94.7->",tput(c2,94.7)," 95->",round(tput(c2,95),4)," 100->",round(tput(c2,100),4),
+          " 60(clamp)->",tput(c2,60)," 400(clamp)->",tput(c2,400),"; gb300 95->",round(tput(c3,95),4))
+    print("T2 InferenceX cost per M output at $1.86/GPU-hr, 312.2 tok/s:",round(1.86e6/(3600*312.2),4))
+    # T3 benchmark traffic reproduces the measured points exactly (InferenceX validation)
+    for rk,cv in CURVES.items():
+        for I,y in cv: assert abs(daily(rk,I=I,io=REF,c=0.0)["cap"]-y)<1e-9
+    print("T3 every measured InferenceX point reproduced at REF traffic")
+    # T4 defaults: rent on demand, contract, own
+    d=daily(); show("T4 default gb200 RENT on-demand", d, schedule(d)); print("  soldBE",sold_be())
+    d=daily(basis="contract"); show("T4 default gb200 RENT contract", d, schedule(d)); print("  soldBE",sold_be(basis="contract"))
+    d=daily(tenure="own"); show("T4 default gb200 OWN", d, schedule(d)); print("  soldBE",sold_be(tenure="own"))
+    d=daily("gb300"); show("T4b default gb300 RENT on-demand", d, schedule(d))
+    d=daily("gb300",basis="contract"); show("T4b default gb300 RENT contract", d, schedule(d))
+    d=daily("gb300",tenure="own"); show("T4b default gb300 OWN", d, schedule(d))
+    d=daily(u=1.0); show("T4c rent peak gb200 u=1", d)
+    # T5 pitch: fastest measured throughput, everything sold, list price
+    d=daily(I=94.7,u=1.0,price="list",tenure="own"); show("T5 pitch gb200 OWN", d, schedule(d,decline=0.0))
+    # T6 bear: 80% achieved, 50% sold, low price, 70%/yr decline
+    d=daily(a=0.8,u=0.5,price="floor"); show("T6 bear gb200 RENT", d, schedule(d,decline=0.7)); print("  soldBE",sold_be(a=0.8,u=0.5,price="floor"))
+    d=daily(a=0.8,u=0.5,price="floor",tenure="own"); show("T6 bear gb200 OWN", d, schedule(d,decline=0.7))
+    # T7 break-even output price with io=0 (no input revenue, less prefill), pitch otherwise
+    d=daily(I=94.7,u=1.0,price="list",tenure="own",io=0.0); print("\nT7 breakeven P_out (io=0, pitch own): cap",round(d['cap'],4),"full cost/day",round(d['cost'],2),"-> $/M",round(d['fullCostM'],5))
+    # T8 demand share
+    d=daily(); print("T8 tokens/day",round((d['out']+d['inp'])/1e9,4),"B; of OpenRouter 8.7T:",round((d['out']+d['inp'])/8.7e12,6),"; of DeepSeek 776B:",round((d['out']+d['inp'])/7.76e11,5))
+    # T9 lead time
+    d=daily(tenure="own"); print("T9 own with m0=6:",schedule(d,m0=6))
+    d=daily(); print("T9b rent with m0=2:",schedule(d,m0=2))
+    # T10 zero utilization, owning
+    d=daily(u=0.0,tenure="own"); print("T10 own u=0: revenue",d['revenue'],"elec/day",round(d['elec'],2))
+    # T11 prefill properties at peak
+    for kw in (dict(c=0.0),dict(c=0.95),dict(io=20.0),dict(pf=6400.0)):
+        print("T11",kw,"cap",round(daily(u=1.0,**kw)["cap"],4))

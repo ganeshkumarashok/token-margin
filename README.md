@@ -1,37 +1,38 @@
-# gpu-roi
+# Token margin
 
-Do "token factories" print cash? A small, open model of the unit economics of
-owning NVIDIA NVL72 racks (GB200 / GB300) and selling open-weights inference
-tokens (GLM-5.3 first): tokens per day, revenue, cost stack, margin, payback,
-with knobs for serving speed, achieved throughput, utilization, token prices
-and their decline, electricity, colocation, useful life and financing.
+Does selling AI tokens make money? One NVIDIA NVL72 rack (GB200 or GB300), one
+day of serving an open-weights model (GLM-5.3, FP4): what it costs to rent or
+own, how many tokens it serves, what they sell for, and what is left. Move a
+slider and the day recomputes; the URL carries every change, so each scenario
+is a link.
 
-Read `PLAN.md` for the reasoning and `docs/findings.md` for the results.
-Every default lives in `data/assumptions.json` and traces to `research/sources.md`.
-Dated raw snapshots live in `data/raw/`.
+Throughput is measured (InferenceX agentic benchmark), the token mix and prices
+are OpenRouter's, and rents are published list prices or filed contracts.
+Results are in `docs/findings.md`. Every default lives in `data/assumptions.json`
+and traces to `research/sources.md`; the raw data behind them is in `research/data/`.
 
 ## Run locally
 
 ```
 npm install
-npm run dev          # site at http://localhost:5173/gpu-roi/
-npm test             # engine tests
+npm run dev          # site at http://localhost:5173/token-margin/
+npm test             # engine tests, including checks against InferenceX's published points
 npm run scenario     # scenario tables -> docs/findings-tables.md
-npm run e2e          # browser checks (first run: npx playwright install chromium)
-npm run fetch:openrouter   # refresh price snapshots
+npm run e2e          # browser checks, screenshots and public/og.png (first run: npx playwright install chromium)
+python3 research/reference.py          # independent reference model the tests were derived from
+python3 research/openrouter_ratios.py  # token ratios from the OpenRouter snapshot
 ```
 
 ## Layout
 
-- `packages/engine`: the model. Pure TypeScript functions, shared by the site and the CLI.
-- `apps/web`: the static site (Vite + React). State lives in the URL, so every scenario is a link.
+- `packages/engine`: the model. Pure TypeScript, shared by the site and the CLI.
+- `apps/web`: the static site (Vite + React): the day as one equation, the rack, and sliders.
 - `scripts`: scenario tables and price snapshots.
-- `research/reference.py`: independent reference implementation the tests were derived from.
+- `research`: sources, raw data snapshots and the Python reference model.
 
 ## Disclaimer
 
 Personal side project. Not affiliated with, sponsored by, or representing the
 views of any employer or any company named here. Not financial, investment,
 tax, or purchasing advice. All figures are estimates built from public sources
-under stated assumptions and can be wrong by large factors; the knobs exist so
-you can disagree with them. No warranty.
+under stated assumptions and can be wrong by large factors. No warranty.

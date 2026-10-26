@@ -58,3 +58,16 @@ export function fmtIrr(irr: number | null): string {
   if (irr > 10) return '>1,000%';
   return fmtPct(irr);
 }
+
+/** Whole dollars with grouping, true minus sign: $18,144 / −$1,250. */
+export function fmtUsdInt(v: number): string {
+  if (!Number.isFinite(v)) return '—';
+  const a = Math.round(Math.abs(v));
+  return `${v < 0 && a > 0 ? '−' : ''}$${a.toLocaleString('en-US')}`;
+}
+
+/** Integer with grouping: 2,665. */
+export function fmtInt(v: number): string {
+  if (!Number.isFinite(v)) return '—';
+  return Math.round(v).toLocaleString('en-US');
+}

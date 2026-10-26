@@ -9,10 +9,28 @@ function paysBackWithinLife(i: Inputs, points: readonly CurvePoint[]): boolean {
 
 export function breakevens(i: Inputs, points: readonly CurvePoint[]): Breakevens {
   const d = daily(i, points);
-  const priceLevel = d.revenueUsd > 0 ? (d.cashCostUsd + d.depreciationUsd) / d.revenueUsd : null;
+  const priceLevel = d.revenueUsd > 0 ? d.costUsd / d.revenueUsd : null;
   // Blended output price at that level (list share included).
   const blendedOut = (1 - i.listShare) * i.priceOutUsdPerM + i.listShare * i.listOutUsdPerM;
   const outPriceUsdPerM = priceLevel === null ? null : priceLevel * blendedOut;
+
+  // Share of capacity that must be sold for the day to break even. Revenue is linear in utilization;
+  // owned electricity is too, so a single crossing exists whenever 100% sold is profitable and 0% is not.
+  const profitAt = (u: number) => daily({ ...i, utilization: u }, points).operatingProfitUsd;
+  let soldShareToBreakEven: number | null = null;
+  if (profitAt(1) >= 0) {
+    if (profitAt(0) >= 0) soldShareToBreakEven = 0;
+    else {
+      let lo = 0;
+      let hi = 1;
+      for (let k = 0; k < 50; k++) {
+        const mid = (lo + hi) / 2;
+        if (profitAt(mid) >= 0) hi = mid;
+        else lo = mid;
+      }
+      soldShareToBreakEven = hi;
+    }
+  }
 
   const npvPositive = (x: Inputs) => schedule(x, daily(x, points)).npvUsd >= 0;
   let priceDeclineForZeroNpv: number | null = null;
@@ -60,7 +78,9 @@ export function breakevens(i: Inputs, points: readonly CurvePoint[]): Breakevens
     priceDeclineForPaybackAtLife = lo;
   }
 
-  return { priceLevel, outPriceUsdPerM, priceDeclineForZeroNpv, utilizationForPaybackAtLife, priceDeclineForPaybackAtLife };
+  return {
+    priceLevel, outPriceUsdPerM, soldShareToBreakEven, priceDeclineForZeroNpv, utilizationForPaybackAtLife, priceDeclineForPaybackAtLife,
+  };
 }
 
 export function demandShare(

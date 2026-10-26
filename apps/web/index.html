@@ -3,9 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Unit economics of an NVIDIA NVL72 rack serving open-weights tokens. Change the knobs, watch the payback. Personal project; not financial advice." />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232a78d6'/%3E%3Cpath d='M3 12h2V8H3zm4 0h2V5H7zm4 0h2V3h-2z' fill='white'/%3E%3C/svg%3E" />
-    <title>Token Factory Economics</title>
+    <title>Does selling AI tokens make money?</title>
+    <meta name="description" content="One NVIDIA NVL72 rack, one day, serving GLM-5.3: what it costs, how many tokens it serves, what they sell for, and the profit. Measured throughput, real traffic, real prices. Personal project; not financial advice." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Does selling AI tokens make money?" />
+    <meta property="og:description" content="One GB200 rack, one day, GLM-5.3: $23,309 of tokens − $18,144 on-demand rent = $5,165. On a 3-year contract: $15,705." />
+    <meta property="og:url" content="https://ganeshkumarashok.github.io/token-margin/" />
+    <meta property="og:image" content="https://ganeshkumarashok.github.io/token-margin/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Does selling AI tokens make money?" />
+    <meta name="twitter:description" content="One GB200 rack, one day, GLM-5.3: $23,309 of tokens − $18,144 on-demand rent = $5,165. On a 3-year contract: $15,705." />
+    <meta name="twitter:image" content="https://ganeshkumarashok.github.io/token-margin/og.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600&family=Martian+Mono:wght@300;400;500;600&display=swap" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23141413'/%3E%3Crect x='2' y='2' width='5' height='5' fill='%23ffd23f'/%3E%3Crect x='9' y='2' width='5' height='5' fill='%23f6f6f3'/%3E%3Crect x='2' y='9' width='5' height='5' fill='%23f6f6f3'/%3E%3Crect x='9' y='9' width='5' height='5' fill='%23666560'/%3E%3C/svg%3E" />
   </head>
   <body>
     <div id="root"></div>
