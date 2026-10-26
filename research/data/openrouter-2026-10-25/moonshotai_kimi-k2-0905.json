@@ -1,1 +1,312 @@
-[{"date": "2026-09-25 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 39805031, "total_prompt_tokens": 1160060993, "total_native_tokens_reasoning": 9884763, "count": 302834, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 824856644, "total_tool_calls": 8163, "requests_with_tool_call_errors": 34, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-09-26 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 36071440, "total_prompt_tokens": 1419319227, "total_native_tokens_reasoning": 13570292, "count": 277810, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 1059137349, "total_tool_calls": 5744, "requests_with_tool_call_errors": 59, "total_byok_prompt_tokens": 6354, "total_byok_completion_tokens": 461, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-09-27 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 35915878, "total_prompt_tokens": 899045043, "total_native_tokens_reasoning": 6655249, "count": 215507, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 619032960, "total_tool_calls": 13009, "requests_with_tool_call_errors": 49, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-09-28 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 39662536, "total_prompt_tokens": 903914466, "total_native_tokens_reasoning": 8995905, "count": 144785, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 579143517, "total_tool_calls": 7546, "requests_with_tool_call_errors": 161, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-09-29 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 41043979, "total_prompt_tokens": 861230223, "total_native_tokens_reasoning": 6782965, "count": 171151, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 546770582, "total_tool_calls": 6202, "requests_with_tool_call_errors": 42, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-09-30 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 46623600, "total_prompt_tokens": 1138425034, "total_native_tokens_reasoning": 5173535, "count": 187433, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 794293776, "total_tool_calls": 7110, "requests_with_tool_call_errors": 83, "total_byok_prompt_tokens": 44, "total_byok_completion_tokens": 24, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-01 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 38492558, "total_prompt_tokens": 1051204544, "total_native_tokens_reasoning": 12467090, "count": 153867, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 725840419, "total_tool_calls": 6363, "requests_with_tool_call_errors": 143, "total_byok_prompt_tokens": 14, "total_byok_completion_tokens": 3, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-02 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 34741438, "total_prompt_tokens": 1109132259, "total_native_tokens_reasoning": 5849618, "count": 166479, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 794932966, "total_tool_calls": 5908, "requests_with_tool_call_errors": 197, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-03 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 127035218, "total_prompt_tokens": 1166751628, "total_native_tokens_reasoning": 31514230, "count": 194725, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 758655827, "total_tool_calls": 5249, "requests_with_tool_call_errors": 59, "total_byok_prompt_tokens": 68, "total_byok_completion_tokens": 226, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-04 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 38774111, "total_prompt_tokens": 813846869, "total_native_tokens_reasoning": 4589677, "count": 134474, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 536372490, "total_tool_calls": 4457, "requests_with_tool_call_errors": 35, "total_byok_prompt_tokens": 14, "total_byok_completion_tokens": 2, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-05 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 55167787, "total_prompt_tokens": 1040793912, "total_native_tokens_reasoning": 12152436, "count": 205587, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 653979588, "total_tool_calls": 5023, "requests_with_tool_call_errors": 42, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-06 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 63096591, "total_prompt_tokens": 1234074756, "total_native_tokens_reasoning": 17363620, "count": 189839, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 716875338, "total_tool_calls": 5770, "requests_with_tool_call_errors": 56, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-07 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 57735691, "total_prompt_tokens": 1324135041, "total_native_tokens_reasoning": 17735257, "count": 201812, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 871499163, "total_tool_calls": 8035, "requests_with_tool_call_errors": 140, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-08 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 32890706, "total_prompt_tokens": 999438905, "total_native_tokens_reasoning": 8159806, "count": 134555, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 684770840, "total_tool_calls": 5775, "requests_with_tool_call_errors": 82, "total_byok_prompt_tokens": 14, "total_byok_completion_tokens": 2, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-09 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 47780135, "total_prompt_tokens": 673721508, "total_native_tokens_reasoning": 8650581, "count": 161975, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 381268079, "total_tool_calls": 3488, "requests_with_tool_call_errors": 77, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-10 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 23792619, "total_prompt_tokens": 466256058, "total_native_tokens_reasoning": 4186630, "count": 159588, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 218438009, "total_tool_calls": 3397, "requests_with_tool_call_errors": 381, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-11 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 26912004, "total_prompt_tokens": 516507226, "total_native_tokens_reasoning": 4292481, "count": 151668, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 262216575, "total_tool_calls": 2039, "requests_with_tool_call_errors": 113, "total_byok_prompt_tokens": 2328, "total_byok_completion_tokens": 253, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-12 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 77245625, "total_prompt_tokens": 617207965, "total_native_tokens_reasoning": 35936987, "count": 280269, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 306817597, "total_tool_calls": 2554, "requests_with_tool_call_errors": 64, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-13 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 54882486, "total_prompt_tokens": 605606066, "total_native_tokens_reasoning": 10414613, "count": 229463, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 301920276, "total_tool_calls": 3319, "requests_with_tool_call_errors": 67, "total_byok_prompt_tokens": 233, "total_byok_completion_tokens": 14, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-14 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 31480553, "total_prompt_tokens": 417022119, "total_native_tokens_reasoning": 5976037, "count": 120088, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 186716492, "total_tool_calls": 4145, "requests_with_tool_call_errors": 82, "total_byok_prompt_tokens": 71256, "total_byok_completion_tokens": 69, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-15 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 46339562, "total_prompt_tokens": 655233486, "total_native_tokens_reasoning": 14775213, "count": 228112, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 335179519, "total_tool_calls": 9949, "requests_with_tool_call_errors": 119, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-16 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 34301380, "total_prompt_tokens": 469370612, "total_native_tokens_reasoning": 8469601, "count": 139883, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 181436360, "total_tool_calls": 1360, "requests_with_tool_call_errors": 84, "total_byok_prompt_tokens": 15, "total_byok_completion_tokens": 2, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-17 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 20252592, "total_prompt_tokens": 330410562, "total_native_tokens_reasoning": 5212040, "count": 95834, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 157160013, "total_tool_calls": 5753, "requests_with_tool_call_errors": 9, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-18 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 16863220, "total_prompt_tokens": 244885602, "total_native_tokens_reasoning": 4894478, "count": 83843, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 70964904, "total_tool_calls": 622, "requests_with_tool_call_errors": 15, "total_byok_prompt_tokens": 14, "total_byok_completion_tokens": 3, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-19 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 33352814, "total_prompt_tokens": 288968094, "total_native_tokens_reasoning": 6623860, "count": 119925, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 97840555, "total_tool_calls": 1900, "requests_with_tool_call_errors": 100, "total_byok_prompt_tokens": 2215, "total_byok_completion_tokens": 279, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-20 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 22083456, "total_prompt_tokens": 314728426, "total_native_tokens_reasoning": 6220884, "count": 111336, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 113198001, "total_tool_calls": 1182, "requests_with_tool_call_errors": 28, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-21 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 19334929, "total_prompt_tokens": 341081218, "total_native_tokens_reasoning": 5215805, "count": 103519, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 139649275, "total_tool_calls": 1693, "requests_with_tool_call_errors": 78, "total_byok_prompt_tokens": 14, "total_byok_completion_tokens": 3, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-22 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 25911863, "total_prompt_tokens": 402459845, "total_native_tokens_reasoning": 6293212, "count": 138497, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 189361319, "total_tool_calls": 3895, "requests_with_tool_call_errors": 17, "total_byok_prompt_tokens": 10, "total_byok_completion_tokens": 16, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-23 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 39852685, "total_prompt_tokens": 324762126, "total_native_tokens_reasoning": 12310088, "count": 307903, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 116620989, "total_tool_calls": 1161, "requests_with_tool_call_errors": 54, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-24 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 39396740, "total_prompt_tokens": 349588011, "total_native_tokens_reasoning": 17740975, "count": 286686, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 149850280, "total_tool_calls": 714, "requests_with_tool_call_errors": 11, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}, {"date": "2026-10-25 00:00:00", "model_permaslug": "moonshotai/kimi-k2-0905", "variant": "standard", "total_completion_tokens": 36237975, "total_prompt_tokens": 421697919, "total_native_tokens_reasoning": 13316451, "count": 242114, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 229422721, "total_tool_calls": 17592, "requests_with_tool_call_errors": 22, "total_byok_prompt_tokens": 0, "total_byok_completion_tokens": 0, "variant_permaslug": "moonshotai/kimi-k2-0905"}]
+[
+{
+"date": "2026-09-25 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 302834,
+"total_prompt_tokens": 1160060993,
+"total_completion_tokens": 39805031,
+"total_native_tokens_reasoning": 9884763,
+"total_native_tokens_cached": 824856644
+},
+{
+"date": "2026-09-26 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 277810,
+"total_prompt_tokens": 1419319227,
+"total_completion_tokens": 36071440,
+"total_native_tokens_reasoning": 13570292,
+"total_native_tokens_cached": 1059137349
+},
+{
+"date": "2026-09-27 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 215507,
+"total_prompt_tokens": 899045043,
+"total_completion_tokens": 35915878,
+"total_native_tokens_reasoning": 6655249,
+"total_native_tokens_cached": 619032960
+},
+{
+"date": "2026-09-28 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 144785,
+"total_prompt_tokens": 903914466,
+"total_completion_tokens": 39662536,
+"total_native_tokens_reasoning": 8995905,
+"total_native_tokens_cached": 579143517
+},
+{
+"date": "2026-09-29 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 171151,
+"total_prompt_tokens": 861230223,
+"total_completion_tokens": 41043979,
+"total_native_tokens_reasoning": 6782965,
+"total_native_tokens_cached": 546770582
+},
+{
+"date": "2026-09-30 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 187433,
+"total_prompt_tokens": 1138425034,
+"total_completion_tokens": 46623600,
+"total_native_tokens_reasoning": 5173535,
+"total_native_tokens_cached": 794293776
+},
+{
+"date": "2026-10-01 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 153867,
+"total_prompt_tokens": 1051204544,
+"total_completion_tokens": 38492558,
+"total_native_tokens_reasoning": 12467090,
+"total_native_tokens_cached": 725840419
+},
+{
+"date": "2026-10-02 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 166479,
+"total_prompt_tokens": 1109132259,
+"total_completion_tokens": 34741438,
+"total_native_tokens_reasoning": 5849618,
+"total_native_tokens_cached": 794932966
+},
+{
+"date": "2026-10-03 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 194725,
+"total_prompt_tokens": 1166751628,
+"total_completion_tokens": 127035218,
+"total_native_tokens_reasoning": 31514230,
+"total_native_tokens_cached": 758655827
+},
+{
+"date": "2026-10-04 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 134474,
+"total_prompt_tokens": 813846869,
+"total_completion_tokens": 38774111,
+"total_native_tokens_reasoning": 4589677,
+"total_native_tokens_cached": 536372490
+},
+{
+"date": "2026-10-05 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 205587,
+"total_prompt_tokens": 1040793912,
+"total_completion_tokens": 55167787,
+"total_native_tokens_reasoning": 12152436,
+"total_native_tokens_cached": 653979588
+},
+{
+"date": "2026-10-06 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 189839,
+"total_prompt_tokens": 1234074756,
+"total_completion_tokens": 63096591,
+"total_native_tokens_reasoning": 17363620,
+"total_native_tokens_cached": 716875338
+},
+{
+"date": "2026-10-07 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 201812,
+"total_prompt_tokens": 1324135041,
+"total_completion_tokens": 57735691,
+"total_native_tokens_reasoning": 17735257,
+"total_native_tokens_cached": 871499163
+},
+{
+"date": "2026-10-08 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 134555,
+"total_prompt_tokens": 999438905,
+"total_completion_tokens": 32890706,
+"total_native_tokens_reasoning": 8159806,
+"total_native_tokens_cached": 684770840
+},
+{
+"date": "2026-10-09 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 161975,
+"total_prompt_tokens": 673721508,
+"total_completion_tokens": 47780135,
+"total_native_tokens_reasoning": 8650581,
+"total_native_tokens_cached": 381268079
+},
+{
+"date": "2026-10-10 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 159588,
+"total_prompt_tokens": 466256058,
+"total_completion_tokens": 23792619,
+"total_native_tokens_reasoning": 4186630,
+"total_native_tokens_cached": 218438009
+},
+{
+"date": "2026-10-11 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 151668,
+"total_prompt_tokens": 516507226,
+"total_completion_tokens": 26912004,
+"total_native_tokens_reasoning": 4292481,
+"total_native_tokens_cached": 262216575
+},
+{
+"date": "2026-10-12 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 280269,
+"total_prompt_tokens": 617207965,
+"total_completion_tokens": 77245625,
+"total_native_tokens_reasoning": 35936987,
+"total_native_tokens_cached": 306817597
+},
+{
+"date": "2026-10-13 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 229463,
+"total_prompt_tokens": 605606066,
+"total_completion_tokens": 54882486,
+"total_native_tokens_reasoning": 10414613,
+"total_native_tokens_cached": 301920276
+},
+{
+"date": "2026-10-14 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 120088,
+"total_prompt_tokens": 417022119,
+"total_completion_tokens": 31480553,
+"total_native_tokens_reasoning": 5976037,
+"total_native_tokens_cached": 186716492
+},
+{
+"date": "2026-10-15 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 228112,
+"total_prompt_tokens": 655233486,
+"total_completion_tokens": 46339562,
+"total_native_tokens_reasoning": 14775213,
+"total_native_tokens_cached": 335179519
+},
+{
+"date": "2026-10-16 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 139883,
+"total_prompt_tokens": 469370612,
+"total_completion_tokens": 34301380,
+"total_native_tokens_reasoning": 8469601,
+"total_native_tokens_cached": 181436360
+},
+{
+"date": "2026-10-17 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 95834,
+"total_prompt_tokens": 330410562,
+"total_completion_tokens": 20252592,
+"total_native_tokens_reasoning": 5212040,
+"total_native_tokens_cached": 157160013
+},
+{
+"date": "2026-10-18 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 83843,
+"total_prompt_tokens": 244885602,
+"total_completion_tokens": 16863220,
+"total_native_tokens_reasoning": 4894478,
+"total_native_tokens_cached": 70964904
+},
+{
+"date": "2026-10-19 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 119925,
+"total_prompt_tokens": 288968094,
+"total_completion_tokens": 33352814,
+"total_native_tokens_reasoning": 6623860,
+"total_native_tokens_cached": 97840555
+},
+{
+"date": "2026-10-20 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 111336,
+"total_prompt_tokens": 314728426,
+"total_completion_tokens": 22083456,
+"total_native_tokens_reasoning": 6220884,
+"total_native_tokens_cached": 113198001
+},
+{
+"date": "2026-10-21 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 103519,
+"total_prompt_tokens": 341081218,
+"total_completion_tokens": 19334929,
+"total_native_tokens_reasoning": 5215805,
+"total_native_tokens_cached": 139649275
+},
+{
+"date": "2026-10-22 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 138497,
+"total_prompt_tokens": 402459845,
+"total_completion_tokens": 25911863,
+"total_native_tokens_reasoning": 6293212,
+"total_native_tokens_cached": 189361319
+},
+{
+"date": "2026-10-23 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 307903,
+"total_prompt_tokens": 324762126,
+"total_completion_tokens": 39852685,
+"total_native_tokens_reasoning": 12310088,
+"total_native_tokens_cached": 116620989
+},
+{
+"date": "2026-10-24 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 286686,
+"total_prompt_tokens": 349588011,
+"total_completion_tokens": 39396740,
+"total_native_tokens_reasoning": 17740975,
+"total_native_tokens_cached": 149850280
+},
+{
+"date": "2026-10-25 00:00:00",
+"model_permaslug": "moonshotai/kimi-k2-0905",
+"variant": "standard",
+"count": 242114,
+"total_prompt_tokens": 421697919,
+"total_completion_tokens": 36237975,
+"total_native_tokens_reasoning": 13316451,
+"total_native_tokens_cached": 229422721
+}
+]

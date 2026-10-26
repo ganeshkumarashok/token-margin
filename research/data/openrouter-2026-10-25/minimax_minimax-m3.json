@@ -1,1 +1,312 @@
-[{"date": "2026-09-25 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3708507658, "total_prompt_tokens": 170995748062, "total_native_tokens_reasoning": 2458087071, "count": 3525944, "num_media_prompt": 397277, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 4885, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 150341787176, "total_tool_calls": 1298088, "requests_with_tool_call_errors": 47245, "total_byok_prompt_tokens": 132077956711, "total_byok_completion_tokens": 2707884256, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-09-26 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2915895892, "total_prompt_tokens": 158453240526, "total_native_tokens_reasoning": 1892919095, "count": 3143740, "num_media_prompt": 291526, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 7944, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 138803596157, "total_tool_calls": 1062942, "requests_with_tool_call_errors": 38900, "total_byok_prompt_tokens": 128157217344, "total_byok_completion_tokens": 2015710316, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-09-27 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3108473421, "total_prompt_tokens": 172275938984, "total_native_tokens_reasoning": 2001453647, "count": 3290544, "num_media_prompt": 183215, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 2713, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 153785770203, "total_tool_calls": 1279766, "requests_with_tool_call_errors": 47759, "total_byok_prompt_tokens": 142925003122, "total_byok_completion_tokens": 2453027900, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-09-28 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3978784275, "total_prompt_tokens": 185400484063, "total_native_tokens_reasoning": 2567654374, "count": 3768071, "num_media_prompt": 291928, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 866, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 162578094178, "total_tool_calls": 1510193, "requests_with_tool_call_errors": 57551, "total_byok_prompt_tokens": 136113833744, "total_byok_completion_tokens": 2803689177, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-09-29 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3258344267, "total_prompt_tokens": 192164941815, "total_native_tokens_reasoning": 2052686531, "count": 3717659, "num_media_prompt": 610860, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 289, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 169476430217, "total_tool_calls": 1627558, "requests_with_tool_call_errors": 56957, "total_byok_prompt_tokens": 146548703571, "total_byok_completion_tokens": 2285665564, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-09-30 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3172845738, "total_prompt_tokens": 186023366027, "total_native_tokens_reasoning": 1945494299, "count": 3497512, "num_media_prompt": 448688, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 587, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 165503502193, "total_tool_calls": 1507204, "requests_with_tool_call_errors": 59560, "total_byok_prompt_tokens": 144161790617, "total_byok_completion_tokens": 2272432184, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-01 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3197740017, "total_prompt_tokens": 159992240367, "total_native_tokens_reasoning": 2054858732, "count": 3332426, "num_media_prompt": 427896, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 2142, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 138537144302, "total_tool_calls": 1252247, "requests_with_tool_call_errors": 61580, "total_byok_prompt_tokens": 126188865845, "total_byok_completion_tokens": 2293245755, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-02 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3538873949, "total_prompt_tokens": 154327828879, "total_native_tokens_reasoning": 2362391330, "count": 3189950, "num_media_prompt": 273428, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1873, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 133206237627, "total_tool_calls": 1222952, "requests_with_tool_call_errors": 54564, "total_byok_prompt_tokens": 127262016812, "total_byok_completion_tokens": 2727049129, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-03 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2540928572, "total_prompt_tokens": 151136463148, "total_native_tokens_reasoning": 1533526157, "count": 3108279, "num_media_prompt": 310934, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 8651, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 134387869861, "total_tool_calls": 1078012, "requests_with_tool_call_errors": 53307, "total_byok_prompt_tokens": 127059859246, "total_byok_completion_tokens": 1760471044, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-04 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2187369129, "total_prompt_tokens": 136354781867, "total_native_tokens_reasoning": 1304411064, "count": 2621095, "num_media_prompt": 253496, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 352, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 119421162709, "total_tool_calls": 930483, "requests_with_tool_call_errors": 53036, "total_byok_prompt_tokens": 114551450230, "total_byok_completion_tokens": 1611303840, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-05 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2876351956, "total_prompt_tokens": 158996086755, "total_native_tokens_reasoning": 1742803358, "count": 2942490, "num_media_prompt": 560197, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 789, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 139402045854, "total_tool_calls": 1071800, "requests_with_tool_call_errors": 55977, "total_byok_prompt_tokens": 129260816511, "total_byok_completion_tokens": 1963480655, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-06 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2931674224, "total_prompt_tokens": 173493245768, "total_native_tokens_reasoning": 1703056620, "count": 3292893, "num_media_prompt": 502823, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1610, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 152540979333, "total_tool_calls": 1263035, "requests_with_tool_call_errors": 58624, "total_byok_prompt_tokens": 140110120267, "total_byok_completion_tokens": 2031238130, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-07 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2936899915, "total_prompt_tokens": 190909022314, "total_native_tokens_reasoning": 1747005569, "count": 3467388, "num_media_prompt": 360942, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 368, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 171101484887, "total_tool_calls": 1373212, "requests_with_tool_call_errors": 63202, "total_byok_prompt_tokens": 155983649511, "total_byok_completion_tokens": 2100921269, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-08 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2943782522, "total_prompt_tokens": 198406508758, "total_native_tokens_reasoning": 1754363984, "count": 3738030, "num_media_prompt": 406812, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 892, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 182786258548, "total_tool_calls": 1409078, "requests_with_tool_call_errors": 58199, "total_byok_prompt_tokens": 165943232398, "total_byok_completion_tokens": 2081576857, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-09 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2973884455, "total_prompt_tokens": 205911473150, "total_native_tokens_reasoning": 1627865655, "count": 3902299, "num_media_prompt": 370980, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 5340, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 190023346854, "total_tool_calls": 1542557, "requests_with_tool_call_errors": 54307, "total_byok_prompt_tokens": 171765774023, "total_byok_completion_tokens": 1913525890, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-10 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2361426281, "total_prompt_tokens": 176642558815, "total_native_tokens_reasoning": 1338089492, "count": 3282292, "num_media_prompt": 258639, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 8288, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 163700743789, "total_tool_calls": 1230694, "requests_with_tool_call_errors": 46388, "total_byok_prompt_tokens": 152776449348, "total_byok_completion_tokens": 1528340188, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-11 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2113024225, "total_prompt_tokens": 167749358751, "total_native_tokens_reasoning": 1150536739, "count": 2887151, "num_media_prompt": 340431, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 856, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 157218836711, "total_tool_calls": 1053861, "requests_with_tool_call_errors": 41134, "total_byok_prompt_tokens": 148925263188, "total_byok_completion_tokens": 1446649808, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-12 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3308944982, "total_prompt_tokens": 199214767954, "total_native_tokens_reasoning": 2076859843, "count": 3813795, "num_media_prompt": 421247, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 455, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 182554646084, "total_tool_calls": 1558541, "requests_with_tool_call_errors": 54909, "total_byok_prompt_tokens": 167083358085, "total_byok_completion_tokens": 2416381452, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-13 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3850199564, "total_prompt_tokens": 210169038250, "total_native_tokens_reasoning": 2432737208, "count": 4044886, "num_media_prompt": 658800, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 743, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 191932217766, "total_tool_calls": 1642745, "requests_with_tool_call_errors": 52720, "total_byok_prompt_tokens": 164947374320, "total_byok_completion_tokens": 2624238472, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-14 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3818462424, "total_prompt_tokens": 202016391612, "total_native_tokens_reasoning": 2392782656, "count": 3759306, "num_media_prompt": 364577, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1386, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 184837037513, "total_tool_calls": 1526735, "requests_with_tool_call_errors": 48119, "total_byok_prompt_tokens": 161740062585, "total_byok_completion_tokens": 2822470413, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-15 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3454447131, "total_prompt_tokens": 204790627768, "total_native_tokens_reasoning": 2089038597, "count": 3696436, "num_media_prompt": 418936, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1341, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 188555499790, "total_tool_calls": 1511866, "requests_with_tool_call_errors": 49923, "total_byok_prompt_tokens": 164161356443, "total_byok_completion_tokens": 2482657141, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-16 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3997360172, "total_prompt_tokens": 206133495361, "total_native_tokens_reasoning": 2622957740, "count": 3615107, "num_media_prompt": 514858, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 816, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 189998879841, "total_tool_calls": 1460148, "requests_with_tool_call_errors": 52566, "total_byok_prompt_tokens": 170059967924, "total_byok_completion_tokens": 3056704588, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-17 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2897711120, "total_prompt_tokens": 176226761492, "total_native_tokens_reasoning": 1837748213, "count": 3023254, "num_media_prompt": 490475, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 10353, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 164583999492, "total_tool_calls": 1110102, "requests_with_tool_call_errors": 45871, "total_byok_prompt_tokens": 157499341955, "total_byok_completion_tokens": 2002953539, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-18 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 2970288390, "total_prompt_tokens": 171090579270, "total_native_tokens_reasoning": 1870649989, "count": 3042848, "num_media_prompt": 232069, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 4226, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 159631690176, "total_tool_calls": 1036371, "requests_with_tool_call_errors": 45275, "total_byok_prompt_tokens": 151382592413, "total_byok_completion_tokens": 2044318813, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-19 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 4278029464, "total_prompt_tokens": 202205398696, "total_native_tokens_reasoning": 2948410138, "count": 3712124, "num_media_prompt": 361573, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1136, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 185046372693, "total_tool_calls": 1443659, "requests_with_tool_call_errors": 52894, "total_byok_prompt_tokens": 166481619850, "total_byok_completion_tokens": 3296353214, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-20 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3366843239, "total_prompt_tokens": 190706026400, "total_native_tokens_reasoning": 2148637190, "count": 4353777, "num_media_prompt": 444596, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1027, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 173706566272, "total_tool_calls": 1462765, "requests_with_tool_call_errors": 62713, "total_byok_prompt_tokens": 148626804587, "total_byok_completion_tokens": 2206441843, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-21 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3274416271, "total_prompt_tokens": 177861910740, "total_native_tokens_reasoning": 2173777483, "count": 3287157, "num_media_prompt": 515923, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1721, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 160971871314, "total_tool_calls": 1354169, "requests_with_tool_call_errors": 55069, "total_byok_prompt_tokens": 134583838791, "total_byok_completion_tokens": 2160876252, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-22 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3497468542, "total_prompt_tokens": 183409588877, "total_native_tokens_reasoning": 2281706118, "count": 3232549, "num_media_prompt": 467051, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 936, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 167102950231, "total_tool_calls": 1401236, "requests_with_tool_call_errors": 42132, "total_byok_prompt_tokens": 139096164897, "total_byok_completion_tokens": 2160205838, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-23 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 3982096628, "total_prompt_tokens": 205627394717, "total_native_tokens_reasoning": 2686857854, "count": 3277713, "num_media_prompt": 390999, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 1277, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 186730801563, "total_tool_calls": 1827511, "requests_with_tool_call_errors": 39498, "total_byok_prompt_tokens": 158443616201, "total_byok_completion_tokens": 2347274620, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-24 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 4658909418, "total_prompt_tokens": 206823815453, "total_native_tokens_reasoning": 3603307923, "count": 2800172, "num_media_prompt": 379281, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 10357, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 188556602804, "total_tool_calls": 1521404, "requests_with_tool_call_errors": 38800, "total_byok_prompt_tokens": 171524333417, "total_byok_completion_tokens": 3225057322, "variant_permaslug": "minimax/minimax-m3-20260531"}, {"date": "2026-10-25 00:00:00", "model_permaslug": "minimax/minimax-m3-20260531", "variant": "standard", "total_completion_tokens": 4583776759, "total_prompt_tokens": 198992628516, "total_native_tokens_reasoning": 3561307265, "count": 2654983, "num_media_prompt": 479320, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 416, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 181520764488, "total_tool_calls": 1444509, "requests_with_tool_call_errors": 28604, "total_byok_prompt_tokens": 162897696927, "total_byok_completion_tokens": 3420143416, "variant_permaslug": "minimax/minimax-m3-20260531"}]
+[
+{
+"date": "2026-09-25 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3525944,
+"total_prompt_tokens": 170995748062,
+"total_completion_tokens": 3708507658,
+"total_native_tokens_reasoning": 2458087071,
+"total_native_tokens_cached": 150341787176
+},
+{
+"date": "2026-09-26 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3143740,
+"total_prompt_tokens": 158453240526,
+"total_completion_tokens": 2915895892,
+"total_native_tokens_reasoning": 1892919095,
+"total_native_tokens_cached": 138803596157
+},
+{
+"date": "2026-09-27 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3290544,
+"total_prompt_tokens": 172275938984,
+"total_completion_tokens": 3108473421,
+"total_native_tokens_reasoning": 2001453647,
+"total_native_tokens_cached": 153785770203
+},
+{
+"date": "2026-09-28 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3768071,
+"total_prompt_tokens": 185400484063,
+"total_completion_tokens": 3978784275,
+"total_native_tokens_reasoning": 2567654374,
+"total_native_tokens_cached": 162578094178
+},
+{
+"date": "2026-09-29 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3717659,
+"total_prompt_tokens": 192164941815,
+"total_completion_tokens": 3258344267,
+"total_native_tokens_reasoning": 2052686531,
+"total_native_tokens_cached": 169476430217
+},
+{
+"date": "2026-09-30 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3497512,
+"total_prompt_tokens": 186023366027,
+"total_completion_tokens": 3172845738,
+"total_native_tokens_reasoning": 1945494299,
+"total_native_tokens_cached": 165503502193
+},
+{
+"date": "2026-10-01 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3332426,
+"total_prompt_tokens": 159992240367,
+"total_completion_tokens": 3197740017,
+"total_native_tokens_reasoning": 2054858732,
+"total_native_tokens_cached": 138537144302
+},
+{
+"date": "2026-10-02 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3189950,
+"total_prompt_tokens": 154327828879,
+"total_completion_tokens": 3538873949,
+"total_native_tokens_reasoning": 2362391330,
+"total_native_tokens_cached": 133206237627
+},
+{
+"date": "2026-10-03 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3108279,
+"total_prompt_tokens": 151136463148,
+"total_completion_tokens": 2540928572,
+"total_native_tokens_reasoning": 1533526157,
+"total_native_tokens_cached": 134387869861
+},
+{
+"date": "2026-10-04 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 2621095,
+"total_prompt_tokens": 136354781867,
+"total_completion_tokens": 2187369129,
+"total_native_tokens_reasoning": 1304411064,
+"total_native_tokens_cached": 119421162709
+},
+{
+"date": "2026-10-05 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 2942490,
+"total_prompt_tokens": 158996086755,
+"total_completion_tokens": 2876351956,
+"total_native_tokens_reasoning": 1742803358,
+"total_native_tokens_cached": 139402045854
+},
+{
+"date": "2026-10-06 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3292893,
+"total_prompt_tokens": 173493245768,
+"total_completion_tokens": 2931674224,
+"total_native_tokens_reasoning": 1703056620,
+"total_native_tokens_cached": 152540979333
+},
+{
+"date": "2026-10-07 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3467388,
+"total_prompt_tokens": 190909022314,
+"total_completion_tokens": 2936899915,
+"total_native_tokens_reasoning": 1747005569,
+"total_native_tokens_cached": 171101484887
+},
+{
+"date": "2026-10-08 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3738030,
+"total_prompt_tokens": 198406508758,
+"total_completion_tokens": 2943782522,
+"total_native_tokens_reasoning": 1754363984,
+"total_native_tokens_cached": 182786258548
+},
+{
+"date": "2026-10-09 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3902299,
+"total_prompt_tokens": 205911473150,
+"total_completion_tokens": 2973884455,
+"total_native_tokens_reasoning": 1627865655,
+"total_native_tokens_cached": 190023346854
+},
+{
+"date": "2026-10-10 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3282292,
+"total_prompt_tokens": 176642558815,
+"total_completion_tokens": 2361426281,
+"total_native_tokens_reasoning": 1338089492,
+"total_native_tokens_cached": 163700743789
+},
+{
+"date": "2026-10-11 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 2887151,
+"total_prompt_tokens": 167749358751,
+"total_completion_tokens": 2113024225,
+"total_native_tokens_reasoning": 1150536739,
+"total_native_tokens_cached": 157218836711
+},
+{
+"date": "2026-10-12 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3813795,
+"total_prompt_tokens": 199214767954,
+"total_completion_tokens": 3308944982,
+"total_native_tokens_reasoning": 2076859843,
+"total_native_tokens_cached": 182554646084
+},
+{
+"date": "2026-10-13 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 4044886,
+"total_prompt_tokens": 210169038250,
+"total_completion_tokens": 3850199564,
+"total_native_tokens_reasoning": 2432737208,
+"total_native_tokens_cached": 191932217766
+},
+{
+"date": "2026-10-14 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3759306,
+"total_prompt_tokens": 202016391612,
+"total_completion_tokens": 3818462424,
+"total_native_tokens_reasoning": 2392782656,
+"total_native_tokens_cached": 184837037513
+},
+{
+"date": "2026-10-15 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3696436,
+"total_prompt_tokens": 204790627768,
+"total_completion_tokens": 3454447131,
+"total_native_tokens_reasoning": 2089038597,
+"total_native_tokens_cached": 188555499790
+},
+{
+"date": "2026-10-16 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3615107,
+"total_prompt_tokens": 206133495361,
+"total_completion_tokens": 3997360172,
+"total_native_tokens_reasoning": 2622957740,
+"total_native_tokens_cached": 189998879841
+},
+{
+"date": "2026-10-17 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3023254,
+"total_prompt_tokens": 176226761492,
+"total_completion_tokens": 2897711120,
+"total_native_tokens_reasoning": 1837748213,
+"total_native_tokens_cached": 164583999492
+},
+{
+"date": "2026-10-18 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3042848,
+"total_prompt_tokens": 171090579270,
+"total_completion_tokens": 2970288390,
+"total_native_tokens_reasoning": 1870649989,
+"total_native_tokens_cached": 159631690176
+},
+{
+"date": "2026-10-19 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3712124,
+"total_prompt_tokens": 202205398696,
+"total_completion_tokens": 4278029464,
+"total_native_tokens_reasoning": 2948410138,
+"total_native_tokens_cached": 185046372693
+},
+{
+"date": "2026-10-20 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 4353777,
+"total_prompt_tokens": 190706026400,
+"total_completion_tokens": 3366843239,
+"total_native_tokens_reasoning": 2148637190,
+"total_native_tokens_cached": 173706566272
+},
+{
+"date": "2026-10-21 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3287157,
+"total_prompt_tokens": 177861910740,
+"total_completion_tokens": 3274416271,
+"total_native_tokens_reasoning": 2173777483,
+"total_native_tokens_cached": 160971871314
+},
+{
+"date": "2026-10-22 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3232549,
+"total_prompt_tokens": 183409588877,
+"total_completion_tokens": 3497468542,
+"total_native_tokens_reasoning": 2281706118,
+"total_native_tokens_cached": 167102950231
+},
+{
+"date": "2026-10-23 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 3277713,
+"total_prompt_tokens": 205627394717,
+"total_completion_tokens": 3982096628,
+"total_native_tokens_reasoning": 2686857854,
+"total_native_tokens_cached": 186730801563
+},
+{
+"date": "2026-10-24 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 2800172,
+"total_prompt_tokens": 206823815453,
+"total_completion_tokens": 4658909418,
+"total_native_tokens_reasoning": 3603307923,
+"total_native_tokens_cached": 188556602804
+},
+{
+"date": "2026-10-25 00:00:00",
+"model_permaslug": "minimax/minimax-m3-20260531",
+"variant": "standard",
+"count": 2654983,
+"total_prompt_tokens": 198992628516,
+"total_completion_tokens": 4583776759,
+"total_native_tokens_reasoning": 3561307265,
+"total_native_tokens_cached": 181520764488
+}
+]

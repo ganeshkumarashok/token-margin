@@ -1,6 +1,6 @@
 # NVL72 rental prices, captured 2026-10-25
 
-Raw captures: Azure Retail Prices API responses, Oracle price-list parts, and gzipped pricing pages (CoreWeave, Verda, AWS Capacity Blocks).
+Extracts: the Azure Retail Prices API rows and Oracle price-list parts used here. Pricing pages are linked, not copied: CoreWeave https://www.coreweave.com/pricing, Verda https://verda.com/gb300, AWS Capacity Blocks https://aws.amazon.com/ec2/capacityblocks/pricing/.
 P = provider's own page or API, S = tracker. Rack-hr = $/GPU-hr × 72.
 
 ## NVL72 rack-scale SKUs

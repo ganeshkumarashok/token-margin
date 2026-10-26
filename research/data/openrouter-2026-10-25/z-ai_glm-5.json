@@ -1,1 +1,312 @@
-[{"date": "2026-09-25 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 263058020, "total_prompt_tokens": 5254241565, "total_native_tokens_reasoning": 111083767, "count": 302268, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3543918208, "total_tool_calls": 44290, "requests_with_tool_call_errors": 557, "total_byok_prompt_tokens": 235296133, "total_byok_completion_tokens": 13518288, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-09-26 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 287317017, "total_prompt_tokens": 5757387276, "total_native_tokens_reasoning": 125754788, "count": 347793, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3506625664, "total_tool_calls": 89603, "requests_with_tool_call_errors": 569, "total_byok_prompt_tokens": 250408020, "total_byok_completion_tokens": 14372045, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-09-27 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 253253114, "total_prompt_tokens": 4293677968, "total_native_tokens_reasoning": 109383508, "count": 263841, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 2824562816, "total_tool_calls": 21133, "requests_with_tool_call_errors": 255, "total_byok_prompt_tokens": 232501538, "total_byok_completion_tokens": 10464749, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-09-28 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 268883650, "total_prompt_tokens": 4782175134, "total_native_tokens_reasoning": 122215760, "count": 295754, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3183388288, "total_tool_calls": 25292, "requests_with_tool_call_errors": 630, "total_byok_prompt_tokens": 279512123, "total_byok_completion_tokens": 10480857, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-09-29 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 300896415, "total_prompt_tokens": 6491905369, "total_native_tokens_reasoning": 128336531, "count": 359776, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 4651159936, "total_tool_calls": 57750, "requests_with_tool_call_errors": 1096, "total_byok_prompt_tokens": 338486691, "total_byok_completion_tokens": 11689636, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-09-30 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 291944424, "total_prompt_tokens": 5667674146, "total_native_tokens_reasoning": 116331720, "count": 342505, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3772226624, "total_tool_calls": 39176, "requests_with_tool_call_errors": 1015, "total_byok_prompt_tokens": 304501242, "total_byok_completion_tokens": 10887533, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-01 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 317902949, "total_prompt_tokens": 5403251051, "total_native_tokens_reasoning": 141935739, "count": 335274, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3702925376, "total_tool_calls": 28990, "requests_with_tool_call_errors": 563, "total_byok_prompt_tokens": 246923875, "total_byok_completion_tokens": 10696220, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-02 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 358664086, "total_prompt_tokens": 6430994393, "total_native_tokens_reasoning": 175204033, "count": 326956, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 4724955520, "total_tool_calls": 46402, "requests_with_tool_call_errors": 654, "total_byok_prompt_tokens": 208570851, "total_byok_completion_tokens": 6505641, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-03 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 404992815, "total_prompt_tokens": 4913804873, "total_native_tokens_reasoning": 248666876, "count": 316243, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3447222528, "total_tool_calls": 32809, "requests_with_tool_call_errors": 691, "total_byok_prompt_tokens": 127230309, "total_byok_completion_tokens": 4663535, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-04 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 215229983, "total_prompt_tokens": 4947201145, "total_native_tokens_reasoning": 66864742, "count": 273039, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3378377664, "total_tool_calls": 23474, "requests_with_tool_call_errors": 329, "total_byok_prompt_tokens": 153577535, "total_byok_completion_tokens": 5456280, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-05 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 724632435, "total_prompt_tokens": 5473834965, "total_native_tokens_reasoning": 355744348, "count": 331294, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3767915584, "total_tool_calls": 35639, "requests_with_tool_call_errors": 714, "total_byok_prompt_tokens": 110760571, "total_byok_completion_tokens": 2950795, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-06 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 310991192, "total_prompt_tokens": 5327290989, "total_native_tokens_reasoning": 147106938, "count": 352456, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3721916480, "total_tool_calls": 26992, "requests_with_tool_call_errors": 413, "total_byok_prompt_tokens": 54207060, "total_byok_completion_tokens": 1850283, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-07 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 303286101, "total_prompt_tokens": 5505825976, "total_native_tokens_reasoning": 131620324, "count": 327721, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3719010752, "total_tool_calls": 29400, "requests_with_tool_call_errors": 701, "total_byok_prompt_tokens": 352774399, "total_byok_completion_tokens": 11347704, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-08 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 468294672, "total_prompt_tokens": 11613943548, "total_native_tokens_reasoning": 231417038, "count": 576248, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 9068385088, "total_tool_calls": 261961, "requests_with_tool_call_errors": 1010, "total_byok_prompt_tokens": 347566584, "total_byok_completion_tokens": 9338635, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-09 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 375065504, "total_prompt_tokens": 9123087872, "total_native_tokens_reasoning": 174281529, "count": 468294, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 6948465162, "total_tool_calls": 177051, "requests_with_tool_call_errors": 684, "total_byok_prompt_tokens": 288660615, "total_byok_completion_tokens": 10206729, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-10 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 410592398, "total_prompt_tokens": 5084162772, "total_native_tokens_reasoning": 236556101, "count": 410196, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3507895552, "total_tool_calls": 32770, "requests_with_tool_call_errors": 552, "total_byok_prompt_tokens": 211180891, "total_byok_completion_tokens": 11365718, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-11 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 217859195, "total_prompt_tokens": 4456603088, "total_native_tokens_reasoning": 78590598, "count": 263931, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3162310528, "total_tool_calls": 22835, "requests_with_tool_call_errors": 432, "total_byok_prompt_tokens": 210746284, "total_byok_completion_tokens": 10444834, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-12 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 211057094, "total_prompt_tokens": 4682676591, "total_native_tokens_reasoning": 69305033, "count": 278820, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3219563584, "total_tool_calls": 27788, "requests_with_tool_call_errors": 448, "total_byok_prompt_tokens": 210873038, "total_byok_completion_tokens": 10853295, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-13 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 238076053, "total_prompt_tokens": 4709057825, "total_native_tokens_reasoning": 86724552, "count": 275010, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3208429426, "total_tool_calls": 25260, "requests_with_tool_call_errors": 378, "total_byok_prompt_tokens": 170381400, "total_byok_completion_tokens": 7937412, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-14 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 253593387, "total_prompt_tokens": 5305146365, "total_native_tokens_reasoning": 89396450, "count": 309890, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3760564289, "total_tool_calls": 39771, "requests_with_tool_call_errors": 564, "total_byok_prompt_tokens": 130561722, "total_byok_completion_tokens": 5935688, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-15 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 252602872, "total_prompt_tokens": 5086120707, "total_native_tokens_reasoning": 95960921, "count": 300638, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3641736107, "total_tool_calls": 32219, "requests_with_tool_call_errors": 501, "total_byok_prompt_tokens": 17336396, "total_byok_completion_tokens": 1065746, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-16 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 276424414, "total_prompt_tokens": 4898557405, "total_native_tokens_reasoning": 108968302, "count": 289320, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3319205308, "total_tool_calls": 21779, "requests_with_tool_call_errors": 545, "total_byok_prompt_tokens": 11404582, "total_byok_completion_tokens": 310047, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-17 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 399386156, "total_prompt_tokens": 5880584148, "total_native_tokens_reasoning": 234669188, "count": 309829, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 4447936735, "total_tool_calls": 51214, "requests_with_tool_call_errors": 547, "total_byok_prompt_tokens": 25522500, "total_byok_completion_tokens": 583829, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-18 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 203810773, "total_prompt_tokens": 5065387888, "total_native_tokens_reasoning": 62298816, "count": 298259, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3790364025, "total_tool_calls": 27707, "requests_with_tool_call_errors": 470, "total_byok_prompt_tokens": 10600884, "total_byok_completion_tokens": 548373, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-19 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 211507259, "total_prompt_tokens": 4887106788, "total_native_tokens_reasoning": 71448072, "count": 309999, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3572620507, "total_tool_calls": 32227, "requests_with_tool_call_errors": 623, "total_byok_prompt_tokens": 8816015, "total_byok_completion_tokens": 834024, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-20 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 254315551, "total_prompt_tokens": 5171786064, "total_native_tokens_reasoning": 88089418, "count": 307489, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3633479512, "total_tool_calls": 27324, "requests_with_tool_call_errors": 534, "total_byok_prompt_tokens": 21389934, "total_byok_completion_tokens": 912370, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-21 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 280744096, "total_prompt_tokens": 5375743895, "total_native_tokens_reasoning": 112891160, "count": 307387, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3726120814, "total_tool_calls": 28585, "requests_with_tool_call_errors": 506, "total_byok_prompt_tokens": 14618140, "total_byok_completion_tokens": 481416, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-22 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 274265528, "total_prompt_tokens": 5264107388, "total_native_tokens_reasoning": 103026228, "count": 307965, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3614035645, "total_tool_calls": 26521, "requests_with_tool_call_errors": 471, "total_byok_prompt_tokens": 21490979, "total_byok_completion_tokens": 571248, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-23 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 318987542, "total_prompt_tokens": 5559792460, "total_native_tokens_reasoning": 114611814, "count": 322800, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3785791867, "total_tool_calls": 25075, "requests_with_tool_call_errors": 455, "total_byok_prompt_tokens": 34588892, "total_byok_completion_tokens": 750023, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-24 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 405873284, "total_prompt_tokens": 4806124854, "total_native_tokens_reasoning": 233016244, "count": 300131, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3351478532, "total_tool_calls": 31178, "requests_with_tool_call_errors": 266, "total_byok_prompt_tokens": 10723436, "total_byok_completion_tokens": 217875, "variant_permaslug": "z-ai/glm-5-20260211"}, {"date": "2026-10-25 00:00:00", "model_permaslug": "z-ai/glm-5-20260211", "variant": "standard", "total_completion_tokens": 193199988, "total_prompt_tokens": 4280604835, "total_native_tokens_reasoning": 62061492, "count": 243605, "num_media_prompt": 0, "num_media_completion": 0, "image_output_requests": 0, "num_video_prompt": 0, "video_output_seconds": 0, "rerank_documents": 0, "stt_transcript_characters": 0, "num_audio_prompt": 0, "total_native_tokens_cached": 3077981886, "total_tool_calls": 18197, "requests_with_tool_call_errors": 240, "total_byok_prompt_tokens": 11641682, "total_byok_completion_tokens": 358075, "variant_permaslug": "z-ai/glm-5-20260211"}]
+[
+{
+"date": "2026-09-25 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 302268,
+"total_prompt_tokens": 5254241565,
+"total_completion_tokens": 263058020,
+"total_native_tokens_reasoning": 111083767,
+"total_native_tokens_cached": 3543918208
+},
+{
+"date": "2026-09-26 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 347793,
+"total_prompt_tokens": 5757387276,
+"total_completion_tokens": 287317017,
+"total_native_tokens_reasoning": 125754788,
+"total_native_tokens_cached": 3506625664
+},
+{
+"date": "2026-09-27 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 263841,
+"total_prompt_tokens": 4293677968,
+"total_completion_tokens": 253253114,
+"total_native_tokens_reasoning": 109383508,
+"total_native_tokens_cached": 2824562816
+},
+{
+"date": "2026-09-28 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 295754,
+"total_prompt_tokens": 4782175134,
+"total_completion_tokens": 268883650,
+"total_native_tokens_reasoning": 122215760,
+"total_native_tokens_cached": 3183388288
+},
+{
+"date": "2026-09-29 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 359776,
+"total_prompt_tokens": 6491905369,
+"total_completion_tokens": 300896415,
+"total_native_tokens_reasoning": 128336531,
+"total_native_tokens_cached": 4651159936
+},
+{
+"date": "2026-09-30 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 342505,
+"total_prompt_tokens": 5667674146,
+"total_completion_tokens": 291944424,
+"total_native_tokens_reasoning": 116331720,
+"total_native_tokens_cached": 3772226624
+},
+{
+"date": "2026-10-01 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 335274,
+"total_prompt_tokens": 5403251051,
+"total_completion_tokens": 317902949,
+"total_native_tokens_reasoning": 141935739,
+"total_native_tokens_cached": 3702925376
+},
+{
+"date": "2026-10-02 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 326956,
+"total_prompt_tokens": 6430994393,
+"total_completion_tokens": 358664086,
+"total_native_tokens_reasoning": 175204033,
+"total_native_tokens_cached": 4724955520
+},
+{
+"date": "2026-10-03 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 316243,
+"total_prompt_tokens": 4913804873,
+"total_completion_tokens": 404992815,
+"total_native_tokens_reasoning": 248666876,
+"total_native_tokens_cached": 3447222528
+},
+{
+"date": "2026-10-04 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 273039,
+"total_prompt_tokens": 4947201145,
+"total_completion_tokens": 215229983,
+"total_native_tokens_reasoning": 66864742,
+"total_native_tokens_cached": 3378377664
+},
+{
+"date": "2026-10-05 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 331294,
+"total_prompt_tokens": 5473834965,
+"total_completion_tokens": 724632435,
+"total_native_tokens_reasoning": 355744348,
+"total_native_tokens_cached": 3767915584
+},
+{
+"date": "2026-10-06 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 352456,
+"total_prompt_tokens": 5327290989,
+"total_completion_tokens": 310991192,
+"total_native_tokens_reasoning": 147106938,
+"total_native_tokens_cached": 3721916480
+},
+{
+"date": "2026-10-07 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 327721,
+"total_prompt_tokens": 5505825976,
+"total_completion_tokens": 303286101,
+"total_native_tokens_reasoning": 131620324,
+"total_native_tokens_cached": 3719010752
+},
+{
+"date": "2026-10-08 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 576248,
+"total_prompt_tokens": 11613943548,
+"total_completion_tokens": 468294672,
+"total_native_tokens_reasoning": 231417038,
+"total_native_tokens_cached": 9068385088
+},
+{
+"date": "2026-10-09 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 468294,
+"total_prompt_tokens": 9123087872,
+"total_completion_tokens": 375065504,
+"total_native_tokens_reasoning": 174281529,
+"total_native_tokens_cached": 6948465162
+},
+{
+"date": "2026-10-10 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 410196,
+"total_prompt_tokens": 5084162772,
+"total_completion_tokens": 410592398,
+"total_native_tokens_reasoning": 236556101,
+"total_native_tokens_cached": 3507895552
+},
+{
+"date": "2026-10-11 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 263931,
+"total_prompt_tokens": 4456603088,
+"total_completion_tokens": 217859195,
+"total_native_tokens_reasoning": 78590598,
+"total_native_tokens_cached": 3162310528
+},
+{
+"date": "2026-10-12 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 278820,
+"total_prompt_tokens": 4682676591,
+"total_completion_tokens": 211057094,
+"total_native_tokens_reasoning": 69305033,
+"total_native_tokens_cached": 3219563584
+},
+{
+"date": "2026-10-13 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 275010,
+"total_prompt_tokens": 4709057825,
+"total_completion_tokens": 238076053,
+"total_native_tokens_reasoning": 86724552,
+"total_native_tokens_cached": 3208429426
+},
+{
+"date": "2026-10-14 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 309890,
+"total_prompt_tokens": 5305146365,
+"total_completion_tokens": 253593387,
+"total_native_tokens_reasoning": 89396450,
+"total_native_tokens_cached": 3760564289
+},
+{
+"date": "2026-10-15 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 300638,
+"total_prompt_tokens": 5086120707,
+"total_completion_tokens": 252602872,
+"total_native_tokens_reasoning": 95960921,
+"total_native_tokens_cached": 3641736107
+},
+{
+"date": "2026-10-16 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 289320,
+"total_prompt_tokens": 4898557405,
+"total_completion_tokens": 276424414,
+"total_native_tokens_reasoning": 108968302,
+"total_native_tokens_cached": 3319205308
+},
+{
+"date": "2026-10-17 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 309829,
+"total_prompt_tokens": 5880584148,
+"total_completion_tokens": 399386156,
+"total_native_tokens_reasoning": 234669188,
+"total_native_tokens_cached": 4447936735
+},
+{
+"date": "2026-10-18 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 298259,
+"total_prompt_tokens": 5065387888,
+"total_completion_tokens": 203810773,
+"total_native_tokens_reasoning": 62298816,
+"total_native_tokens_cached": 3790364025
+},
+{
+"date": "2026-10-19 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 309999,
+"total_prompt_tokens": 4887106788,
+"total_completion_tokens": 211507259,
+"total_native_tokens_reasoning": 71448072,
+"total_native_tokens_cached": 3572620507
+},
+{
+"date": "2026-10-20 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 307489,
+"total_prompt_tokens": 5171786064,
+"total_completion_tokens": 254315551,
+"total_native_tokens_reasoning": 88089418,
+"total_native_tokens_cached": 3633479512
+},
+{
+"date": "2026-10-21 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 307387,
+"total_prompt_tokens": 5375743895,
+"total_completion_tokens": 280744096,
+"total_native_tokens_reasoning": 112891160,
+"total_native_tokens_cached": 3726120814
+},
+{
+"date": "2026-10-22 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 307965,
+"total_prompt_tokens": 5264107388,
+"total_completion_tokens": 274265528,
+"total_native_tokens_reasoning": 103026228,
+"total_native_tokens_cached": 3614035645
+},
+{
+"date": "2026-10-23 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 322800,
+"total_prompt_tokens": 5559792460,
+"total_completion_tokens": 318987542,
+"total_native_tokens_reasoning": 114611814,
+"total_native_tokens_cached": 3785791867
+},
+{
+"date": "2026-10-24 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 300131,
+"total_prompt_tokens": 4806124854,
+"total_completion_tokens": 405873284,
+"total_native_tokens_reasoning": 233016244,
+"total_native_tokens_cached": 3351478532
+},
+{
+"date": "2026-10-25 00:00:00",
+"model_permaslug": "z-ai/glm-5-20260211",
+"variant": "standard",
+"count": 243605,
+"total_prompt_tokens": 4280604835,
+"total_completion_tokens": 193199988,
+"total_native_tokens_reasoning": 62061492,
+"total_native_tokens_cached": 3077981886
+}
+]

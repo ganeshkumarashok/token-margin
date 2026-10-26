@@ -1,1 +1,197 @@
-{"data":{"id":"deepseek/deepseek-v4-pro-0813","name":"DeepSeek: DeepSeek V4 Pro 0813","created":1786549364,"description":"DeepSeek V4 Pro 0813 is a large-scale mixture-of-experts model from DeepSeek. This is the GA release of DeepSeek V4 Pro.","architecture":{"tokenizer":"DeepSeek","instruct_type":null,"modality":"text->text","input_modalities":["text"],"output_modalities":["text"]},"endpoints":[{"name":"Relace | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.0000002565","completion":"0.000008","input_cache_read":"0.00000026","discount":0},"provider_name":"Relace","tag":"relace/fp4","service_tier":null,"quantization":"fp4","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","top_k","min_p","stop","max_tokens","logit_bias","frequency_penalty","presence_penalty","repetition_penalty","tools","tool_choice","response_format","reasoning_effort"],"supports_tool_choice":{"none":false,"auto":true,"required":false,"function":false},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.48186528497409,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Wafer | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.000000285","completion":"0.0000043","input_cache_read":"0.000000284","discount":0},"provider_name":"Wafer","tag":"wafer/mxfp4","service_tier":null,"quantization":"mxfp4","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","top_k","min_p","frequency_penalty","presence_penalty","repetition_penalty","stop","seed","max_tokens","logit_bias","response_format","structured_outputs","tools","logprobs","top_logprobs","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Ionstream | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000037","completion":"0.00000293","input_cache_read":"0.000000088","discount":0},"provider_name":"Ionstream","tag":"ionstream","service_tier":null,"quantization":"unknown","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","response_format","tools","tool_choice","structured_outputs","logprobs","top_logprobs","top_p","top_k","frequency_penalty","presence_penalty","stop","seed","logit_bias","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Sail Research | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000045","completion":"0.0000008","input_cache_read":"0.000000065","discount":0},"provider_name":"Sail Research","tag":"sail-research/us","service_tier":null,"quantization":"fp4","max_completion_tokens":384000,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","top_k","frequency_penalty","presence_penalty","stop","seed","max_tokens","response_format","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Sail Research | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000045","completion":"0.0000008","input_cache_read":"0.000000065","discount":0},"provider_name":"Sail Research","tag":"sail-research/fp4","service_tier":null,"quantization":"fp4","max_completion_tokens":384000,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","top_k","frequency_penalty","presence_penalty","stop","seed","max_tokens","response_format","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"StreamLake | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1024000,"pricing":{"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000022","discount":0.5},"provider_name":"StreamLake","tag":"streamlake","service_tier":null,"quantization":"unknown","max_completion_tokens":384000,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","response_format","tools","tool_choice","logprobs","top_logprobs","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":false,"function":false},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"DeepSeek | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000022","discount":0,"overrides":[{"utc_days":["saturday","sunday"],"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000022"},{"utc_start":0,"utc_end":100,"utc_days":["monday","tuesday","wednesday","thursday","friday"],"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000022"},{"utc_start":100,"utc_end":400,"utc_days":["monday","tuesday","wednesday","thursday","friday"],"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000044"},{"utc_start":400,"utc_end":600,"utc_days":["monday","tuesday","wednesday","thursday","friday"],"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000022"},{"utc_start":600,"utc_end":1000,"utc_days":["monday","tuesday","wednesday","thursday","friday"],"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000044"},{"utc_start":1000,"utc_end":0,"utc_days":["monday","tuesday","wednesday","thursday","friday"],"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000022"}]},"provider_name":"DeepSeek","tag":"deepseek","service_tier":null,"quantization":"unknown","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","logprobs","top_logprobs","tools","tool_choice","response_format","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Phala | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.000000957","completion":"0.0000028776","input_cache_read":"0.000000099","discount":0.34},"provider_name":"Phala","tag":"phala","service_tier":null,"quantization":"unknown","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","seed","top_k","min_p","repetition_penalty","response_format","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":false,"auto":false,"required":false,"function":false},"status":0,"uptime_last_30m":null,"uptime_last_5m":null,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Novita | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000099","completion":"0.00000297","input_cache_read":"0.000000033","discount":0.25},"provider_name":"Novita","tag":"novita/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","seed","top_k","repetition_penalty","response_format","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.92006394884093,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"GMICloud | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048575,"pricing":{"prompt":"0.000001056","completion":"0.000003168","input_cache_read":"0.0000000352","discount":0.2},"provider_name":"GMICloud","tag":"gmicloud/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":943717,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","seed","response_format","tools","tool_choice","logprobs","top_logprobs","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":false,"function":false},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"DekaLLM | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000108","completion":"0.0000038","input_cache_read":"0.00000018","discount":0},"provider_name":"DekaLLM","tag":"dekallm","service_tier":null,"quantization":"unknown","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","frequency_penalty","logit_bias","max_tokens","presence_penalty","seed","stop","temperature","top_p","response_format","structured_outputs","tools","tool_choice","logprobs","top_logprobs","reasoning_effort"],"supports_tool_choice":{"none":false,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":98.24753559693319,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Alibaba | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1000000,"pricing":{"prompt":"0.000001122","completion":"0.000003366","input_cache_read":"0.0000001122","discount":0,"overrides":[{"utc_start":0,"utc_end":1400,"prompt":"0.000001122","completion":"0.000003366","input_cache_read":"0.0000001122"},{"utc_start":1400,"utc_end":0,"prompt":"0.0000005808","completion":"0.0000017424","input_cache_read":"0.00000005808"}]},"provider_name":"Alibaba","tag":"alibaba","service_tier":null,"quantization":"unknown","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","seed","presence_penalty","response_format","top_k","frequency_penalty","stop","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.40119760479041,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"DeepInfra | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.0000013","completion":"0.0000026","input_cache_read":"0.0000001","discount":0},"provider_name":"DeepInfra","tag":"deepinfra/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":16384,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","repetition_penalty","top_k","seed","min_p","logit_bias","tools","tool_choice","structured_outputs","response_format","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":false,"function":false},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.76415094339622,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"CoreWeave | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000131","completion":"0.00000396","input_cache_read":"0.000000044","discount":0},"provider_name":"CoreWeave","tag":"coreweave/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","top_k","repetition_penalty","frequency_penalty","presence_penalty","stop","seed","response_format","structured_outputs","tools","tool_choice","logprobs","top_logprobs","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.7212543554007,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"BaseTen | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000132","discount":0},"provider_name":"BaseTen","tag":"baseten/fp4","service_tier":null,"quantization":"fp4","max_completion_tokens":262144,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":null,"uptime_last_5m":null,"uptime_last_1d":null,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Alibaba | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1000000,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000132","discount":0,"overrides":[{"utc_start":0,"utc_end":1400,"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000132"},{"utc_start":1400,"utc_end":0,"prompt":"0.00000066","completion":"0.00000198","input_cache_read":"0.000000066"}]},"provider_name":"Alibaba","tag":"alibaba/us-east-1","service_tier":null,"quantization":"unknown","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","seed","presence_penalty","response_format","top_k","frequency_penalty","stop","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.71428571428571,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"AtlasCloud | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000132","discount":0},"provider_name":"AtlasCloud","tag":"atlas-cloud/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","top_k","min_p","frequency_penalty","presence_penalty","repetition_penalty","stop","seed","logit_bias","response_format","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Baidu | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000042","discount":0},"provider_name":"Baidu","tag":"baidu/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","max_tokens","stop","response_format","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Parasail | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000044","discount":0},"provider_name":"Parasail","tag":"parasail/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","frequency_penalty","presence_penalty","repetition_penalty","seed","stop","top_k","logit_bias","response_format","structured_outputs","tools","tool_choice","logprobs","top_logprobs","reasoning_effort"],"supports_tool_choice":{"none":false,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":null,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Together | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.00000013","discount":0},"provider_name":"Together","tag":"together","service_tier":null,"quantization":"unknown","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","top_k","repetition_penalty","logit_bias","min_p","response_format","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":100,"uptime_last_5m":100,"uptime_last_1d":99.78873239436619,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"DigitalOcean | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000044","discount":0},"provider_name":"DigitalOcean","tag":"digitalocean","service_tier":null,"quantization":"unknown","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","max_tokens","response_format","tools","tool_choice","logprobs","top_logprobs","structured_outputs","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":null,"uptime_last_5m":null,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"SiliconFlow | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000044","discount":0},"provider_name":"SiliconFlow","tag":"siliconflow/fp8","service_tier":null,"quantization":"fp8","max_completion_tokens":393216,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","temperature","top_p","top_k","frequency_penalty","max_tokens","response_format","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":null,"uptime_last_5m":null,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Cloudflare | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1048576,"pricing":{"prompt":"0.00000132","completion":"0.00000396","input_cache_read":"0.000000044","discount":0},"provider_name":"Cloudflare","tag":"cloudflare","service_tier":null,"quantization":"unknown","max_completion_tokens":943718,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","top_k","seed","repetition_penalty","frequency_penalty","presence_penalty","min_p","stop","logit_bias","response_format","structured_outputs","logprobs","top_logprobs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":true,"function":true},"status":0,"uptime_last_30m":null,"uptime_last_5m":null,"uptime_last_1d":99.60159362549801,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null},{"name":"Venice | deepseek/deepseek-v4-pro-20260813","model_id":"deepseek/deepseek-v4-pro-0813","model_name":"DeepSeek: DeepSeek V4 Pro 0813","context_length":1000000,"pricing":{"prompt":"0.00000165","completion":"0.00000495","input_cache_read":"0.000000165","discount":0},"provider_name":"Venice","tag":"venice","service_tier":null,"quantization":"unknown","max_completion_tokens":32768,"max_prompt_tokens":null,"supported_parameters":["reasoning","include_reasoning","max_tokens","temperature","top_p","stop","frequency_penalty","presence_penalty","top_k","response_format","structured_outputs","tools","tool_choice","reasoning_effort"],"supports_tool_choice":{"none":true,"auto":true,"required":false,"function":false},"status":0,"uptime_last_30m":null,"uptime_last_5m":null,"uptime_last_1d":100,"supports_implicit_caching":true,"native_tools":{},"supports_voice_cloning":false,"supports_multiple_audio_references":false,"supports_image_reference":false,"supports_diarization":false,"latency_last_30m":null,"throughput_last_30m":null}]}}
+{
+ "model": "deepseek/deepseek-v4-pro-0813",
+ "endpoints": [
+  {
+   "provider": "Relace",
+   "tag": "relace/fp4",
+   "quantization": "fp4",
+   "prompt": "0.0000002565",
+   "completion": "0.000008",
+   "input_cache_read": "0.00000026"
+  },
+  {
+   "provider": "Wafer",
+   "tag": "wafer/mxfp4",
+   "quantization": "mxfp4",
+   "prompt": "0.000000285",
+   "completion": "0.0000043",
+   "input_cache_read": "0.000000284"
+  },
+  {
+   "provider": "Ionstream",
+   "tag": "ionstream",
+   "quantization": "unknown",
+   "prompt": "0.00000037",
+   "completion": "0.00000293",
+   "input_cache_read": "0.000000088"
+  },
+  {
+   "provider": "Sail Research",
+   "tag": "sail-research/us",
+   "quantization": "fp4",
+   "prompt": "0.00000045",
+   "completion": "0.0000008",
+   "input_cache_read": "0.000000065"
+  },
+  {
+   "provider": "Sail Research",
+   "tag": "sail-research/fp4",
+   "quantization": "fp4",
+   "prompt": "0.00000045",
+   "completion": "0.0000008",
+   "input_cache_read": "0.000000065"
+  },
+  {
+   "provider": "StreamLake",
+   "tag": "streamlake",
+   "quantization": "unknown",
+   "prompt": "0.00000066",
+   "completion": "0.00000198",
+   "input_cache_read": "0.000000022"
+  },
+  {
+   "provider": "DeepSeek",
+   "tag": "deepseek",
+   "quantization": "unknown",
+   "prompt": "0.00000066",
+   "completion": "0.00000198",
+   "input_cache_read": "0.000000022"
+  },
+  {
+   "provider": "Phala",
+   "tag": "phala",
+   "quantization": "unknown",
+   "prompt": "0.000000957",
+   "completion": "0.0000028776",
+   "input_cache_read": "0.000000099"
+  },
+  {
+   "provider": "Novita",
+   "tag": "novita/fp8",
+   "quantization": "fp8",
+   "prompt": "0.00000099",
+   "completion": "0.00000297",
+   "input_cache_read": "0.000000033"
+  },
+  {
+   "provider": "GMICloud",
+   "tag": "gmicloud/fp8",
+   "quantization": "fp8",
+   "prompt": "0.000001056",
+   "completion": "0.000003168",
+   "input_cache_read": "0.0000000352"
+  },
+  {
+   "provider": "DekaLLM",
+   "tag": "dekallm",
+   "quantization": "unknown",
+   "prompt": "0.00000108",
+   "completion": "0.0000038",
+   "input_cache_read": "0.00000018"
+  },
+  {
+   "provider": "Alibaba",
+   "tag": "alibaba",
+   "quantization": "unknown",
+   "prompt": "0.000001122",
+   "completion": "0.000003366",
+   "input_cache_read": "0.0000001122"
+  },
+  {
+   "provider": "DeepInfra",
+   "tag": "deepinfra/fp8",
+   "quantization": "fp8",
+   "prompt": "0.0000013",
+   "completion": "0.0000026",
+   "input_cache_read": "0.0000001"
+  },
+  {
+   "provider": "CoreWeave",
+   "tag": "coreweave/fp8",
+   "quantization": "fp8",
+   "prompt": "0.00000131",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000044"
+  },
+  {
+   "provider": "BaseTen",
+   "tag": "baseten/fp4",
+   "quantization": "fp4",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000132"
+  },
+  {
+   "provider": "Alibaba",
+   "tag": "alibaba/us-east-1",
+   "quantization": "unknown",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000132"
+  },
+  {
+   "provider": "AtlasCloud",
+   "tag": "atlas-cloud/fp8",
+   "quantization": "fp8",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000132"
+  },
+  {
+   "provider": "Baidu",
+   "tag": "baidu/fp8",
+   "quantization": "fp8",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000042"
+  },
+  {
+   "provider": "Parasail",
+   "tag": "parasail/fp8",
+   "quantization": "fp8",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000044"
+  },
+  {
+   "provider": "Together",
+   "tag": "together",
+   "quantization": "unknown",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.00000013"
+  },
+  {
+   "provider": "DigitalOcean",
+   "tag": "digitalocean",
+   "quantization": "unknown",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000044"
+  },
+  {
+   "provider": "SiliconFlow",
+   "tag": "siliconflow/fp8",
+   "quantization": "fp8",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000044"
+  },
+  {
+   "provider": "Cloudflare",
+   "tag": "cloudflare",
+   "quantization": "unknown",
+   "prompt": "0.00000132",
+   "completion": "0.00000396",
+   "input_cache_read": "0.000000044"
+  },
+  {
+   "provider": "Venice",
+   "tag": "venice",
+   "quantization": "unknown",
+   "prompt": "0.00000165",
+   "completion": "0.00000495",
+   "input_cache_read": "0.000000165"
+  }
+ ]
+}
