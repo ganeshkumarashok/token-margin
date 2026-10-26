@@ -60,13 +60,14 @@ export function Answer({ m }: { m: Model }) {
         </div>
       </div>
 
-      <p className="unit-line" data-testid="unit-line">
-        Each GPU sells <b>{fmtInt(sold)}</b> output tokens/s ({fmtInt(d.capacityPerGpu)} capacity × {fmtPct(i.availability)} up × {fmtPct(i.utilization)} utilization)
-        {' '}at <b>${perMOut.toFixed(2)}</b> per million, input included: <b>${perGpuHr.toFixed(2)}</b> an hour against{' '}
-        <b>${costPerGpuHr.toFixed(2)}</b> {owning ? 'all-in to own' : 'rent'}. Each user sees {Math.round(i.interactivity)} tok/s, the figure OpenRouter calls throughput.
-      </p>
 
       <ProfitChart m={m} />
+
+      <p className="unit-line" data-testid="unit-line">
+        Each GPU sells <b>{fmtInt(sold)}</b> output tokens/s at <b>${perMOut.toFixed(2)}</b> per million, input included:{' '}
+        <b>${perGpuHr.toFixed(2)}</b> an hour against <b>${costPerGpuHr.toFixed(2)}</b> {owning ? 'all-in to own' : 'rent'}.
+        Each user sees {Math.round(i.interactivity)} tok/s, what OpenRouter calls throughput.
+      </p>
     </section>
   );
 }
