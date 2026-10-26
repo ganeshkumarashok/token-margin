@@ -153,7 +153,7 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
         min={range('cacheHit')[0]} max={range('cacheHit')[1]} step={0.01} onChange={(v) => update({ cacheHit: v })}
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
-        marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3: 90%' }]} hint={<>OpenRouter GLM-5.3: 90%. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
+        marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3, all providers: 90%' }, { v: 0.8, label: 'a newer single provider: 80%' }]} hint={<>90% across all GLM-5.3 providers on OpenRouter, mostly coding agents resending their context. One rack gets that only if a conversation's later turns keep returning to it; 80% is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
 
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}
