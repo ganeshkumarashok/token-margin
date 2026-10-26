@@ -92,10 +92,36 @@ export function Controls({ m }: { m: Model }) {
           ]} />
       </div>
 
+      {s.tenure === 'rent' ? (
+        <Slider testId="s-rent" label="Rack rent" value={m.rent} display={`${perRack(m.rent)} · $${m.rent.toFixed(2)}/GPU`}
+          min={rentRange[0]} max={rentRange[1]} step={0.05} onChange={(v) => update({ rentUsdPerGpuHr: v })}
+          zero={zero('rentUsdPerGpuHr', rentRange)} zeroLabel={perRack(zero('rentUsdPerGpuHr', rentRange) ?? 0)}
+          marks={[
+            { v: rack.contractUsdPerGpuHr.value, label: `3-yr contract ${perRack(rack.contractUsdPerGpuHr.value)}` },
+            { v: rack.rentUsdPerGpuHr.value, label: `on demand ${perRack(rack.rentUsdPerGpuHr.value)}` },
+          ]}
+          hint={s.rack === 'gb200' ? 'CoreWeave and AWS list ≈ $756/hr; Oracle $1,152; Azure list $1,947 (Apr 2025)' : 'Verda list $894/hr; Oracle $1,296'} />
+      ) : (
+        <Slider testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
+          display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M`}
+          min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
+          zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
+          hint="4-year life, 10% resale; power at $0.145/kWh" />
+      )}
+
       <Slider testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
         zero={zero('utilization', [0, 1])} zeroLabel={fmtPct(zero('utilization', [0, 1]))}
         hint="share of the rack's measured throughput you sell" />
+
+      <div className="prices">
+        <span className="plabel">Token price</span>
+        <Seg label="Token price" value={s.pricePreset} onChange={(v: PricePresetId) => update({ pricePreset: v, customPrice: null })}
+          options={[{ id: 'floor', text: 'Low' }, { id: 'median', text: 'Median FP4' }, { id: 'list', text: 'Z.ai list' }]} />
+        <span className="pvals" data-testid="prices">
+          {fmtUsdPerM(p.inUsdPerM)} in · {fmtUsdPerM(p.cacheUsdPerM)} cached · {fmtUsdPerM(p.outUsdPerM)} out, per million
+        </span>
+      </div>
 
       <Slider testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
         min={range('islOsl')[0]} max={range('islOsl')[1]} step={1} onChange={(v) => update({ islOsl: v })}
@@ -107,36 +133,15 @@ export function Controls({ m }: { m: Model }) {
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
         marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3: 90%' }]} hint="OpenRouter GLM-5.3: 90%" />
 
+      <Slider testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
+        min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}
+        zero={zero('overheadPct', range('overheadPct'))} zeroLabel={`${fmtPct(zero('overheadPct', range('overheadPct')))} of revenue`}
+        hint="staff, sales, support, payment fees and the API front end; the rack price already covers CPUs, networking and storage" />
+
       <Slider testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
         min={iLo} max={iHi} step={0.5} onChange={(v) => update({ interactivity: v })}
         zero={zero('interactivity', [iLo, iHi])} zeroLabel={`${Math.round(zero('interactivity', [iLo, iHi]) ?? 0)} tok/s`}
-        hint="tokens/s each user sees on the slowest 10% of requests (p90), within the measured range" />
-
-      {s.tenure === 'rent' ? (
-        <Slider testId="s-rent" label="Rack rent" value={m.rent} display={`${perRack(m.rent)} · $${m.rent.toFixed(2)}/GPU`}
-          min={rentRange[0]} max={rentRange[1]} step={0.05} onChange={(v) => update({ rentUsdPerGpuHr: v })}
-          zero={zero('rentUsdPerGpuHr', rentRange)} zeroLabel={perRack(zero('rentUsdPerGpuHr', rentRange) ?? 0)}
-          marks={[
-            { v: rack.contractUsdPerGpuHr.value, label: `3-yr contract ${perRack(rack.contractUsdPerGpuHr.value)}` },
-            { v: rack.rentUsdPerGpuHr.value, label: `on demand ${perRack(rack.rentUsdPerGpuHr.value)}` },
-          ]}
-          hint={s.rack === 'gb200' ? 'CoreWeave and AWS list ≈ $756/hr; Oracle $1,152; Azure $1,947' : 'Verda list $894/hr; Oracle $1,296'} />
-      ) : (
-        <Slider testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
-          display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M`}
-          min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
-          zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
-          hint="4-year life, 10% resale; power at $0.145/kWh" />
-      )}
-
-      <div className="prices">
-        <span className="plabel">Token price</span>
-        <Seg label="Token price" value={s.pricePreset} onChange={(v: PricePresetId) => update({ pricePreset: v, customPrice: null })}
-          options={[{ id: 'floor', text: 'Low' }, { id: 'median', text: 'Median FP4' }, { id: 'list', text: 'Z.ai list' }]} />
-        <span className="pvals" data-testid="prices">
-          {fmtUsdPerM(p.inUsdPerM)} in · {fmtUsdPerM(p.cacheUsdPerM)} cached · {fmtUsdPerM(p.outUsdPerM)} out, per million
-        </span>
-      </div>
+        hint="tokens/s each user sees on the slowest 10% of requests (p90). Faster output per user means fewer users share each GPU, so the rack makes fewer tokens. Price stays fixed here; fast tiers on OpenRouter charge about 1.5×." />
 
       {!m.isDefault && (
         <button type="button" className="reset" onClick={m.reset}>Reset to the measured defaults</button>

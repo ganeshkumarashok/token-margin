@@ -33,6 +33,7 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.5 var(--sans); }
 a { color: inherit; text-underline-offset: 2px; }
 .muted { color: var(--muted); }
+.nb { white-space: nowrap; }
 
 .page {
   max-width: 880px;
@@ -46,9 +47,10 @@ a { color: inherit; text-underline-offset: 2px; }
 .masthead h1 { margin: 0; font: 600 30px/1.15 var(--cond); letter-spacing: -0.01em; text-wrap: balance; }
 
 /* The answer */
-.answer { display: grid; gap: 22px; }
+.answer { display: grid; gap: 22px; min-width: 0; }
+.answer > * { min-width: 0; }
 .lede { margin: 0; color: var(--muted); font-size: 17px; text-wrap: balance; }
-.eq { display: grid; grid-template-columns: auto auto auto auto auto; justify-content: start; align-items: start; column-gap: 18px; }
+.eq { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 18px; }
 .term { display: grid; gap: 2px; min-width: 0; }
 .op { font: 300 40px/1.2 var(--mono); color: var(--muted); }
 .big { font: 500 44px/1.15 var(--mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -58,16 +60,27 @@ a { color: inherit; text-underline-offset: 2px; }
 .sub { font: 600 13px/1.3 var(--cond); text-transform: uppercase; letter-spacing: 0.08em; }
 .note { font-size: 14px; color: var(--muted); }
 
-.rack { margin: 0; display: grid; gap: 10px; }
-.cells { display: grid; grid-template-columns: repeat(18, 1fr); grid-template-rows: repeat(4, auto); grid-auto-flow: column; gap: 3px; max-width: 560px; }
-.cells i { aspect-ratio: 1; border: 1px solid var(--rule); }
-.cells i.p { background: var(--hl); border-color: var(--hl); }
-.cells i.c { background: var(--ink); border-color: var(--ink); }
-.rack figcaption { font-size: 15px; }
-.rack b { font: 600 15px var(--mono); padding: 0 3px; }
-.k-p { background: var(--hl); color: var(--hl-ink); }
-.k-c { background: var(--ink); color: var(--bg); }
-.k-u { border: 1px solid var(--rule); }
+/* Profit against utilization */
+.pchart { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.pchart figcaption { font: 600 13px/1.3 var(--cond); text-transform: uppercase; letter-spacing: 0.08em; }
+.pchart-box { width: 100%; min-width: 0; overflow: hidden; }
+.pchart svg { display: block; overflow: visible; touch-action: pan-y; }
+.pchart .grid { stroke: var(--rule); stroke-width: 1; }
+.pchart .zero { stroke: var(--ink); stroke-width: 1; }
+.pchart .tick, .pchart .axis { font: 400 11px var(--mono); fill: var(--muted); }
+.pchart .line { stroke: var(--mark); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.pchart .line.on { stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: none; }
+.pchart .be circle { fill: var(--bg); stroke: var(--mark); stroke-width: 1.5; }
+.pchart .be text { font: 500 11px var(--mono); fill: var(--muted); }
+.pchart .be.on circle { stroke: var(--zero); stroke-width: 2; }
+.pchart .be.on text { fill: var(--zero); }
+.pchart .end { font: 500 12px var(--sans); fill: var(--muted); }
+.pchart .end.on { fill: var(--ink); font-weight: 600; }
+.pchart .now { fill: var(--hl); stroke: var(--ink); stroke-width: 2; }
+.pchart .hover line { stroke: var(--muted); stroke-width: 1; }
+.pchart .hover circle { fill: var(--ink); }
+.pchart-read { font-size: 14px; min-height: 1.5em; }
+.pchart-read b { font: 600 14px var(--mono); }
 
 /* Controls */
 .controls { display: grid; gap: 22px; border-top: 1px solid var(--rule); padding-top: 24px; }
@@ -124,7 +137,7 @@ a { color: inherit; text-underline-offset: 2px; }
 @media (max-width: 640px) {
   .page { padding-block: 24px 48px; gap: 28px; }
   .masthead h1 { font-size: 24px; }
-  .eq { grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 6px; }
+  .eq { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 6px; }
   .eq .term:first-child { grid-column: 2; }
   .op { font-size: 26px; line-height: 1.3; }
   .big { font-size: 30px; }

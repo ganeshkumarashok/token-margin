@@ -12,7 +12,7 @@ test('social card', async ({ browser }) => {
 
 test('close-ups', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  for (const [name, q] of [['rent', ''], ['contract', '?rb=contract'], ['own', '?t=own'], ['loss', '?u=0.4']]) {
+  for (const [name, q] of [['rent', ''], ['contract', '?rb=contract'], ['own', '?t=own'], ['loss', '?u=0.4'], ['overhead', '?oh=0.15']]) {
     await page.goto(`/${q}`);
     await page.evaluate(() => document.fonts.ready);
     await page.locator('.answer').screenshot({ path: `e2e/screenshots/answer-${name}.png` });

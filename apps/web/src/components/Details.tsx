@@ -20,14 +20,12 @@ const Fn = ({ id }: { id: string }) => {
 export function Details({ m }: { m: Model }) {
   const { settings: s, result, inputs: i } = m;
   const d = result.daily;
-  const sc = result.schedule;
   const owning = s.tenure === 'own';
   const uncachedPerOut = i.islOsl * (1 - i.cacheHit);
   const outRev = d.outputRevenueUsd;
   const uncachedRev = (d.uncachedInputTokens * i.priceInUsdPerM) / 1e6;
   const cachedRev = d.inputRevenueUsd - uncachedRev;
   const glmShare = (d.outputTokens + d.inputTokens) / A.anchors.openrouterGlm53TokensPerDay.value;
-  const decline = fmtPct(i.priceDeclinePerYear);
 
   return (
     <section className="details" aria-label="Details">
@@ -62,19 +60,9 @@ export function Details({ m }: { m: Model }) {
               <Fn id={s.rentBasis === 'contract' ? 'contracts-2026' : s.rack === 'gb200' ? 'coreweave-pricing' : 'verda-pricing'} />.
             </>
           )}
-        </dd>
-        <dt>Over time</dt>
-        <dd data-testid="over-time">
-          If token prices keep falling {decline} a year,{' '}
-          {owning
-            ? sc.paybackMonth
-              ? `the rack pays for itself in month ${sc.paybackMonth}.`
-              : 'the rack never pays for itself.'
-            : sc.underwaterMonth === 1
-              ? 'renting never makes money.'
-              : sc.underwaterMonth
-                ? `revenue drops below rent in month ${sc.underwaterMonth}, when a renter would hand the rack back with ${fmtUsdInt(sc.flows.reduce((x, y) => x + y, 0))} banked.`
-                : `renting still covers rent after ${sc.months / 12} years.`}
+          {i.overheadPct > 0
+            ? <> Overhead adds {fmtUsdInt(d.overheadUsd)} ({fmtPct(i.overheadPct)} of revenue).</>
+            : <> Staff, sales, support and payment fees are not included; the overhead slider adds them.</>}
         </dd>
       </dl>
 
