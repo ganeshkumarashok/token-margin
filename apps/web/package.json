@@ -1,5 +1,5 @@
 {
-  "name": "@gpu-roi/web",
+  "name": "@token-margin/web",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "e2e": "playwright test"
   },
   "dependencies": {
-    "@gpu-roi/engine": "*",
+    "@token-margin/engine": "*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

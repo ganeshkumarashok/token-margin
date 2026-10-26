@@ -1,7 +1,7 @@
 import {
   clampInteractivity, defaultSettings,
   type Assumptions, type PricePresetId, type RackId, type RentBasis, type Settings, type Tenure,
-} from '@gpu-roi/engine';
+} from '@token-margin/engine';
 
 type NumKey = 'utilization' | 'islOsl' | 'cacheHit' | 'interactivity' | 'rackPriceMult' | 'achieved' | 'prefillRate';
 

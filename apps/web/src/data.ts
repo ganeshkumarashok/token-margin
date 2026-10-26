@@ -1,5 +1,5 @@
 import raw from '../../../data/assumptions.json';
-import type { Assumptions } from '@gpu-roi/engine';
+import type { Assumptions } from '@token-margin/engine';
 
 export const A = raw as unknown as Assumptions;
 

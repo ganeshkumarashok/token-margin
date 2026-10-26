@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   clampInteractivity, curveFor, defaultSettings, demandShare, evaluate, inputsFromSettings, rentFor, sellPrices,
   type Settings,
-} from '@gpu-roi/engine';
+} from '@token-margin/engine';
 import { A } from '../data';
 import { parseUrl, toSearch } from './url';
 

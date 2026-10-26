@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import {
   applyPreset, breakevens, curveFor, defaultSettings, demandShare, evaluate, fmtIrr, fmtPayback, fmtPct, fmtTokens,
   fmtUsd, fmtUsdPerM, impliedTps, inputsFromSettings, sensitivity, type Assumptions, type RackId, type ScenarioPresetId, type Tenure,
-} from '@gpu-roi/engine';
+} from '@token-margin/engine';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const A = JSON.parse(readFileSync(resolve(root, 'data/assumptions.json'), 'utf8')) as Assumptions;

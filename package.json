@@ -1,16 +1,16 @@
 {
-  "name": "gpu-roi",
+  "name": "token-margin",
   "private": true,
   "type": "module",
   "workspaces": ["packages/*", "apps/*", "scripts"],
   "scripts": {
-    "test": "npm -w @gpu-roi/engine run test",
-    "build": "npm -w @gpu-roi/engine run build && npm -w @gpu-roi/web run build",
-    "dev": "npm -w @gpu-roi/web run dev",
-    "preview": "npm -w @gpu-roi/web run preview",
-    "e2e": "npm -w @gpu-roi/web run e2e",
-    "scenario": "npm -w @gpu-roi/scripts run scenario",
-    "fetch:openrouter": "npm -w @gpu-roi/scripts run fetch:openrouter",
+    "test": "npm -w @token-margin/engine run test",
+    "build": "npm -w @token-margin/engine run build && npm -w @token-margin/web run build",
+    "dev": "npm -w @token-margin/web run dev",
+    "preview": "npm -w @token-margin/web run preview",
+    "e2e": "npm -w @token-margin/web run e2e",
+    "scenario": "npm -w @token-margin/scripts run scenario",
+    "fetch:openrouter": "npm -w @token-margin/scripts run fetch:openrouter",
     "typecheck": "tsc -p packages/engine && tsc -p apps/web --noEmit && tsc -p scripts --noEmit"
   },
   "devDependencies": {

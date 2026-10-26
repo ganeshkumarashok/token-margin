@@ -1,5 +1,5 @@
 import { useId, type ReactNode } from 'react';
-import { curveBounds, fmtPct, fmtUsdInt, fmtUsdPerM, type PricePresetId, type Settings } from '@gpu-roi/engine';
+import { curveBounds, fmtPct, fmtUsdInt, fmtUsdPerM, type PricePresetId, type Settings } from '@token-margin/engine';
 import { A } from '../data';
 import { breakEven, type Model } from '../state/useModel';
 

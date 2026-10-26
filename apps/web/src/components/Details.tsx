@@ -1,4 +1,4 @@
-import { fmtInt, fmtPct, fmtTokens, fmtUsdInt } from '@gpu-roi/engine';
+import { fmtInt, fmtPct, fmtTokens, fmtUsdInt } from '@token-margin/engine';
 import { A } from '../data';
 import type { Model } from '../state/useModel';
 
