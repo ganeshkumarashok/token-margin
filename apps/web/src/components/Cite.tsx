@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import type { Settings } from '@token-margin/engine';
+import { toSearch } from '../state/url';
 import { A } from '../data';
 
 import { SITE } from '../links';
@@ -8,20 +10,9 @@ const AUTHOR = { family: 'Ashokavardhanan', given: 'Ganeshkumar' };
 const year = A.version.slice(0, 4);
 const asOf = new Date(`${A.version}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
-/** The page's address, with the reader's settings when they differ from the defaults, so a citation reproduces the figures quoted. */
-function useCitedUrl(): string {
-  const [url, setUrl] = useState(SITE);
-  useEffect(() => {
-    const read = () => setUrl(`${SITE}${window.location.search}`);
-    read();
-    const t = window.setInterval(read, 1000);
-    return () => window.clearInterval(t);
-  }, []);
-  return url;
-}
-
-export function Cite() {
-  const url = useCitedUrl();
+/** Cites the page with the reader's settings (only ones that differ from the defaults), so quoted figures can be reproduced. */
+export function Cite({ settings }: { settings: Settings }) {
+  const url = `${SITE}${toSearch(A, settings)}`;
   const [copied, setCopied] = useState(false);
   const text = `${AUTHOR.family}, ${AUTHOR.given[0]}. (${year}). ${TITLE} Token margin, data as of ${asOf}. ${url}`;
   const bibtex = [

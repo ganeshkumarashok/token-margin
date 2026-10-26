@@ -141,7 +141,7 @@ export function Details({ m }: { m: Model }) {
       <footer className="footer" data-testid="disclaimer">
         <p>{DISCLAIMER}</p>
         <p className="muted">Data as of {A.version}. Source code, raw data, the model and its tests: <a href={REPO}>{REPO.replace('https://', '')}</a>.</p>
-        <Cite />
+        <Cite settings={s} />
       </footer>
     </section>
   );

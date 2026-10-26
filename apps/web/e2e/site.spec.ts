@@ -186,8 +186,9 @@ test('16. the page can be cited, and the citation follows the reader\'s settings
   await expect(cite).toContainText('Ashokavardhanan, G. (2026). What are the margins on inference? Token margin, data as of Oct 25, 2026. https://tokens.ganeshkumarashok.com/');
   await cite.getByText('BibTeX').click();
   await expect(cite.locator('pre')).toContainText('@misc{ashokavardhanan2026margins,');
-  await page.goto('/?rb=contract');
+  await page.goto('/?rb=contract&utm_source=x');
   await expect(cite).toContainText('https://tokens.ganeshkumarashok.com/?rb=contract');
+  await expect(cite).not.toContainText('utm_source');
   const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
   expect(ld.author.name).toBe('Ganeshkumar Ashokavardhanan');
   expect(ld.version).toBe('data-2026-10-25');
