@@ -12,9 +12,11 @@ const SOURCES = [
   'eia-5-6-a', 'cbre-colo', 'hf-glm-5.3',
 ].filter((id) => A.sources[id]);
 
-const Fn = ({ id }: { id: string }) => {
-  const n = SOURCES.indexOf(id) + 1;
-  return n > 0 ? <sup><a href={`#src-${n}`}>{n}</a></sup> : null;
+/** Footnote marks; several sources share one superscript, comma-separated. */
+const Fn = ({ id }: { id: string | string[] }) => {
+  const ns = (Array.isArray(id) ? id : [id]).map((x) => SOURCES.indexOf(x) + 1).filter((n) => n > 0);
+  if (!ns.length) return null;
+  return <sup>{ns.map((n, k) => <span key={n}>{k > 0 ? ',' : ''}<a href={`#src-${n}`}>{n}</a></span>)}</sup>;
 };
 
 export function Details({ m }: { m: Model }) {
@@ -33,7 +35,7 @@ export function Details({ m }: { m: Model }) {
       <dl>
         <dt>Throughput</dt>
         <dd>
-          {fmtInt(d.benchPerGpu)} output tokens/s per GPU measured at {Math.round(i.interactivity)} tok/s per user, prefill GPUs
+          {fmtInt(d.benchPerGpu)} output tokens/s per GPU at {Math.round(i.interactivity)} tok/s per user in InferenceX's measurements, prefill GPUs
           included<Fn id="inferencex-agentx" />; {fmtInt(d.capacityPerGpu)} on this traffic, which prefills {uncachedPerOut.toFixed(1)} uncached
           input tokens per output token against {i.refUncachedPerOut} in the benchmark. At {fmtPct(i.utilization)} utilization it sells {fmtInt(d.tpsPerGpu * i.utilization)} per GPU.
         </dd>
@@ -45,14 +47,14 @@ export function Details({ m }: { m: Model }) {
         <dt>Revenue</dt>
         <dd>
           {fmtUsdInt(outRev)} output + {fmtUsdInt(uncachedRev)} fresh input + {fmtUsdInt(cachedRev)} cached input
-          <Fn id="openrouter-glm53-endpoints" />. Input pays most of the bill because agents resend long contexts.
+          <Fn id={A.pricePresets[s.pricePreset].source} />. Input pays most of the bill because agents resend long contexts.
         </dd>
         <dt>Cost</dt>
         <dd>
           {owning ? (
             <>
               {fmtUsdInt(d.electricityUsd)} power + {fmtUsdInt(d.coloUsd)} space + {fmtUsdInt(d.otherOpexUsd)} upkeep + {fmtUsdInt(d.depreciationUsd)} wear
-              on a {fmtUsdInt(d.capexUsd)} rack<Fn id="semianalysis-gb200-capex" /><Fn id="eia-5-6-a" /><Fn id="cbre-colo" />.
+              on a ${(d.capexUsd / 1e6).toFixed(1)}M rack<Fn id={[A.racks[s.rack].priceUsd.source, 'eia-5-6-a', 'cbre-colo']} />.
             </>
           ) : (
             <>
@@ -68,10 +70,10 @@ export function Details({ m }: { m: Model }) {
 
       <h2>How it works</h2>
       <ul className="method">
-        <li>Throughput is InferenceX's measured agentic benchmark: GLM-5.3 in NVFP4 on Dynamo SGLang, replaying 393 Claude Code sessions,
+        <li>Throughput is InferenceX's measured agentic benchmark: GLM-5.2, which has the same architecture as GLM-5.3, in NVFP4 on Dynamo SGLang, replaying 393 Claude Code sessions,
           because coding agents send most GLM-5.3 traffic on OpenRouter. Its traces carry about twice OpenRouter's average context,
           so the figure leans conservative.</li>
-        <li>Token mix and prices come from OpenRouter: GLM-5.3's last 30 days of traffic, and the median of its 16 FP4 endpoints.</li>
+        <li>The token mix is GLM-5.3's last 30 days of traffic on OpenRouter. Prices are the median of its 16 FP4 endpoints, DeepInfra's discounted FP4 price (low), or Z.ai's list price. Cached input is billed at the lower cache-read price.</li>
         <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract estimated from filed deals and 2026 increases.</li>
         <li>Everything on this page is one rack and one day. A renter pays for unused capacity, and an owner pays for the rack whether it sells or not.</li>
       </ul>

@@ -29,7 +29,7 @@ export function fmtUsdPerM(v: number | null): string {
   if (v === null || !Number.isFinite(v)) return '—';
   if (v >= 10) return `$${v.toFixed(1)}`;
   if (v >= 1) return `$${v.toFixed(2)}`;
-  return `$${v.toFixed(3)}`;
+  return `$${+v.toFixed(3)}`;
 }
 
 export function fmtPct(v: number | null): string {

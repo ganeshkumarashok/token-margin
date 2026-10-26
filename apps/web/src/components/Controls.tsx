@@ -15,6 +15,8 @@ interface SliderProps {
   onChange: (v: number) => void;
   /** where the day's profit crosses zero, if inside the range */
   zero: number | null;
+  /** sign of the day's profit when it does not cross zero in the range */
+  profitable: boolean;
   zeroLabel: string;
   marks?: Mark[];
   hint?: ReactNode;
@@ -42,7 +44,7 @@ function Slider(p: SliderProps) {
         )}
       </div>
       <p className="hint">
-        {p.zero !== null ? <span className="zl">break-even {p.zeroLabel}</span> : <span className="zl none">no break-even in range</span>}
+        {p.zero !== null ? <span className="zl">break-even {p.zeroLabel}</span> : <span className="zl none">{p.profitable ? 'profitable across the range' : 'loses money across the range'}</span>}
         {p.hint ? <> · {p.hint}</> : null}
       </p>
     </div>
@@ -78,6 +80,7 @@ export function Controls({ m }: { m: Model }) {
   const rentRange: [number, number] = [range('rentUsdPerGpuHr')[0], range('rentUsdPerGpuHr')[1]];
   const perRack = (gpuHr: number) => `${fmtUsdInt(gpuHr * rack.gpus)}/hr`;
   const p = m.prices;
+  const profitNow = m.result.daily.operatingProfitUsd;
 
   return (
     <section className="controls" aria-label="Assumptions">
@@ -93,23 +96,25 @@ export function Controls({ m }: { m: Model }) {
       </div>
 
       {s.tenure === 'rent' ? (
-        <Slider testId="s-rent" label="Rack rent" value={m.rent} display={`${perRack(m.rent)} · $${m.rent.toFixed(2)}/GPU`}
+        <Slider profitable={profitNow >= 0} testId="s-rent" label="Rack rent" value={m.rent} display={`${perRack(m.rent)} · $${m.rent.toFixed(2)}/GPU`}
           min={rentRange[0]} max={rentRange[1]} step={0.05} onChange={(v) => update({ rentUsdPerGpuHr: v })}
           zero={zero('rentUsdPerGpuHr', rentRange)} zeroLabel={perRack(zero('rentUsdPerGpuHr', rentRange) ?? 0)}
           marks={[
             { v: rack.contractUsdPerGpuHr.value, label: `3-yr contract ${perRack(rack.contractUsdPerGpuHr.value)}` },
             { v: rack.rentUsdPerGpuHr.value, label: `on demand ${perRack(rack.rentUsdPerGpuHr.value)}` },
           ]}
-          hint={s.rack === 'gb200' ? 'CoreWeave and AWS list ≈ $756/hr; Oracle $1,152; Azure list $1,947 (Apr 2025)' : 'Verda list $894/hr; Oracle $1,296'} />
+          hint={s.rentBasis === 'contract'
+            ? (s.rack === 'gb200' ? 'last filed GB200 deal: $261/hr, 3 years (HIVE to Bell/Cohere, Jun 2026); new contracts have priced higher since' : 'last filed GB300 deal: $285/hr, 5 years (HIVE, Aug 2026); new contracts have priced higher since')
+            : (s.rack === 'gb200' ? 'list prices: CoreWeave $756/hr, AWS $762/hr, Oracle $1,152/hr' : 'list prices: Verda $894/hr, Oracle $1,296/hr')} />
       ) : (
-        <Slider testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
+        <Slider profitable={profitNow >= 0} testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
           display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M`}
           min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
           zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
           hint="4-year life, 10% resale; power at $0.145/kWh" />
       )}
 
-      <Slider testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
+      <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
         zero={zero('utilization', [0, 1])} zeroLabel={fmtPct(zero('utilization', [0, 1]))}
         hint="share of the rack's measured throughput you sell" />
@@ -123,22 +128,22 @@ export function Controls({ m }: { m: Model }) {
         </span>
       </div>
 
-      <Slider testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
+      <Slider profitable={profitNow >= 0} testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
         min={range('islOsl')[0]} max={range('islOsl')[1]} step={1} onChange={(v) => update({ islOsl: v })}
         zero={zero('islOsl', range('islOsl'))} zeroLabel={`${Math.round(zero('islOsl', range('islOsl')) ?? 0)} : 1`}
         marks={[{ v: 63, label: 'OpenRouter GLM-5.3, 30 days: 63 : 1' }]} hint="OpenRouter GLM-5.3 traffic: 63 : 1" />
 
-      <Slider testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
+      <Slider profitable={profitNow >= 0} testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
         min={range('cacheHit')[0]} max={range('cacheHit')[1]} step={0.01} onChange={(v) => update({ cacheHit: v })}
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
-        marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3: 90%' }]} hint="OpenRouter GLM-5.3: 90%" />
+        marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3: 90%' }]} hint={<>OpenRouter GLM-5.3: 90%. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
 
-      <Slider testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
+      <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}
         zero={zero('overheadPct', range('overheadPct'))} zeroLabel={`${fmtPct(zero('overheadPct', range('overheadPct')))} of revenue`}
         hint="staff, sales, support, payment fees and the API front end; the rack price already covers CPUs, networking and storage" />
 
-      <Slider testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
+      <Slider profitable={profitNow >= 0} testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
         min={iLo} max={iHi} step={0.5} onChange={(v) => update({ interactivity: v })}
         zero={zero('interactivity', [iLo, iHi])} zeroLabel={`${Math.round(zero('interactivity', [iLo, iHi]) ?? 0)} tok/s`}
         hint="tokens/s each user sees on the slowest 10% of requests (p90). Faster output per user means fewer users share each GPU, so the rack makes fewer tokens. Price stays fixed here; fast tiers on OpenRouter charge about 1.5×." />

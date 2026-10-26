@@ -47,7 +47,7 @@ Pitch: fastest measured throughput, 100% utilization, Z.ai list price, no price 
 
 Demand: 76.9B tokens/day (output + input) = 0.9% of OpenRouter's daily volume, 10% of DeepSeek's Feb-2025 daily volume.
 
-Break-evens (owning): all token prices can fall to 18% of today's (output $0.780/M) before operating profit is zero; utilization for payback within life 36%; price decline at which NPV = 0: 77%/yr.
+Break-evens (owning): all token prices can fall to 18% of today's (output $0.78/M) before operating profit is zero; utilization for payback within life 36%; price decline at which NPV = 0: 77%/yr.
 
 ## Sensitivity at realistic defaults, GB200, rent (ranked by NPV swing)
 
