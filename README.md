@@ -43,7 +43,6 @@ python3 research/openrouter_ratios.py  # token ratios from the OpenRouter snapsh
 
 Personal side project, built from public data. It does not necessarily represent
 the views of my employer or of any company named here, and none of them
-sponsored or reviewed it. The author may hold investments in companies mentioned
-here. Not financial, investment, tax, or purchasing advice. Estimates from
-public sources under stated assumptions; they can be wrong by large factors. No
-warranty.
+sponsored it. The author may hold investments in companies mentioned here. Not
+financial, investment, tax, or purchasing advice. Estimates from public sources
+under stated assumptions; they can be wrong by large factors. No warranty.

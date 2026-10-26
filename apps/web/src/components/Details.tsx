@@ -7,7 +7,7 @@ import { Faq } from './Faq';
 import { REPO } from '../links';
 
 export const DISCLAIMER =
-  'Personal side project, built from public data. It does not necessarily represent the views of my employer or of any company named here, and none of them sponsored or reviewed it. The author may hold investments in companies mentioned here. Not financial, investment, tax, or purchasing advice. Estimates from public sources under stated assumptions; they can be wrong by large factors.';
+  'Personal side project, built from public data. It does not necessarily represent the views of my employer or of any company named here, and none of them sponsored it. The author may hold investments in companies mentioned here. Not financial, investment, tax, or purchasing advice. Estimates from public sources under stated assumptions; they can be wrong by large factors.';
 
 /** Sources shown on the page for a model, in footnote order. */
 function sourcesFor(model: ModelId): string[] {
