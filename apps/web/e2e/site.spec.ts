@@ -20,6 +20,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('chart-readout')).toHaveText('At 70% utilization: $5,165 a day renting on demand. Break-even at 54%.');
   await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 54%; renting on a 3-yr contract breaks even at 30%; owning breaks even at 12%/);
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
+  await expect(page.getByTestId('disclaimer').getByRole('link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
 });
 
 test('2. the contract toggle cuts rent to $421/hr and lands in the URL', async ({ page }) => {
@@ -59,6 +60,9 @@ test('5. owning swaps rent for the cost of owning and a rack-price slider', asyn
   await expect(page.getByTestId('s-capex')).toContainText('$3.90M');
   await expect(page.getByTestId('s-rent')).toHaveCount(0);
   await expect(page.getByTestId('chart-readout')).toContainText('a day owning');
+  await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $404/day');
+  await page.goto('/?t=own&e=0.25');
+  await expect(page.getByTestId('s-power')).toContainText('25.0¢/kWh · $696/day');
 });
 
 test('6. GB300 uses its own curve, rent and price list', async ({ page }) => {
@@ -72,7 +76,7 @@ test('6. GB300 uses its own curve, rent and price list', async ({ page }) => {
 test('7. a shared URL restores the scenario; reset returns to the defaults', async ({ page }) => {
   await page.goto('/?r=gb300&rb=contract&u=0.9&pp=list');
   await expect(page.getByTestId('s-sold')).toContainText('90%');
-  await expect(page.getByRole('radio', { name: 'Z.ai list' })).toHaveAttribute('aria-checked', 'true');
+  await expect(page.getByRole('radio', { name: 'High' })).toHaveAttribute('aria-checked', 'true');
   await expect(page.getByTestId('cost')).toHaveText('$11,405');
   await page.getByRole('button', { name: /Reset/ }).click();
   await expect(page.getByTestId('profit')).toHaveText('$5,165');

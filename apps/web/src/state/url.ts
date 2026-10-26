@@ -3,12 +3,12 @@ import {
   type Assumptions, type PricePresetId, type RackId, type RentBasis, type Settings, type Tenure,
 } from '@token-margin/engine';
 
-type NumKey = 'utilization' | 'islOsl' | 'cacheHit' | 'interactivity' | 'rackPriceMult' | 'achieved' | 'prefillRate' | 'overheadPct';
+type NumKey = 'utilization' | 'islOsl' | 'cacheHit' | 'interactivity' | 'rackPriceMult' | 'achieved' | 'prefillRate' | 'overheadPct' | 'electricityUsdPerKwh';
 
 /** URL key -> settings key. Percent-like values are stored as fractions (u=0.7). */
 export const NUM_KEYS: Array<[string, NumKey]> = [
   ['u', 'utilization'], ['io', 'islOsl'], ['ch', 'cacheHit'], ['i', 'interactivity'],
-  ['rp', 'rackPriceMult'], ['a', 'achieved'], ['pf', 'prefillRate'], ['oh', 'overheadPct'],
+  ['rp', 'rackPriceMult'], ['a', 'achieved'], ['pf', 'prefillRate'], ['oh', 'overheadPct'], ['e', 'electricityUsdPerKwh'],
 ];
 const PRICE_PRESETS: PricePresetId[] = ['floor', 'median', 'list'];
 

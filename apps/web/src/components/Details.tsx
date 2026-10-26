@@ -2,6 +2,8 @@ import { fmtInt, fmtPct, fmtTokens, fmtUsdInt } from '@token-margin/engine';
 import { A } from '../data';
 import type { Model } from '../state/useModel';
 
+export const REPO = 'https://github.com/ganeshkumarashok/token-margin';
+
 export const DISCLAIMER =
   'Personal side project. Not affiliated with, sponsored by, or representing the views of any employer or any company named here. Not financial, investment, tax, or purchasing advice. Estimates from public sources under stated assumptions; they can be wrong by large factors.';
 
@@ -73,7 +75,7 @@ export function Details({ m }: { m: Model }) {
         <li>Throughput is InferenceX's measured agentic benchmark: GLM-5.2, which has the same architecture as GLM-5.3, in NVFP4 on Dynamo SGLang, replaying 393 Claude Code sessions,
           because coding agents send most GLM-5.3 traffic on OpenRouter. Its traces carry about twice OpenRouter's average context,
           so the figure leans conservative.</li>
-        <li>The token mix is GLM-5.3's last 30 days of traffic on OpenRouter. Prices are the median of its 16 FP4 endpoints, DeepInfra's discounted FP4 price (low), or Z.ai's list price. Cached input is billed at the lower cache-read price.</li>
+        <li>The token mix is GLM-5.3's last 30 days of traffic on OpenRouter. Prices are the median of its 16 FP4 endpoints, the cheapest mainstream FP4 price (low, DeepInfra), or the list price most large providers charge (high, the same as Z.ai's). Cached input is billed at the lower cache-read price.</li>
         <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract estimated from filed deals and 2026 increases.</li>
         <li>Everything on this page is one rack and one day. A renter pays for unused capacity, and an owner pays for the rack whether it sells or not.</li>
       </ul>
@@ -92,7 +94,7 @@ export function Details({ m }: { m: Model }) {
 
       <footer className="footer" data-testid="disclaimer">
         <p>{DISCLAIMER}</p>
-        <p className="muted">Data as of {A.version}. Raw data, the model and its tests are in the repository.</p>
+        <p className="muted">Data as of {A.version}. Source code, raw data, the model and its tests: <a href={REPO}>{REPO.replace('https://', '')}</a>.</p>
       </footer>
     </section>
   );

@@ -216,7 +216,7 @@
   },
   "pricePresets": {
     "floor": {
-      "label": "Low (DeepInfra FP4)",
+      "label": "Low",
       "inUsdPerM": 0.5625,
       "cacheUsdPerM": 0.125,
       "outUsdPerM": 2.5,
@@ -224,7 +224,7 @@
       "note": "37.5% off DeepInfra's own $0.90/$0.20/$4.00; 2026-10-25"
     },
     "median": {
-      "label": "Median FP4",
+      "label": "Median",
       "inUsdPerM": 1.12,
       "cacheUsdPerM": 0.14,
       "outUsdPerM": 4.4,
@@ -232,11 +232,12 @@
       "note": "median of each price over the 16 FP4/NVFP4 GLM-5.3 endpoints on OpenRouter, 2026-10-25"
     },
     "list": {
-      "label": "List (Z.ai)",
+      "label": "High (list)",
       "inUsdPerM": 1.4,
       "cacheUsdPerM": 0.26,
       "outUsdPerM": 4.4,
-      "source": "zai-pricing"
+      "source": "zai-pricing",
+      "note": "Z.ai list price; also charged by Together, Fireworks, Baseten, Nebius, Crusoe, Parasail, Modal and others on OpenRouter"
     }
   },
   "electricityPresets": {

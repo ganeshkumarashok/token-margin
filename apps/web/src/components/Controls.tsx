@@ -104,14 +104,23 @@ export function Controls({ m }: { m: Model }) {
             { v: rack.rentUsdPerGpuHr.value, label: `on demand ${perRack(rack.rentUsdPerGpuHr.value)}` },
           ]}
           hint={s.rentBasis === 'contract'
-            ? (s.rack === 'gb200' ? 'last filed GB200 deal: $261/hr, 3 years (HIVE to Bell/Cohere, Jun 2026); new contracts have priced higher since' : 'last filed GB300 deal: $285/hr, 5 years (HIVE, Aug 2026); new contracts have priced higher since')
+            ? (s.rack === 'gb200' ? 'latest GB200 contract with public terms: $261/hr over 3 years (HIVE to Bell/Cohere, SEC filing, Jun 2026); new contracts have priced higher since' : 'latest GB300 contract with public terms: $285/hr over 5 years (HIVE, SEC filing, Aug 2026); new contracts have priced higher since')
             : (s.rack === 'gb200' ? 'list prices: CoreWeave $756/hr, AWS $762/hr, Oracle $1,152/hr' : 'list prices: Verda $894/hr, Oracle $1,296/hr')} />
       ) : (
         <Slider profitable={profitNow >= 0} testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
           display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M`}
           min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
           zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
-          hint="4-year life, 10% resale; power at $0.145/kWh" />
+          hint={`${s.rack === 'gb200' ? 'SemiAnalysis estimate including networking, storage and integration' : 'transacted small orders, Aug 2026 (Data Gravity)'}; NVIDIA publishes no rack price. 4-year life, 10% resale`} />
+      )}
+
+      {s.tenure === 'own' && (
+        <Slider profitable={profitNow >= 0} testId="s-power" label="Power price" value={s.electricityUsdPerKwh}
+          display={`${(s.electricityUsdPerKwh * 100).toFixed(1)}¢/kWh · ${fmtUsdInt(m.result.daily.electricityUsd)}/day`}
+          min={range('electricityUsdPerKwh')[0]} max={range('electricityUsdPerKwh')[1]} step={0.005} onChange={(v) => update({ electricityUsdPerKwh: v })}
+          zero={zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2])} zeroLabel={`${((zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2]) ?? 0) * 100).toFixed(0)}¢/kWh`}
+          marks={[{ v: 0.0977, label: 'US industrial 9.8¢' }, { v: 0.1453, label: 'US commercial 14.5¢' }]}
+          hint="US commercial average, Jul 2026 (EIA); industrial 9.8¢. The bill grows with utilization: an unsold GPU still draws about a third of full power, and cooling adds 20%" />
       )}
 
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
@@ -122,7 +131,7 @@ export function Controls({ m }: { m: Model }) {
       <div className="prices">
         <span className="plabel">Token price</span>
         <Seg label="Token price" value={s.pricePreset} onChange={(v: PricePresetId) => update({ pricePreset: v, customPrice: null })}
-          options={[{ id: 'floor', text: 'Low' }, { id: 'median', text: 'Median FP4' }, { id: 'list', text: 'Z.ai list' }]} />
+          options={[{ id: 'floor', text: 'Low' }, { id: 'median', text: 'Median' }, { id: 'list', text: 'High' }]} />
         <span className="pvals" data-testid="prices">
           {fmtUsdPerM(p.inUsdPerM)} in · {fmtUsdPerM(p.cacheUsdPerM)} cached · {fmtUsdPerM(p.outUsdPerM)} out, per million
         </span>
