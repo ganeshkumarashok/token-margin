@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you quote these figures, please cite the page and the data date."
+type: software
+title: "What are the margins on inference?"
+abstract: >-
+  The daily economics of one NVIDIA GB200 or GB300 NVL72 rack serving an open-weights
+  model: measured throughput (InferenceX agentic benchmark), real OpenRouter traffic and
+  prices, and published rents, contract prices and owning costs.
+authors:
+  - family-names: Ashokavardhanan
+    given-names: Ganeshkumar
+    website: "https://ganeshkumarashok.com"
+url: "https://tokens.ganeshkumarashok.com"
+repository-code: "https://github.com/ganeshkumarashok/token-margin"
+version: "data-2026-10-25"
+date-released: 2026-10-25
+keywords:
+  - LLM inference
+  - GPU economics
+  - NVIDIA GB200 NVL72
+  - token pricing
+  - OpenRouter

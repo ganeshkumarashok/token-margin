@@ -1,6 +1,7 @@
 import { fmtInt, fmtPct, fmtTokens, fmtUsdInt, fmtUsdPerM, type ModelId } from '@token-margin/engine';
 import { A } from '../data';
 import type { Model } from '../state/useModel';
+import { Cite } from './Cite';
 
 export const REPO = 'https://github.com/ganeshkumarashok/token-margin';
 
@@ -133,6 +134,7 @@ export function Details({ m }: { m: Model }) {
       <footer className="footer" data-testid="disclaimer">
         <p>{DISCLAIMER}</p>
         <p className="muted">Data as of {A.version}. Source code, raw data, the model and its tests: <a href={REPO}>{REPO.replace('https://', '')}</a>.</p>
+        <Cite />
       </footer>
     </section>
   );
