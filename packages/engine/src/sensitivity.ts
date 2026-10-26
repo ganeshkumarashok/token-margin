@@ -49,11 +49,11 @@ export function defaultSensitivitySpecs(points: readonly CurvePoint[], tenure: T
       apply: (i, s) => ({ ...i, rentUsdPerGpuHr: s === 'low' ? 4.4 : 16 }) },
   ];
   const shared: SensitivitySpec[] = [
-    { key: 'interactivity', label: 'Serving speed', lowLabel: `${iMin} tok/s`, highLabel: `${iMax} tok/s`,
+    { key: 'interactivity', label: 'Output speed', lowLabel: `${iMin} tok/s`, highLabel: `${iMax} tok/s`,
       apply: (i, s) => ({ ...i, interactivity: s === 'low' ? iMin : iMax }) },
     { key: 'achieved', label: 'Achieved throughput', lowLabel: '25%', highLabel: '100%',
       apply: (i, s) => ({ ...i, achieved: s === 'low' ? 0.25 : 1 }) },
-    { key: 'utilization', label: 'Share sold', lowLabel: '30%', highLabel: '100%',
+    { key: 'utilization', label: 'Utilization', lowLabel: '30%', highLabel: '100%',
       apply: (i, s) => ({ ...i, utilization: s === 'low' ? 0.3 : 1 }) },
     { key: 'prices', label: 'Token prices', lowLabel: '×0.5', highLabel: '×1.5',
       apply: (i, s) => scalePrices(i, s === 'low' ? 0.5 : 1.5) },

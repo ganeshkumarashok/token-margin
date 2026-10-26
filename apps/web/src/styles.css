@@ -67,7 +67,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .rack b { font: 600 15px var(--mono); padding: 0 3px; }
 .k-p { background: var(--hl); color: var(--hl-ink); }
 .k-c { background: var(--ink); color: var(--bg); }
-.k-i { border: 1px solid var(--rule); }
+.k-u { border: 1px solid var(--rule); }
 
 /* Controls */
 .controls { display: grid; gap: 22px; border-top: 1px solid var(--rule); padding-top: 24px; }

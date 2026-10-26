@@ -92,10 +92,10 @@ export function Controls({ m }: { m: Model }) {
           ]} />
       </div>
 
-      <Slider testId="s-sold" label="Capacity sold" value={s.utilization} display={fmtPct(s.utilization)}
+      <Slider testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
         zero={zero('utilization', [0, 1])} zeroLabel={fmtPct(zero('utilization', [0, 1]))}
-        hint="share of the rack's measured throughput that finds a buyer" />
+        hint="share of the rack's measured throughput you sell" />
 
       <Slider testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
         min={range('islOsl')[0]} max={range('islOsl')[1]} step={1} onChange={(v) => update({ islOsl: v })}
@@ -107,10 +107,10 @@ export function Controls({ m }: { m: Model }) {
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
         marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3: 90%' }]} hint="OpenRouter GLM-5.3: 90%" />
 
-      <Slider testId="s-speed" label="Speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
+      <Slider testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
         min={iLo} max={iHi} step={0.5} onChange={(v) => update({ interactivity: v })}
         zero={zero('interactivity', [iLo, iHi])} zeroLabel={`${Math.round(zero('interactivity', [iLo, iHi]) ?? 0)} tok/s`}
-        hint="slowest 10% of requests; the measured range" />
+        hint="tokens/s each user sees on the slowest 10% of requests (p90), within the measured range" />
 
       {s.tenure === 'rent' ? (
         <Slider testId="s-rent" label="Rack rent" value={m.rent} display={`${perRack(m.rent)} · $${m.rent.toFixed(2)}/GPU`}

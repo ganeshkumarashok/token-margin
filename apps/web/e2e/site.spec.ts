@@ -17,7 +17,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('profit')).toHaveText('$5,165');
   await expect(page.getByTestId('margin')).toHaveText('22% margin');
   await expect(page.getByTestId('equation')).toContainText('1.2B out · 75.7B in');
-  await expect(page.getByTestId('rack-caption')).toHaveText('11 GPUs earn the profit · 39 pay the rent · 22 idle');
+  await expect(page.getByTestId('rack-caption')).toHaveText('Output of 11 GPUs is profit, 39 pay the rent, 22 unused at 70% utilization');
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
 });
 
@@ -30,7 +30,7 @@ test('2. the contract toggle cuts rent to $317/hr and lands in the URL', async (
   await expect(page).toHaveURL(/rb=contract/);
 });
 
-test('3. selling less capacity lowers profit; the break-even tick sits at 54%', async ({ page }) => {
+test('3. lower utilization lowers profit; the break-even tick sits at 54%', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByTestId('s-sold')).toContainText('break-even 54%');
   const before = await money(page, 'profit');
@@ -39,7 +39,7 @@ test('3. selling less capacity lowers profit; the break-even tick sits at 54%', 
   const after = await money(page, 'profit');
   expect(after).toBeLessThan(before);
   expect(after).toBeLessThan(0);
-  await expect(page.getByTestId('rack-caption')).toContainText('working GPUs cover');
+  await expect(page.getByTestId('rack-caption')).toContainText('busy GPUs covers');
   await expect(page).toHaveURL(/u=0\.5/);
 });
 

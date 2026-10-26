@@ -1,10 +1,10 @@
 # Token margin
 
-Does selling AI tokens make money? One NVIDIA NVL72 rack (GB200 or GB300), one
-day of serving an open-weights model (GLM-5.3, FP4): what it costs to rent or
-own, how many tokens it serves, what they sell for, and what is left. Move a
-slider and the day recomputes; the URL carries every change, so each scenario
-is a link.
+What are the margins on inference? This models one NVIDIA NVL72 rack (GB200 or
+GB300) serving an open-weights model (GLM-5.3, FP4) for a day: what it costs to
+rent or own, how many tokens it serves, what they sell for, and what is left.
+Moving a slider recomputes the day, and the URL records every change, so each
+scenario is a shareable link.
 
 Throughput is measured (InferenceX agentic benchmark), the token mix and prices
 are OpenRouter's, and rents are published list prices or filed contracts.

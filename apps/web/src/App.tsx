@@ -8,7 +8,7 @@ export function App() {
   return (
     <main className="page">
       <header className="masthead">
-        <h1>Does selling AI tokens make money?</h1>
+        <h1>What are the margins on inference?</h1>
       </header>
       <Answer m={m} />
       <Controls m={m} />

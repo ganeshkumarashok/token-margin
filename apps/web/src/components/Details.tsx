@@ -37,7 +37,7 @@ export function Details({ m }: { m: Model }) {
         <dd>
           {fmtInt(d.benchPerGpu)} output tokens/s per GPU measured at {Math.round(i.interactivity)} tok/s per user, prefill GPUs
           included<Fn id="inferencex-agentx" />; {fmtInt(d.capacityPerGpu)} on this traffic, which prefills {uncachedPerOut.toFixed(1)} uncached
-          input tokens per output token against {i.refUncachedPerOut} in the benchmark. {fmtPct(i.utilization)} of that is sold.
+          input tokens per output token against {i.refUncachedPerOut} in the benchmark. At {fmtPct(i.utilization)} utilization it sells {fmtInt(d.tpsPerGpu * i.utilization)} per GPU.
         </dd>
         <dt>Tokens</dt>
         <dd>
@@ -85,7 +85,7 @@ export function Details({ m }: { m: Model }) {
           so the figure leans conservative.</li>
         <li>Token mix and prices come from OpenRouter: GLM-5.3's last 30 days of traffic, and the median of its 16 FP4 endpoints.</li>
         <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract estimated from filed deals and 2026 increases.</li>
-        <li>Everything on this page is one rack and one day. A renter pays for idle GPUs; an owner pays for the rack whether it sells or not.</li>
+        <li>Everything on this page is one rack and one day. A renter pays for unused capacity, and an owner pays for the rack whether it sells or not.</li>
       </ul>
 
       <h2>Sources</h2>

@@ -25,7 +25,7 @@ export interface Inputs {
   interactivity: number;
   /** 0..1 share of benchmark throughput achieved on real traffic */
   achieved: number;
-  /** 0..1 share of capacity sold */
+  /** 0..1 utilization: share of measured capacity sold */
   utilization: number;
   /** uncached input tokens prefilled per second per prefill GPU */
   prefillRate: number;
