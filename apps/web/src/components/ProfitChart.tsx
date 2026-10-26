@@ -1,18 +1,12 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { fmtPct, fmtUsdInt, type Settings } from '@token-margin/engine';
-import { breakEven, profitOf, type Model } from '../state/useModel';
+import { breakEven, profitOf, settingsForMode, type Model } from '../state/useModel';
 
 type Basis = 'onDemand' | 'contract' | 'own';
 const BASES: Basis[] = ['onDemand', 'contract', 'own'];
 const LABEL: Record<Basis, string> = { onDemand: 'on demand', contract: '3-yr contract', own: 'own' };
 const DOING: Record<Basis, string> = { onDemand: 'renting on demand', contract: 'renting on a 3-yr contract', own: 'owning' };
 const STEPS = 50;
-
-function settingsFor(s: Settings, b: Basis, active: Basis): Settings {
-  if (b === 'own') return { ...s, tenure: 'own' };
-  // A rent typed on the slider belongs to the basis it was typed under.
-  return { ...s, tenure: 'rent', rentBasis: b, rentUsdPerGpuHr: b === active ? s.rentUsdPerGpuHr : null };
-}
 
 /** Rounds a step to 1, 2 or 5 × 10^n so axis labels stay readable. */
 function niceStep(span: number, ticks: number): number {
@@ -46,10 +40,10 @@ export function ProfitChart({ m }: { m: Model }) {
   const [hover, setHover] = useState<number | null>(null);
 
   const lines = useMemo(() => BASES.map((b) => {
-    const sb = settingsFor(s, b, active);
+    const sb = settingsForMode(s, b, m.modes);
     const pts = Array.from({ length: STEPS + 1 }, (_, k) => profitOf({ ...sb, utilization: k / STEPS }));
     return { b, sb, pts, zero: breakEven(sb, 'utilization', 0, 1) };
-  }), [s, active]);
+  }), [s, m.modes]);
 
   const narrow = width < 520;
   const H = narrow ? 260 : 280;

@@ -40,8 +40,26 @@ export function breakEven(s: Settings, key: keyof Settings, lo: number, hi: numb
   return null;
 }
 
+/** How the rack is paid for. Overhead and a typed rent belong to one mode and do not carry to the others. */
+export type Mode = 'onDemand' | 'contract' | 'own';
+export interface ModeValues { overheadPct: number; rentUsdPerGpuHr: number | null }
+export const modeOf = (s: Settings): Mode => (s.tenure === 'own' ? 'own' : s.rentBasis);
+const blankModes = (): Record<Mode, ModeValues> => {
+  const d = defaultSettings(A);
+  const v = { overheadPct: d.overheadPct, rentUsdPerGpuHr: null };
+  return { onDemand: { ...v }, contract: { ...v }, own: { ...v } };
+};
+
+/** Settings for another mode: shared market inputs from `s`, that mode's own overhead and rent. */
+export function settingsForMode(s: Settings, mode: Mode, modes: Record<Mode, ModeValues>): Settings {
+  if (mode === modeOf(s)) return s;
+  const own = mode === 'own';
+  return { ...s, ...modes[mode], tenure: own ? 'own' : 'rent', rentBasis: own ? s.rentBasis : mode };
+}
+
 export function useModel() {
   const [settings, setSettings] = useState<Settings>(() => parseUrl(A, window.location.search));
+  const [modes, setModes] = useState<Record<Mode, ModeValues>>(blankModes);
 
   useEffect(() => {
     const t = window.setTimeout(() => {
@@ -61,17 +79,40 @@ export function useModel() {
     return { points, inputs, result, demand, rent: rentFor(A, settings), prices: sellPrices(A, settings) };
   }, [settings]);
 
-  const update = (patch: Partial<Settings>) =>
+  const update = (patch: Partial<Settings>) => {
+    const rackChange = patch.rack !== undefined && patch.rack !== settings.rack;
+    // A rent typed for one rack is not a price for the other.
+    if (rackChange) setModes((ms) => ({
+      onDemand: { ...ms.onDemand, rentUsdPerGpuHr: null },
+      contract: { ...ms.contract, rentUsdPerGpuHr: null },
+      own: { ...ms.own, rentUsdPerGpuHr: null },
+    }));
     setSettings((s) => {
       const next = { ...s, ...patch };
-      if (patch.rack && patch.rack !== s.rack) next.interactivity = clampInteractivity(A, patch.rack, next.interactivity);
+      if (rackChange && patch.rack) {
+        next.interactivity = clampInteractivity(A, patch.rack, next.interactivity);
+        next.rentUsdPerGpuHr = null;
+      }
       return next;
     });
+  };
 
-  const reset = () => setSettings(defaultSettings(A));
+  /** Switch how the rack is paid for, keeping each mode's own overhead and rent. */
+  const setMode = (next: Mode) => {
+    const cur = modeOf(settings);
+    if (next === cur) return;
+    const saved = { ...modes, [cur]: { overheadPct: settings.overheadPct, rentUsdPerGpuHr: settings.rentUsdPerGpuHr } };
+    setModes(saved);
+    setSettings(settingsForMode(settings, next, saved));
+  };
+
+  const reset = () => {
+    setModes(blankModes());
+    setSettings(defaultSettings(A));
+  };
   const isDefault = toSearch(A, settings) === '';
 
-  return { settings, update, reset, isDefault, ...derived };
+  return { settings, modes, update, setMode, reset, isDefault, ...derived };
 }
 
 export type Model = ReturnType<typeof useModel>;

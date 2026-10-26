@@ -73,8 +73,7 @@ export function Controls({ m }: { m: Model }) {
   const range = (k: string) => A.ranges[k];
   const zero = (k: keyof Settings, [lo, hi]: [number, number, number] | [number, number]) => breakEven(s, k, lo, hi);
   const cost: Cost = s.tenure === 'own' ? 'own' : s.rentBasis;
-  const setCost = (c: Cost) =>
-    update(c === 'own' ? { tenure: 'own' } : { tenure: 'rent', rentBasis: c, rentUsdPerGpuHr: null });
+  const setCost = (c: Cost) => m.setMode(c);
 
   const [iLo, iHi] = curveBounds(m.points);
   const rentRange: [number, number] = [range('rentUsdPerGpuHr')[0], range('rentUsdPerGpuHr')[1]];
