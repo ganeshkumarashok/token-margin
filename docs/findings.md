@@ -16,7 +16,7 @@ The question: one NVIDIA GB200 NVL72 rack (72 GPUs) serves GLM-5.3 in FP4 for on
 | Break-even utilization | 56% | 31% | 15% |
 | If prices fall 50%/yr | below rent in month 5, $346K banked | below rent in month 11 | paid back in month 11, NPV $2.2M at 9% |
 
-Capacity fixed for years sells a smaller share than capacity rented by the hour: across OpenRouter's open models the average day is 68% of the busiest day of the month, and DeepSeek's average serving fleet was 82% of its peak, so a rack sized for busy hours averages about 55%. An on-demand renter can hand racks back when demand falls.
+Capacity fixed for years sells a smaller share than capacity rented by the hour: across OpenRouter's open models the average day is 68% of the busiest day of the month, and DeepSeek's average serving fleet was 82% of its peak, so a rack kept for years, which also runs through quiet nights, weekends and slow days, sells about 55% of its capacity on average. An on-demand renter can hand racks back when demand falls.
 
 GB300 at Verda's on-demand $894/rack-hr serves 1.4B output tokens for $27,965 of revenue. Profit is $6,503 on demand at 70% utilization.
 
@@ -38,4 +38,4 @@ The 2× throughput is measured, not modeled. With the serving software held equa
 
 ## What the model ignores
 
-Taxes; sales and customer support (the overhead input adds them); cost of capital in the daily figures; network egress; FP4 quality; SLAs; demand growth; contract exit costs. The agentic traces carry about twice OpenRouter's average context, so throughput leans conservative. Serving software is improving quickly: GLM on GB200 at 100 tok/s per user went from 69 to 287 output tokens/s per GPU between Aug 16 and Oct 23. The large-contract rent is an estimate from filed deals and reported increases, not a quote.
+Taxes; sales and customer support (the overhead input adds them); network egress; FP4 quality; SLAs; demand growth; contract exit costs. The agentic traces carry about twice OpenRouter's average context, and longer conversations are slower to serve, so real traffic may run somewhat faster than measured. Serving software is improving quickly: GLM on GB200 at 100 tok/s per user went from 69 to 287 output tokens/s per GPU between Aug 16 and Oct 23. The large-contract rent is an estimate from filed deals and reported increases, not a quote.

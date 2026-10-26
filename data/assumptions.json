@@ -785,13 +785,13 @@
           "cacheUsdPerM": 0.26,
           "outUsdPerM": 4.4,
           "source": "zai-pricing",
-          "note": "Z.ai list price; also charged by Together, Fireworks, Baseten, Nebius, Crusoe, Parasail, Modal and others on OpenRouter"
+          "note": "Z.ai list price; 13 of 37 GLM-5.3 providers on OpenRouter charge it, including Together, Fireworks, Baseten, Nebius and Crusoe (2026-10-25)"
         }
       },
       "priceNotes": {
         "floor": "DeepInfra's discounted FP4 price",
         "median": "median of its 16 FP4 endpoints",
-        "list": "the list price Z.ai and most large providers charge"
+        "list": "Z.ai's list price, which 13 of its 37 providers also charge"
       }
     },
     "dsv4pro": {
@@ -940,13 +940,13 @@
           "cacheUsdPerM": 0.132,
           "outUsdPerM": 3.96,
           "source": "openrouter-dsv4pro-endpoints",
-          "note": "the price charged by Together, Baseten, Parasail, SiliconFlow and others on OpenRouter"
+          "note": "charged by 10 of 22 DeepSeek V4 Pro (0813) providers on OpenRouter, including Together, Baseten, Parasail and SiliconFlow (2026-10-25)"
         }
       },
       "priceNotes": {
         "floor": "DeepSeek's own API price",
         "median": "median of its 5 FP4 endpoints",
-        "list": "the price most large providers charge"
+        "list": "the price 10 of its 22 providers charge"
       }
     }
   }
