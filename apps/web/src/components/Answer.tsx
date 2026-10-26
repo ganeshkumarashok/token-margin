@@ -1,4 +1,4 @@
-import { fmtPct, fmtTokens, fmtUsdInt } from '@token-margin/engine';
+import { fmtInt, fmtPct, fmtTokens, fmtUsdInt } from '@token-margin/engine';
 import { A } from '../data';
 import type { Model } from '../state/useModel';
 import { ProfitChart } from './ProfitChart';
@@ -18,6 +18,11 @@ export function Answer({ m }: { m: Model }) {
     : `${fmtUsdInt(m.rent * rack.gpus)}/hr ${s.rentBasis === 'contract' ? '3-yr contract' : 'on demand'}`;
   const loss = d.operatingProfitUsd < 0;
   const gross = i.overheadPct === 0;
+  // Per GPU-hour: tokens sold, what each million output tokens (with its input) sells for, and what the GPU costs.
+  const sold = d.tpsPerGpu * i.utilization;
+  const perMOut = d.outputTokens > 0 ? d.revenueUsd / (d.outputTokens / 1e6) : 0;
+  const perGpuHr = d.revenueUsd / (d.gpus * 24);
+  const costPerGpuHr = (d.costUsd - d.overheadUsd) / (d.gpus * 24);
 
   return (
     <section className="answer" aria-label="One day">
@@ -54,6 +59,12 @@ export function Answer({ m }: { m: Model }) {
           <span className="note" data-testid="margin">{fmtPct(d.operatingMargin)} {gross ? 'gross margin' : 'margin'}</span>
         </div>
       </div>
+
+      <p className="unit-line" data-testid="unit-line">
+        Each GPU sells <b>{fmtInt(sold)}</b> output tokens/s ({fmtInt(d.capacityPerGpu)} capacity × {fmtPct(i.availability)} up × {fmtPct(i.utilization)} utilization)
+        {' '}at <b>${perMOut.toFixed(2)}</b> per million, input included: <b>${perGpuHr.toFixed(2)}</b> an hour against{' '}
+        <b>${costPerGpuHr.toFixed(2)}</b> {owning ? 'all-in to own' : 'rent'}. Each user sees {Math.round(i.interactivity)} tok/s, the figure OpenRouter calls throughput.
+      </p>
 
       <ProfitChart m={m} />
     </section>

@@ -17,6 +17,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('profit')).toHaveText('$4,698');
   await expect(page.getByTestId('margin')).toHaveText('21% gross margin');
   await expect(page.getByTestId('equation')).toContainText('1.2B out · 74.2B in');
+  await expect(page.getByTestId('unit-line')).toHaveText('Each GPU sells 189 output tokens/s (276 capacity × 98% up × 70% utilization) at $19.39 per million, input included: $13.22 an hour against $10.50 rent. Each user sees 95 tok/s, the figure OpenRouter calls throughput.');
   await expect(page.getByTestId('chart-readout')).toHaveText('At 70% utilization: $4,698 a day renting on demand. Break-even at 56%.');
   await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /^Profit per day against GPU utilization\. renting on demand, the selected option, breaks even at 56% and makes \$4,698 a day at 70% utilization\. For comparison, renting on a 3-yr contract breaks even at 31%; owning breaks even at 15%\.$/);
   await expect(page.locator('.byline')).toContainText('Ganeshkumar Ashokavardhanan');
@@ -184,6 +185,7 @@ test('16. the model toggle switches to DeepSeek V4 Pro with its own traffic, pri
   await page.getByRole('radio', { name: 'DeepSeek V4 Pro' }).click();
   await expect(page.getByTestId('revenue')).toHaveText('$27,673');
   await expect(page.getByTestId('profit')).toHaveText('$9,529');
+  await expect(page.getByTestId('unit-line')).toContainText('Each GPU sells 382 output tokens/s (557 capacity × 98% up × 70% utilization) at $11.64 per million, input included: $16.01 an hour against $10.50 rent.');
   await expect(page.getByTestId('s-ratio')).toContainText('42 : 1');
   await expect(page.getByTestId('s-cache')).toContainText('84%');
   await expect(page.getByTestId('receipt')).toContainText('of all DeepSeek V4 Pro traffic on OpenRouter');
