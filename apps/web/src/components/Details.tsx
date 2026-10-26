@@ -2,8 +2,9 @@ import { fmtInt, fmtPct, fmtTokens, fmtUsdInt, fmtUsdPerM, type ModelId } from '
 import { A } from '../data';
 import type { Model } from '../state/useModel';
 import { Cite } from './Cite';
+import { Faq } from './Faq';
 
-export const REPO = 'https://github.com/ganeshkumarashok/token-margin';
+import { REPO } from '../links';
 
 export const DISCLAIMER =
   'Personal side project. Not affiliated with, sponsored by, or representing the views of any employer or any company named here. Not financial, investment, tax, or purchasing advice. Estimates from public sources under stated assumptions; they can be wrong by large factors.';
@@ -25,7 +26,9 @@ function footnotes(sources: string[]): FnMark {
   return function Fn({ id }) {
     const ns = (Array.isArray(id) ? id : [id]).map((x) => sources.indexOf(x) + 1).filter((n) => n > 0);
     if (!ns.length) return null;
-    return <sup>{ns.map((n, k) => <span key={n}>{k > 0 ? ',' : ''}<a href={`#src-${n}`}>{n}</a></span>)}</sup>;
+    // The source list is folded; open it before the browser jumps to the entry.
+    const open = () => { const el = document.getElementById('sources'); if (el instanceof HTMLDetailsElement) el.open = true; };
+    return <sup>{ns.map((n, k) => <span key={n}>{k > 0 ? ',' : ''}<a href={`#src-${n}`} onClick={open}>{n}</a></span>)}</sup>;
   };
 }
 
@@ -113,23 +116,27 @@ export function Details({ m }: { m: Model }) {
       <h2>How it works</h2>
       <ul className="method">
         <li>Throughput is InferenceX's agentic benchmark, which replays 393 Claude Code sessions {s.model === 'glm53' ? 'on GLM-5.2 (the same architecture as GLM-5.3) in NVFP4 on Dynamo SGLang' : 'on DeepSeek V4 Pro in FP4 on Dynamo vLLM and SGLang'}. Its contexts run longer than OpenRouter's average, so it leans conservative.</li>
-        <li>Traffic and prices come from {model.short} on OpenRouter: the last 30 days of usage, and the {model.priceNotes.median} (low is {model.priceNotes.floor}; high is {model.priceNotes.list}).</li>
+        <li>The token mix comes from <a href={model.mix.url}>OpenRouter's {model.short} page</a>, which publishes daily prompt, completion and cached token counts across all providers. Over 30 days they work out to {model.mix.islOsl} input tokens per output token, with {fmtPct(model.mix.cacheHit)} of input served from cache (<a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a>). Prices are the {model.priceNotes.median} (low is {model.priceNotes.floor}; high is {model.priceNotes.list}).</li>
         <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at.</li>
-        <li>Hourly rentals can be handed back when demand falls, so they default to 70% utilization. Capacity fixed for years has to cover busy hours on busy days, so it defaults to 55%.</li>
+        <li>Hourly rentals can be handed back when demand falls, so they default to 70% utilization. A rack you keep for years also runs through quiet nights, weekends and slow days, so on average it sells less of its capacity: 55% by default.</li>
         <li>An owned rack's price, less its 10% resale value, is spread over 4 years as equal yearly payments that include 9% a year on the money tied up in it, the same as paying off a 9% loan. Support, operations, space and power come on top.</li>
       </ul>
 
-      <h2>Sources</h2>
-      <ol className="sources">
-        {sources.map((id, k) => {
-          const src = A.sources[id];
-          return (
-            <li key={id} id={`src-${k + 1}`}>
-              <a href={src.url}>{src.title}</a> <span className="muted">{src.date}</span>
-            </li>
-          );
-        })}
-      </ol>
+      <Faq />
+
+      <details className="fold" id="sources" data-testid="sources">
+        <summary><h2>Sources ({sources.length})</h2></summary>
+        <ol className="sources">
+          {sources.map((id, k) => {
+            const src = A.sources[id];
+            return (
+              <li key={id} id={`src-${k + 1}`}>
+                <a href={src.url}>{src.title}</a> <span className="muted">{src.date}</span>
+              </li>
+            );
+          })}
+        </ol>
+      </details>
 
       <footer className="footer" data-testid="disclaimer">
         <p>{DISCLAIMER}</p>

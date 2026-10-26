@@ -2,7 +2,7 @@ import { useId, type ReactNode } from 'react';
 import { curveBounds, curveFor, evaluate, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM, inputsFromSettings, type PricePresetId, type Settings } from '@token-margin/engine';
 import { A } from '../data';
 import { breakEven, settingsForMode, type Model } from '../state/useModel';
-import { REPO } from './Details';
+import { REPO } from '../links';
 
 interface Mark { v: number; label: string }
 

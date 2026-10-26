@@ -150,6 +150,17 @@ a { color: inherit; text-underline-offset: 2px; }
 .receipt tr.profit-row td.v { font-size: 16px; }
 .excluded { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
 .details sup a { font: 500 10px var(--mono); text-decoration: none; padding-left: 1px; }
+.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 8px; }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary::before { content: '+'; font: 500 14px var(--mono); color: var(--muted); width: 12px; }
+.fold[open] > summary::before { content: '−'; }
+.fold > summary h2 { display: inline; margin: 0; }
+.fold > summary:focus-visible { outline: 2px solid var(--zero); outline-offset: 2px; }
+.fold[open] > :not(summary) { margin-top: 10px; }
+.faq { margin: 0; display: grid; gap: 12px; }
+.faq dt { font-weight: 600; }
+.faq dd { margin: 2px 0 0; color: var(--ink); }
+.method a, .faq a { color: inherit; }
 .method { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-size: 14px; }
 .sources li { overflow-wrap: anywhere; }

@@ -201,3 +201,19 @@ test('17. the traffic mix says it is computed from OpenRouter counts and links t
   await expect(ratio.getByRole('link', { name: 'calculation' })).toHaveAttribute('href', /research\/openrouter_ratios\.py$/);
   await expect(page.getByTestId('s-cache').getByRole('link')).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
 });
+
+test('18. FAQ and sources start folded; a footnote opens the sources at its entry', async ({ page }) => {
+  await page.goto('/');
+  const faq = page.getByTestId('faq');
+  await expect(faq).not.toHaveAttribute('open', '');
+  await expect(faq.getByText('How is "63 input tokens per output" worked out?')).toBeHidden();
+  await faq.locator('summary').click();
+  await expect(faq.getByText('How is "63 input tokens per output" worked out?')).toBeVisible();
+  await expect(faq).toContainText('62.7 to 1');
+  const sources = page.getByTestId('sources');
+  await expect(sources.locator('ol')).toBeHidden();
+  await page.getByTestId('receipt').locator('sup a').first().click();
+  await expect(sources.locator('ol')).toBeVisible();
+  await expect(page).toHaveURL(/#src-1$/);
+  await expect(page.locator('#src-1')).toBeInViewport();
+});

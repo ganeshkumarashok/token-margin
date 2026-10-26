@@ -1,6 +1,7 @@
 import { Answer } from './components/Answer';
 import { Controls } from './components/Controls';
-import { Details, REPO } from './components/Details';
+import { Details } from './components/Details';
+import { REPO } from './links';
 import { A } from './data';
 import { useModel } from './state/useModel';
 

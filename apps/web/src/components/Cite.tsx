@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { A } from '../data';
 
-export const SITE = 'https://tokens.ganeshkumarashok.com/';
+import { SITE } from '../links';
+
 const TITLE = 'What are the margins on inference?';
 const AUTHOR = { family: 'Ashokavardhanan', given: 'Ganeshkumar' };
 const year = A.version.slice(0, 4);
