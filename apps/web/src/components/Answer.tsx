@@ -14,7 +14,7 @@ export function Answer({ m }: { m: Model }) {
   const rack = A.racks[s.rack];
   const owning = s.tenure === 'own';
   const costNote = owning
-    ? 'power, space, support, ops, wear'
+    ? 'power, space, support, ops, depreciation, financing'
     : `${fmtUsdInt(m.rent * rack.gpus)}/hr ${s.rentBasis === 'contract' ? '3-yr contract' : 'on demand'}`;
   const loss = d.operatingProfitUsd < 0;
   const gross = i.overheadPct === 0;

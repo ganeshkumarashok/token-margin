@@ -1,14 +1,14 @@
 import {
-  clampInteractivity, defaultSettings,
+  clampInteractivity, defaultSettings, defaultUtilization,
   type Assumptions, type PricePresetId, type RackId, type RentBasis, type Settings, type Tenure,
 } from '@token-margin/engine';
 
-type NumKey = 'utilization' | 'islOsl' | 'cacheHit' | 'interactivity' | 'rackPriceMult' | 'achieved' | 'prefillRate' | 'overheadPct' | 'electricityUsdPerKwh';
+type NumKey = 'utilization' | 'islOsl' | 'cacheHit' | 'interactivity' | 'rackPriceMult' | 'achieved' | 'prefillRate' | 'overheadPct' | 'electricityUsdPerKwh' | 'opsUsdPerRackDay';
 
 /** URL key -> settings key. Percent-like values are stored as fractions (u=0.7). */
 export const NUM_KEYS: Array<[string, NumKey]> = [
   ['u', 'utilization'], ['io', 'islOsl'], ['ch', 'cacheHit'], ['i', 'interactivity'],
-  ['rp', 'rackPriceMult'], ['a', 'achieved'], ['pf', 'prefillRate'], ['oh', 'overheadPct'], ['e', 'electricityUsdPerKwh'],
+  ['rp', 'rackPriceMult'], ['a', 'achieved'], ['pf', 'prefillRate'], ['oh', 'overheadPct'], ['e', 'electricityUsdPerKwh'], ['ops', 'opsUsdPerRackDay'],
 ];
 const PRICE_PRESETS: PricePresetId[] = ['floor', 'median', 'list'];
 
@@ -24,6 +24,8 @@ export function parseUrl(a: Assumptions, search: string): Settings {
   if (t === 'rent' || t === 'own') s.tenure = t as Tenure;
   const rb = q.get('rb');
   if (rb === 'onDemand' || rb === 'contract') s.rentBasis = rb as RentBasis;
+  // Each way of paying starts at its own default utilization; a `u` in the URL overrides it below.
+  s.utilization = defaultUtilization(a, s.tenure === 'own' ? 'own' : s.rentBasis);
   const pp = q.get('pp');
   if (pp && (PRICE_PRESETS as string[]).includes(pp)) s.pricePreset = pp as PricePresetId;
 
@@ -41,7 +43,7 @@ export function parseUrl(a: Assumptions, search: string): Settings {
 
 /** Only what differs from the defaults goes in the URL, so a shared link stays short. */
 export function toSearch(a: Assumptions, s: Settings): string {
-  const d = defaultSettings(a);
+  const d = { ...defaultSettings(a), utilization: defaultUtilization(a, s.tenure === 'own' ? 'own' : s.rentBasis) };
   const q = new URLSearchParams();
   if (s.rack !== d.rack) q.set('r', s.rack);
   if (s.tenure !== d.tenure) q.set('t', s.tenure);

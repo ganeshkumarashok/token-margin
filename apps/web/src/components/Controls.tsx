@@ -1,5 +1,5 @@
 import { useId, type ReactNode } from 'react';
-import { curveBounds, fmtPct, fmtUsdInt, fmtUsdPerM, type PricePresetId, type Settings } from '@token-margin/engine';
+import { curveBounds, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM, type PricePresetId, type Settings } from '@token-margin/engine';
 import { A } from '../data';
 import { breakEven, type Model } from '../state/useModel';
 
@@ -110,7 +110,7 @@ export function Controls({ m }: { m: Model }) {
           display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M`}
           min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
           zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
-          hint={`${s.rack === 'gb200' ? 'SemiAnalysis estimate including networking, storage and integration' : 'transacted small orders, Aug 2026 (Data Gravity)'}; NVIDIA publishes no rack price. 4-year life, 10% resale`} />
+          hint={`${s.rack === 'gb200' ? 'SemiAnalysis estimate including networking, storage and integration' : 'Data Gravity, from small orders transacted in Aug 2026'}. Depreciated over 4 years to 10% resale, financed at 9%`} />
       )}
 
       {s.tenure === 'own' && (
@@ -120,6 +120,15 @@ export function Controls({ m }: { m: Model }) {
           zero={zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2])} zeroLabel={`${((zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2]) ?? 0) * 100).toFixed(0)}¢/kWh`}
           marks={[{ v: 0.0977, label: 'US industrial 9.8¢' }, { v: 0.1453, label: 'US commercial 14.5¢' }]}
           hint="US commercial average, Jul 2026 (EIA); industrial 9.8¢. The bill grows with utilization: an unsold GPU still draws about a third of full power, and cooling adds 20%" />
+      )}
+
+      {s.tenure === 'own' && (
+        <Slider profitable={profitNow >= 0} testId="s-ops" label="Operations" value={s.opsUsdPerRackDay}
+          display={`$${Math.round(s.opsUsdPerRackDay)}/day`}
+          min={range('opsUsdPerRackDay')[0]} max={range('opsUsdPerRackDay')[1]} step={10} onChange={(v) => update({ opsUsdPerRackDay: v })}
+          zero={zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000])} zeroLabel={`$${fmtInt(zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000]) ?? 0)}/day`}
+          marks={[{ v: 220, label: 'CoreWeave scale: $220/day' }, { v: 400, label: 'one rack on its own: $400/day' }]}
+          hint={`on-call engineers, remote hands, insurance, monitoring; about $400/day for an owner with a single rack. Support contracts and spares add ${fmtUsdInt(m.result.daily.otherOpexUsd)}/day (4% of the rack price a year)`} />
       )}
 
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}

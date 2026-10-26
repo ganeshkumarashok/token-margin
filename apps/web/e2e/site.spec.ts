@@ -18,7 +18,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('margin')).toHaveText('21% gross margin');
   await expect(page.getByTestId('equation')).toContainText('1.2B out · 74.2B in');
   await expect(page.getByTestId('chart-readout')).toHaveText('At 70% utilization: $4,698 a day renting on demand. Break-even at 56%.');
-  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 56%; renting on a 3-yr contract breaks even at 31%; owning breaks even at 12%/);
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 56%; renting on a 3-yr contract breaks even at 31%; owning breaks even at 14%/);
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
   await expect(page.getByTestId('disclaimer').getByRole('link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
 });
@@ -27,8 +27,9 @@ test('2. the contract toggle cuts rent to $421/hr and lands in the URL', async (
   await page.goto('/');
   await page.getByRole('radio', { name: /Rent on contract/ }).click();
   await expect(page.getByTestId('cost')).toHaveText('$10,109');
-  await expect(page.getByTestId('profit')).toHaveText('$12,734');
-  await expect(page.getByTestId('margin')).toHaveText('56% gross margin');
+  await expect(page.getByTestId('profit')).toHaveText('$7,839');
+  await expect(page.getByTestId('margin')).toHaveText('44% gross margin');
+  await expect(page.getByTestId('s-sold')).toContainText('55%');
   await expect(page).toHaveURL(/rb=contract/);
 });
 
@@ -56,13 +57,14 @@ test('4. more input per output raises revenue (agents resend context)', async ({
 test('5. owning swaps rent for the cost of owning and a rack-price slider', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('radio', { name: 'Own' }).click();
-  await expect(page.getByTestId('cost')).toHaveText('$4,245');
+  await expect(page.getByTestId('cost')).toHaveText('$4,856');
   await expect(page.getByTestId('s-capex')).toContainText('$3.90M');
   await expect(page.getByTestId('s-rent')).toHaveCount(0);
   await expect(page.getByTestId('chart-readout')).toContainText('a day owning');
-  await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $404/day');
+  await expect(page.getByTestId('s-power')).toContainText('14.5¢/kWh · $355/day');
+  await expect(page.getByTestId('s-ops')).toContainText('$220/day');
   await page.goto('/?t=own&e=0.25');
-  await expect(page.getByTestId('s-power')).toContainText('25.0¢/kWh · $696/day');
+  await expect(page.getByTestId('s-power')).toContainText('25.0¢/kWh · $611/day');
 });
 
 test('6. GB300 uses its own curve, rent and price list', async ({ page }) => {
@@ -89,7 +91,7 @@ test('8. phone: no sideways scroll, every control reachable', async ({ browser }
   await page.goto('/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
   await page.getByRole('radio', { name: /Rent on contract/ }).tap();
-  await expect(page.getByTestId('profit')).toHaveText('$12,734');
+  await expect(page.getByTestId('profit')).toHaveText('$7,839');
   await page.screenshot({ path: 'e2e/screenshots/phone.png', fullPage: true });
   await ctx.close();
 });

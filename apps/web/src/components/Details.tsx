@@ -11,7 +11,7 @@ export const DISCLAIMER =
 const SOURCES = [
   'inferencex-agentx', 'openrouter-glm53-activity', 'openrouter-glm53-endpoints', 'zai-pricing',
   'coreweave-pricing', 'verda-pricing', 'contracts-2026', 'semianalysis-gb200-capex', 'datagravity-nvl72-cost',
-  'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'inferencex-tco-availability', 'hf-glm-5.3',
+  'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'inferencex-tco-availability', 'utilization-pattern-2026', 'hf-glm-5.3',
 ].filter((id) => A.sources[id]);
 
 /** Footnote marks; several sources share one superscript, comma-separated. */
@@ -39,7 +39,7 @@ export function Details({ m }: { m: Model }) {
         <dd>
           {fmtInt(d.benchPerGpu)} output tokens/s per GPU at {Math.round(i.interactivity)} tok/s per user in InferenceX's measurements, prefill GPUs
           included<Fn id="inferencex-agentx" />; {fmtInt(d.capacityPerGpu)} on this traffic, which prefills {uncachedPerOut.toFixed(1)} uncached
-          input tokens per output token against {i.refUncachedPerOut} in the benchmark. The rack is up {fmtPct(i.availability)} of the time (one failure every 24 days, 12 hours to recover)<Fn id="inferencex-tco-availability" />, and at {fmtPct(i.utilization)} utilization it sells {fmtInt(d.tpsPerGpu * i.utilization)} per GPU.
+          input tokens per output token against {i.refUncachedPerOut} in the benchmark. The rack is up {fmtPct(i.availability)} of the time (one failure every 24 days, 12 hours to recover)<Fn id="inferencex-tco-availability" />, and at {fmtPct(i.utilization)} utilization it sells {fmtInt(d.tpsPerGpu * i.utilization)} per GPU. Racks rented by the hour can be handed back when demand falls; a rack fixed for years must cover busy hours on busy days, so it sells less of its capacity (55% by default, from OpenRouter's day-to-day swings and DeepSeek's daily fleet range)<Fn id="utilization-pattern-2026" />.
         </dd>
         <dt>Tokens</dt>
         <dd>
@@ -55,7 +55,7 @@ export function Details({ m }: { m: Model }) {
         <dd>
           {owning ? (
             <>
-              {fmtUsdInt(d.electricityUsd)} power + {fmtUsdInt(d.coloUsd)} space + {fmtUsdInt(d.otherOpexUsd)} support and spares + {fmtUsdInt(d.opsUsd)} operations + {fmtUsdInt(d.depreciationUsd)} wear
+              {fmtUsdInt(d.electricityUsd)} power + {fmtUsdInt(d.coloUsd)} space + {fmtUsdInt(d.otherOpexUsd)} support and spares + {fmtUsdInt(d.opsUsd)} operations + {fmtUsdInt(d.depreciationUsd)} depreciation + {fmtUsdInt(d.financingUsd)} financing at {fmtPct(i.costOfCapital)}
               on a ${(d.capexUsd / 1e6).toFixed(1)}M rack<Fn id={[A.racks[s.rack].priceUsd.source, 'eia-5-6-a', 'cbre-colo', 'owning-opex-2026']} />.
             </>
           ) : (

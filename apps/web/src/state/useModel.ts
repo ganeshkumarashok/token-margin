@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
-  clampInteractivity, curveFor, defaultSettings, demandShare, evaluate, inputsFromSettings, rentFor, sellPrices,
+  clampInteractivity, curveFor, defaultSettings, defaultUtilization, demandShare, evaluate, inputsFromSettings, rentFor, sellPrices,
   type Settings,
 } from '@token-margin/engine';
 import { A } from '../data';
@@ -40,14 +40,14 @@ export function breakEven(s: Settings, key: keyof Settings, lo: number, hi: numb
   return null;
 }
 
-/** How the rack is paid for. Overhead and a typed rent belong to one mode and do not carry to the others. */
+/** How the rack is paid for. Utilization, overhead and a typed rent belong to one mode and do not carry to the others. */
 export type Mode = 'onDemand' | 'contract' | 'own';
-export interface ModeValues { overheadPct: number; rentUsdPerGpuHr: number | null }
+export interface ModeValues { utilization: number; overheadPct: number; rentUsdPerGpuHr: number | null }
 export const modeOf = (s: Settings): Mode => (s.tenure === 'own' ? 'own' : s.rentBasis);
 const blankModes = (): Record<Mode, ModeValues> => {
   const d = defaultSettings(A);
-  const v = { overheadPct: d.overheadPct, rentUsdPerGpuHr: null };
-  return { onDemand: { ...v }, contract: { ...v }, own: { ...v } };
+  const v = (m: Mode) => ({ utilization: defaultUtilization(A, m), overheadPct: d.overheadPct, rentUsdPerGpuHr: null });
+  return { onDemand: v('onDemand'), contract: v('contract'), own: v('own') };
 };
 
 /** Settings for another mode: shared market inputs from `s`, that mode's own overhead and rent. */
@@ -101,7 +101,7 @@ export function useModel() {
   const setMode = (next: Mode) => {
     const cur = modeOf(settings);
     if (next === cur) return;
-    const saved = { ...modes, [cur]: { overheadPct: settings.overheadPct, rentUsdPerGpuHr: settings.rentUsdPerGpuHr } };
+    const saved = { ...modes, [cur]: { utilization: settings.utilization, overheadPct: settings.overheadPct, rentUsdPerGpuHr: settings.rentUsdPerGpuHr } };
     setModes(saved);
     setSettings(settingsForMode(settings, next, saved));
   };
