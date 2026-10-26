@@ -30,9 +30,20 @@ python3 research/openrouter_ratios.py  # token ratios from the OpenRouter snapsh
 - `scripts`: scenario tables and price snapshots.
 - `research`: sources, raw data snapshots and the Python reference model.
 
+## License
+
+- Code (`packages/`, `apps/`, `scripts/`, `research/*.py`): MIT, see `LICENSE`.
+- Text, analysis and the curated assumptions (`docs/`, `research/*.md`, `data/assumptions.json`, the
+  site's copy): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Reuse them with credit; the
+  citation is in `CITATION.cff` and on the site.
+- Third-party data in `research/data/` and `data/raw/` remains its owners' and is not covered by either
+  license; see `research/data/README.md`.
+
 ## Disclaimer
 
-Personal side project. Not affiliated with, sponsored by, or representing the
-views of any employer or any company named here. Not financial, investment,
-tax, or purchasing advice. All figures are estimates built from public sources
-under stated assumptions and can be wrong by large factors. No warranty.
+Personal side project, built from public data. It does not necessarily represent
+the views of my employer or of any company named here, and none of them
+sponsored or reviewed it. The author may hold investments in companies mentioned
+here. Not financial, investment, tax, or purchasing advice. Estimates from
+public sources under stated assumptions; they can be wrong by large factors. No
+warranty.
