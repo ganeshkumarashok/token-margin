@@ -410,8 +410,8 @@ describe('T16 overhead as a share of revenue', () => {
     const up = daily(rent({ availability: 1 }), gb200);
     near(daily(rent(), gb200).outputTokens / up.outputTokens, 0.98, 1e-12);
   });
-  it('defaults carry 1% overhead', () => {
-    expect(defaultSettings(A).overheadPct).toBe(0.01);
+  it('defaults carry 0.5% overhead', () => {
+    expect(defaultSettings(A).overheadPct).toBe(0.005);
     expect(() => daily({ ...inputs(), overheadPct: 1 }, gb200)).toThrow();
   });
 });

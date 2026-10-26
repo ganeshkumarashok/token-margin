@@ -150,7 +150,7 @@
     "costOfCapital": 0.09,
     "monthsToRevenue": 0,
     "rentBasis": "onDemand",
-    "overheadPct": 0.01,
+    "overheadPct": 0.005,
     "opsUsdPerRackDay": 400,
     "availability": 0.98,
     "utilizationByMode": {
@@ -259,7 +259,7 @@
     "overheadPct": [
       0,
       0.6,
-      0.01
+      0.005
     ],
     "opsUsdPerRackDay": [
       0,

@@ -168,9 +168,9 @@ export function Controls({ m }: { m: Model }) {
         marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, { v: mix.cacheHit - 0.1, label: `a newer single provider: ${fmtPct(mix.cacheHit - 0.1)}` }]} hint={<>{fmtPct(mix.cacheHit)} of prompt tokens were served from cache across all {model.short} providers, from the daily cached-token counts on <a href={mix.url}>OpenRouter's page</a>{mix.range ? ` (${fmtPct(mix.range.cacheHit[0])} to ${fmtPct(mix.range.cacheHit[1])} day to day)` : ''}; agents resend their context each turn. One rack gets that only if a conversation's later turns keep returning to it; {fmtPct(mix.cacheHit - 0.1)} is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
 
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
-        min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}
+        min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={range('overheadPct')[2]} onChange={(v) => update({ overheadPct: v })}
         zero={zero('overheadPct', range('overheadPct'))} zeroLabel={`${fmtPct(zero('overheadPct', range('overheadPct')))} of revenue`}
-        hint="on-call engineering, customer support, billing and the API front end. 1% by default assumes a lean team or one shared across many racks; the share falls with scale, and a stand-alone rack would spend more. The rack price already covers CPUs, networking and storage" />
+        hint="on-call engineering, customer support, billing and the API front end. 0.5% by default assumes a lean team or one shared across many racks; the share falls with scale, and a stand-alone rack would spend more. The rack price already covers CPUs, networking and storage" />
 
       <Slider profitable={profitNow >= 0} testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
         min={iLo} max={iHi} step={0.5} onChange={(v) => update({ interactivity: v })}
