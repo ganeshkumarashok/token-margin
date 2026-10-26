@@ -18,16 +18,16 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('margin')).toHaveText('22% gross margin');
   await expect(page.getByTestId('equation')).toContainText('1.2B out · 75.7B in');
   await expect(page.getByTestId('chart-readout')).toHaveText('At 70% utilization: $5,165 a day renting on demand. Break-even at 54%.');
-  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 54%; renting on a 3-yr contract breaks even at 23%; owning breaks even at 12%/);
+  await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 54%; renting on a 3-yr contract breaks even at 30%; owning breaks even at 12%/);
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
 });
 
-test('2. the contract toggle cuts rent to $317/hr and lands in the URL', async ({ page }) => {
+test('2. the contract toggle cuts rent to $421/hr and lands in the URL', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('radio', { name: /Rent on contract/ }).click();
-  await expect(page.getByTestId('cost')).toHaveText('$7,603');
-  await expect(page.getByTestId('profit')).toHaveText('$15,705');
-  await expect(page.getByTestId('margin')).toHaveText('67% gross margin');
+  await expect(page.getByTestId('cost')).toHaveText('$10,109');
+  await expect(page.getByTestId('profit')).toHaveText('$13,200');
+  await expect(page.getByTestId('margin')).toHaveText('57% gross margin');
   await expect(page).toHaveURL(/rb=contract/);
 });
 
@@ -73,7 +73,7 @@ test('7. a shared URL restores the scenario; reset returns to the defaults', asy
   await page.goto('/?r=gb300&rb=contract&u=0.9&pp=list');
   await expect(page.getByTestId('s-sold')).toContainText('90%');
   await expect(page.getByRole('radio', { name: 'Z.ai list' })).toHaveAttribute('aria-checked', 'true');
-  await expect(page.getByTestId('cost')).toHaveText('$8,640');
+  await expect(page.getByTestId('cost')).toHaveText('$11,405');
   await page.getByRole('button', { name: /Reset/ }).click();
   await expect(page.getByTestId('profit')).toHaveText('$5,165');
   await expect(page).toHaveURL(/\/$/);
@@ -85,7 +85,7 @@ test('8. phone: no sideways scroll, every control reachable', async ({ browser }
   await page.goto('/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
   await page.getByRole('radio', { name: /Rent on contract/ }).tap();
-  await expect(page.getByTestId('profit')).toHaveText('$15,705');
+  await expect(page.getByTestId('profit')).toHaveText('$13,200');
   await page.screenshot({ path: 'e2e/screenshots/phone.png', fullPage: true });
   await ctx.close();
 });

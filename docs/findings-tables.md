@@ -54,8 +54,8 @@ Break-evens (owning): all token prices can fall to 18% of today's (output $0.78/
 | Input | Low | Profit/day low | NPV low | High | Profit/day high | NPV high |
 |---|---|---|---|---|---|---|
 | Price decline | 0%/yr | $5.2K | $6.6M | 90%/yr | $5.2K | $189.1K |
-| Rent | $4.40 | $15.7K | $3.9M | $16 | −$4.3K | $0.00 |
 | Token prices | ×0.5 | −$6.5K | $0.00 | ×1.5 | $16.8K | $2.8M |
+| Rent | $5.85 | $13.2K | $2.6M | $16 | −$4.3K | $0.00 |
 | Utilization | 30% | −$8.2K | $0.00 | 100% | $15.2K | $2.4M |
 | Output speed | 94.7 tok/s | $5.3K | $416.4K | 263.9 tok/s | −$14.0K | $0.00 |
 | Achieved throughput | 25% | −$12.3K | $0.00 | 100% | $5.2K | $404.4K |

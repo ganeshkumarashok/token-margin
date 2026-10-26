@@ -45,8 +45,8 @@ export function defaultSensitivitySpecs(points: readonly CurvePoint[], tenure: T
   ];
   const rent: SensitivitySpec[] = [
     // large 3-yr contract vs the Oracle on-demand list price
-    { key: 'rent', label: 'Rent', lowLabel: '$4.40', highLabel: '$16',
-      apply: (i, s) => ({ ...i, rentUsdPerGpuHr: s === 'low' ? 4.4 : 16 }) },
+    { key: 'rent', label: 'Rent', lowLabel: '$5.85', highLabel: '$16',
+      apply: (i, s) => ({ ...i, rentUsdPerGpuHr: s === 'low' ? 5.85 : 16 }) },
   ];
   const shared: SensitivitySpec[] = [
     { key: 'interactivity', label: 'Output speed', lowLabel: `${iMin} tok/s`, highLabel: `${iMax} tok/s`,

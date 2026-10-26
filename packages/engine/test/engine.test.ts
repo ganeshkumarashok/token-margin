@@ -97,13 +97,13 @@ describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRou
   });
   it('renting on a large contract', () => {
     const i = inputs({ rentBasis: 'contract' });
-    expect(i.rentUsdPerGpuHr).toBe(4.4);
+    expect(i.rentUsdPerGpuHr).toBe(5.85);
     const { daily: d, schedule: s } = evaluate(i, gb200);
-    near(d.rentUsd, 7603.2, 1e-6);
-    near(d.operatingProfitUsd, 15_705.31, 0.01);
-    near(d.operatingMargin, 0.6738, 1e-4);
-    expect(s.underwaterMonth).toBe(21);
-    near(s.npvUsd, 3_884_834, 10);
+    near(d.rentUsd, 10_108.8, 1e-6);
+    near(d.operatingProfitUsd, 13_199.71, 0.01);
+    near(d.operatingMargin, 0.5663, 1e-4);
+    expect(s.underwaterMonth).toBe(16);
+    near(s.npvUsd, 2_632_011, 10);
   });
   it('an explicit rent overrides the basis', () => {
     expect(inputs({ rentBasis: 'contract', rentUsdPerGpuHr: 7 }).rentUsdPerGpuHr).toBe(7);
@@ -131,7 +131,7 @@ describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRou
     near(r.daily.operatingProfitUsd, 7073.68, 0.01);
     expect(r.schedule.underwaterMonth).toBe(6);
     const c = evaluate(rent({ rack: 'gb300', rentBasis: 'contract' }), gb300);
-    near(c.daily.operatingProfitUsd, 19_895.44, 0.01);
+    near(c.daily.operatingProfitUsd, 17_130.64, 0.01);
     const o = evaluate(own({ rack: 'gb300' }), gb300);
     expect(o.schedule.paybackMonth).toBe(8);
     near(o.schedule.npvUsd, 6_212_819, 100);
@@ -171,13 +171,13 @@ describe('T6 break-evens', () => {
     near(breakevens(i, gb200).outPriceUsdPerM, 1.11544, 1e-4);
     near(daily(i, gb200).fullCostPerMOut, 1.11544, 1e-4);
   });
-  it('share sold to break even: 54% on demand, 23% on contract, 12% owning, and profit is ~0 there', () => {
+  it('share sold to break even: 54% on demand, 30% on contract, 12% owning, and profit is ~0 there', () => {
     const br = breakevens(rent(), gb200);
     near(br.soldShareToBreakEven, 0.5449, 1e-3);
     near(daily({ ...rent(), utilization: br.soldShareToBreakEven! }, gb200).operatingProfitUsd, 0, 1);
     const bo = breakevens(own(), gb200);
     near(bo.soldShareToBreakEven, 0.1184, 1e-3);
-    near(breakevens(rent({ rentBasis: 'contract' }), gb200).soldShareToBreakEven, 0.2283, 1e-3);
+    near(breakevens(rent({ rentBasis: 'contract' }), gb200).soldShareToBreakEven, 0.3036, 1e-3);
     near(daily({ ...own(), utilization: bo.soldShareToBreakEven! }, gb200).operatingProfitUsd, 0, 1);
   });
   it('break-even utilization and decline bracket the owning defaults sensibly', () => {

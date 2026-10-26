@@ -57,14 +57,14 @@
         "note": "SemiAnalysis owning TCO at hyperscaler volume, Jul 2026. Calibration only."
       },
       "contractUsdPerGpuHr": {
-        "value": 4.4,
+        "value": 5.85,
         "range": [
           3.63,
-          6.5
+          6.6
         ],
-        "unit": "USD per GPU-hour, 3-yr multi-rack contract",
+        "unit": "USD per GPU-hour, 3-yr multi-rack contract signed in 2026",
         "source": "contracts-2026",
-        "note": "$317/rack-hr. Filed: HIVE/BUZZ to Bell/Cohere, GB200 NVL72, 3 yr, $220M / 2,304 GPUs = $3.63 (8-K, 2026-06-18). New-contract prices rose since: CoreWeave ~25% (Jul 2026), Nebius $20-25M/MW, IREN 3-yr +125% since Nov 2025. Estimate, medium-low confidence on level."
+        "note": "$421/rack-hr. GB300's $6.60 scaled by Oracle's GB200/GB300 list ratio (16/18). Low end: filed HIVE/BUZZ to Bell/Cohere GB200 3-yr deal at $3.63 (Jun 2026). Estimate."
       }
     },
     "gb300": {
@@ -122,14 +122,14 @@
         "note": "Calibration only."
       },
       "contractUsdPerGpuHr": {
-        "value": 5.0,
+        "value": 6.6,
         "range": [
           3.96,
-          7.4
+          7.41
         ],
-        "unit": "USD per GPU-hour, 3-yr multi-rack contract",
+        "unit": "USD per GPU-hour, 3-yr multi-rack contract signed in 2026",
         "source": "contracts-2026",
-        "note": "$360/rack-hr. Filed: HIVE/BUZZ GB300 NVL72, 5 yr, $350M / 2,016 GPUs = $3.96 (8-K, 2026-08-17); 2025 Microsoft deals $2.72-3.97 plus the 2026 rise. Estimate."
+        "note": "$475/rack-hr. 75th percentile of $4.19-7.41, the range implied by 2026 reports of new deals at $20-25M per MW of IT load (Nebius Q2 letter; IREN FY26 call), converted at 545 GPUs/MW (GB300 rack IT power) to 385 GPUs/MW (IREN's Microsoft deal). Low end: filed HIVE GB300 5-yr deal at $3.96 (Aug 2026). Estimate."
       }
     }
   },
@@ -459,7 +459,7 @@
       "source": "nvidia-inferencemax-blog"
     },
     "rentalUsdPerGpuHr": {
-      "committed": 4.4,
+      "committed": 5.85,
       "onDemand": 10.5,
       "source": "contracts-2026",
       "note": "No spot market for NVL72. Large 3-yr contracts: filed $3.63 (GB200, Jun 2026) to $3.96 (GB300, Aug 2026), rising since. Small-buyer reserved list: Verda GB300 24-month $9.32, Azure GB200 3-yr $11.90."
