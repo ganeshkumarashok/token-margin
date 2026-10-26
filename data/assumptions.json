@@ -133,7 +133,7 @@
     "rentUsdPerGpuHr": null,
     "interactivity": 95,
     "achieved": 1,
-    "utilization": 0.7,
+    "utilization": 0.45,
     "prefillRate": null,
     "pricePreset": "median",
     "listShare": 0,
@@ -154,9 +154,9 @@
     "opsUsdPerRackDay": 400,
     "availability": 0.98,
     "utilizationByMode": {
-      "onDemand": 0.7,
-      "contract": 0.55,
-      "own": 0.55
+      "onDemand": 0.45,
+      "contract": 0.45,
+      "own": 0.45
     },
     "model": "glm53"
   },
@@ -275,7 +275,7 @@
   "sourceBasis": {
     "interactivity": "inferencex-agentx",
     "achieved": "assumption",
-    "utilization": "assumption",
+    "utilization": "utilization-pattern-2026",
     "priceDeclinePerYear": "du-2026-deflation",
     "pue": "uptime-pue",
     "coloUsdPerKwMonth": "cbre-colo",
@@ -308,7 +308,7 @@
       "label": "Realistic",
       "interactivity": 95,
       "achieved": 1,
-      "utilization": 0.7,
+      "utilization": 0.45,
       "pricePreset": "median",
       "priceDeclinePerYear": 0.5
     },
@@ -483,9 +483,9 @@
     },
     "deepseek-inference-overview": {
       "title": "DeepSeek, Inference System Overview (Open Source Week day 6)",
-      "url": "https://www.analyticsvidhya.com/blog/2025/03/deepseek-inference-system-overview/",
+      "url": "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md",
       "date": "2025-03-01",
-      "kind": "secondary"
+      "kind": "primary"
     },
     "nvidia-inferencemax-blog": {
       "title": "NVIDIA, Blackwell raises bar in InferenceMAX ($5M to $75M claim)",
@@ -614,9 +614,9 @@
       "kind": "primary"
     },
     "utilization-pattern-2026": {
-      "title": "Demand shape: OpenRouter open-model traffic, average day 68% of the busiest day (Sep 25 to Oct 24, 2026); DeepSeek's average serving fleet 82% of peak (Feb 2025)",
-      "url": "https://openrouter.ai/z-ai/glm-5.3",
-      "date": "2026-10-25",
+      "title": "Load shape of production LLM serving: Azure LLM Inference Dataset 2024 (capacity sized for the busiest hour averages 62% for chat, 32% for coding; computed); OpenRouter open-model traffic, average day 68% of the busiest day",
+      "url": "https://github.com/Azure/AzurePublicDataset/blob/master/AzureLLMInferenceDataset2024.md",
+      "date": "2026-10-26",
       "kind": "primary"
     },
     "inferencex-agentx-dsv4pro": {
@@ -635,6 +635,24 @@
       "title": "OpenRouter DeepSeek V4 Pro (0813) endpoints and prices (24 endpoints, 5 FP4)",
       "url": "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4-pro-0813/endpoints",
       "date": "2026-10-25",
+      "kind": "primary"
+    },
+    "dynamollm": {
+      "title": "Stojkovic et al., DynamoLLM (HPCA 2025): Azure production LLM peak load 1.7x (conversation) and 2.8x (coding) the weekly average",
+      "url": "https://arxiv.org/abs/2408.00741",
+      "date": "2025",
+      "kind": "primary"
+    },
+    "aegaeon": {
+      "title": "Xiang et al., Aegaeon (SOSP 2025): Alibaba Model Studio GPU utilization 13.3-33.9% before pooling, 48.1% after",
+      "url": "https://ennanzhai.github.io/pub/sosp25-aegaeon.pdf",
+      "date": "2025-10",
+      "kind": "primary"
+    },
+    "openrouter-routing": {
+      "title": "OpenRouter, how traffic is routed between providers (price, speed, reliability, capacity)",
+      "url": "https://openrouter.ai/docs/guides/providers/traffic-routing",
+      "date": "2026-10-26",
       "kind": "primary"
     }
   },

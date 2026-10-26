@@ -5,8 +5,9 @@ export const A = raw as unknown as Assumptions;
 export const gb200 = curveFor(A, 'gb200');
 export const gb300 = curveFor(A, 'gb300');
 
+/** Defaults with utilization pinned at 70%, so these mechanics tests do not move when the default changes; T18 checks the defaults. */
 export function settings(over: Partial<Settings> = {}): Settings {
-  return { ...defaultSettings(A), ...over };
+  return { ...defaultSettings(A), utilization: 0.7, ...over };
 }
 /** Defaults (renting). */
 export function inputs(over: Partial<Settings> = {}) {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  applyPreset, breakevens, costPerMillion, daily, defaultUtilization, demandShare, evaluate, impliedTps, schedule, sensitivity, throughputAt,
+  applyPreset, breakevens, costPerMillion, daily, defaultSettings, defaultUtilization, demandShare, evaluate, impliedTps, schedule, sensitivity, throughputAt,
 } from '../src';
 import { A, ds200, ds300, forModel, gb200, gb300, inputs, own, presetInputs, rent, settings } from './helpers';
 
@@ -65,7 +65,7 @@ describe('T3 pitch: fastest measured point, everything sold, list price, owning'
   });
 });
 
-describe('T4 defaults: GB200, 95 tok/s/user, 70% sold, median FP4 price, OpenRouter mix', () => {
+describe('T4 reference day: GB200, 95 tok/s/user, 70% utilization, median FP4 price, OpenRouter mix', () => {
   it('renting on demand (the default)', () => {
     const i = inputs();
     expect(i.tenure).toBe('rent');
@@ -349,7 +349,7 @@ describe('T14 presets', () => {
     expect(applyPreset(A, settings({ rack: 'gb300' }), 'pitch').interactivity).toBe(89.4);
   });
   it('realistic preset equals defaults and keeps tenure', () => {
-    expect(applyPreset(A, settings(), 'realistic')).toEqual(settings());
+    expect(applyPreset(A, defaultSettings(A), 'realistic')).toEqual(defaultSettings(A));
     expect(applyPreset(A, settings({ tenure: 'own' }), 'pitch').tenure).toBe('own');
   });
 });
@@ -391,10 +391,11 @@ describe('T16 overhead as a share of revenue', () => {
     const z = daily({ ...i, priceInUsdPerM: i.priceInUsdPerM * lvl, priceCacheUsdPerM: i.priceCacheUsdPerM * lvl, priceOutUsdPerM: i.priceOutUsdPerM * lvl }, gb200);
     near(z.operatingProfitUsd, 0, 1e-6);
   });
-  it('default utilization is lower when capacity is fixed for years', () => {
-    expect(defaultUtilization(A, 'onDemand')).toBe(0.7);
-    expect(defaultUtilization(A, 'contract')).toBe(0.55);
-    expect(defaultUtilization(A, 'own')).toBe(0.55);
+  it('every way of paying defaults to 45% utilization (one rack cannot hand back part of itself)', () => {
+    expect(defaultUtilization(A, 'onDemand')).toBe(0.45);
+    expect(defaultUtilization(A, 'contract')).toBe(0.45);
+    expect(defaultUtilization(A, 'own')).toBe(0.45);
+    expect(defaultSettings(A).utilization).toBe(0.45);
     near(daily(own({ utilization: 0.55 }), gb200).operatingProfitUsd, 12_911.38, 0.01);
     near(daily(rent({ rentBasis: 'contract', utilization: 0.55 }), gb200).operatingProfitUsd, 7838.75, 0.01);
   });
