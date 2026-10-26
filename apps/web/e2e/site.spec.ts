@@ -179,22 +179,3 @@ test('15. robots.txt and the sitemap point at the canonical address', async ({ p
   await page.goto('/');
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', 'https://tokens.ganeshkumarashok.com/');
 });
-
-test('16. the model toggle switches to DeepSeek V4 Pro with its own traffic, prices and throughput', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('radio', { name: 'DeepSeek V4 Pro' }).click();
-  await expect(page.getByTestId('revenue')).toHaveText('$27,673');
-  await expect(page.getByTestId('profit')).toHaveText('$9,529');
-  await expect(page.getByTestId('unit-line')).toContainText('Each GPU sells 382 output tokens/s (557 capacity × 98% up × 70% utilization) at $11.64 per million, input included: $16.01 an hour against $10.50 rent.');
-  await expect(page.getByTestId('s-ratio')).toContainText('42 : 1');
-  await expect(page.getByTestId('s-cache')).toContainText('84%');
-  await expect(page.getByTestId('receipt')).toContainText('of all DeepSeek V4 Pro traffic on OpenRouter');
-  await expect(page.locator('.lede')).toContainText('DeepSeek V4 Pro');
-  await expect(page).toHaveURL(/m=dsv4pro/);
-  await page.getByRole('radio', { name: 'GB300' }).click();
-  await expect(page.getByTestId('profit')).toHaveText('$14,671');
-  await page.goto('/?m=dsv4pro&t=own');
-  await expect(page.getByTestId('profit')).toHaveText('$16,707');
-  await page.getByRole('radio', { name: 'GLM-5.3' }).click();
-  await expect(page.getByTestId('s-ratio')).toContainText('63 : 1');
-});

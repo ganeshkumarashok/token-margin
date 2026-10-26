@@ -89,8 +89,6 @@ export function Controls({ m }: { m: Model }) {
   return (
     <section className="controls" aria-label="Assumptions">
       <div className="toggles">
-        <Seg label="Model" value={s.model} onChange={(md) => m.setModel(md)}
-          options={[{ id: 'glm53', text: 'GLM-5.3' }, { id: 'dsv4pro', text: 'DeepSeek V4 Pro' }]} />
         <Seg label="Rack" value={s.rack} onChange={(rk) => update({ rack: rk })}
           options={[{ id: 'gb200', text: 'GB200' }, { id: 'gb300', text: 'GB300' }]} />
         <Seg label="Cost" value={cost} onChange={setCost}

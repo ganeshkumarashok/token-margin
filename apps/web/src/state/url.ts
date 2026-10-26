@@ -1,5 +1,5 @@
 import {
-  clampInteractivity, defaultSettings, defaultUtilization, withModel,
+  clampInteractivity, defaultSettings, defaultUtilization,
   type Assumptions, type PricePresetId, type RackId, type RentBasis, type Settings, type Tenure,
 } from '@token-margin/engine';
 
@@ -17,9 +17,7 @@ const round = (v: number) => Number(v.toPrecision(6));
 
 export function parseUrl(a: Assumptions, search: string): Settings {
   const q = new URLSearchParams(search);
-  let s = defaultSettings(a);
-  const m = q.get('m');
-  if (m === 'dsv4pro') s = withModel(a, s, m);
+  const s = defaultSettings(a);
   const r = q.get('r');
   if (r === 'gb200' || r === 'gb300') s.rack = r as RackId;
   const t = q.get('t');
@@ -45,9 +43,8 @@ export function parseUrl(a: Assumptions, search: string): Settings {
 
 /** Only what differs from the defaults goes in the URL, so a shared link stays short. */
 export function toSearch(a: Assumptions, s: Settings): string {
-  const d = { ...withModel(a, defaultSettings(a), s.model), utilization: defaultUtilization(a, s.tenure === 'own' ? 'own' : s.rentBasis) };
+  const d = { ...defaultSettings(a), utilization: defaultUtilization(a, s.tenure === 'own' ? 'own' : s.rentBasis) };
   const q = new URLSearchParams();
-  if (s.model !== a.defaults.model) q.set('m', s.model);
   if (s.rack !== d.rack) q.set('r', s.rack);
   if (s.tenure !== d.tenure) q.set('t', s.tenure);
   if (s.rentBasis !== d.rentBasis) q.set('rb', s.rentBasis);

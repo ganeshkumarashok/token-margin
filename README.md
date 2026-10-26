@@ -1,14 +1,14 @@
 # Token margin
 
 Live at https://tokens.ganeshkumarashok.com. What are the margins on inference? This models one NVIDIA NVL72 rack (GB200 or
-GB300) serving an open-weights model (GLM-5.3 or DeepSeek V4 Pro, FP4) for a day: what it costs to
+GB300) serving an open-weights model (GLM-5.3, FP4) for a day: what it costs to
 rent or own, how many tokens it serves, what they sell for, and what is left.
 Moving a slider recomputes the day, and the URL records every change, so each
 scenario is a shareable link.
 
 Throughput is measured (InferenceX agentic benchmark), the token mix and prices
 are OpenRouter's, and rents are published list prices or filed contracts.
-Results are in `docs/findings.md`. Every default lives in `data/assumptions.json`
+Results are in `docs/findings.md`, including a comparison with DeepSeek V4 Pro, which the model supports but the site does not show. Every default lives in `data/assumptions.json`
 and traces to `research/sources.md`; the raw data behind them is in `research/data/`.
 
 ## Run locally

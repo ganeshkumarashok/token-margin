@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   clampInteractivity, curveFor, defaultSettings, defaultUtilization, demandShare, evaluate, inputsFromSettings, rentFor, sellPrices,
-  withModel, type ModelId, type Settings,
+  type Settings,
 } from '@token-margin/engine';
 import { A } from '../data';
 import { parseUrl, toSearch } from './url';
@@ -107,16 +107,13 @@ export function useModel() {
     setSettings(settingsForMode(settings, next, saved));
   };
 
-  /** Switch model: its own traffic mix and prices; rack, rent and utilization stay. */
-  const setModel = (model: ModelId) => setSettings((s) => (s.model === model ? s : withModel(A, s, model)));
-
   const reset = () => {
     setModes(blankModes());
     setSettings(defaultSettings(A));
   };
   const isDefault = toSearch(A, settings) === '';
 
-  return { settings, modes, update, setMode, setModel, reset, isDefault, ...derived };
+  return { settings, modes, update, setMode, reset, isDefault, ...derived };
 }
 
 export type Model = ReturnType<typeof useModel>;
