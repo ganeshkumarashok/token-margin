@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p . --noEmit && vite build",
+    "build": "tsc -p . --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node prerender.mjs",
     "preview": "vite preview --port 4173 --strictPort",
     "e2e": "playwright test"
   },

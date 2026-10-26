@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { fmtPct, fmtUsdInt, type Settings } from '@token-margin/engine';
 import { breakEven, profitOf, settingsForMode, type Model } from '../state/useModel';
 
@@ -19,10 +19,13 @@ function niceStep(span: number, ticks: number): number {
 /** Axis money: $20K, −$10K. */
 const fmtAxis = (v: number) => (v === 0 ? '$0' : `${v < 0 ? '−' : ''}$${Math.abs(v) >= 1000 ? `${+(Math.abs(v) / 1000).toFixed(1)}K` : Math.abs(v)}`);
 
+/** useLayoutEffect in the browser; a no-op-safe useEffect during pre-rendering. */
+const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
 function useWidth<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [w, setW] = useState(640);
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     setW(Math.round(el.getBoundingClientRect().width));

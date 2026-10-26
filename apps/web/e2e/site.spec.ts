@@ -145,3 +145,23 @@ test('12. overhead and a typed rent stay with their own way of paying; a rack sw
   await page.getByRole('radio', { name: 'GB300' }).click();
   await expect(page.getByTestId('s-rent')).toContainText('$894/hr');
 });
+
+test('13. without JavaScript the page still shows the day, the receipt and the sources', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false });
+  const page = await ctx.newPage();
+  await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('What are the margins on inference?');
+  await expect(page.getByTestId('profit')).toHaveText('$4,698');
+  await expect(page.getByTestId('receipt')).toContainText('Gross profit');
+  await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
+  await ctx.close();
+});
+
+test('14. a shared link with settings renders its own numbers over the pre-rendered default', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
+  await page.goto('/?rb=contract');
+  await expect(page.getByTestId('profit')).toHaveText('$7,839');
+  await expect(page.locator('#root .answer')).toHaveCount(1);
+  expect(errors).toEqual([]);
+});

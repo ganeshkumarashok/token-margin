@@ -58,7 +58,8 @@ export function settingsForMode(s: Settings, mode: Mode, modes: Record<Mode, Mod
 }
 
 export function useModel() {
-  const [settings, setSettings] = useState<Settings>(() => parseUrl(A, window.location.search));
+  // The build pre-renders the default view, where there is no window; the browser then reads the URL.
+  const [settings, setSettings] = useState<Settings>(() => parseUrl(A, typeof window === 'undefined' ? '' : window.location.search));
   const [modes, setModes] = useState<Record<Mode, ModeValues>>(blankModes);
 
   useEffect(() => {
