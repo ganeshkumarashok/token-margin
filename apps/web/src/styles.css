@@ -44,6 +44,10 @@ a { color: inherit; text-underline-offset: 2px; }
   display: grid;
   gap: 36px;
 }
+.masthead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.repo { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; font: 500 14px var(--sans); color: var(--muted); text-decoration: none; }
+.repo:hover, .repo:focus-visible { color: var(--ink); text-decoration: underline; }
+.repo svg { position: relative; top: 2px; }
 .masthead h1 { margin: 0; font: 600 30px/1.15 var(--cond); letter-spacing: -0.01em; text-wrap: balance; }
 
 /* The answer */

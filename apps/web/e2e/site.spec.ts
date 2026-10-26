@@ -21,6 +21,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
   await expect(page.getByTestId('profit-chart').getByRole('img')).toHaveAttribute('aria-label', /renting on demand breaks even at 56%; renting on a 3-yr contract breaks even at 31%; owning breaks even at 15%/);
   await expect(page.getByTestId('disclaimer')).toContainText('Not financial, investment, tax, or purchasing advice');
   await expect(page.getByTestId('disclaimer').getByRole('link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
+  await expect(page.getByTestId('repo-link')).toHaveAttribute('href', 'https://github.com/ganeshkumarashok/token-margin');
 });
 
 test('2. the contract toggle cuts rent to $421/hr and lands in the URL', async ({ page }) => {
