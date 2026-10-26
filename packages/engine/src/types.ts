@@ -52,6 +52,10 @@ export interface Inputs {
   idleFraction: number;
   coloUsdPerKwMonth: number;
   otherOpexPctPerYear: number;
+  /** owning: fixed operations cost per rack per day (on-call engineers, remote hands, insurance, monitoring) */
+  opsUsdPerRackDay: number;
+  /** 0..1 share of time the rack is up and serving (failures and recovery) */
+  availability: number;
   lifeYears: number;
   residualPct: number;
   costOfCapital: number;
@@ -83,6 +87,8 @@ export interface Daily {
   electricityUsd: number;
   coloUsd: number;
   otherOpexUsd: number;
+  /** owning: fixed operations, 0 when renting */
+  opsUsd: number;
   /** rent when renting; electricity + colo + other opex when owning */
   cashCostUsd: number;
   cashProfitUsd: number;

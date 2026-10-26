@@ -71,6 +71,8 @@ export interface Defaults {
   idleFraction: number;
   coloUsdPerKwMonth: number;
   otherOpexPctPerYear: number;
+  opsUsdPerRackDay: number;
+  availability: number;
   lifeYears: number;
   residualPct: number;
   costOfCapital: number;
@@ -183,6 +185,8 @@ export function inputsFromSettings(a: Assumptions, s: Settings): Inputs {
     idleFraction: s.idleFraction,
     coloUsdPerKwMonth: s.coloUsdPerKwMonth,
     otherOpexPctPerYear: s.otherOpexPctPerYear,
+    opsUsdPerRackDay: s.opsUsdPerRackDay,
+    availability: s.availability,
     lifeYears: s.lifeYears,
     residualPct: s.residualPct,
     costOfCapital: s.costOfCapital,

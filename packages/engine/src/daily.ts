@@ -27,6 +27,8 @@ export function validateInputs(i: Inputs): void {
   check(unit(i.utilization), 'utilization must be in [0, 1]');
   check(unit(i.cacheHit), 'cacheHit must be in [0, 1]');
   check(unit(i.listShare), 'listShare must be in [0, 1]');
+  check(i.availability > 0 && i.availability <= 1, 'availability must be in (0, 1]');
+  check(nonneg(i.opsUsdPerRackDay), 'opsUsdPerRackDay must be >= 0');
   check(i.overheadPct >= 0 && i.overheadPct < 1, 'overheadPct must be in [0, 1)');
   check(unit(i.idleFraction), 'idleFraction must be in [0, 1]');
   check(unit(i.residualPct), 'residualPct must be in [0, 1]');
@@ -59,7 +61,8 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
   const secPerOut = 1 / benchPerGpu + extraPrefillSec;
   check(secPerOut > 0, 'refUncachedPerOut / prefillRate exceeds the benchmark time per output token');
   const capacityPerGpu = 1 / secPerOut;
-  const tpsPerGpu = capacityPerGpu * i.achieved;
+  // Failures take the rack out of service for a share of the day; that capacity cannot be sold.
+  const tpsPerGpu = capacityPerGpu * i.achieved * i.availability;
 
   const outputTokens = tpsPerGpu * gpus * i.utilization * DAY_S;
   const inputTokens = outputTokens * i.islOsl;
@@ -83,8 +86,9 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
   // Colocation is billed on provisioned IT kW regardless of load.
   const coloUsd = renting ? 0 : (i.coloUsdPerKwMonth * i.itKwPerRack * i.racks * 12) / 365;
   const otherOpexUsd = renting ? 0 : (capexUsd * i.otherOpexPctPerYear) / 365;
+  const opsUsd = renting ? 0 : i.opsUsdPerRackDay * i.racks;
   const overheadUsd = revenueUsd * i.overheadPct;
-  const cashCostUsd = rentUsd + electricityUsd + coloUsd + otherOpexUsd + overheadUsd;
+  const cashCostUsd = rentUsd + electricityUsd + coloUsd + otherOpexUsd + opsUsd + overheadUsd;
   const cashProfitUsd = revenueUsd - cashCostUsd;
   const depreciationUsd = renting ? 0 : (capexUsd * (1 - i.residualPct)) / (i.lifeYears * 365);
   const costUsd = cashCostUsd + depreciationUsd;
@@ -109,6 +113,7 @@ export function daily(i: Inputs, points: readonly CurvePoint[]): Daily {
     electricityUsd,
     coloUsd,
     otherOpexUsd,
+    opsUsd,
     cashCostUsd,
     cashProfitUsd,
     depreciationUsd,

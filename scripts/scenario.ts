@@ -36,7 +36,7 @@ for (const [label, over] of [['Realistic', {}], ['Peak', { utilization: 1 }]] as
     const { i, daily: d, schedule: sc } = run(t, 'gb200', over);
     ledger.push([
       `${label}, ${t}`,
-      t === 'rent' ? `${fmtUsd(d.rentUsd)} (rent $${i.rentUsdPerGpuHr}/GPU-hr)` : `${fmtUsd(d.costUsd)} (power ${fmtUsd(d.electricityUsd)}, colo ${fmtUsd(d.coloUsd)}, opex ${fmtUsd(d.otherOpexUsd)}, depreciation ${fmtUsd(d.depreciationUsd)})`,
+      t === 'rent' ? `${fmtUsd(d.rentUsd)} (rent $${i.rentUsdPerGpuHr}/GPU-hr)` : `${fmtUsd(d.costUsd)} (power ${fmtUsd(d.electricityUsd)}, colo ${fmtUsd(d.coloUsd)}, support ${fmtUsd(d.otherOpexUsd)}, ops ${fmtUsd(d.opsUsd)}, depreciation ${fmtUsd(d.depreciationUsd)})`,
       `${fmtTokens(d.outputTokens)} out + ${fmtTokens(d.inputTokens)} in`,
       fmtUsd(d.revenueUsd),
       `${fmtUsd(d.operatingProfitUsd)} (${fmtPct(d.operatingMargin)})`,
@@ -85,7 +85,8 @@ out.push('\n## Realistic case, GB200, owning: cost stack per day\n');
 out.push(md(['Item', 'Per day', 'Per M output tokens'], [
   ['Electricity', fmtUsd(d0.electricityUsd), fmtUsdPerM(d0.electricityUsd / (d0.outputTokens / 1e6))],
   ['Colocation', fmtUsd(d0.coloUsd), fmtUsdPerM(d0.coloUsd / (d0.outputTokens / 1e6))],
-  ['Other opex', fmtUsd(d0.otherOpexUsd), fmtUsdPerM(d0.otherOpexUsd / (d0.outputTokens / 1e6))],
+  ['Support and spares', fmtUsd(d0.otherOpexUsd), fmtUsdPerM(d0.otherOpexUsd / (d0.outputTokens / 1e6))],
+  ['Operations', fmtUsd(d0.opsUsd), fmtUsdPerM(d0.opsUsd / (d0.outputTokens / 1e6))],
   ['Depreciation', fmtUsd(d0.depreciationUsd), fmtUsdPerM(d0.depreciationUsd / (d0.outputTokens / 1e6))],
   ['Total', fmtUsd(d0.costUsd), fmtUsdPerM(d0.fullCostPerMOut)],
   ['Revenue (output / input)', `${fmtUsd(d0.outputRevenueUsd)} / ${fmtUsd(d0.inputRevenueUsd)}`, ''],

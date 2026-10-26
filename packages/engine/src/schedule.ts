@@ -38,7 +38,7 @@ function irrOf(flows: readonly number[]): number | null {
 export function schedule(i: Inputs, d: Daily): Schedule {
   const months = lifeMonths(i);
   // Costs that accrue whether or not the rack is serving: rent (renting) or colo + other opex (owning).
-  const fixedUsd = d.rentUsd + d.coloUsd + d.otherOpexUsd;
+  const fixedUsd = d.rentUsd + d.coloUsd + d.otherOpexUsd + d.opsUsd;
   const renting = i.tenure === 'rent';
   const flows: number[] = [d.capexUsd > 0 ? -d.capexUsd : 0];
   let underwaterMonth: number | null = null;

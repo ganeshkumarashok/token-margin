@@ -271,13 +271,15 @@
     "pue": 1.2,
     "idleFraction": 0.35,
     "coloUsdPerKwMonth": 200,
-    "otherOpexPctPerYear": 0.05,
+    "otherOpexPctPerYear": 0.04,
     "lifeYears": 4,
     "residualPct": 0.1,
     "costOfCapital": 0.07,
     "monthsToRevenue": 0,
     "rentBasis": "onDemand",
-    "overheadPct": 0
+    "overheadPct": 0,
+    "opsUsdPerRackDay": 220,
+    "availability": 0.98
   },
   "ranges": {
     "racks": [
@@ -379,6 +381,16 @@
       0,
       0.6,
       0.01
+    ],
+    "opsUsdPerRackDay": [
+      0,
+      1000,
+      10
+    ],
+    "availability": [
+      0.9,
+      1,
+      0.005
     ]
   },
   "sourceBasis": {
@@ -388,7 +400,7 @@
     "priceDeclinePerYear": "du-2026-deflation",
     "pue": "uptime-pue",
     "coloUsdPerKwMonth": "cbre-colo",
-    "otherOpexPctPerYear": "assumption",
+    "otherOpexPctPerYear": "owning-opex-2026",
     "islOsl": "openrouter-glm53-activity",
     "cacheHit": "openrouter-glm53-activity",
     "lifeYears": "inferencex-method",
@@ -399,7 +411,9 @@
     "rentUsdPerGpuHr": "coreweave-pricing",
     "tenure": "assumption",
     "rentBasis": "assumption",
-    "overheadPct": "assumption"
+    "overheadPct": "assumption",
+    "opsUsdPerRackDay": "owning-opex-2026",
+    "availability": "inferencex-tco-availability"
   },
   "presets": {
     "pitch": {
@@ -709,6 +723,18 @@
     "openrouter-glm53-activity": {
       "title": "OpenRouter GLM-5.3 daily activity: 62.7 input per output, 90.3% cached (2026-09-25 to 10-24)",
       "url": "https://openrouter.ai/z-ai/glm-5.3",
+      "date": "2026-10-25",
+      "kind": "primary"
+    },
+    "owning-opex-2026": {
+      "title": "Owning opex: NVIDIA DGX support terms; CoreWeave 2025 10-K technology & infrastructure expense less D&A (~$1.04M per MW-year, ~$342 per 120 kW rack-day); remote hands $125/hr",
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+      "date": "2026-10-25",
+      "kind": "secondary"
+    },
+    "inferencex-tco-availability": {
+      "title": "InferenceX TCO calculator: mean time between interrupts 24 days, 12-hour recovery, availability 0.98; Meta Prometheus GB200/GB300 MTBI ~47-54K GPU-hours",
+      "url": "https://inferencex.semianalysis.com/api",
       "date": "2026-10-25",
       "kind": "primary"
     }
