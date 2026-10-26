@@ -1,5 +1,5 @@
 import {
-  clampInteractivity, defaultSettings, defaultUtilization,
+  clampInteractivity, defaultSettings, defaultUtilization, withModel,
   type Assumptions, type PricePresetId, type RackId, type RentBasis, type Settings, type Tenure,
 } from '@token-margin/engine';
 
@@ -17,7 +17,9 @@ const round = (v: number) => Number(v.toPrecision(6));
 
 export function parseUrl(a: Assumptions, search: string): Settings {
   const q = new URLSearchParams(search);
-  const s = defaultSettings(a);
+  let s = defaultSettings(a);
+  const m = q.get('m');
+  if (m === 'dsv4pro') s = withModel(a, s, m);
   const r = q.get('r');
   if (r === 'gb200' || r === 'gb300') s.rack = r as RackId;
   const t = q.get('t');
@@ -34,7 +36,7 @@ export function parseUrl(a: Assumptions, search: string): Settings {
     if (raw === null || !Number.isFinite(Number(raw))) continue;
     const range = a.ranges[sk];
     const v = range ? clampTo(Number(raw), range) : Number(raw);
-    (s as unknown as Record<string, number>)[sk] = sk === 'interactivity' ? clampInteractivity(a, s.rack, v) : v;
+    (s as unknown as Record<string, number>)[sk] = sk === 'interactivity' ? clampInteractivity(a, s.rack, v, s.model) : v;
   }
   const rent = q.get('rent');
   if (rent !== null && Number.isFinite(Number(rent))) s.rentUsdPerGpuHr = clampTo(Number(rent), a.ranges.rentUsdPerGpuHr);
@@ -43,8 +45,9 @@ export function parseUrl(a: Assumptions, search: string): Settings {
 
 /** Only what differs from the defaults goes in the URL, so a shared link stays short. */
 export function toSearch(a: Assumptions, s: Settings): string {
-  const d = { ...defaultSettings(a), utilization: defaultUtilization(a, s.tenure === 'own' ? 'own' : s.rentBasis) };
+  const d = { ...withModel(a, defaultSettings(a), s.model), utilization: defaultUtilization(a, s.tenure === 'own' ? 'own' : s.rentBasis) };
   const q = new URLSearchParams();
+  if (s.model !== a.defaults.model) q.set('m', s.model);
   if (s.rack !== d.rack) q.set('r', s.rack);
   if (s.tenure !== d.tenure) q.set('t', s.tenure);
   if (s.rentBasis !== d.rentBasis) q.set('rb', s.rentBasis);

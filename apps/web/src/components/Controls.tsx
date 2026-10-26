@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
-import { curveBounds, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM, type PricePresetId, type Settings } from '@token-margin/engine';
+import { curveBounds, curveFor, evaluate, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM, inputsFromSettings, type PricePresetId, type Settings } from '@token-margin/engine';
 import { A } from '../data';
-import { breakEven, type Model } from '../state/useModel';
+import { breakEven, settingsForMode, type Model } from '../state/useModel';
 
 interface Mark { v: number; label: string }
 
@@ -52,13 +52,13 @@ function Slider(p: SliderProps) {
 }
 
 function Seg<T extends string>({ value, options, onChange, label }: {
-  value: T; options: Array<{ id: T; text: string }>; onChange: (v: T) => void; label: string;
+  value: T; options: Array<{ id: T; text: string; sub?: string }>; onChange: (v: T) => void; label: string;
 }) {
   return (
     <div className="seg" role="radiogroup" aria-label={label}>
       {options.map((o) => (
         <button key={o.id} type="button" role="radio" aria-checked={o.id === value} onClick={() => onChange(o.id)}>
-          {o.text}
+          {o.text}{o.sub ? <span className="seg-sub">{o.sub}</span> : null}
         </button>
       ))}
     </div>
@@ -79,18 +79,25 @@ export function Controls({ m }: { m: Model }) {
   const rentRange: [number, number] = [range('rentUsdPerGpuHr')[0], range('rentUsdPerGpuHr')[1]];
   const perRack = (gpuHr: number) => `${fmtUsdInt(gpuHr * rack.gpus)}/hr`;
   const p = m.prices;
+  const ownS = settingsForMode(s, 'own', m.modes);
+  const ownD = evaluate(inputsFromSettings(A, ownS), curveFor(A, ownS.rack, ownS.model)).daily;
+  const ownPerHour = (ownD.costUsd - ownD.overheadUsd) / 24;
+  const model = A.models[s.model];
+  const mix = model.mix;
   const profitNow = m.result.daily.operatingProfitUsd;
 
   return (
     <section className="controls" aria-label="Assumptions">
       <div className="toggles">
+        <Seg label="Model" value={s.model} onChange={(md) => m.setModel(md)}
+          options={[{ id: 'glm53', text: 'GLM-5.3' }, { id: 'dsv4pro', text: 'DeepSeek V4 Pro' }]} />
         <Seg label="Rack" value={s.rack} onChange={(rk) => update({ rack: rk })}
           options={[{ id: 'gb200', text: 'GB200' }, { id: 'gb300', text: 'GB300' }]} />
         <Seg label="Cost" value={cost} onChange={setCost}
           options={[
-            { id: 'onDemand', text: `Rent on demand ${perRack(rack.rentUsdPerGpuHr.value)}` },
-            { id: 'contract', text: `Rent on contract ${perRack(rack.contractUsdPerGpuHr.value)}` },
-            { id: 'own', text: 'Own' },
+            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rack.rentUsdPerGpuHr.value) },
+            { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rack.contractUsdPerGpuHr.value) },
+            { id: 'own', text: 'Own, all-in', sub: `${fmtUsdInt(ownPerHour)}/hr` },
           ]} />
       </div>
 
@@ -148,12 +155,12 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
         min={range('islOsl')[0]} max={range('islOsl')[1]} step={1} onChange={(v) => update({ islOsl: v })}
         zero={zero('islOsl', range('islOsl'))} zeroLabel={`${Math.round(zero('islOsl', range('islOsl')) ?? 0)} : 1`}
-        marks={[{ v: 63, label: 'OpenRouter GLM-5.3, 30 days: 63 : 1' }]} hint="OpenRouter GLM-5.3 traffic: 63 : 1" />
+        marks={[{ v: mix.islOsl, label: `OpenRouter ${model.short}, 30 days: ${mix.islOsl} : 1` }]} hint={`OpenRouter ${model.short} traffic: ${mix.islOsl} : 1`} />
 
       <Slider profitable={profitNow >= 0} testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
         min={range('cacheHit')[0]} max={range('cacheHit')[1]} step={0.01} onChange={(v) => update({ cacheHit: v })}
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
-        marks={[{ v: 0.9, label: 'OpenRouter GLM-5.3, all providers: 90%' }, { v: 0.8, label: 'a newer single provider: 80%' }]} hint={<>90% across all GLM-5.3 providers on OpenRouter, mostly coding agents resending their context. One rack gets that only if a conversation's later turns keep returning to it; 80% is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
+        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, { v: mix.cacheHit - 0.1, label: `a newer single provider: ${fmtPct(mix.cacheHit - 0.1)}` }]} hint={<>{fmtPct(mix.cacheHit)} across all {model.short} providers on OpenRouter, from agents resending their context each turn. One rack gets that only if a conversation's later turns keep returning to it; {fmtPct(mix.cacheHit - 0.1)} is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
 
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={0.01} onChange={(v) => update({ overheadPct: v })}

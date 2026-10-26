@@ -22,7 +22,7 @@ export function Answer({ m }: { m: Model }) {
   return (
     <section className="answer" aria-label="One day">
       <p className="lede">
-        One <span className="nb">{rack.label}</span> rack serving <span className="nb">{A.model.label}</span> for a day at {Math.round(i.interactivity)} tokens/s per user.
+        One <span className="nb">{rack.label}</span> rack serving <span className="nb">{A.models[s.model].label}</span> for a day at {Math.round(i.interactivity)} tokens/s per user.
       </p>
 
       <div className="eq" data-testid="equation">

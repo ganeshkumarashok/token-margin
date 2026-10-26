@@ -1,4 +1,4 @@
-import { fmtInt, fmtPct, fmtTokens, fmtUsdInt, fmtUsdPerM } from '@token-margin/engine';
+import { fmtInt, fmtPct, fmtTokens, fmtUsdInt, fmtUsdPerM, type ModelId } from '@token-margin/engine';
 import { A } from '../data';
 import type { Model } from '../state/useModel';
 
@@ -7,23 +7,30 @@ export const REPO = 'https://github.com/ganeshkumarashok/token-margin';
 export const DISCLAIMER =
   'Personal side project. Not affiliated with, sponsored by, or representing the views of any employer or any company named here. Not financial, investment, tax, or purchasing advice. Estimates from public sources under stated assumptions; they can be wrong by large factors.';
 
-/** Sources shown on the page, in footnote order. */
-const SOURCES = [
-  'inferencex-agentx', 'openrouter-glm53-activity', 'openrouter-glm53-endpoints', 'zai-pricing',
-  'coreweave-pricing', 'verda-pricing', 'contracts-2026', 'semianalysis-gb200-capex', 'datagravity-nvl72-cost',
-  'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'inferencex-tco-availability', 'utilization-pattern-2026', 'hf-glm-5.3',
-].filter((id) => A.sources[id]);
+/** Sources shown on the page for a model, in footnote order. */
+function sourcesFor(model: ModelId): string[] {
+  const m = A.models[model];
+  return [
+    m.curves.gb200.source, m.mix.source, m.pricePresets.median.source, ...(model === 'glm53' ? ['zai-pricing'] : []),
+    'coreweave-pricing', 'verda-pricing', 'contracts-2026', 'semianalysis-gb200-capex', 'datagravity-nvl72-cost',
+    'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'inferencex-tco-availability', 'utilization-pattern-2026', ...(model === 'glm53' ? ['hf-glm-5.3'] : []),
+  ].filter((id, k, all) => A.sources[id] && all.indexOf(id) === k);
+}
 
-/** Footnote marks; several sources share one superscript, comma-separated. */
-const Fn = ({ id }: { id: string | string[] }) => {
-  const ns = (Array.isArray(id) ? id : [id]).map((x) => SOURCES.indexOf(x) + 1).filter((n) => n > 0);
-  if (!ns.length) return null;
-  return <sup>{ns.map((n, k) => <span key={n}>{k > 0 ? ',' : ''}<a href={`#src-${n}`}>{n}</a></span>)}</sup>;
-};
+type FnMark = (props: { id: string | string[] }) => JSX.Element | null;
+
+/** Footnote marks numbered by a source list; several sources share one superscript, comma-separated. */
+function footnotes(sources: string[]): FnMark {
+  return function Fn({ id }) {
+    const ns = (Array.isArray(id) ? id : [id]).map((x) => sources.indexOf(x) + 1).filter((n) => n > 0);
+    if (!ns.length) return null;
+    return <sup>{ns.map((n, k) => <span key={n}>{k > 0 ? ',' : ''}<a href={`#src-${n}`}>{n}</a></span>)}</sup>;
+  };
+}
 
 type Row = { label: string; note?: string; value: string; fn?: string | string[]; total?: boolean };
 
-function Block({ title, unit, rows, after }: { title: string; unit?: string; rows: Row[]; after?: React.ReactNode }) {
+function Block({ title, unit, rows, after, Fn }: { title: string; unit?: string; rows: Row[]; after?: React.ReactNode; Fn: FnMark }) {
   return (
     <tbody>
       <tr className="rh"><th colSpan={2}>{title}</th><th className="unit">{unit}</th></tr>
@@ -49,7 +56,10 @@ export function Details({ m }: { m: Model }) {
   const exact = (v: number) => (v >= 1e9 ? `${(v / 1e9).toPrecision(5)}B` : `${(v / 1e6).toPrecision(5)}M`);
   const uncachedRev = (d.uncachedInputTokens * i.priceInUsdPerM) / 1e6;
   const cachedRev = d.inputRevenueUsd - uncachedRev;
-  const glmShare = (d.outputTokens + d.inputTokens) / A.anchors.openrouterGlm53TokensPerDay.value;
+  const model = A.models[s.model];
+  const sources = sourcesFor(s.model);
+  const Fn = footnotes(sources);
+  const share = (d.outputTokens + d.inputTokens) / model.openrouterTokensPerDay.value;
   const loadPct = fmtPct(i.utilization + (1 - i.utilization) * i.idleFraction);
 
   const cost: Row[] = owning
@@ -72,23 +82,23 @@ export function Details({ m }: { m: Model }) {
     <section className="details" aria-label="Details">
       <h2>The day, itemized</h2>
       <table className="receipt" data-testid="receipt">
-        <Block title="Capacity" unit="tok/s per GPU" rows={[
-          { label: 'Measured', note: `InferenceX, ${Math.round(i.interactivity)} tok/s per user`, value: fmtInt(d.benchPerGpu), fn: 'inferencex-agentx' },
+        <Block Fn={Fn} title="Capacity" unit="tok/s per GPU" rows={[
+          { label: 'Measured', note: `InferenceX, ${Math.round(i.interactivity)} tok/s per user`, value: fmtInt(d.benchPerGpu), fn: model.curves[s.rack].source },
           { label: 'On this traffic', note: `${(i.islOsl * (1 - i.cacheHit)).toFixed(1)} fresh input tokens per output, ${i.refUncachedPerOut} in the benchmark`, value: fmtInt(d.capacityPerGpu) },
           { label: 'Sold', note: `${fmtPct(i.availability)} uptime × ${fmtPct(i.utilization)} utilization`, value: fmtInt(d.tpsPerGpu * i.utilization), fn: ['inferencex-tco-availability', 'utilization-pattern-2026'] },
         ]} />
-        <Block title="Tokens per day" rows={[
+        <Block Fn={Fn} title="Tokens per day" rows={[
           { label: 'Output', value: fmtTokens(d.outputTokens) },
           { label: 'Fresh input', note: `${fmtPct(1 - i.cacheHit)} of ${Math.round(i.islOsl)} per output`, value: fmtTokens(d.uncachedInputTokens) },
-          { label: 'Cached input', note: fmtPct(i.cacheHit), value: fmtTokens(d.cachedInputTokens), fn: 'openrouter-glm53-activity' },
-        ]} after={<>{fmtPct(glmShare)} of all GLM-5.3 traffic on OpenRouter</>} />
-        <Block title="Revenue" unit="per day" rows={[
-          { label: 'Output', note: `${exact(d.outputTokens)} × ${price(i.priceOutUsdPerM)}`, value: fmtUsdInt(d.outputRevenueUsd), fn: A.pricePresets[s.pricePreset].source },
+          { label: 'Cached input', note: fmtPct(i.cacheHit), value: fmtTokens(d.cachedInputTokens), fn: model.mix.source },
+        ]} after={<>{fmtPct(share)} of all {model.short} traffic on OpenRouter</>} />
+        <Block Fn={Fn} title="Revenue" unit="per day" rows={[
+          { label: 'Output', note: `${exact(d.outputTokens)} × ${price(i.priceOutUsdPerM)}`, value: fmtUsdInt(d.outputRevenueUsd), fn: model.pricePresets[s.pricePreset].source },
           { label: 'Fresh input', note: `${exact(d.uncachedInputTokens)} × ${price(i.priceInUsdPerM)}`, value: fmtUsdInt(uncachedRev) },
           { label: 'Cached input', note: `${exact(d.cachedInputTokens)} × ${price(i.priceCacheUsdPerM)}`, value: fmtUsdInt(cachedRev) },
           { label: 'Total', value: fmtUsdInt(d.revenueUsd), total: true },
         ]} />
-        <Block title={owning ? 'Cost of owning' : 'Cost'} unit="per day" rows={cost} />
+        <Block Fn={Fn} title={owning ? 'Cost of owning' : 'Cost'} unit="per day" rows={cost} />
         <tbody>
           <tr className="profit-row">
             <td className="l">{i.overheadPct > 0 ? 'Profit' : 'Gross profit'}</td>
@@ -101,8 +111,8 @@ export function Details({ m }: { m: Model }) {
 
       <h2>How it works</h2>
       <ul className="method">
-        <li>Throughput is InferenceX's agentic benchmark, which replays 393 Claude Code sessions on GLM-5.2 (the same architecture as GLM-5.3) in NVFP4 on Dynamo SGLang. Its contexts run about twice OpenRouter's average, so it leans conservative.</li>
-        <li>Traffic and prices come from GLM-5.3 on OpenRouter: the last 30 days of usage, and the median of its 16 FP4 endpoints (low is DeepInfra's FP4 price; high is the list price most large providers charge).</li>
+        <li>Throughput is InferenceX's agentic benchmark, which replays 393 Claude Code sessions {s.model === 'glm53' ? 'on GLM-5.2 (the same architecture as GLM-5.3) in NVFP4 on Dynamo SGLang' : 'on DeepSeek V4 Pro in FP4 on Dynamo vLLM and SGLang'}. Its contexts run longer than OpenRouter's average, so it leans conservative.</li>
+        <li>Traffic and prices come from {model.short} on OpenRouter: the last 30 days of usage, and the {model.priceNotes.median} (low is {model.priceNotes.floor}; high is {model.priceNotes.list}).</li>
         <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at.</li>
         <li>Hourly rentals can be handed back when demand falls, so they default to 70% utilization. Capacity fixed for years has to cover busy hours on busy days, so it defaults to 55%.</li>
         <li>An owned rack's price, less its 10% resale value, is spread over 4 years as equal yearly payments that include 9% a year on the money tied up in it, the same as paying off a 9% loan. Support, operations, space and power come on top.</li>
@@ -110,7 +120,7 @@ export function Details({ m }: { m: Model }) {
 
       <h2>Sources</h2>
       <ol className="sources">
-        {SOURCES.map((id, k) => {
+        {sources.map((id, k) => {
           const src = A.sources[id];
           return (
             <li key={id} id={`src-${k + 1}`}>

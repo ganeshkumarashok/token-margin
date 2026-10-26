@@ -31,7 +31,7 @@ test('1. defaults answer the four questions: rent, tokens, revenue, profit', asy
 
 test('2. the contract toggle cuts rent to $421/hr and lands in the URL', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('radio', { name: /Rent on contract/ }).click();
+  await page.getByRole('radio', { name: /Rent, 3-yr contract/ }).click();
   await expect(page.getByTestId('cost')).toHaveText('$10,109');
   await expect(page.getByTestId('profit')).toHaveText('$7,839');
   await expect(page.getByTestId('margin')).toHaveText('44% gross margin');
@@ -62,7 +62,7 @@ test('4. more input per output raises revenue (agents resend context)', async ({
 
 test('5. owning swaps rent for the cost of owning and a rack-price slider', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('radio', { name: 'Own' }).click();
+  await page.getByRole('radio', { name: /^Own, all-in/ }).click();
   await expect(page.getByTestId('cost')).toHaveText('$5,036');
   await expect(page.getByTestId('s-capex')).toContainText('$3.90M · $2.91/GPU-hr all-in');
   await expect(page.getByTestId('equation')).toContainText('$210/hr all-in, owned');
@@ -80,7 +80,7 @@ test('6. GB300 uses its own curve, rent and price list', async ({ page }) => {
   await page.getByRole('radio', { name: 'GB300' }).click();
   await expect(page.getByTestId('cost')).toHaveText('$21,462');
   await expect(page.getByTestId('revenue')).toHaveText('$27,965');
-  await expect(page.getByRole('radio', { name: /Rent on demand \$894\/hr/ })).toBeVisible();
+  await expect(page.getByRole('radio', { name: /Rent on demand\s*\$894\/hr/ })).toBeVisible();
 });
 
 test('7. a shared URL restores the scenario; reset returns to the defaults', async ({ page }) => {
@@ -98,7 +98,7 @@ test('8. phone: no sideways scroll, every control reachable', async ({ browser }
   const page = await ctx.newPage();
   await page.goto('/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
-  await page.getByRole('radio', { name: /Rent on contract/ }).tap();
+  await page.getByRole('radio', { name: /Rent, 3-yr contract/ }).tap();
   await expect(page.getByTestId('profit')).toHaveText('$7,839');
   await page.screenshot({ path: 'e2e/screenshots/phone.png', fullPage: true });
   await ctx.close();
@@ -138,13 +138,13 @@ test('11. hovering the chart reads out all three ways of paying for the rack', a
 
 test('12. overhead and a typed rent stay with their own way of paying; a rack switch drops a typed rent', async ({ page }) => {
   await page.goto('/?oh=0.1');
-  await page.getByRole('radio', { name: 'Own' }).click();
+  await page.getByRole('radio', { name: /^Own, all-in/ }).click();
   await expect(page.getByTestId('s-overhead')).toContainText('0% of revenue');
   await page.getByRole('radio', { name: /Rent on demand/ }).click();
   await expect(page.getByTestId('s-overhead')).toContainText('10% of revenue');
   await page.goto('/?rent=8');
   await expect(page.getByTestId('s-rent')).toContainText('$576/hr');
-  await page.getByRole('radio', { name: /Rent on contract/ }).click();
+  await page.getByRole('radio', { name: /Rent, 3-yr contract/ }).click();
   await expect(page.getByTestId('s-rent')).toContainText('$421/hr');
   await page.getByRole('radio', { name: /Rent on demand/ }).click();
   await expect(page.getByTestId('s-rent')).toContainText('$576/hr');
@@ -177,4 +177,22 @@ test('15. robots.txt and the sitemap point at the canonical address', async ({ p
   expect(await (await request.get('/sitemap.xml')).text()).toContain('<loc>https://tokens.ganeshkumarashok.com/</loc>');
   await page.goto('/');
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', 'https://tokens.ganeshkumarashok.com/');
+});
+
+test('16. the model toggle switches to DeepSeek V4 Pro with its own traffic, prices and throughput', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('radio', { name: 'DeepSeek V4 Pro' }).click();
+  await expect(page.getByTestId('revenue')).toHaveText('$27,673');
+  await expect(page.getByTestId('profit')).toHaveText('$9,529');
+  await expect(page.getByTestId('s-ratio')).toContainText('42 : 1');
+  await expect(page.getByTestId('s-cache')).toContainText('84%');
+  await expect(page.getByTestId('receipt')).toContainText('of all DeepSeek V4 Pro traffic on OpenRouter');
+  await expect(page.locator('.lede')).toContainText('DeepSeek V4 Pro');
+  await expect(page).toHaveURL(/m=dsv4pro/);
+  await page.getByRole('radio', { name: 'GB300' }).click();
+  await expect(page.getByTestId('profit')).toHaveText('$14,671');
+  await page.goto('/?m=dsv4pro&t=own');
+  await expect(page.getByTestId('profit')).toHaveText('$16,707');
+  await page.getByRole('radio', { name: 'GLM-5.3' }).click();
+  await expect(page.getByTestId('s-ratio')).toContainText('63 : 1');
 });

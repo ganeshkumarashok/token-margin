@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   clampInteractivity, curveFor, defaultSettings, defaultUtilization, demandShare, evaluate, inputsFromSettings, rentFor, sellPrices,
-  type Settings,
+  withModel, type ModelId, type Settings,
 } from '@token-margin/engine';
 import { A } from '../data';
 import { parseUrl, toSearch } from './url';
 
 /** Operating profit per day for a settings object. */
 export function profitOf(s: Settings): number {
-  return evaluate(inputsFromSettings(A, s), curveFor(A, s.rack)).daily.operatingProfitUsd;
+  return evaluate(inputsFromSettings(A, s), curveFor(A, s.rack, s.model)).daily.operatingProfitUsd;
 }
 
 /**
@@ -70,7 +70,7 @@ export function useModel() {
   }, [settings]);
 
   const derived = useMemo(() => {
-    const points = curveFor(A, settings.rack);
+    const points = curveFor(A, settings.rack, settings.model);
     const inputs = inputsFromSettings(A, settings);
     const result = evaluate(inputs, points);
     const demand = demandShare(result.daily, {
@@ -91,7 +91,7 @@ export function useModel() {
     setSettings((s) => {
       const next = { ...s, ...patch };
       if (rackChange && patch.rack) {
-        next.interactivity = clampInteractivity(A, patch.rack, next.interactivity);
+        next.interactivity = clampInteractivity(A, patch.rack, next.interactivity, next.model);
         next.rentUsdPerGpuHr = null;
       }
       return next;
@@ -107,13 +107,16 @@ export function useModel() {
     setSettings(settingsForMode(settings, next, saved));
   };
 
+  /** Switch model: its own traffic mix and prices; rack, rent and utilization stay. */
+  const setModel = (model: ModelId) => setSettings((s) => (s.model === model ? s : withModel(A, s, model)));
+
   const reset = () => {
     setModes(blankModes());
     setSettings(defaultSettings(A));
   };
   const isDefault = toSearch(A, settings) === '';
 
-  return { settings, modes, update, setMode, reset, isDefault, ...derived };
+  return { settings, modes, update, setMode, setModel, reset, isDefault, ...derived };
 }
 
 export type Model = ReturnType<typeof useModel>;
