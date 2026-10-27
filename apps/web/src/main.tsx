@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
+import { inject } from '@vercel/analytics';
 import { App } from './App';
 import './styles.css';
 
@@ -16,3 +17,6 @@ else {
   root.replaceChildren();
   createRoot(root).render(app);
 }
+
+// Cookieless page-view counts (Vercel Web Analytics), served only by a Vercel deployment.
+if (!['localhost', '127.0.0.1'].includes(window.location.hostname)) inject();

@@ -140,7 +140,7 @@ export function Details({ m }: { m: Model }) {
 
       <footer className="footer" data-testid="disclaimer">
         <p>{DISCLAIMER}</p>
-        <p className="muted">Data as of {A.version}. Source code, raw data, the model and its tests: <a href={REPO}>{REPO.replace('https://', '')}</a>.</p>
+        <p className="muted">Data as of {A.version}. Source code, raw data, the model and its tests: <a href={REPO}>{REPO.replace('https://', '')}</a>. Page views are counted with Vercel Web Analytics, which uses no cookies.</p>
         <Cite settings={s} />
       </footer>
     </section>
