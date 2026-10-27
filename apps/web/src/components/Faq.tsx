@@ -3,6 +3,7 @@ import { A } from '../data';
 import { REPO } from '../links';
 
 const glm = A.models.glm53;
+const IX = 'https://github.com/SemiAnalysisAI/InferenceX';
 const rack = A.racks.gb200;
 // Owned GB200 at the defaults: all-in cost per GPU-hour, before overhead.
 const ownDay = evaluate(inputsFromSettings(A, { ...defaultSettings(A), tenure: 'own' }), curveFor(A, 'gb200')).daily;
@@ -22,7 +23,20 @@ const faster = Math.round((1 - A.defaults.overheadPct - (today.costUsd - today.o
 
 /** Short answers to the questions readers ask first. Folded by default. */
 const ITEMS: Array<[string, React.ReactNode]> = [
-  ['How optimized is the serving setup?', <>It is InferenceX's tuned, public recipe on nightly builds, not a default install. On GB200: NVIDIA Dynamo with SGLang, prefill and decode on separate GPUs (24 and 16), NVFP4 weights with an FP8 KV cache, speculative decoding (EAGLE multi-token prediction, up to 6 draft tokens), FlashInfer MoE kernels, experts spread across 16 GPUs with data-parallel attention, KV-cache-aware routing that keeps a conversation's turns on the same prefill GPUs, and KV cache offload to 721 GB of CPU memory. It is strong but not necessarily the best possible: GLM's throughput on GB200 roughly quadrupled between August and October 2026, and private stacks may do better. The <a href="https://github.com/SemiAnalysisAI/InferenceX">recipes</a> and <a href="https://github.com/SemiAnalysisAI/InferenceX/actions/runs/39765601214/attempts/2">run logs</a> are public.</>],
+  ['How optimized is the serving setup?', <>
+    <p>The GB200 throughput comes from the run with 24 prefill and 16 decode GPUs in InferenceX's public <a href={`${IX}/blob/4416f5e2f66c999d718573736388f102023ab562/inferencex-e2e/benchmarks/multi_node/srt-slurm-recipes/glm5.2/sglang/gb200-fp4/agentx/disagg-variants.yaml#L303`}>recipe</a> (<a href={`${IX}/actions/runs/39765601214/attempts/2`}>run logs</a>). It uses:</p>
+    <ul>
+      <li>NVIDIA Dynamo in front of SGLang, both development builds from October 2026</li>
+      <li>separate GPUs for prefill (3 workers of 8) and decode (16)</li>
+      <li>NVFP4 weights and an FP8 KV cache</li>
+      <li>speculative decoding with EAGLE, up to 6 draft tokens per step</li>
+      <li>experts spread across the 16 decode GPUs, with data-parallel attention</li>
+      <li>FlashInfer kernels for the MoE layers</li>
+      <li>KV-cache-aware routing that keeps a session's turns on the same prefill worker</li>
+      <li>prefill caches that overflow from GPU to CPU memory (SGLang HiCache)</li>
+    </ul>
+    <p>It is a strong setup, not necessarily the best: GLM's throughput on GB200 at 100 tok/s per user went from 69 to 287 tokens/s per GPU between August and October 2026, and providers with their own stacks may do better.</p>
+  </>],
   ['Other estimates show 50–90% margins; why is this lower?', <>Rent explains most of it. Such estimates often charge about $5 per GB300-hour, close to what an owner or a large multi-year deal pays, while one rack rents for ${A.racks.gb300.rentUsdPerGpuHr.value.toFixed(2)} on demand. With $5 rent and list prices, this page also gives a GB300 {cheapRent}% at 60% utilization, and its own contract and owning options come to {contract}% and {own}%. Two smaller differences: the page adjusts the benchmark to OpenRouter's real traffic, whose 63 input tokens per output load prefill harder than the benchmark sessions, and it prices at the median provider rather than the model's list price. First-party figures such as DeepSeek's <a href="https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md">$38 of revenue per GPU-hour</a> (V4.1 Flash, off-peak prices) come from a lab serving its own model on its own stack, with capacity that scales with demand. The answer also depends on further optimization: serving software is improving quickly, and 25% more tokens per GPU would take the on-demand margin from {onDemand}% to {faster}%.</>],
   ['Why one rack and one day?', <>An NVL72 rack is how these GPUs are built: 72 of them share one NVLink network, and large models are served across many of them at once. One day keeps every number small enough to check by hand.</>],
   ['Why GLM-5.3?', <>It is an MIT-licensed open-weights model, among the most used on <a href={glm.mix.url}>OpenRouter</a>, mostly by coding agents, and InferenceX publishes agentic benchmarks for it on both GB200 and GB300. The repository also models DeepSeek V4 Pro.</>],
