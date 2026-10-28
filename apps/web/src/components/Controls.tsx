@@ -92,6 +92,9 @@ export function Controls({ m }: { m: Model }) {
   const model = A.models[s.model];
   const mix = model.mix;
   const profitNow = m.result.daily.operatingProfitUsd;
+  // Capacity lost per point of cache hit on this traffic: one more point of misses, everything else as set.
+  const lessCache = evaluate(inputsFromSettings(A, { ...s, cacheHit: Math.max(0, s.cacheHit - 0.01) }), m.points).daily.capacityPerGpu;
+  const cachePointPct = 1 - lessCache / m.result.daily.capacityPerGpu;
 
   return (
     <section className="controls" aria-label="Assumptions">
@@ -165,7 +168,7 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
         min={range('cacheHit')[0]} max={range('cacheHit')[1]} step={0.01} onChange={(v) => update({ cacheHit: v })}
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
-        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, { v: mix.cacheHit - 0.1, label: `a newer single provider: ${fmtPct(mix.cacheHit - 0.1)}` }]} hint={<>{fmtPct(mix.cacheHit)} of prompt tokens were served from cache across all {model.short} providers, from the daily cached-token counts on <a href={mix.url}>OpenRouter's page</a>{mix.range ? ` (${fmtPct(mix.range.cacheHit[0])} to ${fmtPct(mix.range.cacheHit[1])} day to day)` : ''}; agents resend their context each turn. One rack gets that only if a conversation's later turns keep returning to it; {fmtPct(mix.cacheHit - 0.1)} is marked for a newer provider. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
+        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, ...(mix.range ? [{ v: mix.range.cacheHit[0], label: `lowest day: ${fmtPct(mix.range.cacheHit[0])}` }] : [])]} hint={<>{fmtPct(mix.cacheHit)} of prompt tokens were served from cache across all {model.short} providers, from the daily cached-token counts on <a href={mix.url}>OpenRouter's page</a>{mix.range ? ` (${fmtPct(mix.range.cacheHit[0])} to ${fmtPct(mix.range.cacheHit[1])} day to day)` : ''}; agents resend their context each turn, and a conversation's later turns have to come back to the same rack to hit. Each point of cache hit is about {fmtPct(cachePointPct)} of capacity on this traffic: a miss is {Math.round(s.islOsl)} more fresh tokens to prefill per 100 output tokens. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
 
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={range('overheadPct')[2]} onChange={(v) => update({ overheadPct: v })}
