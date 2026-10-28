@@ -8,6 +8,19 @@ const rack = A.racks.gb200;
 // Owned GB200 at the defaults: all-in cost per GPU-hour, before overhead.
 const ownDay = evaluate(inputsFromSettings(A, { ...defaultSettings(A), tenure: 'own' }), curveFor(A, 'gb200')).daily;
 const ownPerGpuHr = (ownDay.costUsd - ownDay.overheadUsd) / (ownDay.gpus * 24);
+// The benchmark ran on 40 GPUs; the page applies its per-GPU rate to all 72. How that rack would be split
+// between prefill and decode for OpenRouter's traffic, ideally and with this recipe's 8- and 16-GPU workers.
+const di = inputsFromSettings(A, defaultSettings(A));
+const dBench = evaluate(di, curveFor(A, 'gb200')).daily.benchPerGpu;
+const freshPerOut = di.islOsl * (1 - di.cacheHit);
+const decodeSecPerOut = 1 / dBench - di.refUncachedPerOut / di.prefillRate;
+const prefillSecPerOut = freshPerOut / di.prefillRate;
+const idealDecode = Math.round(rack.gpus * decodeSecPerOut / (decodeSecPerOut + prefillSecPerOut));
+const idealPerGpu = 1 / (decodeSecPerOut + prefillSecPerOut);
+const tilings = [1, 2, 3, 4].map((k) => ({ decode: 16 * k, prefill: rack.gpus - 16 * k }))
+  .map((s) => ({ ...s, perGpu: Math.min(s.decode / decodeSecPerOut, s.prefill * di.prefillRate / freshPerOut) / rack.gpus }));
+const tiled = tilings.reduce((best, s) => (s.perGpu > best.perGpu ? s : best));
+const tilingLoss = Math.round((1 - tiled.perGpu / idealPerGpu) * 100);
 /** Margin at the defaults with some settings changed, as a whole percent. */
 function marginWith(over: Partial<Settings>): number {
   const s = { ...defaultSettings(A), ...over };
@@ -35,6 +48,7 @@ const ITEMS: Array<[string, React.ReactNode]> = [
       <li>KV-cache-aware routing that keeps a session's turns on the same prefill worker</li>
       <li>prefill caches that overflow from GPU to CPU memory (SGLang HiCache)</li>
     </ul>
+    <p>That run used 40 GPUs. The page applies its per-GPU rate to all 72, as if the rack were split between prefill and decode in the ideal proportion for its traffic: about {rack.gpus - idealDecode} and {idealDecode} on OpenRouter's mix. Workers come in blocks of 8 and 16 here, so a real split lands off the ideal. The nearest, {tiled.prefill} and {tiled.decode}, would be limited by prefill and serve about {tilingLoss}% less; other block sizes and a mix of traffic narrow the gap.</p>
     <p>It is a strong setup, not necessarily the best: GLM's throughput on GB200 at 100 tok/s per user went from 69 to 287 tokens/s per GPU between August and October 2026, and providers with their own stacks may do better.</p>
   </>],
   ['Other estimates show 50–90% margins; why is this lower?', <>Rent explains most of it. Such estimates often charge about $5 per GB300-hour, close to what an owner or a large multi-year deal pays, while one rack rents for ${A.racks.gb300.rentUsdPerGpuHr.value.toFixed(2)} on demand. With $5 rent and list prices, this page also gives a GB300 {cheapRent}% at 60% utilization, and its own contract and owning options come to {contract}% and {own}%. Two smaller differences: the page adjusts the benchmark to OpenRouter's real traffic, whose 63 input tokens per output load prefill harder than the benchmark sessions, and it prices at the median provider rather than the model's list price. First-party figures such as DeepSeek's <a href="https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md">$38 of revenue per GPU-hour</a> (V4.1 Flash, off-peak prices) come from a lab serving its own model on its own stack, with capacity that scales with demand. The answer also depends on further optimization: serving software is improving quickly, and 25% more tokens per GPU would take the on-demand margin from {onDemand}% to {faster}%.</>],
