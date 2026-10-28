@@ -158,11 +158,11 @@ a { color: inherit; text-underline-offset: 2px; }
 .fold > summary h2 { display: inline; margin: 0; }
 .fold > summary:focus-visible { outline: 2px solid var(--zero); outline-offset: 2px; }
 .fold[open] > :not(summary) { margin-top: 10px; }
-.faq { margin: 0; display: grid; gap: 12px; }
+.faq { margin: 0; display: grid; gap: 16px; }
 .faq dt { font-weight: 600; }
 .faq dd { margin: 2px 0 0; color: var(--ink); }
 .faq dd p { margin: 0; }
-.faq dd ul { margin: 6px 0; padding-left: 18px; display: grid; gap: 2px; }
+.faq dd ul { margin: 6px 0; padding-left: 18px; display: grid; gap: 4px; }
 .method a, .faq a { color: inherit; }
 .method { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-size: 14px; }
