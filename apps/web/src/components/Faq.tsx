@@ -1,4 +1,4 @@
-import { curveFor, defaultSettings, evaluate, fmtPct, fmtUsdInt, inputsFromSettings, type Settings } from '@token-margin/engine';
+import { curveFor, defaultSettings, evaluate, fmtPct, inputsFromSettings, type Settings } from '@token-margin/engine';
 import { useEffect } from 'react';
 import { A } from '../data';
 import { REPO } from '../links';
@@ -44,10 +44,7 @@ const prefillShare = prefillSecPerOut / (decodeSecPerOut + prefillSecPerOut);
 const gain = (decode: number, prefill: number) => (decodeSecPerOut + prefillSecPerOut) / (decodeSecPerOut / decode + prefillSecPerOut / prefill) - 1;
 const prefillGain = gain(1, 1.2);
 const decodeGain = gain(1.2, 1);
-/** Profit added by k times the tokens: revenue and overhead scale, rent does not. */
-const moreTokensUsd = (k: number) => today.revenueUsd * k * (1 - A.defaults.overheadPct) - (today.costUsd - today.overheadUsd) - today.operatingProfitUsd;
 const cachePoint = 1 - dayWith({ cacheHit: di.cacheHit - 0.01 }).capacityPerGpu / today.capacityPerGpu;
-const utilUsd = dayWith({ utilization: di.utilization + 0.1 }).operatingProfitUsd - today.operatingProfitUsd;
 
 /** Short answers to the questions readers ask first, each folded until tapped. */
 const ITEMS: Array<[string, string, React.ReactNode]> = [
@@ -74,11 +71,11 @@ const ITEMS: Array<[string, string, React.ReactNode]> = [
   ['faq-levers', 'How would a provider raise the margin beyond these controls?', <>
     <p>The throughput here is one measured run, so a software gain reaches the page only as a higher curve. On OpenRouter's traffic a GB200 spends about {fmtPct(prefillShare)} of its time on prefill (fresh input) and {fmtPct(1 - prefillShare)} on decode (output), which sets the size of each lever on the default day:</p>
     <ul>
-      <li>faster prefill, from attention and FP4 GEMM kernels and chunk sizes tuned to the context lengths: 20% faster is {fmtPct(prefillGain)} more capacity, about {fmtUsdInt(moreTokensUsd(1 + prefillGain))} a day</li>
-      <li>faster decode, from speculative decoding (the run already drafts up to 6 tokens a step with EAGLE), MoE kernels and wider expert parallelism: 20% faster is {fmtPct(decodeGain)} more capacity, about {fmtUsdInt(moreTokensUsd(1 + decodeGain))} a day, because decode is the smaller share on this traffic</li>
+      <li>faster prefill, from attention and FP4 GEMM kernels and chunk sizes tuned to the context lengths: 20% faster is {fmtPct(prefillGain)} more capacity</li>
+      <li>faster decode, from speculative decoding (the run already drafts up to 6 tokens a step with EAGLE), MoE kernels and wider expert parallelism: 20% faster is {fmtPct(decodeGain)} more capacity, because decode is the smaller share on this traffic</li>
       <li>the prefill-to-decode split: the page assumes the ideal split for the traffic, and a real deployment loses about {tilingLoss}% to worker block sizes unless it is tuned to what it serves</li>
     </ul>
-    <p>The two biggest levers are sliders above. Each point of cache hit is about {fmtPct(cachePoint)} of capacity, and routing a conversation back to the rack that holds its cache, and keeping caches longer in GPU and CPU memory, is what moves it. Ten more points of utilization add {fmtUsdInt(utilUsd)} a day; batch or off-peak pricing and a second model on the rack fill the quiet hours.</p>
+    <p>The two biggest levers are sliders above. Each point of cache hit is about {fmtPct(cachePoint)} of capacity, and routing a conversation back to the rack that holds its cache, and keeping caches longer in GPU and CPU memory, is what moves it. Utilization is the other: batch or off-peak pricing and a second model on the rack fill the quiet hours.</p>
   </>],
   ['faq-glm', 'Why GLM-5.3?', <>It is MIT-licensed, among the most used models on <a href={glm.mix.url}>OpenRouter</a>, mostly by coding agents, and InferenceX publishes agentic benchmarks for it on GB200 and GB300. The repository also models DeepSeek V4 Pro.</>],
   ['faq-ratio', 'How is "63 input tokens per output" worked out?', <>OpenRouter's <a href={glm.mix.url}>GLM-5.3 page</a> publishes daily prompt, completion and cached token totals across all providers. From Sep 25 to Oct 24, 2026: 16,992B prompt tokens and 271B completion tokens (reasoning included), 62.7 to 1, with 90.3% of prompt tokens read from cache. The <a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a> and raw data are in the repository.</>],
