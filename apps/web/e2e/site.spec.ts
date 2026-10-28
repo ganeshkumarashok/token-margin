@@ -247,5 +247,5 @@ test('20. the utilization hint opens the FAQ at its own entry; the link works on
   await expect(page.locator('#faq-utilization').getByText('0.84 × 0.82 × 0.95 ≈ 65%')).toBeVisible();
   await expect(page.locator('#faq-utilization')).toBeInViewport();
   await page.goto('/#faq-owning');
-  await expect(page.locator('#faq-owning').getByText('per GPU-hour all-in')).toBeVisible();
+  await expect(page.locator('#faq-owning').getByText('hand the rack back')).toBeVisible();
 });
