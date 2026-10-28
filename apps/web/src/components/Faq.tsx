@@ -37,14 +37,8 @@ const tilings = [1, 2, 3, 4].map((k) => ({ decode: 16 * k, prefill: rack.gpus - 
   .map((s) => ({ ...s, perGpu: Math.min(s.decode / decodeSecPerOut, s.prefill * di.prefillRate / freshPerOut) / rack.gpus }));
 const tiled = tilings.reduce((best, s) => (s.perGpu > best.perGpu ? s : best));
 const tilingLoss = Math.round((1 - tiled.perGpu / idealPerGpu) * 100);
-// Levers the controls do not show, sized on the default day. A software gain reaches the page only as a higher measured curve.
-const today = dayWith({});
+// Where the GPU time goes on the default day: the benchmark's decode time against the prefill OpenRouter's traffic adds.
 const prefillShare = prefillSecPerOut / (decodeSecPerOut + prefillSecPerOut);
-/** Capacity gained when decode and prefill each get faster by the given factor. */
-const gain = (decode: number, prefill: number) => (decodeSecPerOut + prefillSecPerOut) / (decodeSecPerOut / decode + prefillSecPerOut / prefill) - 1;
-const prefillGain = gain(1, 1.2);
-const decodeGain = gain(1.2, 1);
-const cachePoint = 1 - dayWith({ cacheHit: di.cacheHit - 0.01 }).capacityPerGpu / today.capacityPerGpu;
 
 /** Short answers to the questions readers ask first, each folded until tapped. */
 const ITEMS: Array<[string, string, React.ReactNode]> = [
@@ -64,18 +58,18 @@ const ITEMS: Array<[string, string, React.ReactNode]> = [
     <ul>
       <li>They charge about $5 per GB300-hour, roughly what an owner or a large multi-year deal pays; on demand, one rack costs ${A.racks.gb300.rentUsdPerGpuHr.value.toFixed(2)}. At $5 rent and list prices this page gives a GB300 {cheapRent}% at 60% utilization, and its own contract and owning cases are {contract}% and {own}%.</li>
       <li>This page uses OpenRouter's real traffic, whose 63 input tokens per output load prefill harder than the benchmark sessions, and median provider prices rather than list.</li>
-      <li>DeepSeek's <a href="https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md">$38 of revenue per GPU-hour</a> is a lab serving its own model on its own stack, with capacity that scales with demand.</li>
+      <li>DeepSeek's <a href="https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md">$38 of revenue per GPU-hour</a> comes from a lab serving its own model on its own stack, with capacity that grows with demand.</li>
       <li>Serving software is improving fast. 25% more tokens per GPU takes the margin from {contract}% to {fasterContract}% on the contract and from {onDemand}% to {fasterOnDemand}% on demand.</li>
     </ul>
   </>],
-  ['faq-levers', 'How would a provider raise the margin beyond these controls?', <>
-    <p>The throughput here is one measured run, so a software gain reaches the page only as a higher curve. On OpenRouter's traffic a GB200 spends about {fmtPct(prefillShare)} of its time on prefill (fresh input) and {fmtPct(1 - prefillShare)} on decode (output), which sets the size of each lever on the default day:</p>
+  ['faq-levers', 'Where do kernels, speculative decoding and routing show up?', <>
+    <p>Only in the throughput. The page has no control for serving software; its throughput is one measured run, and a better stack shows up as a higher number. On OpenRouter's traffic a GB200 spends about {fmtPct(prefillShare)} of its time on prefill (fresh input) and {fmtPct(1 - prefillShare)} on decode (output), so prefill speed matters more than decode speed here.</p>
     <ul>
-      <li>faster prefill, from attention and FP4 GEMM kernels and chunk sizes tuned to the context lengths: 20% faster is {fmtPct(prefillGain)} more capacity</li>
-      <li>faster decode, from speculative decoding (the run already drafts up to 6 tokens a step with EAGLE), MoE kernels and wider expert parallelism: 20% faster is {fmtPct(decodeGain)} more capacity, because decode is the smaller share on this traffic</li>
-      <li>the prefill-to-decode split: the page assumes the ideal split for the traffic, and a real deployment loses about {tilingLoss}% to worker block sizes unless it is tuned to what it serves</li>
+      <li>Prefill gets faster with attention and FP4 GEMM kernels, and with chunk sizes tuned to the context lengths.</li>
+      <li>Decode gets faster with speculative decoding, MoE kernels and wider expert parallelism. The run already drafts up to 6 tokens a step with EAGLE.</li>
+      <li>The page assumes the ideal split between prefill and decode GPUs. A real deployment loses some capacity to worker block sizes unless its split is tuned to its traffic.</li>
     </ul>
-    <p>The two biggest levers are sliders above. Each point of cache hit is about {fmtPct(cachePoint)} of capacity, and routing a conversation back to the rack that holds its cache, and keeping caches longer in GPU and CPU memory, is what moves it. Utilization is the other: batch or off-peak pricing and a second model on the rack fill the quiet hours.</p>
+    <p>The two biggest gains are on the sliders. Cache hits rise when a conversation is routed back to the rack that holds its cache and when caches stay longer in GPU and CPU memory. Utilization rises with batch or off-peak pricing, or a second model on the rack to fill the quiet hours.</p>
   </>],
   ['faq-glm', 'Why GLM-5.3?', <>It is MIT-licensed, among the most used models on <a href={glm.mix.url}>OpenRouter</a>, mostly by coding agents, and InferenceX publishes agentic benchmarks for it on GB200 and GB300. The repository also models DeepSeek V4 Pro.</>],
   ['faq-ratio', 'How is "63 input tokens per output" worked out?', <>OpenRouter's <a href={glm.mix.url}>GLM-5.3 page</a> publishes daily prompt, completion and cached token totals across all providers. From Sep 25 to Oct 24, 2026: 16,992B prompt tokens and 271B completion tokens (reasoning included), 62.7 to 1, with 90.3% of prompt tokens read from cache. The <a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a> and raw data are in the repository.</>],
@@ -91,7 +85,7 @@ const ITEMS: Array<[string, string, React.ReactNode]> = [
     </ul>
     <p>Renting and owning get the same 65%: a single rack cannot hand back part of itself when demand drops.</p>
   </>],
-  ['faq-benchmark', 'Why multiply the benchmark by utilization?', <>InferenceX measures the most the rack can produce while every user still gets 95 tok/s. Utilization is the share of that with paying traffic behind it; lighter demand gives users faster responses at the same price per token. Read differently, the benchmark's cache accounting puts real traffic at 231 to 308 tokens/s per GPU rather than 269.</>],
+  ['faq-benchmark', 'Why multiply the benchmark by utilization?', <>InferenceX measures the most the rack can produce while every user still gets 95 tok/s. Utilization is the share of that with paying traffic behind it; lighter demand gives users faster responses at the same price per token. The benchmark's cache accounting can be read two ways, which puts real traffic between 231 and 308 tokens/s per GPU rather than at 269.</>],
   ['faq-speed', 'Why does faster output per user lower profit?', <>A GPU serves many users at once. Faster output for each means fewer users per GPU, so the rack makes fewer tokens in total. Prices stay fixed here; fast tiers on OpenRouter charge about 1.5×.</>],
   ['faq-owning', 'Why is owning so much cheaper than renting on demand?', <>The on-demand price pays for the cloud's margin, its spare capacity and the right to hand the rack back; owning or a contract trades that flexibility for price. Pick Own above to see the cost broken into depreciation, financing, space, support, operations and power.</>],
   ['faq-nvidia', 'What about NVIDIA\'s "$5M in, $75M of tokens out"?', <>NVIDIA's <a href={A.sources['nvidia-inferencemax-blog'].url}>InferenceMAX post</a> says a $5M GB200 NVL72 produces $75M of tokens over three years. That needs 5,505 output tokens/s per GPU, sold every second; on agentic traffic InferenceX measures 312 on GB200 at 95 tok/s per user.</>],
