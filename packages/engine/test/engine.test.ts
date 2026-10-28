@@ -66,7 +66,7 @@ describe('T3 pitch: fastest measured point, everything sold, list price, owning'
 });
 
 describe('T4 reference day: GB200, 95 tok/s/user, 70% utilization, median FP4 price, OpenRouter mix', () => {
-  it('renting on demand (the default)', () => {
+  it('renting on demand', () => {
     const i = inputs();
     expect(i.tenure).toBe('rent');
     expect(i.rentUsdPerGpuHr).toBe(10.5);
@@ -410,8 +410,9 @@ describe('T16 overhead as a share of revenue', () => {
     const up = daily(rent({ availability: 1 }), gb200);
     near(daily(rent(), gb200).outputTokens / up.outputTokens, 0.98, 1e-12);
   });
-  it('defaults carry 0.5% overhead', () => {
+  it('defaults carry 0.5% overhead and rent on a 3-year contract', () => {
     expect(defaultSettings(A).overheadPct).toBe(0.005);
+    expect(defaultSettings(A).rentBasis).toBe('contract');
     expect(() => daily({ ...inputs(), overheadPct: 1 }, gb200)).toThrow();
   });
 });

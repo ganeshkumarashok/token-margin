@@ -5,9 +5,9 @@ export const A = raw as unknown as Assumptions;
 export const gb200 = curveFor(A, 'gb200');
 export const gb300 = curveFor(A, 'gb300');
 
-/** Defaults with utilization pinned at 70% and no overhead, so these mechanics tests do not move when the defaults change; separate tests check the defaults. */
+/** Defaults with utilization pinned at 70%, no overhead and on-demand rent, so these mechanics tests do not move when the defaults change; separate tests check the defaults. */
 export function settings(over: Partial<Settings> = {}): Settings {
-  return { ...defaultSettings(A), utilization: 0.7, overheadPct: 0, ...over };
+  return { ...defaultSettings(A), utilization: 0.7, overheadPct: 0, rentBasis: 'onDemand', ...over };
 }
 /** Defaults (renting). */
 export function inputs(over: Partial<Settings> = {}) {

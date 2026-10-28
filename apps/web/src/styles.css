@@ -60,8 +60,9 @@ a { color: inherit; text-underline-offset: 2px; }
 .lede { margin: 0; color: var(--muted); font-size: 17px; text-wrap: balance; }
 .eq { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 18px; }
 .term { display: grid; gap: 2px; min-width: 0; }
-.op { font: 300 40px/1.2 var(--mono); color: var(--muted); }
-.big { font: 500 44px/1.15 var(--mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Four terms with two five-digit figures have to fit the 880px column on one line; below 890px the size follows the viewport. */
+.op { font: 300 clamp(26px, 4vw, 36px)/1.2 var(--mono); color: var(--muted); }
+.big { font: 500 clamp(30px, 4.5vw, 40px)/1.15 var(--mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .big .cm { font-family: var(--sans); font-weight: 600; letter-spacing: 0.02em; }
 .big.profit { background: var(--hl); color: var(--hl-ink); padding: 0 8px; margin-left: -8px; justify-self: start; }
 .big.profit.loss { background: transparent; color: var(--loss); padding: 0; margin: 0; }

@@ -149,7 +149,7 @@
     "residualPct": 0.1,
     "costOfCapital": 0.09,
     "monthsToRevenue": 0,
-    "rentBasis": "onDemand",
+    "rentBasis": "contract",
     "overheadPct": 0.005,
     "opsUsdPerRackDay": 400,
     "availability": 0.98,

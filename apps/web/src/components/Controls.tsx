@@ -103,8 +103,8 @@ export function Controls({ m }: { m: Model }) {
           options={[{ id: 'gb200', text: 'GB200' }, { id: 'gb300', text: 'GB300' }]} />
         <Seg label="Cost" value={cost} onChange={setCost}
           options={[
-            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rack.rentUsdPerGpuHr.value) },
             { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rack.contractUsdPerGpuHr.value) },
+            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rack.rentUsdPerGpuHr.value) },
             { id: 'own', text: 'Own, all-in', sub: `${fmtUsdInt(ownPerHour)}/hr` },
           ]} />
       </div>
@@ -119,7 +119,7 @@ export function Controls({ m }: { m: Model }) {
           ]}
           hint={s.rentBasis === 'contract'
             ? (s.rack === 'gb200' ? 'latest GB200 contract with public terms: $261/hr over 3 years (HIVE to Bell/Cohere, SEC filing, Jun 2026); new contracts have priced higher since' : 'latest GB300 contract with public terms: $285/hr over 5 years (HIVE, SEC filing, Aug 2026); new contracts have priced higher since')
-            : (s.rack === 'gb200' ? 'CoreWeave quotes $42/hr per 4-GPU node and deploys NVL72 only as full racks of 18 nodes: $756/hr. AWS $762/hr (capacity block), Oracle $1,152/hr' : 'list prices: Verda $894/hr, Oracle $1,296/hr')} />
+            : (s.rack === 'gb200' ? 'hard to buy on demand at all; list prices stand in as an equivalent: CoreWeave $756/hr ($42/hr per 4-GPU node, sold as full racks), AWS $762/hr (capacity block), Oracle $1,152/hr' : 'hard to buy on demand at all; list prices stand in as an equivalent: Verda $894/hr, Oracle $1,296/hr')} />
       ) : (
         <Slider profitable={profitNow >= 0} testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
           display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M · $${((m.result.daily.costUsd - m.result.daily.overheadUsd) / (rack.gpus * 24)).toFixed(2)}/GPU-hr all-in`}
