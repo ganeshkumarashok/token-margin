@@ -103,8 +103,8 @@ export function Controls({ m }: { m: Model }) {
           options={[{ id: 'gb200', text: 'GB200' }, { id: 'gb300', text: 'GB300' }]} />
         <Seg label="Cost" value={cost} onChange={setCost}
           options={[
-            { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rack.contractUsdPerGpuHr.value) },
             { id: 'onDemand', text: 'Rent on demand', sub: perRack(rack.rentUsdPerGpuHr.value) },
+            { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rack.contractUsdPerGpuHr.value) },
             { id: 'own', text: 'Own, all-in', sub: `${fmtUsdInt(ownPerHour)}/hr` },
           ]} />
       </div>
