@@ -1,4 +1,4 @@
-import { curveFor, defaultSettings, evaluate, inputsFromSettings, type Settings } from '@token-margin/engine';
+import { curveFor, defaultSettings, evaluate, fmtPct, fmtUsdInt, inputsFromSettings, type Settings } from '@token-margin/engine';
 import { useEffect } from 'react';
 import { A } from '../data';
 import { REPO } from '../links';
@@ -37,6 +37,18 @@ const tilings = [1, 2, 3, 4].map((k) => ({ decode: 16 * k, prefill: rack.gpus - 
   .map((s) => ({ ...s, perGpu: Math.min(s.decode / decodeSecPerOut, s.prefill * di.prefillRate / freshPerOut) / rack.gpus }));
 const tiled = tilings.reduce((best, s) => (s.perGpu > best.perGpu ? s : best));
 const tilingLoss = Math.round((1 - tiled.perGpu / idealPerGpu) * 100);
+// Levers the controls do not show, sized on the default day. A software gain reaches the page only as a higher measured curve.
+const today = dayWith({});
+const prefillShare = prefillSecPerOut / (decodeSecPerOut + prefillSecPerOut);
+/** Capacity gained when decode and prefill each get faster by the given factor. */
+const gain = (decode: number, prefill: number) => (decodeSecPerOut + prefillSecPerOut) / (decodeSecPerOut / decode + prefillSecPerOut / prefill) - 1;
+const prefillGain = gain(1, 1.2);
+const decodeGain = gain(1.2, 1);
+/** Profit added by k times the tokens: revenue and overhead scale, rent does not. */
+const moreTokensUsd = (k: number) => today.revenueUsd * k * (1 - A.defaults.overheadPct) - (today.costUsd - today.overheadUsd) - today.operatingProfitUsd;
+const cachePoint = 1 - dayWith({ cacheHit: di.cacheHit - 0.01 }).capacityPerGpu / today.capacityPerGpu;
+const cacheUsd = dayWith({ cacheHit: di.cacheHit + 0.05 }).operatingProfitUsd - today.operatingProfitUsd;
+const utilUsd = dayWith({ utilization: di.utilization + 0.1 }).operatingProfitUsd - today.operatingProfitUsd;
 
 /** Short answers to the questions readers ask first, each folded until tapped. */
 const ITEMS: Array<[string, string, React.ReactNode]> = [
@@ -58,6 +70,16 @@ const ITEMS: Array<[string, string, React.ReactNode]> = [
       <li>This page uses OpenRouter's real traffic, whose 63 input tokens per output load prefill harder than the benchmark sessions, and median provider prices rather than list.</li>
       <li>DeepSeek's <a href="https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md">$38 of revenue per GPU-hour</a> is a lab serving its own model on its own stack, with capacity that scales with demand.</li>
       <li>Serving software is improving fast. 25% more tokens per GPU takes the margin from {contract}% to {fasterContract}% on the contract and from {onDemand}% to {fasterOnDemand}% on demand.</li>
+    </ul>
+  </>],
+  ['faq-levers', 'How would a provider raise the margin beyond these controls?', <>
+    <p>The throughput here is one measured run, so a software gain reaches the page only as a higher curve. On OpenRouter's traffic a GB200 spends about {fmtPct(prefillShare)} of its time on prefill (fresh input) and {fmtPct(1 - prefillShare)} on decode (output), which sets the size of each lever on the default day:</p>
+    <ul>
+      <li>cache hits: each point is about {fmtPct(cachePoint)} of capacity, and 5 points more ({fmtPct(di.cacheHit)} to {fmtPct(di.cacheHit + 0.05)}) add {fmtUsdInt(cacheUsd)} a day. Routing a conversation back to the rack that holds its cache, and keeping caches longer in GPU and CPU memory, is what moves it</li>
+      <li>faster prefill, from attention and FP4 GEMM kernels and chunk sizes tuned to the context lengths: 20% faster is {fmtPct(prefillGain)} more capacity, about {fmtUsdInt(moreTokensUsd(1 + prefillGain))} a day</li>
+      <li>faster decode, from speculative decoding (the run already drafts up to 6 tokens a step with EAGLE), MoE kernels and wider expert parallelism: 20% faster is {fmtPct(decodeGain)} more capacity, about {fmtUsdInt(moreTokensUsd(1 + decodeGain))} a day, because decode is the smaller share on this traffic</li>
+      <li>the prefill-to-decode split: the page assumes the ideal split for the traffic, and a real deployment loses about {tilingLoss}% to worker block sizes unless it is tuned to what it serves</li>
+      <li>selling more of the capacity: 10 more points of utilization add {fmtUsdInt(utilUsd)} a day; batch or off-peak pricing and a second model on the rack fill the quiet hours</li>
     </ul>
   </>],
   ['faq-glm', 'Why GLM-5.3?', <>It is MIT-licensed, among the most used models on <a href={glm.mix.url}>OpenRouter</a>, mostly by coding agents, and InferenceX publishes agentic benchmarks for it on GB200 and GB300. The repository also models DeepSeek V4 Pro.</>],
