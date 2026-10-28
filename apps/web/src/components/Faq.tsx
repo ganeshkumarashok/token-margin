@@ -27,7 +27,7 @@ const ITEMS: Array<[string, React.ReactNode]> = [
     <p>The GB200 throughput comes from the run with 24 prefill and 16 decode GPUs in InferenceX's public <a href={`${IX}/blob/4416f5e2f66c999d718573736388f102023ab562/inferencex-e2e/benchmarks/multi_node/srt-slurm-recipes/glm5.2/sglang/gb200-fp4/agentx/disagg-variants.yaml#L303`}>recipe</a> (<a href={`${IX}/actions/runs/39765601214/attempts/2`}>run logs</a>). It uses:</p>
     <ul>
       <li>NVIDIA Dynamo in front of SGLang, both development builds from October 2026</li>
-      <li>separate GPUs for prefill (3 workers of 8) and decode (16)</li>
+      <li>prefill and decode on separate GPUs: 24 for prefill (three workers of 8 GPUs) and 16 for decode (one worker), 40 GPUs in all, with throughput reported per GPU</li>
       <li>NVFP4 weights and an FP8 KV cache</li>
       <li>speculative decoding with EAGLE, up to 6 draft tokens per step</li>
       <li>experts spread across the 16 decode GPUs, with data-parallel attention</li>
