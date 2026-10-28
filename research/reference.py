@@ -16,7 +16,7 @@ CURVES_DSV4={"gb200":[(80.5,798.6),(93.9,641.4),(95.8,632.5),(104.6,309.4),(137.
 RACK={"gb200":dict(gpus=72,price=3.9e6,itKw=120.0,rent=10.50,contract=5.85),
       "gb300":dict(gpus=72,price=5.0e6,itKw=132.0,rent=12.42,contract=6.60)}
 # per model: curves, prefill rate per rack, traffic mix, prices (floor, median, list)
-MODELS={"glm53":dict(curves=None,pf={"gb200":3200.0,"gb300":3200.0},io=63.0,c=0.9,
+MODELS={"glm53":dict(curves=None,pf={"gb200":2600.0,"gb300":3200.0},io=63.0,c=0.9,
            prices={"floor":(0.5625,0.125,2.50),"median":(1.12,0.14,4.40),"list":(1.40,0.26,4.40)}),
         "dsv4pro":dict(curves=CURVES_DSV4,pf={"gb200":7700.0,"gb300":9000.0},io=42.0,c=0.84,
            prices={"floor":(0.66,0.022,1.98),"median":(0.45,0.132,3.96),"list":(1.32,0.132,3.96)})}

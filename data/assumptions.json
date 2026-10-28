@@ -732,14 +732,14 @@
             ]
           ],
           "prefillRate": {
-            "value": 3200,
+            "value": 2600,
             "range": [
               2400,
               8000
             ],
             "unit": "uncached input tok/s per prefill GPU, agentic traces",
             "source": "inferencex-agentx",
-            "note": "InferenceX AgentX GLM runs: output per all GPUs x all GPUs x uncached input per output / prefill GPUs is ~3.2K on both racks across 8-24 prefill GPUs (prefill binds)."
+            "note": "InferenceX AgentX GLM run of 2026-10-23, 24 prefill + 16 decode GPUs at 94.7 tok/s per user: 312.2 x 40 GPUs x 5 uncached input per output / 24 prefill GPUs = 2,600 (2,540-2,640 across the configurations near 95-130 tok/s per user)."
           }
         },
         "gb300": {
@@ -782,7 +782,7 @@
             ],
             "unit": "uncached input tok/s per prefill GPU, agentic traces",
             "source": "inferencex-agentx",
-            "note": "InferenceX AgentX GLM runs: output per all GPUs x all GPUs x uncached input per output / prefill GPUs is ~3.2K on both racks across 8-24 prefill GPUs (prefill binds)."
+            "note": "InferenceX AgentX GLM run of 2026-10-20, 12 prefill + 8 decode GPUs at 94.7 tok/s per user: 393 x 20 GPUs x 5 uncached input per output / 12 prefill GPUs = 3,275 (3,040-3,280 across the configurations near 95-130 tok/s per user)."
           }
         }
       },
