@@ -23,7 +23,7 @@
         ],
         "unit": "USD per GPU-hour, on-demand list",
         "source": "coreweave-pricing",
-        "note": "CoreWeave GB200 NVL72, $42.00/hr per 4-GPU instance, full racks of 18 only: $756/rack-hr. AWS u-p6e-gb200x72 Capacity Block $761.90/rack-hr. Oracle $16.00, Azure $27.04 per GPU-hr pay-as-you-go."
+        "note": "CoreWeave GB200 NVL72: $42.00/hr per 4-GPU node (gb200-4x); its docs deploy NVL72 only as full racks of 18 nodes, so $756/rack-hr. AWS u-p6e-gb200x72 Capacity Block $761.90/rack-hr. Oracle $16.00, Azure $27.04 per GPU-hr pay-as-you-go."
       },
       "itKw": {
         "value": 120,
@@ -506,7 +506,7 @@
       "kind": "assumption"
     },
     "coreweave-pricing": {
-      "title": "CoreWeave pricing: GB200 NVL72 $42.00/hr per 4-GPU instance ($10.50/GPU-hr), full racks only",
+      "title": "CoreWeave pricing: GB200 NVL72 $42.00/hr per 4-GPU node ($10.50/GPU-hr)",
       "url": "https://www.coreweave.com/pricing",
       "date": "2026-10-25",
       "kind": "primary"
@@ -659,6 +659,12 @@
       "title": "FineServe (2026): on a global multi-model inference marketplace (PPIO, 1.48B requests, 57 models), \"we do not observe pronounced diurnal or tidal patterns in request volume\"",
       "url": "https://arxiv.org/abs/2607.19349",
       "date": "2026",
+      "kind": "primary"
+    },
+    "coreweave-nvl72-docs": {
+      "title": "CoreWeave docs: NVL72-powered instances must be deployed as full racks of 18 nodes",
+      "url": "https://docs.coreweave.com/platform/instances/nvl72",
+      "date": "2026-10-27",
       "kind": "primary"
     }
   },

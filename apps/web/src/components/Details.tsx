@@ -14,7 +14,7 @@ function sourcesFor(model: ModelId): string[] {
   const m = A.models[model];
   return [
     m.curves.gb200.source, m.mix.source, m.pricePresets.median.source, ...(model === 'glm53' ? ['zai-pricing'] : []),
-    'coreweave-pricing', 'verda-pricing', 'contracts-2026', 'semianalysis-gb200-capex', 'datagravity-nvl72-cost',
+    'coreweave-pricing', 'coreweave-nvl72-docs', 'verda-pricing', 'contracts-2026', 'semianalysis-gb200-capex', 'datagravity-nvl72-cost',
     'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'inferencex-tco-availability', 'utilization-pattern-2026', ...(model === 'glm53' ? ['hf-glm-5.3'] : []),
   ].filter((id, k, all) => A.sources[id] && all.indexOf(id) === k);
 }
@@ -77,7 +77,7 @@ export function Details({ m }: { m: Model }) {
       ]
     : [
         { label: 'Rent', note: `${d.gpus} GPUs × $${m.rent.toFixed(2)} × 24 h`, value: fmtUsdInt(d.rentUsd),
-          fn: s.rentBasis === 'contract' ? 'contracts-2026' : s.rack === 'gb200' ? 'coreweave-pricing' : 'verda-pricing' },
+          fn: s.rentBasis === 'contract' ? 'contracts-2026' : s.rack === 'gb200' ? ['coreweave-pricing', 'coreweave-nvl72-docs'] : 'verda-pricing' },
       ];
   if (i.overheadPct > 0) cost.push({ label: 'Overhead', note: `${fmtPct(i.overheadPct)} of revenue`, value: fmtUsdInt(d.overheadUsd) });
   cost.push({ label: 'Total', value: fmtUsdInt(d.costUsd), total: true });
@@ -117,7 +117,7 @@ export function Details({ m }: { m: Model }) {
       <ul className="method">
         <li>Throughput is InferenceX's agentic benchmark, which replays 393 Claude Code sessions {s.model === 'glm53' ? 'on GLM-5.2 (the same architecture as GLM-5.3) in NVFP4 on Dynamo SGLang' : 'on DeepSeek V4 Pro in FP4 on Dynamo vLLM and SGLang'}. Those sessions carry longer conversations than OpenRouter's average, and longer conversations are slower to serve, so real traffic may run somewhat faster than measured.</li>
         <li>The token mix comes from <a href={model.mix.url}>OpenRouter's {model.short} page</a>, which publishes daily prompt, completion and cached token counts across all providers. Over 30 days they work out to {model.mix.islOsl} input tokens per output token, with {fmtPct(model.mix.cacheHit)} of input served from cache (<a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a>). Prices are the {model.priceNotes.median} (low is {model.priceNotes.floor}; high is {model.priceNotes.list}).</li>
-        <li>Rent is the cheapest published whole-rack list price, or a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at.</li>
+        <li>Rent is the cheapest published list price for a whole rack (CoreWeave quotes $42 an hour per 4-GPU node and deploys NVL72 only as full racks of 18 nodes, so $756 an hour), or a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at.</li>
         <li>Utilization defaults to 65% whether the rack is rented or owned: one rack has to be ready for the busiest times, LLM traffic averages below its peaks, and a new provider has to win OpenRouter's routing to get traffic at all (see the FAQ).</li>
         <li>An owned rack's price, less its 10% resale value, is spread over 4 years as equal yearly payments that include 9% a year on the money tied up in it, the same as paying off a 9% loan. Support, operations, space and power come on top.</li>
       </ul>
