@@ -204,14 +204,18 @@ test('17. the traffic mix says it is computed from OpenRouter counts and links t
   await expect(page.getByTestId('s-cache').getByRole('link')).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
 });
 
-test('18. FAQ and sources start folded; a footnote opens the sources at its entry', async ({ page }) => {
+test('18. FAQ and sources start folded; a question opens on its own; a footnote opens the sources at its entry', async ({ page }) => {
   await page.goto('/');
   const faq = page.getByTestId('faq');
   await expect(faq).not.toHaveAttribute('open', '');
   await expect(faq.getByText('How is "63 input tokens per output" worked out?')).toBeHidden();
-  await faq.locator('summary').click();
-  await expect(faq.getByText('How is "63 input tokens per output" worked out?')).toBeVisible();
-  await expect(faq).toContainText('62.7 to 1');
+  await faq.locator('summary').first().click();
+  const ratio = faq.locator('#faq-ratio');
+  await expect(ratio.locator('summary')).toHaveText('How is "63 input tokens per output" worked out?');
+  await expect(ratio.getByText('62.7 to 1')).toBeHidden();
+  await ratio.locator('summary').click();
+  await expect(ratio.getByText('62.7 to 1')).toBeVisible();
+  await expect(faq.locator('#faq-setup').getByText('NVIDIA Dynamo')).toBeHidden();
   const sources = page.getByTestId('sources');
   await expect(sources.locator('ol')).toBeHidden();
   await page.getByTestId('receipt').locator('sup a').first().click();
@@ -234,4 +238,14 @@ test('19. the cost box shows the rent the slider sets, and each way of renting k
   await expect(contract).toHaveText(/\$565\/hr$/);
   await page.getByRole('radio', { name: 'GB300' }).click();
   await expect(contract).toHaveText(/\$475\/hr$/);
+});
+
+test('20. the utilization hint opens the FAQ at its own entry; the link works on its own', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'why 65% by default' }).click();
+  await expect(page).toHaveURL(/#faq-utilization$/);
+  await expect(page.locator('#faq-utilization').getByText('0.84 × 0.82 × 0.95 ≈ 65%')).toBeVisible();
+  await expect(page.locator('#faq-utilization')).toBeInViewport();
+  await page.goto('/#faq-owning');
+  await expect(page.locator('#faq-owning').getByText('per GPU-hour all-in')).toBeVisible();
 });

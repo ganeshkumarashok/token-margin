@@ -3,6 +3,7 @@ import { curveBounds, curveFor, evaluate, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM,
 import { A } from '../data';
 import { breakEven, settingsForMode, type Model } from '../state/useModel';
 import { REPO } from '../links';
+import { openFaqEntry } from './Faq';
 
 interface Mark { v: number; label: string }
 
@@ -68,11 +69,6 @@ function Seg<T extends string>({ value, options, onChange, label }: {
 
 type Cost = 'onDemand' | 'contract' | 'own';
 
-/** The FAQ is folded; open it before the browser jumps to it. */
-const openFaq = () => {
-  const el = document.getElementById('faq');
-  if (el instanceof HTMLDetailsElement) el.open = true;
-};
 
 export function Controls({ m }: { m: Model }) {
   const { settings: s, update } = m;
@@ -152,7 +148,7 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
         zero={zero('utilization', [0, 1])} zeroLabel={fmtPct(zero('utilization', [0, 1]))}
-        hint={<>share of the rack's measured throughput you sell; <a href="#faq" onClick={openFaq}>why 65% by default</a></>} />
+        hint={<>share of the rack's measured throughput you sell; <a href="#faq-utilization" onClick={() => openFaqEntry('faq-utilization')}>why 65% by default</a></>} />
 
       <div className="prices">
         <span className="plabel">Token price</span>
