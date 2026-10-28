@@ -95,6 +95,9 @@ export function Controls({ m }: { m: Model }) {
   // Capacity lost per point of cache hit on this traffic: one more point of misses, everything else as set.
   const lessCache = evaluate(inputsFromSettings(A, { ...s, cacheHit: Math.max(0, s.cacheHit - 0.01) }), m.points).daily.capacityPerGpu;
   const cachePointPct = 1 - lessCache / m.result.daily.capacityPerGpu;
+  // Each way of renting shows the rent it is modeled at: its list price until the slider moves it.
+  const listRent = (mode: 'onDemand' | 'contract') => (mode === 'contract' ? rack.contractUsdPerGpuHr : rack.rentUsdPerGpuHr).value;
+  const rentIn = (mode: 'onDemand' | 'contract') => (cost === mode ? m.rent : m.modes[mode].rentUsdPerGpuHr ?? listRent(mode));
 
   return (
     <section className="controls" aria-label="Assumptions">
@@ -103,8 +106,8 @@ export function Controls({ m }: { m: Model }) {
           options={[{ id: 'gb200', text: 'GB200' }, { id: 'gb300', text: 'GB300' }]} />
         <Seg label="Cost" value={cost} onChange={setCost}
           options={[
-            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rack.rentUsdPerGpuHr.value) },
-            { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rack.contractUsdPerGpuHr.value) },
+            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rentIn('onDemand')) },
+            { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rentIn('contract')) },
             { id: 'own', text: 'Own, all-in', sub: `${fmtUsdInt(ownPerHour)}/hr` },
           ]} />
       </div>

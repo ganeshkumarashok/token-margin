@@ -219,3 +219,19 @@ test('18. FAQ and sources start folded; a footnote opens the sources at its entr
   await expect(page).toHaveURL(/#src-1$/);
   await expect(page.locator('#src-1')).toBeInViewport();
 });
+
+test('19. the cost box shows the rent the slider sets, and each way of renting keeps its own', async ({ page }) => {
+  await page.goto('/');
+  const contract = page.getByRole('radio', { name: /Rent, 3-yr contract/ });
+  const onDemand = page.getByRole('radio', { name: /Rent on demand/ });
+  await expect(contract).toHaveText(/\$421\/hr$/);
+  await nudge(page, 's-rent', 'ArrowRight', 40);
+  await expect(contract).toHaveText(/\$565\/hr$/);
+  await expect(page.getByTestId('s-rent')).toContainText('$565/hr · $7.85/GPU');
+  await expect(page.getByTestId('cost')).toHaveText('$13,565');
+  await onDemand.click();
+  await expect(onDemand).toHaveText(/\$756\/hr$/);
+  await expect(contract).toHaveText(/\$565\/hr$/);
+  await page.getByRole('radio', { name: 'GB300' }).click();
+  await expect(contract).toHaveText(/\$475\/hr$/);
+});
