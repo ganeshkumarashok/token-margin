@@ -18,9 +18,6 @@ function fasterWith(over: Partial<Settings>) {
   const d = dayWith(over);
   return Math.round((1 - A.defaults.overheadPct - (d.costUsd - d.overheadUsd) / (1.25 * d.revenueUsd)) * 100);
 }
-// Owned GB200 at the defaults: all-in cost per GPU-hour, before overhead.
-const ownDay = dayWith({ tenure: 'own' });
-const ownPerGpuHr = (ownDay.costUsd - ownDay.overheadUsd) / (ownDay.gpus * 24);
 const cheapRent = marginWith({ rack: 'gb300', rentUsdPerGpuHr: 5, pricePreset: 'list', utilization: 0.6 });
 const contract = marginWith({});
 const onDemand = marginWith({ rentBasis: 'onDemand' });
@@ -79,7 +76,7 @@ const ITEMS: Array<[string, string, React.ReactNode]> = [
   </>],
   ['faq-benchmark', 'Why multiply the benchmark by utilization?', <>InferenceX measures the most the rack can produce while every user still gets 95 tok/s. Utilization is the share of that with paying traffic behind it; lighter demand gives users faster responses at the same price per token. Read differently, the benchmark's cache accounting puts real traffic at 231 to 308 tokens/s per GPU rather than 269.</>],
   ['faq-speed', 'Why does faster output per user lower profit?', <>A GPU serves many users at once. Faster output for each means fewer users per GPU, so the rack makes fewer tokens in total. Prices stay fixed here; fast tiers on OpenRouter charge about 1.5×.</>],
-  ['faq-owning', 'Why is owning so much cheaper than renting on demand?', <>An owned GB200 costs about ${ownPerGpuHr.toFixed(2)} per GPU-hour all-in, against ${rack.rentUsdPerGpuHr.value.toFixed(2)} on demand. The on-demand price pays for the cloud's margin, its spare capacity and the right to hand the rack back. Owning or a contract trades that flexibility for price.</>],
+  ['faq-owning', 'Why is owning so much cheaper than renting on demand?', <>The on-demand price pays for the cloud's margin, its spare capacity and the right to hand the rack back; owning or a contract trades that flexibility for price. Pick Own above to see the cost broken into depreciation, financing, space, support, operations and power.</>],
   ['faq-nvidia', 'What about NVIDIA\'s "$5M in, $75M of tokens out"?', <>That needs 5,505 output tokens/s per GPU, sold every second for three years. On agentic traffic InferenceX measures 312 on GB200 at 95 tok/s per user.</>],
   ['faq-overhead', 'What overhead is included, and what is left out?', <>0.5% of revenue by default: on-call engineering, customer support, billing and the API front end, assuming a lean team or one shared across many racks. A stand-alone rack would spend several times more. Owning adds $400 a day of hardware operations and 4% of the rack price a year for support and spares. Taxes, marketing and sales are left out.</>],
   ['faq-current', 'How current is this?', <>Prices, traffic and throughput are as of {A.version}. They move fast: GLM throughput on GB200 roughly quadrupled between August and October 2026, and new-contract rents rose through the year. Each data snapshot is tagged in the repository.</>],
