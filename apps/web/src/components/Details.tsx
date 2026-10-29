@@ -111,16 +111,7 @@ export function Details({ m }: { m: Model }) {
           </tr>
         </tbody>
       </table>
-      <p className="excluded">Not included: sales, customer support, payment fees and taxes. The overhead slider adds the first three. Figures are rounded for display; totals are computed from unrounded values.</p>
-
-      <h2>How it works</h2>
-      <ul className="method">
-        <li>Throughput is InferenceX's agentic benchmark, which replays 393 Claude Code sessions {s.model === 'glm53' ? 'on GLM-5.2 (the same architecture as GLM-5.3) in NVFP4 on Dynamo SGLang' : 'on DeepSeek V4 Pro in FP4 on Dynamo vLLM and SGLang'}. Those sessions carry longer conversations than OpenRouter's average, and longer conversations are slower to serve, so real traffic may run somewhat faster than measured.</li>
-        <li>The token mix comes from <a href={model.mix.url}>OpenRouter's {model.short} page</a>, which publishes daily prompt, completion and cached token counts across all providers. Over 30 days they work out to {model.mix.islOsl} input tokens per output token, with {fmtPct(model.mix.cacheHit)} of input served from cache (<a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a>). Prices are the {model.priceNotes.median} (low is {model.priceNotes.floor}; high is {model.priceNotes.list}).</li>
-        <li>Rent defaults to a 3-year multi-rack contract at the 75th percentile of what 2026 deals are reported at, because that is how these racks are sold. GB200 and GB300 racks are hard to buy on demand at all; the on-demand option uses the cheapest list price as an assumed equivalent ($756 an hour: CoreWeave's $42 an hour per 4-GPU node, sold as full racks).</li>
-        <li>Utilization defaults to 65% whether the rack is rented or owned: one rack has to be ready for the busiest times, LLM traffic averages below its peaks, and a new provider has to win OpenRouter's routing to get traffic at all (see the FAQ).</li>
-        <li>An owned rack's price, less its 10% resale value, is spread over 4 years as equal yearly payments that include 9% a year on the money tied up in it, the same as paying off a 9% loan. Support, operations, space and power come on top.</li>
-      </ul>
+      <p className="excluded">Not included: taxes, and sales and marketing beyond the overhead slider. Totals are computed before rounding.</p>
 
       <Faq />
 
@@ -140,7 +131,7 @@ export function Details({ m }: { m: Model }) {
 
       <footer className="footer" data-testid="disclaimer">
         <p>{DISCLAIMER}</p>
-        <p className="muted">Data as of {A.version}. Source code, raw data, the model and its tests: <a href={REPO}>{REPO.replace('https://', '')}</a>. Page views are counted with Vercel Web Analytics, which uses no cookies.</p>
+        <p className="muted">Data as of {A.version} · code, data and tests on <a href={REPO}>GitHub</a> · page views are counted with Vercel Web Analytics, which uses no cookies.</p>
         <Cite settings={s} />
       </footer>
     </section>

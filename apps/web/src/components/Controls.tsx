@@ -2,8 +2,7 @@ import { useId, type ReactNode } from 'react';
 import { curveBounds, curveFor, evaluate, fmtInt, fmtPct, fmtUsdInt, fmtUsdPerM, inputsFromSettings, type PricePresetId, type Settings } from '@token-margin/engine';
 import { A } from '../data';
 import { breakEven, settingsForMode, type Model } from '../state/useModel';
-import { REPO } from '../links';
-import { openFaqEntry } from './Faq';
+import { FaqLink } from './Faq';
 
 interface Mark { v: number; label: string }
 
@@ -116,15 +115,15 @@ export function Controls({ m }: { m: Model }) {
             { v: rack.contractUsdPerGpuHr.value, label: `3-yr contract ${perRack(rack.contractUsdPerGpuHr.value)}` },
             { v: rack.rentUsdPerGpuHr.value, label: `on demand ${perRack(rack.rentUsdPerGpuHr.value)}` },
           ]}
-          hint={s.rentBasis === 'contract'
-            ? (s.rack === 'gb200' ? 'latest GB200 contract with public terms: $261/hr over 3 years (HIVE to Bell/Cohere, SEC filing, Jun 2026); new contracts have priced higher since' : 'latest GB300 contract with public terms: $285/hr over 5 years (HIVE, SEC filing, Aug 2026); new contracts have priced higher since')
-            : (s.rack === 'gb200' ? 'hard to buy on demand at all; list prices stand in as an equivalent: CoreWeave $756/hr ($42/hr per 4-GPU node, sold as full racks), AWS $762/hr (capacity block), Oracle $1,152/hr' : 'hard to buy on demand at all; list prices stand in as an equivalent: Verda $894/hr, Oracle $1,296/hr')} />
+          hint={<>{s.rentBasis === 'contract'
+            ? (s.rack === 'gb200' ? 'last public 3-yr contract: $261/hr (HIVE, Jun 2026); newer deals price higher' : 'last public 5-yr contract: $285/hr (HIVE, Aug 2026); newer deals price higher')
+            : (s.rack === 'gb200' ? 'hard to buy on demand; the cheapest list price stands in (CoreWeave, $42/hr per 4-GPU node)' : 'hard to buy on demand; the cheapest list price stands in (Verda)')} · <FaqLink id="faq-rent">how rent is set</FaqLink></>} />
       ) : (
         <Slider profitable={profitNow >= 0} testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
           display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M · $${((m.result.daily.costUsd - m.result.daily.overheadUsd) / (rack.gpus * 24)).toFixed(2)}/GPU-hr all-in`}
           min={range('rackPriceMult')[0]} max={range('rackPriceMult')[1]} step={0.01} onChange={(v) => update({ rackPriceMult: v })}
           zero={zero('rackPriceMult', [range('rackPriceMult')[0], 3])} zeroLabel={`$${(((zero('rackPriceMult', [range('rackPriceMult')[0], 3]) ?? 0) * rack.priceUsd.value) / 1e6).toFixed(1)}M`}
-          hint={`${s.rack === 'gb200' ? 'SemiAnalysis estimate including networking, storage and integration' : 'Data Gravity, from small orders transacted in Aug 2026'}. Depreciated over 4 years to 10% resale, financed at 9%`} />
+          hint={<>{s.rack === 'gb200' ? 'SemiAnalysis estimate, all-in' : 'Data Gravity, small orders in Aug 2026'} · 4 years to 10% resale, 9% financing · <FaqLink id="faq-owning">how owning is costed</FaqLink></>} />
       )}
 
       {s.tenure === 'own' && (
@@ -133,7 +132,7 @@ export function Controls({ m }: { m: Model }) {
           min={range('electricityUsdPerKwh')[0]} max={range('electricityUsdPerKwh')[1]} step={0.005} onChange={(v) => update({ electricityUsdPerKwh: v })}
           zero={zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2])} zeroLabel={`${((zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2]) ?? 0) * 100).toFixed(0)}¢/kWh`}
           marks={[{ v: 0.0977, label: 'US industrial 9.8¢' }, { v: 0.1453, label: 'US commercial 14.5¢' }]}
-          hint="US commercial average, Jul 2026 (EIA); industrial 9.8¢. The bill grows with utilization: an unsold GPU still draws about a third of full power, and cooling adds 20%" />
+          hint="US commercial average, Jul 2026 (EIA) · an idle GPU draws about a third of full power; cooling adds 20%" />
       )}
 
       {s.tenure === 'own' && (
@@ -142,13 +141,13 @@ export function Controls({ m }: { m: Model }) {
           min={range('opsUsdPerRackDay')[0]} max={range('opsUsdPerRackDay')[1]} step={10} onChange={(v) => update({ opsUsdPerRackDay: v })}
           zero={zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000])} zeroLabel={`$${fmtInt(zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000]) ?? 0)}/day`}
           marks={[{ v: 220, label: 'at CoreWeave scale: $220/day' }]}
-          hint={`on-call engineers, remote hands, insurance and monitoring for a single rack, an estimate; a fleet the size of CoreWeave's spends about $220 per rack-day. Support contracts and spares add ${fmtUsdInt(m.result.daily.otherOpexUsd)}/day`} />
+          hint={`on-call engineers, remote hands, insurance and monitoring, an estimate · support and spares add ${fmtUsdInt(m.result.daily.otherOpexUsd)}/day`} />
       )}
 
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
         zero={zero('utilization', [0, 1])} zeroLabel={fmtPct(zero('utilization', [0, 1]))}
-        hint={<>share of the rack's measured throughput you sell; <a href="#faq-utilization" onClick={() => openFaqEntry('faq-utilization')}>why 65% by default</a></>} />
+        hint={<>share of the rack's measured throughput you sell · <FaqLink id="faq-utilization">why 65% by default</FaqLink></>} />
 
       <div className="prices">
         <span className="plabel">Token price</span>
@@ -162,22 +161,22 @@ export function Controls({ m }: { m: Model }) {
       <Slider profitable={profitNow >= 0} testId="s-ratio" label="Input tokens per output token" value={s.islOsl} display={`${Math.round(s.islOsl)} : 1`}
         min={range('islOsl')[0]} max={range('islOsl')[1]} step={1} onChange={(v) => update({ islOsl: v })}
         zero={zero('islOsl', range('islOsl'))} zeroLabel={`${Math.round(zero('islOsl', range('islOsl')) ?? 0)} : 1`}
-        marks={[{ v: mix.islOsl, label: `OpenRouter ${model.short}, 30 days: ${mix.islOsl} : 1` }]} hint={<>computed from the daily prompt and completion token counts on <a href={mix.url}>OpenRouter's {model.short} page</a>: {mix.islOsl} : 1 over 30 days{mix.range ? `, ${mix.range.islOsl[0]} to ${mix.range.islOsl[1]} day to day` : ''} (<a href={`${REPO}/blob/main/research/openrouter_ratios.py`}>calculation</a>)</>} />
+        marks={[{ v: mix.islOsl, label: `OpenRouter ${model.short}, 30 days: ${mix.islOsl} : 1` }]} hint={<><a href={mix.url}>OpenRouter's {model.short} page</a>, 30 days: {mix.islOsl} : 1{mix.range ? ` (${mix.range.islOsl[0]} to ${mix.range.islOsl[1]} by day)` : ''} · <FaqLink id="faq-ratio">how it is worked out</FaqLink></>} />
 
       <Slider profitable={profitNow >= 0} testId="s-cache" label="Input served from cache" value={s.cacheHit} display={fmtPct(s.cacheHit)}
         min={range('cacheHit')[0]} max={range('cacheHit')[1]} step={0.01} onChange={(v) => update({ cacheHit: v })}
         zero={zero('cacheHit', range('cacheHit'))} zeroLabel={fmtPct(zero('cacheHit', range('cacheHit')))}
-        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, ...(mix.range ? [{ v: mix.range.cacheHit[0], label: `lowest day: ${fmtPct(mix.range.cacheHit[0])}` }] : [])]} hint={<>{fmtPct(mix.cacheHit)} of prompt tokens were served from cache across all {model.short} providers, from the daily cached-token counts on <a href={mix.url}>OpenRouter's page</a>{mix.range ? ` (${fmtPct(mix.range.cacheHit[0])} to ${fmtPct(mix.range.cacheHit[1])} day to day)` : ''}; agents resend their context each turn, and a conversation's later turns have to come back to the same rack to hit. Each point of cache hit is about {fmtPct(cachePointPct)} of capacity on this traffic: a miss is {Math.round(s.islOsl)} more fresh tokens to prefill per 100 output tokens. Cached input bills at {fmtUsdPerM(p.cacheUsdPerM)} per million instead of {fmtUsdPerM(p.inUsdPerM)}, and skips prefill</>} />
+        marks={[{ v: mix.cacheHit, label: `OpenRouter ${model.short}, all providers: ${fmtPct(mix.cacheHit)}` }, ...(mix.range ? [{ v: mix.range.cacheHit[0], label: `lowest day: ${fmtPct(mix.range.cacheHit[0])}` }] : [])]} hint={<><a href={mix.url}>OpenRouter</a>, all providers: {fmtPct(mix.cacheHit)}{mix.range ? ` (${fmtPct(mix.range.cacheHit[0])} to ${fmtPct(mix.range.cacheHit[1])} by day)` : ''} · each point is about {fmtPct(cachePointPct)} of capacity · <FaqLink id="faq-cache">why it matters so much</FaqLink></>} />
 
       <Slider profitable={profitNow >= 0} testId="s-overhead" label="Overhead" value={s.overheadPct} display={`${fmtPct(s.overheadPct)} of revenue`}
         min={range('overheadPct')[0]} max={range('overheadPct')[1]} step={range('overheadPct')[2]} onChange={(v) => update({ overheadPct: v })}
         zero={zero('overheadPct', range('overheadPct'))} zeroLabel={`${fmtPct(zero('overheadPct', range('overheadPct')))} of revenue`}
-        hint="on-call engineering, customer support, billing and the API front end. 0.5% by default assumes a lean team or one shared across many racks; the share falls with scale, and a stand-alone rack would spend more. The rack price already covers CPUs, networking and storage" />
+        hint={<>on-call engineering, support, billing and the API front end · <FaqLink id="faq-overhead">what is included</FaqLink></>} />
 
       <Slider profitable={profitNow >= 0} testId="s-speed" label="Output speed per user" value={s.interactivity} display={`${Math.round(s.interactivity)} tok/s`}
         min={iLo} max={iHi} step={0.5} onChange={(v) => update({ interactivity: v })}
         zero={zero('interactivity', [iLo, iHi])} zeroLabel={`${Math.round(zero('interactivity', [iLo, iHi]) ?? 0)} tok/s`}
-        hint="tokens/s each user sees on the slowest 10% of requests (p90). Faster output per user means fewer users share each GPU, so the rack makes fewer tokens. Price stays fixed here; fast tiers on OpenRouter charge about 1.5×." />
+        hint={<>p90 tokens/s per user; faster per user means fewer users per GPU · <FaqLink id="faq-speed">why it lowers profit</FaqLink></>} />
 
       {!m.isDefault && (
         <button type="button" className="reset" onClick={m.reset}>Reset to defaults</button>

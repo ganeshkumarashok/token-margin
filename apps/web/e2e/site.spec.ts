@@ -198,10 +198,11 @@ test('16. the page can be cited, and the citation follows the reader\'s settings
 test('17. the traffic mix says it is computed from OpenRouter counts and links the source', async ({ page }) => {
   await page.goto('/');
   const ratio = page.getByTestId('s-ratio');
-  await expect(ratio).toContainText('computed from the daily prompt and completion token counts');
+  await expect(ratio).toContainText('30 days: 63 : 1 (35 to 85 by day)');
   await expect(ratio.getByRole('link', { name: "OpenRouter's GLM-5.3 page" })).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
-  await expect(ratio.getByRole('link', { name: 'calculation' })).toHaveAttribute('href', /research\/openrouter_ratios\.py$/);
-  await expect(page.getByTestId('s-cache').getByRole('link')).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
+  await ratio.getByRole('link', { name: 'how it is worked out' }).click();
+  await expect(page.locator('#faq-ratio').getByRole('link', { name: 'calculation' })).toHaveAttribute('href', /research\/openrouter_ratios\.py$/);
+  await expect(page.getByTestId('s-cache').getByRole('link', { name: 'OpenRouter' })).toHaveAttribute('href', 'https://openrouter.ai/z-ai/glm-5.3');
 });
 
 test('18. FAQ and sources start folded; a question opens on its own; a footnote opens the sources at its entry', async ({ page }) => {

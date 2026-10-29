@@ -167,8 +167,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .faq details > div { margin: 6px 0 10px 20px; }
 .faq details > div p { margin: 0; }
 .faq details > div ul { margin: 6px 0; padding-left: 18px; display: grid; gap: 4px; }
-.method a, .faq a { color: inherit; }
-.method { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.faq a { color: inherit; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-size: 14px; }
 .sources li { overflow-wrap: anywhere; }
 .sources .muted, .footer a { white-space: nowrap; }
