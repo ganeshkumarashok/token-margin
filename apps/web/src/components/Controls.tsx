@@ -53,13 +53,13 @@ function Slider(p: SliderProps) {
 }
 
 function Seg<T extends string>({ value, options, onChange, label }: {
-  value: T; options: Array<{ id: T; text: string; sub?: string }>; onChange: (v: T) => void; label: string;
+  value: T; options: Array<{ id: T; text: string; sub?: string; note?: string }>; onChange: (v: T) => void; label: string;
 }) {
   return (
     <div className="seg" role="radiogroup" aria-label={label}>
       {options.map((o) => (
         <button key={o.id} type="button" role="radio" aria-checked={o.id === value} onClick={() => onChange(o.id)}>
-          {o.text}{o.sub ? <span className="seg-sub">{o.sub}</span> : null}
+          {o.text}{o.sub ? <span className="seg-sub">{o.sub}</span> : null}{o.note ? <span className="seg-note">{o.note}</span> : null}
         </button>
       ))}
     </div>
@@ -101,7 +101,7 @@ export function Controls({ m }: { m: Model }) {
           options={[{ id: 'gb200', text: 'GB200' }, { id: 'gb300', text: 'GB300' }]} />
         <Seg label="Cost" value={cost} onChange={setCost}
           options={[
-            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rentIn('onDemand')) },
+            { id: 'onDemand', text: 'Rent on demand', sub: perRack(rentIn('onDemand')), note: 'hard to buy' },
             { id: 'contract', text: 'Rent, 3-yr contract', sub: perRack(rentIn('contract')) },
             { id: 'own', text: 'Own, all-in', sub: `${fmtUsdInt(ownPerHour)}/hr` },
           ]} />

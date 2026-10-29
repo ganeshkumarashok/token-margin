@@ -410,8 +410,8 @@ describe('T16 overhead as a share of revenue', () => {
     const up = daily(rent({ availability: 1 }), gb200);
     near(daily(rent(), gb200).outputTokens / up.outputTokens, 0.98, 1e-12);
   });
-  it('defaults carry 0.5% overhead and rent on a 3-year contract', () => {
-    expect(defaultSettings(A).overheadPct).toBe(0.005);
+  it('defaults carry 2% overhead and rent on a 3-year contract', () => {
+    expect(defaultSettings(A).overheadPct).toBe(0.02);
     expect(defaultSettings(A).rentBasis).toBe('contract');
     expect(() => daily({ ...inputs(), overheadPct: 1 }, gb200)).toThrow();
   });

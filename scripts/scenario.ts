@@ -67,7 +67,7 @@ out.push(md(['Model', 'Rack', 'Pay', 'Utilization', 'Capacity tok/s/GPU', 'Reven
   const o = run('own', 'gb200');
   const br = breakevens(r.i, curveFor(A, 'gb200'));
   const bo = breakevens(o.i, curveFor(A, 'gb200'));
-  out.push(`\nBreak-even utilization: renting on demand ${fmtPct(br.soldShareToBreakEven)}, owning ${fmtPct(bo.soldShareToBreakEven)}. Revenue per GPU-hour ${'$' + r.daily.revenuePerGpuHr.toFixed(2)} against rent of $${r.i.rentUsdPerGpuHr} and an owning cost of $${(o.daily.costUsd / (o.daily.gpus * 24)).toFixed(2)}.`);
+  out.push(`\nBreak-even utilization: renting ${A.defaults.rentBasis === 'contract' ? 'on a 3-year contract' : 'on demand'} ${fmtPct(br.soldShareToBreakEven)}, owning ${fmtPct(bo.soldShareToBreakEven)}. Revenue per GPU-hour ${'$' + r.daily.revenuePerGpuHr.toFixed(2)} against rent of $${r.i.rentUsdPerGpuHr} and an owning cost of $${(o.daily.costUsd / (o.daily.gpus * 24)).toFixed(2)}.`);
 }
 
 // 1. Presets × racks × tenure

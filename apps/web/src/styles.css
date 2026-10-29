@@ -101,6 +101,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .seg button + button { border-left: 1px solid var(--ink); }
 .seg button[aria-checked='true'] { background: var(--ink); color: var(--bg); }
 .seg-sub { display: block; margin-top: 3px; white-space: nowrap; font: 400 12px var(--mono); opacity: 0.8; }
+.seg-note { display: block; font: 400 11px/1.2 var(--sans); opacity: 0.7; }
 .seg button:focus-visible, .reset:focus-visible { outline: 2px solid var(--zero); outline-offset: 2px; }
 
 .slider { display: grid; gap: 4px; }
@@ -186,6 +187,7 @@ a { color: inherit; text-underline-offset: 2px; }
   .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
   .seg button { padding: 8px 6px; font-size: 13px; line-height: 1.25; }
   .seg-sub { font-size: 11px; }
+  .seg-note { font-size: 10px; }
   .eq { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 6px; }
   .eq .term:first-child { grid-column: 2; }
   .op { font-size: 26px; line-height: 1.3; }

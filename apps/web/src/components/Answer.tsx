@@ -15,7 +15,7 @@ export function Answer({ m }: { m: Model }) {
   const owning = s.tenure === 'own';
   const costNote = owning
     ? `${fmtUsdInt((d.costUsd - d.overheadUsd) / 24)}/hr all-in, owned`
-    : `${fmtUsdInt(m.rent * rack.gpus)}/hr ${s.rentBasis === 'contract' ? '3-yr contract' : 'on demand'}`;
+    : `${fmtUsdInt(m.rent * rack.gpus)}/hr ${s.rentBasis === 'contract' ? '3-yr contract' : 'on demand, hard to buy'}`;
   const loss = d.operatingProfitUsd < 0;
   const gross = i.overheadPct === 0;
   // Per GPU-hour: tokens sold, what each million output tokens (with its input) sells for, and what the GPU costs.

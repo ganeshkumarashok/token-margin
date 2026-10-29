@@ -15,7 +15,7 @@ function sourcesFor(model: ModelId): string[] {
   return [
     m.curves.gb200.source, m.mix.source, m.pricePresets.median.source, ...(model === 'glm53' ? ['zai-pricing'] : []),
     'coreweave-pricing', 'coreweave-nvl72-docs', 'verda-pricing', 'contracts-2026', 'semianalysis-gb200-capex', 'datagravity-nvl72-cost',
-    'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'inferencex-tco-availability', 'utilization-pattern-2026', ...(model === 'glm53' ? ['hf-glm-5.3'] : []),
+    'eia-5-6-a', 'cbre-colo', 'owning-opex-2026', 'stripe-pricing', 'inferencex-tco-availability', 'utilization-pattern-2026', ...(model === 'glm53' ? ['hf-glm-5.3'] : []),
   ].filter((id, k, all) => A.sources[id] && all.indexOf(id) === k);
 }
 
@@ -79,7 +79,7 @@ export function Details({ m }: { m: Model }) {
         { label: 'Rent', note: `${d.gpus} GPUs × $${m.rent.toFixed(2)} × 24 h`, value: fmtUsdInt(d.rentUsd),
           fn: s.rentBasis === 'contract' ? 'contracts-2026' : s.rack === 'gb200' ? ['coreweave-pricing', 'coreweave-nvl72-docs'] : 'verda-pricing' },
       ];
-  if (i.overheadPct > 0) cost.push({ label: 'Overhead', note: `${fmtPct(i.overheadPct)} of revenue`, value: fmtUsdInt(d.overheadUsd) });
+  if (i.overheadPct > 0) cost.push({ label: 'Overhead', note: `${fmtPct(i.overheadPct)} of revenue`, value: fmtUsdInt(d.overheadUsd), fn: 'stripe-pricing' });
   cost.push({ label: 'Total', value: fmtUsdInt(d.costUsd), total: true });
 
   return (

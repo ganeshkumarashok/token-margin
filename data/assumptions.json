@@ -150,7 +150,7 @@
     "costOfCapital": 0.09,
     "monthsToRevenue": 0,
     "rentBasis": "contract",
-    "overheadPct": 0.005,
+    "overheadPct": 0.02,
     "opsUsdPerRackDay": 400,
     "availability": 0.98,
     "utilizationByMode": {
@@ -491,6 +491,12 @@
       "title": "NVIDIA, Blackwell raises bar in InferenceMAX ($5M to $75M claim)",
       "url": "https://blogs.nvidia.com/blog/blackwell-inferencemax-benchmark-results",
       "date": "2025-10-09",
+      "kind": "primary"
+    },
+    "stripe-pricing": {
+      "title": "Stripe pricing: 2.9% + 30¢ per domestic card payment, 0.4% per paid invoice, 0.8% for ACH debit (capped at $5)",
+      "url": "https://stripe.com/pricing",
+      "date": "2026-10-28",
       "kind": "primary"
     },
     "rental-prices": {
