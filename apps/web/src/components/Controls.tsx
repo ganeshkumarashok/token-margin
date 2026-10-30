@@ -32,7 +32,13 @@ function Slider(p: SliderProps) {
     <div className="slider" data-testid={p.testId}>
       <label htmlFor={id}>
         <span>{p.label}</span>
-        <output htmlFor={id}>{p.display}</output>
+        {/* The break-even sits under the value, where its length cannot reflow the hint. */}
+        <span className="val">
+          <output htmlFor={id}>{p.display}</output>
+          {p.zero !== null
+            ? <span className="zl">break-even {p.zeroLabel}</span>
+            : <span className="zl none">{p.profitable ? 'profitable throughout' : 'a loss throughout'}</span>}
+        </span>
       </label>
       <div className="track">
         <input id={id} type="range" min={p.min} max={p.max} step={p.step} value={p.value}
@@ -44,10 +50,7 @@ function Slider(p: SliderProps) {
           <i className="zero" style={{ '--f': frac(p.zero, p.min, p.max) } as React.CSSProperties} title={`break-even ${p.zeroLabel}`} />
         )}
       </div>
-      <p className="hint">
-        {p.zero !== null ? <span className="zl">break-even {p.zeroLabel}</span> : <span className="zl none">{p.profitable ? 'profitable across the range' : 'loses money across the range'}</span>}
-        {p.hint ? <> · {p.hint}</> : null}
-      </p>
+      {p.hint ? <p className="hint">{p.hint}</p> : null}
     </div>
   );
 }
@@ -68,13 +71,22 @@ function Seg<T extends string>({ value, options, onChange, label }: {
 
 type Cost = 'onDemand' | 'contract' | 'own';
 
+/** Rows that open and close with a short height animation instead of appearing, so the controls below slide rather than jump. */
+function Fold({ open, children }: { open: boolean; children: ReactNode }) {
+  return (
+    <div className="fold-rows" data-open={open || undefined} {...({ inert: open ? undefined : '' } as Record<string, unknown>)}>
+      <div>{children}</div>
+    </div>
+  );
+}
 
 export function Controls({ m }: { m: Model }) {
   const { settings: s, update } = m;
   const rack = A.racks[s.rack];
   const range = (k: string) => A.ranges[k];
   const zero = (k: keyof Settings, [lo, hi]: [number, number, number] | [number, number]) => breakEven(s, k, lo, hi);
-  const cost: Cost = s.tenure === 'own' ? 'own' : s.rentBasis;
+  const owning = s.tenure === 'own';
+  const cost: Cost = owning ? 'own' : s.rentBasis;
   const setCost = (c: Cost) => m.setMode(c);
 
   const [iLo, iHi] = curveBounds(m.points);
@@ -117,7 +129,7 @@ export function Controls({ m }: { m: Model }) {
           ]}
           hint={<>{s.rentBasis === 'contract'
             ? (s.rack === 'gb200' ? 'last public 3-yr contract: $261/hr (HIVE, Jun 2026); newer deals price higher' : 'last public 5-yr contract: $285/hr (HIVE, Aug 2026); newer deals price higher')
-            : (s.rack === 'gb200' ? 'hard to buy on demand; the cheapest list price stands in (CoreWeave, $42/hr per 4-GPU node)' : 'hard to buy on demand; the cheapest list price stands in (Verda)')} · <FaqLink id="faq-rent">how rent is set</FaqLink></>} />
+            : (s.rack === 'gb200' ? 'hard to buy; CoreWeave\'s cheapest list price stands in ($42/hr per 4-GPU node)' : 'hard to buy; Verda\'s cheapest list price stands in')} · <FaqLink id="faq-rent">how rent is set</FaqLink></>} />
       ) : (
         <Slider profitable={profitNow >= 0} testId="s-capex" label="Rack price, all-in" value={s.rackPriceMult}
           display={`$${((rack.priceUsd.value * s.rackPriceMult) / 1e6).toFixed(2)}M · $${((m.result.daily.costUsd - m.result.daily.overheadUsd) / (rack.gpus * 24)).toFixed(2)}/GPU-hr all-in`}
@@ -126,23 +138,20 @@ export function Controls({ m }: { m: Model }) {
           hint={<>{s.rack === 'gb200' ? 'SemiAnalysis estimate, all-in' : 'Data Gravity, small orders in Aug 2026'} · 4 years to 10% resale, 9% financing · <FaqLink id="faq-owning">how owning is costed</FaqLink></>} />
       )}
 
-      {s.tenure === 'own' && (
+      <Fold open={owning}>
         <Slider profitable={profitNow >= 0} testId="s-power" label="Power price" value={s.electricityUsdPerKwh}
           display={`${(s.electricityUsdPerKwh * 100).toFixed(1)}¢/kWh · ${fmtUsdInt(m.result.daily.electricityUsd)}/day`}
           min={range('electricityUsdPerKwh')[0]} max={range('electricityUsdPerKwh')[1]} step={0.005} onChange={(v) => update({ electricityUsdPerKwh: v })}
-          zero={zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2])} zeroLabel={`${((zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2]) ?? 0) * 100).toFixed(0)}¢/kWh`}
+          zero={owning ? zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2]) : null} zeroLabel={`${((owning ? zero('electricityUsdPerKwh', [range('electricityUsdPerKwh')[0], 2]) ?? 0 : 0) * 100).toFixed(0)}¢/kWh`}
           marks={[{ v: 0.0977, label: 'US industrial 9.8¢' }, { v: 0.1453, label: 'US commercial 14.5¢' }]}
           hint="US commercial average, Jul 2026 (EIA) · an idle GPU draws about a third of full power; cooling adds 20%" />
-      )}
-
-      {s.tenure === 'own' && (
         <Slider profitable={profitNow >= 0} testId="s-ops" label="Operations" value={s.opsUsdPerRackDay}
           display={`$${Math.round(s.opsUsdPerRackDay)}/day`}
           min={range('opsUsdPerRackDay')[0]} max={range('opsUsdPerRackDay')[1]} step={10} onChange={(v) => update({ opsUsdPerRackDay: v })}
-          zero={zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000])} zeroLabel={`$${fmtInt(zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000]) ?? 0)}/day`}
+          zero={owning ? zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000]) : null} zeroLabel={`$${fmtInt((owning ? zero('opsUsdPerRackDay', [range('opsUsdPerRackDay')[0], 30000]) : null) ?? 0)}/day`}
           marks={[{ v: 220, label: 'at CoreWeave scale: $220/day' }]}
           hint={`on-call engineers, remote hands, insurance and monitoring, an estimate · support and spares add ${fmtUsdInt(m.result.daily.otherOpexUsd)}/day`} />
-      )}
+      </Fold>
 
       <Slider profitable={profitNow >= 0} testId="s-sold" label="GPU utilization" value={s.utilization} display={fmtPct(s.utilization)}
         min={range('utilization')[0]} max={1} step={0.01} onChange={(v) => update({ utilization: v })}
@@ -178,9 +187,8 @@ export function Controls({ m }: { m: Model }) {
         zero={zero('interactivity', [iLo, iHi])} zeroLabel={`${Math.round(zero('interactivity', [iLo, iHi]) ?? 0)} tok/s`}
         hint={<>p90 tokens/s per user; faster per user means fewer users per GPU · <FaqLink id="faq-speed">why it lowers profit</FaqLink></>} />
 
-      {!m.isDefault && (
-        <button type="button" className="reset" onClick={m.reset}>Reset to defaults</button>
-      )}
+      {/* Always in the layout, so its arrival on the first change does not push the page down. */}
+      <button type="button" className={`reset${m.isDefault ? ' off' : ''}`} onClick={m.reset}>Reset to defaults</button>
     </section>
   );
 }

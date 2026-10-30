@@ -47,9 +47,9 @@ test('3. lower utilization lowers profit; the break-even tick sits at 32%', asyn
   const before = await money(page, 'profit');
   await nudge(page, 's-sold', 'ArrowLeft', 40);
   await expect(page.getByTestId('s-sold')).toContainText('25%');
-  const after = await money(page, 'profit');
-  expect(after).toBeLessThan(before);
-  expect(after).toBeLessThan(0);
+  // The figure glides to its new value over a few frames.
+  await expect.poll(() => money(page, 'profit')).toBeLessThan(0);
+  expect(await money(page, 'profit')).toBeLessThan(before);
   await expect(page.getByTestId('chart-readout')).toContainText('At 25% utilization: −$2,316 a day');
   await expect(page).toHaveURL(/u=0\.25/);
 });
@@ -59,7 +59,7 @@ test('4. more input per output raises revenue (agents resend context)', async ({
   const before = await money(page, 'revenue');
   await nudge(page, 's-ratio', 'ArrowRight', 20);
   await expect(page.getByTestId('s-ratio')).toContainText('83 : 1');
-  expect(await money(page, 'revenue')).toBeGreaterThan(before);
+  await expect.poll(() => money(page, 'revenue')).toBeGreaterThan(before);
 });
 
 test('5. owning swaps rent for the cost of owning and a rack-price slider', async ({ page }) => {
@@ -240,6 +240,45 @@ test('19. the cost box shows the rent the slider sets, and each way of renting k
   await page.getByRole('radio', { name: 'GB300' }).click();
   await expect(contract).toHaveText(/\$475\/hr$/);
 });
+
+/** Where the page's blocks sit (document coordinates) and how tall the equation is, keyed by a readable name. */
+const layoutOf = (page: Page) => page.evaluate(() => {
+  const out: Record<string, number> = {};
+  const top = (el: Element) => Math.round(el.getBoundingClientRect().top + window.scrollY);
+  for (const sel of ['.unit-line', '.pchart', '.controls', '.prices', '.reset', '.details']) out[sel] = top(document.querySelector(sel)!);
+  document.querySelectorAll('.slider').forEach((el) => { out[`#${el.getAttribute('data-testid')}`] = top(el); });
+  out['eq height'] = Math.round(document.querySelector('[data-testid=equation]')!.getBoundingClientRect().height);
+  return out;
+});
+
+for (const [name, viewport] of [['a laptop', { width: 1000, height: 1400 }], ['a phone', { width: 390, height: 844 }]] as const) {
+  test(`21. on ${name}, sliding and switching between ways of renting never moves the page`, async ({ browser }) => {
+    const ctx = await browser.newContext({ viewport });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    await expect(page.getByTestId('profit')).toHaveText('$10,153');
+    const start = await layoutOf(page);
+    const steps: Array<[string, () => Promise<void>]> = [
+      ['utilization 35%', () => nudge(page, 's-sold', 'ArrowLeft', 30)],
+      ['speed at its fastest', () => nudge(page, 's-speed', 'End')],
+      ['overhead 0%', () => nudge(page, 's-overhead', 'Home')],
+      ['cache 95%', () => nudge(page, 's-cache', 'ArrowRight', 5)],
+      ['price High', () => page.getByRole('radio', { name: 'High' }).click()],
+      ['GB300', () => page.getByRole('radio', { name: 'GB300' }).click()],
+      ['rent on demand', () => page.getByRole('radio', { name: /Rent on demand/ }).click()],
+      ['reset', () => page.getByRole('button', { name: /Reset/ }).click()],
+    ];
+    const moved: string[] = [];
+    for (const [label, act] of steps) {
+      await act();
+      await page.waitForTimeout(250);
+      const now = await layoutOf(page);
+      for (const k of Object.keys(start)) if (Math.abs(now[k] - start[k]) > 1) moved.push(`${label}: ${k} ${start[k]} → ${now[k]}`);
+    }
+    expect(moved).toEqual([]);
+    await ctx.close();
+  });
+}
 
 test('20. the utilization hint opens the FAQ at its own entry; the link works on its own', async ({ page }) => {
   await page.goto('/');

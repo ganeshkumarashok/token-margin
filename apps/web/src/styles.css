@@ -58,14 +58,22 @@ a { color: inherit; text-underline-offset: 2px; }
 .unit-line { margin: 0; max-width: 72ch; font-size: 15px; color: var(--muted); }
 .unit-line b { color: var(--ink); font: 600 15px var(--mono); }
 .lede { margin: 0; color: var(--muted); font-size: 17px; text-wrap: balance; }
-.eq { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 18px; }
-.term { display: grid; gap: 2px; min-width: 0; }
-/* Four terms with two five-digit figures have to fit the 880px column on one line; below 890px the size follows the viewport. */
+/* Each term keeps its column whatever its figure reads, so nothing slides sideways as a slider moves.
+   The overhead column is the narrowest (its figure is short), the profit column also holds the highlight's padding. */
+.eq { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.11fr) auto minmax(0, 0.86fr) auto minmax(0, 1.045fr); column-gap: 10px; align-items: start; }
+.term { display: grid; gap: 2px; min-width: 0; container-type: inline-size; }
 .op { font: 300 clamp(26px, 4vw, 36px)/1.2 var(--mono); color: var(--muted); }
-.big { font: 500 clamp(30px, 4.5vw, 40px)/1.15 var(--mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* A figure is set at the display size unless its glyphs would not fit the column, when it steps down just enough.
+   The line height is fixed at the display size, so a smaller figure keeps the row's height. */
+.big {
+  --size: clamp(30px, 4.4vw, 40px); --pad: 0px;
+  font: 500 var(--size) var(--mono); line-height: calc(var(--size) * 1.15);
+  font-size: min(var(--size), calc((100cqw - var(--pad)) / (var(--glyphs, 7) * 0.615)));
+  letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
 .big .cm { font-family: var(--sans); font-weight: 600; letter-spacing: 0.02em; }
-.big.profit { background: var(--hl); color: var(--hl-ink); padding: 0 8px; margin-left: -8px; justify-self: start; }
-.big.profit.loss { background: transparent; color: var(--loss); padding: 0; margin: 0; }
+.big.profit { --pad: 12px; background: var(--hl); color: var(--hl-ink); padding: 0 6px; margin-left: -6px; justify-self: start; transition: background-color 160ms, color 160ms; }
+.big.profit.loss { background: transparent; color: var(--loss); }
 .sub { font: 600 13px/1.3 var(--cond); text-transform: uppercase; letter-spacing: 0.08em; }
 .note { font-size: 14px; color: var(--muted); }
 
@@ -79,6 +87,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .pchart .tick, .pchart .axis { font: 400 11px var(--mono); fill: var(--muted); }
 .pchart .line { stroke: var(--mark); stroke-width: 1.5; stroke-dasharray: 5 4; }
 .pchart .line.on { stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: none; }
+.pchart .be { transition: transform 160ms ease-out; }
 .pchart .be circle { fill: var(--bg); stroke: var(--mark); stroke-width: 1.5; }
 .pchart .be text { font: 500 11px var(--mono); fill: var(--muted); }
 .pchart .be.on circle { stroke: var(--zero); stroke-width: 2; }
@@ -97,6 +106,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); }
 .seg button {
   font: 500 14px/1 var(--sans); color: var(--ink); background: transparent; border: 0; padding: 9px 12px; cursor: pointer;
+  transition: background-color 120ms, color 120ms;
 }
 .seg button + button { border-left: 1px solid var(--ink); }
 .seg button[aria-checked='true'] { background: var(--ink); color: var(--bg); }
@@ -106,7 +116,10 @@ a { color: inherit; text-underline-offset: 2px; }
 
 .slider { display: grid; gap: 4px; }
 .slider label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-weight: 500; }
-.slider output { font: 500 15px var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+.slider .val { display: grid; justify-items: end; text-align: right; flex: none; }
+.slider output { font: 500 15px var(--mono); font-variant-numeric: tabular-nums; }
+.slider .zl { font: 500 12px/1.3 var(--sans); color: var(--zero); white-space: nowrap; }
+.slider .zl.none { color: var(--muted); font-weight: 400; }
 .track { position: relative; height: 28px; --thumb: 18px; }
 .track input { position: absolute; inset: 0; width: 100%; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
 .track input::-webkit-slider-runnable-track { height: 2px; background: var(--ink); }
@@ -123,17 +136,25 @@ a { color: inherit; text-underline-offset: 2px; }
   position: absolute; pointer-events: none;
   left: calc(var(--thumb) / 2 + (100% - var(--thumb)) * var(--f));
 }
-.track .zero { top: 4px; width: 2px; height: 20px; margin-left: -1px; background: var(--zero); }
+.track .zero { top: 4px; width: 2px; height: 20px; margin-left: -1px; background: var(--zero); transition: left 160ms ease-out; }
 .track .mark { top: 18px; width: 1px; height: 8px; background: var(--mark); }
 .hint { margin: 0; font-size: 13px; color: var(--muted); }
-.hint .zl { color: var(--zero); font-weight: 500; }
 .hint a { color: var(--muted); }
-.hint .zl.none { color: var(--muted); font-weight: 400; }
 
 .prices { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
 .plabel { font-weight: 500; }
 .pvals { font: 400 13px var(--mono); color: var(--muted); }
-.reset { justify-self: start; font: 500 14px var(--sans); color: var(--ink); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.reset { justify-self: start; font: 500 14px var(--sans); color: var(--ink); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; transition: opacity 160ms, visibility 0s; }
+.reset.off { visibility: hidden; opacity: 0; transition: opacity 160ms, visibility 0s 160ms; }
+
+/* The owning sliders open and close in place; the closed block also gives back its share of the grid gap. */
+.fold-rows { display: grid; grid-template-rows: 0fr; margin-top: -22px; visibility: hidden; transition: grid-template-rows 220ms ease, margin-top 220ms ease, visibility 0s 220ms; }
+.fold-rows[data-open] { grid-template-rows: 1fr; margin-top: 0; visibility: visible; transition: grid-template-rows 220ms ease, margin-top 220ms ease, visibility 0s; }
+.fold-rows > div { min-height: 0; overflow: hidden; display: grid; gap: 22px; padding-inline: 4px; margin-inline: -4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seg button, .big.profit, .track .zero, .pchart .be, .reset, .fold-rows { transition: none; }
+}
 
 /* Details */
 .details { display: grid; gap: 14px; border-top: 1px solid var(--rule); padding-top: 24px; max-width: 72ch; }
@@ -145,7 +166,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .receipt td { padding: 5px 0; vertical-align: baseline; }
 .receipt td.l { white-space: nowrap; padding-right: 14px; }
 .receipt td.n { color: var(--muted); font-size: 13px; width: 100%; }
-.receipt td.v { text-align: right; font: 500 14px var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 12px; }
+.receipt td.v { text-align: right; font: 500 14px var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 12px; min-width: 8.5ch; }
 .receipt tr.total td { border-top: 1px solid var(--rule); font-weight: 600; }
 .receipt tr.after td { color: var(--muted); font-size: 13px; padding-top: 0; }
 .receipt tr.profit-row td { border-top: 2px solid var(--ink); padding-top: 10px; font-weight: 600; }
@@ -194,4 +215,6 @@ a { color: inherit; text-underline-offset: 2px; }
   .big { font-size: 30px; }
   .receipt td.l { white-space: normal; }
   .receipt td.n { font-size: 12px; }
+  /* Every hint runs to two lines or more on a phone; holding that floor keeps a shorter one from pulling the sliders up. */
+  .hint { min-height: 3em; }
 }
