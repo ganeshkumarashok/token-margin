@@ -103,7 +103,9 @@ a { color: inherit; text-underline-offset: 2px; }
 /* Controls */
 .controls { display: grid; gap: 22px; border-top: 1px solid var(--rule); padding-top: 24px; }
 .toggles { display: flex; flex-wrap: wrap; gap: 10px; }
-.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); border-radius: 6px; }
+.seg button:first-child { border-radius: 5px 0 0 5px; }
+.seg button:last-child { border-radius: 0 5px 5px 0; }
 .seg button {
   font: 500 14px/1 var(--sans); color: var(--ink); background: transparent; border: 0; padding: 9px 12px; cursor: pointer;
   transition: background-color 120ms, color 120ms;
@@ -197,7 +199,7 @@ a { color: inherit; text-underline-offset: 2px; }
 .footer p { margin: 0 0 6px; }
 .cite { margin-top: 10px; color: var(--ink); }
 .cite-label { font: 600 12px var(--cond); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 4px; }
-.cite-copy { font: 500 12px var(--sans); color: var(--ink); background: none; border: 1px solid var(--rule); padding: 1px 8px; cursor: pointer; }
+.cite-copy { font: 500 12px var(--sans); color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 4px; padding: 1px 8px; cursor: pointer; }
 .cite details summary { cursor: pointer; color: var(--muted); font-size: 12px; }
 .cite pre { font: 400 12px/1.5 var(--mono); background: transparent; border: 1px solid var(--rule); padding: 8px 10px; overflow-x: auto; margin: 6px 0 0; }
 
